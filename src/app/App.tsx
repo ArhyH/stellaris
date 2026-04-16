@@ -1,11 +1,7 @@
-import { Container } from '@/shared/ui/container/Container';
+import { AppRouterProvider } from './providers/router-provider';
 
 const App = () => {
-  return (
-    <Container>
-      <h1>Hello</h1>
-    </Container>
-  );
+  return <AppRouterProvider />;
 };
 
 export { App };
