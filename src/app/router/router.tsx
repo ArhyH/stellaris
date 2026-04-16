@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { AppLayout } from '../layouts/app-layout';
 import {
   AnalyticsPage,
@@ -16,30 +16,30 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Navigate to="/dashboard" replace />,
+      },
+      {
+        path: 'dashboard',
         element: <DashboardPage />,
       },
       {
-        path: '/dashboard',
-        element: <DashboardPage />,
-      },
-      {
-        path: '/transactions',
+        path: 'transactions',
         element: <TransactionsPage />,
       },
       {
-        path: '/analytics',
+        path: 'analytics',
         element: <AnalyticsPage />,
       },
       {
-        path: '/budgets',
+        path: 'budgets',
         element: <BudgetsPage />,
       },
       {
-        path: '/categories',
+        path: 'categories',
         element: <CategoriesPage />,
       },
       {
-        path: '/settings',
+        path: 'settings',
         element: <SettingsPage />,
       },
     ],

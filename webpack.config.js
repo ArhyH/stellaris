@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[contenthash].js',
     clean: true,
+    publicPath: '/',
   },
   devtool: 'source-map',
   resolve: {
@@ -67,6 +68,9 @@ module.exports = {
   devServer: {
     port: 8080,
     hot: true,
+    historyApiFallback: {
+      index: '/index.html',
+    },
     open: process.platform === 'linux' ? { app: { name: 'xdg-open' } } : true,
   },
 };

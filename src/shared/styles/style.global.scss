@@ -1,0 +1,4 @@
+@use 'sass:meta';
+
+@include meta.load-css('colors/colors.scss');
+@include meta.load-css('sizes/sizes.scss');
