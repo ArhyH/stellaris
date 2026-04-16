@@ -1,0 +1,11 @@
+.container {
+  background-color: aqua;
+  color: black;
+  padding: 20px;
+  margin: 20px;
+
+  &__title {
+    color: white;
+    font-size: 60px;
+  }
+}
