@@ -1,7 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  background-color: var(--gray-1);
+  background-color: var(--gray-2);
   padding: var(--size-12);
   gap: var(--size-24);
 
@@ -21,26 +21,21 @@
     gap: var(--size-12);
     width: var(--size-216);
     background-color: var(--transparent);
+    color: var(--lightgray-3);
     fill: currentColor;
     text-decoration: none;
     color: inherit;
     border-radius: var(--size-16);
 
     &:hover {
-      background-color: color-mix(
-        in oklab,
-        var(--white) 5%,
-        var(--transparent)
-      );
+      background-color: var(--button-bg-1);
+      color: var(--white);
     }
 
     &.is-active {
-      background-color: color-mix(
-        in oklab,
-        var(--white) 10%,
-        var(--transparent)
-      );
+      background-color: var(--button-bg-2);
       fill: var(--green-1);
+      color: var(--white);
     }
   }
 }

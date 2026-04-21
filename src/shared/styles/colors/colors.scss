@@ -1,7 +1,138 @@
 :root {
+  /* VARS */
+
+  --opacity-1: 0.082;
+  --opacity-2: 0.125;
+  --opacity-3: 0.3;
+  --opacity-4: 0.4;
+  --opacity-5: 0.05;
+  --opacity-6: 0.1;
+  --opacity-7: 0.2;
+
+  --white-rgb: 255 255 255; /* #ffffff */
+  --black-rgb: 0 0 0; /* #000000 */
+
+  --gray-1-rgb: 18 18 18; /* #121212 */
+  --gray-2-rgb: 26 26 26; /* #1a1a1a */
+  --gray-3-rgb: 22 22 22; /* #161616 */
+  --gray-4-rgb: 30 30 30; /* #1e1e1e */
+  --gray-5-rgb: 42 42 42; /* #2a2a2a */
+
+  --lightgray-1-rgb: 68 68 68; /* #444444 */
+  --lightgray-2-rgb: 85 85 85; /* #555555 */
+  --lightgray-3-rgb: 102 102 102; /* #666666 */
+  --lightgray-4-rgb: 153 153 153; /* #999999 */
+  --lightgray-5-rgb: 178 178 178; /* #b2b2b2 */
+
+  --green-1-rgb: 74 222 128; /* #4ade80 */
+  --green-2-rgb: 34 197 94; /* #22c55e */
+
+  --red-1-rgb: 248 113 113; /* #f87171 */
+  --red-2-rgb: 243 129 129; /* #f38181 */
+
+  --pink-1-rgb: 255 107 157; /* #ff6b9d */
+
+  --yellow-1-rgb: 251 191 36; /* #fbbf24 */
+  --yellow-2-rgb: 255 230 109; /* #ffe66d */
+
+  --lightblue-1-rgb: 78 205 196; /* #4ecdc4 */
+  --lightblue-2-rgb: 149 225 211; /* #95e1d3 */
+  --lightblue-3-rgb: 168 230 207; /* #a8e6cf */
+
+  --blue-1-rgb: 116 185 255; /* #74b9ff */
+
+  --violet-1-rgb: 162 155 254; /* #a29bfe */
+  --violet-2-rgb: 199 206 234; /* #c7ceea */
+
+  /* COLORS */
+
   --transparent: transparent;
-  --white: #fff;
-  --gray-1: #1a1a1a;
-  --gray-2: #030213;
-  --green-1: #4ade80;
+  --white: rgb(var(--white-rgb)); /* #ffffff */
+  --black: rgb(var(--black-rgb)); /* #000000 */
+
+  --gray-1: rgb(var(--gray-1-rgb)); /* #121212 */
+  --gray-2: rgb(var(--gray-2-rgb)); /* #1a1a1a */
+  --gray-3: rgb(var(--gray-3-rgb)); /* #161616 */
+  --gray-4: rgb(var(--gray-4-rgb)); /* #1e1e1e */
+  --gray-5: rgb(var(--gray-5-rgb)); /* #2a2a2a */
+
+  --lightgray-1: rgb(var(--lightgray-1-rgb)); /* #444444 */
+  --lightgray-2: rgb(var(--lightgray-2-rgb)); /* #555555 */
+  --lightgray-3: rgb(var(--lightgray-3-rgb)); /* #666666 */
+  --lightgray-4: rgb(var(--lightgray-4-rgb)); /* #999999 */
+  --lightgray-5: rgb(var(--lightgray-5-rgb)); /* #b2b2b2 */
+
+  --green-1: rgb(var(--green-1-rgb)); /* #4ade80 */
+  --green-2: rgb(var(--green-2-rgb)); /* #22c55e */
+
+  --red-1: rgb(var(--red-1-rgb)); /* #f87171 */
+  --red-2: rgb(var(--red-2-rgb)); /* #f38181 */
+
+  --pink-1: rgb(var(--pink-1-rgb)); /* #ff6b9d */
+
+  --yellow-1: rgb(var(--yellow-1-rgb)); /* #fbbf24 */
+  --yellow-2: rgb(var(--yellow-2-rgb)); /* #ffe66d */
+
+  --lightblue-1: rgb(var(--lightblue-1-rgb)); /* #4ecdc4 */
+  --lightblue-2: rgb(var(--lightblue-2-rgb)); /* #95e1d3 */
+  --lightblue-3: rgb(var(--lightblue-3-rgb)); /* #a8e6cf */
+
+  --blue-1: rgb(var(--blue-1-rgb)); /* #74b9ff */
+
+  --violet-1: rgb(var(--violet-1-rgb)); /* #a29bfe */
+  --violet-2: rgb(var(--violet-2-rgb)); /* #c7ceea */
+
+  /* SHADOWS */
+
+  --gray-shadow-1: rgb(
+    var(--black-rgb) / var(--opacity-3)
+  ); /* rgba(0,0,0,0.3) || #0000004d */
+  --gray-shadow-2: rgb(
+    var(--black-rgb) / var(--opacity-4)
+  ); /* rgba(0,0,0,0.4) || #00000066 */
+
+  /* BUTTONS */
+
+  --button-bg-1: rgb(
+    var(--white-rgb) / var(--opacity-5)
+  ); /* rgba(255,255,255,0.05) || #ffffff0d */
+
+  --button-bg-2: rgb(
+    var(--white-rgb) / var(--opacity-6)
+  ); /* rgba(255,255,255,0.1) || #ffffff1a */
+
+  --button-bg-3: rgb(
+    var(--white-rgb) / var(--opacity-7)
+  ); /* rgba(255,255,255,0.2) || #ffffff33 */
+
+  /* CARD / LABEL */
+
+  --green-1-op: rgb(
+    var(--green-1-rgb) / var(--opacity-2)
+  ); /* rgba(74,222,128,0.125) || #4ade8020 */
+
+  --red-1-op: rgb(
+    var(--red-1-rgb) / var(--opacity-2)
+  ); /* rgba(248,113,113,0.125) || #f8717120 */
+
+  --yellow-2-op: rgb(
+    var(--yellow-2-rgb) / var(--opacity-2)
+  ); /* rgba(255,230,109,0.125) || #ffe66d20 */
+
+  --lightblue-1-op: rgb(
+    var(--lightblue-1-rgb) / var(--opacity-1)
+  ); /* rgba(78,205,196,0.082) || #4ecdc415 */
+
+  /* CATEGORIES (light) */
+
+  --category-blue-1: var(--lightblue-1);
+  --category-blue-2: var(--lightblue-2);
+  --category-blue-3: var(--lightblue-3);
+  --category-blue-4: var(--blue-1);
+  --category-yellow-1: var(--yellow-2);
+  --category-pink-1: var(--pink-1);
+  --category-red-1: var(--red-2);
+  --category-gray-1: var(--lightgray-5);
+  --category-violet-1: var(--violet-1);
+  --category-violet-2: var(--violet-2);
 }
