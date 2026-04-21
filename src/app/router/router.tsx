@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { AppLayout } from '../layouts/app-layout';
+import { AppLayout } from '../ui/app-layout';
 import {
   AnalyticsPage,
   BudgetsPage,
