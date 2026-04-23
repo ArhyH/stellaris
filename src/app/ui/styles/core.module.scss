@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  background-color: var(--gray-1);
+  color: var(--white);
+  height: 100vh;
+
+  &__wrapper {
+    width: var(--parent);
+  }
+}

@@ -1,0 +1,13 @@
+.box {
+  &--size {
+    &--30 {
+      width: var(--size-30);
+      height: var(--size-30);
+    }
+
+    &--fit-content {
+      width: fit-content;
+      padding: var(--size-24);
+    }
+  }
+}

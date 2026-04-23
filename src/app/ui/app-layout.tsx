@@ -9,7 +9,7 @@ const AppLayout = () => {
     <div className={styles.app}>
       <Sidebar />
 
-      <div>
+      <div className={styles.app__wrapper}>
         <Header />
 
         <main>

@@ -1,0 +1,7 @@
+.box {
+  &--type {
+    &--circle {
+      border-radius: var(--half);
+    }
+  }
+}

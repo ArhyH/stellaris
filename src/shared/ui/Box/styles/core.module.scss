@@ -1,0 +1,22 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--size-16);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--parent);
+    color: var(--black);
+  }
+}

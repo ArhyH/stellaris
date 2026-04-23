@@ -1,0 +1,9 @@
+.box {
+  &--theme {
+    &--gray {
+      background-color: var(--gray-4);
+      box-shadow: var(--gray-shadow-1) var(--size-4) var(--size-0)
+        var(--size-24);
+    }
+  }
+}

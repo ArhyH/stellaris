@@ -1,0 +1,8 @@
+.button {
+  &--size {
+    &--44-stretched {
+      width: var(--parent);
+      height: var(--size-44);
+    }
+  }
+}

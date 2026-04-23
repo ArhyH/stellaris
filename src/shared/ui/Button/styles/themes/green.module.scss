@@ -1,0 +1,29 @@
+.button {
+  &--theme {
+    &--green {
+      background-color: var(--green-1);
+      color: var(--black);
+      border-radius: var(--size-16);
+      fill: currentColor;
+      padding: var(--size-12) var(--size-16);
+      transition-property: background-color, scale;
+      transition-duration: 150ms;
+
+      .button__text {
+        font-size: var(--size-14);
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--green-2);
+          transform: scale(1.02);
+        }
+      }
+
+      &.is-active,
+      &:active {
+        transform: unset;
+      }
+    }
+  }
+}

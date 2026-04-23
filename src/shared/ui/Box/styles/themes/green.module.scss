@@ -1,0 +1,8 @@
+.box {
+  &--theme {
+    &--green {
+      background-color: var(--green-2);
+      border-radius: var(--size-12);
+    }
+  }
+}
