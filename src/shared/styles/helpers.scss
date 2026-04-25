@@ -1,0 +1,7 @@
+@mixin initializeCssVar($name, $value: null) {
+  @if $value {
+    #{$name}: $value;
+  } @else {
+    #{$name}: var($name);
+  }
+}

@@ -1,22 +1,31 @@
+@use '../../../styles/helpers.scss' as *;
+
 .box {
+  @include initializeCssVar(--box-background-color, var(--gray-4));
+  @include initializeCssVar(--box-radius, var(--size-16));
+
   display: flex;
   flex-direction: column;
-  border-radius: var(--size-16);
+  border-radius: var(--box-radius);
+  background-color: var(--box-background-color);
+  color: var(--black);
 
   &__header {
     display: flex;
     justify-content: space-between;
   }
 
-  &__content {
-    display: flex;
-  }
-
   &__wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--parent);
-    color: var(--black);
+
+    &.has-align {
+      align-items: center;
+      justify-content: center;
+      height: var(--parent);
+    }
+  }
+
+  &.has-shadow {
+    box-shadow: var(--gray-shadow-1) var(--size-4) var(--size-0) var(--size-24);
   }
 }

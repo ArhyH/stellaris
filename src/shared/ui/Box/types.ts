@@ -1,12 +1,14 @@
 import { ReactNode } from 'react';
 import { ValueOf } from 'type-fest';
 import { boxProps } from './consts';
+import { colors, sizes } from '@/shared/styles';
 
 type BoxProps = {
   children: ReactNode;
-  theme: ValueOf<typeof boxProps.themes>;
   size: ValueOf<typeof boxProps.sizes>;
-  type?: ValueOf<typeof boxProps.types>;
+  bgColor?: ValueOf<typeof colors.box>;
+  radius?: ValueOf<typeof sizes.radiuses>;
+  hasShadow?: boolean;
 };
 
 type BoxHeaderProps = {
@@ -15,6 +17,7 @@ type BoxHeaderProps = {
 
 type BoxWrapperProps = {
   children: ReactNode;
+  hasAlign?: boolean;
 };
 
 export type { BoxProps, BoxHeaderProps, BoxWrapperProps };
