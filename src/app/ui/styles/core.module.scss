@@ -2,7 +2,7 @@
   display: flex;
   background-color: var(--gray-1);
   color: var(--white);
-  height: 100vh;
+  height: var(--parent);
 
   &__wrapper {
     width: var(--parent);
