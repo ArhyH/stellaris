@@ -6,7 +6,7 @@ import { colors, sizes } from '@/shared/styles';
 type BoxProps = {
   children: ReactNode;
   size: ValueOf<typeof boxProps.sizes>;
-  bgColor?: ValueOf<typeof colors.box>;
+  bgColor?: ValueOf<typeof colors.box> | ValueOf<typeof colors.category>;
   radius?: ValueOf<typeof sizes.radiuses>;
   grow?: ValueOf<typeof boxProps.grow>;
   hasShadow?: boolean;

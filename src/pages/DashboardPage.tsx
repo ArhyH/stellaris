@@ -3,8 +3,11 @@ import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
-import { BudgetCards, getSummaryDeltas } from '@/widgets/dashboard-summary';
-import { getDashboardSummary } from '@/widgets/dashboard-summary/model/summary';
+import {
+  BudgetCards,
+  getSummaryDeltas,
+  getDashboardSummary,
+} from '@/widgets/dashboard-summary';
 import { mapTransactionsToRecentItems } from '@/widgets/recent-transactions/model/mappers';
 import { mapTransactionsToPieChartData } from '@/widgets/transaction-pie-chart/model/mapTransactionsToPieChartData';
 import {
@@ -12,6 +15,7 @@ import {
   getPrevMonth,
 } from '@/shared/helpers/filterTransactions';
 import styles from './style.module.scss';
+import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTransactions';
 
 const DashboardPage = () => {
   const pieChartData = mapTransactionsToPieChartData(
@@ -30,12 +34,6 @@ const DashboardPage = () => {
     },
   );
 
-  const transactionsData = mapTransactionsToRecentItems(
-    transactionsMock,
-    categoriesMock,
-    true,
-  );
-
   const now = new Date();
   const prevMonth = getPrevMonth(now);
 
@@ -50,10 +48,11 @@ const DashboardPage = () => {
 
   const deltas = getSummaryDeltas(currentSummary, prevSummary);
 
-  console.log(now);
-  console.log(prevMonth);
-
-  console.log(currentTransactions);
+  const recentTransactions = mapTransactionsToRecentItems(
+    currentTransactions,
+    categoriesMock,
+    true,
+  );
 
   return (
     <div className={styles.page}>
@@ -87,18 +86,7 @@ const DashboardPage = () => {
         );
       })}
 
-      {transactionsData.map((item) => {
-        return (
-          <div>
-            <h2>Transaction Item</h2>
-            {Object.entries(item).map(([key, value]) => (
-              <span>
-                {key}: {value} <br />
-              </span>
-            ))}
-          </div>
-        );
-      })}
+      <RecentTransactions recentTransactions={recentTransactions} />
     </div>
   );
 };

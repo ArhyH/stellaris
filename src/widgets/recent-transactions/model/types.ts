@@ -1,6 +1,6 @@
+import { CategoryColor } from '@/shared/styles/colors/consts';
 import {
   AMOUNT,
-  COLOR,
   DATE,
   FinanceTransferType,
   ICON,
@@ -15,7 +15,7 @@ interface RecentTransaction {
   type: FinanceTransferType;
   note: LABEL;
   categoryIcon: ICON;
-  categoryColor: COLOR;
+  categoryColor?: CategoryColor;
   categoryName: LABEL;
 }
 

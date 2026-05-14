@@ -19,7 +19,7 @@ const BudgetCard = (props: BudgetCardProps) => {
 
   return (
     <Box
-      size={boxProps.sizes.fitContent}
+      size={boxProps.sizes.parent}
       bgColor={colors.box['gray-4']}
       grow={boxProps.grow[1]}
     >
@@ -38,7 +38,7 @@ const BudgetCard = (props: BudgetCardProps) => {
                   (categoryKey === 'expense' && delta > 0),
               })}
             >
-              {formatDelta(delta)} vs last mounth
+              {formatDelta(delta)} vs last month
             </p>
           )}
         </div>

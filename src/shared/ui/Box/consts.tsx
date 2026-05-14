@@ -1,6 +1,8 @@
 const boxSizes = {
   30: '30',
+  40: '40',
   fitContent: 'fit-content',
+  parent: 'parent',
 };
 
 const boxGrows = {
