@@ -8,6 +8,7 @@ type BoxProps = {
   size: ValueOf<typeof boxProps.sizes>;
   bgColor?: ValueOf<typeof colors.box>;
   radius?: ValueOf<typeof sizes.radiuses>;
+  grow?: ValueOf<typeof boxProps.grow>;
   hasShadow?: boolean;
 };
 

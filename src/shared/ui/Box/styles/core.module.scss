@@ -3,12 +3,14 @@
 .box {
   @include initializeCssVar(--box-background-color, var(--gray-4));
   @include initializeCssVar(--box-radius, var(--size-16));
+  @include initializeCssVar(--box-grow, var(--initial));
 
   display: flex;
   flex-direction: column;
   border-radius: var(--box-radius);
   background-color: var(--box-background-color);
   color: var(--black);
+  flex-grow: var(--box-grow);
 
   &__header {
     display: flex;

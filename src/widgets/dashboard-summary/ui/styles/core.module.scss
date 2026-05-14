@@ -1,0 +1,47 @@
+.budget-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-16);
+  box-sizing: border-box;
+  width: 100%;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--size-20);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+  }
+
+  &__title {
+    color: var(--lightgray-3);
+    font-size: var(--size-14);
+  }
+
+  &__summary {
+    color: var(--white);
+    font-size: var(--size-30);
+    font-weight: 700;
+  }
+
+  &__delta {
+    color: var(--green-1);
+    font-size: var(--size-12);
+
+    &.is-reduced {
+      color: var(--red-1);
+    }
+  }
+
+  &__icon {
+  }
+}

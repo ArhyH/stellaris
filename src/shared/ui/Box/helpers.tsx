@@ -13,13 +13,23 @@ const getRadius = ({ radius }: Pick<BoxProps, 'radius'>) => {
   }
 };
 
+const getGrow = ({ grow }: Pick<BoxProps, 'grow'>) => {
+  if (grow) {
+    return {
+      '--box-grow': grow,
+    };
+  }
+};
+
 const getStyles = ({
   bgColor,
   radius,
-}: Pick<BoxProps, 'bgColor' | 'radius'>) => {
+  grow,
+}: Pick<BoxProps, 'bgColor' | 'radius' | 'grow'>) => {
   return {
     ...getBGColor({ bgColor }),
     ...getRadius({ radius }),
+    ...getGrow({ grow }),
   };
 };
 

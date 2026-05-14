@@ -3,12 +3,13 @@ import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
+import { BudgetCards, getSummaryDeltas } from '@/widgets/dashboard-summary';
 import { getDashboardSummary } from '@/widgets/dashboard-summary/model/summary';
 import { mapTransactionsToRecentItems } from '@/widgets/recent-transactions/model/mappers';
 import { mapTransactionsToPieChartData } from '@/widgets/transaction-pie-chart/model/mapTransactionsToPieChartData';
+import styles from './style.module.scss';
 
 const DashboardPage = () => {
-  const { income, expense, total } = getDashboardSummary(transactionsMock);
   const pieChartData = mapTransactionsToPieChartData(
     transactionsMock,
     categoriesMock,
@@ -31,12 +32,14 @@ const DashboardPage = () => {
     true,
   );
 
+  const current = getDashboardSummary(transactionsMock);
+  const deltas = getSummaryDeltas(current, current);
+
   return (
-    <div>
+    <div className={styles.page}>
       <h1>DashboardPage</h1>
-      <h2>Income {income}</h2>
-      <h2>Expense {expense}</h2>
-      <h2>Total {total}</h2>
+
+      <BudgetCards summaries={current} deltas={deltas} />
 
       {pieChartData.map((item) => {
         return (

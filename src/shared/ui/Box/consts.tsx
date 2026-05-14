@@ -1,21 +1,17 @@
-const boxThemes = {
-  gray: 'gray',
-  green: 'green',
-};
-
-const boxTypes = {
-  circle: 'circle',
-};
-
 const boxSizes = {
   30: '30',
   fitContent: 'fit-content',
 };
 
+const boxGrows = {
+  1: 1,
+  2: 2,
+  3: 3,
+};
+
 const boxProps = {
-  themes: boxThemes,
-  types: boxTypes,
   sizes: boxSizes,
+  grow: boxGrows,
 };
 
 export { boxProps };

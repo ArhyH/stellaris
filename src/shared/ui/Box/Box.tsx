@@ -5,7 +5,7 @@ import { BoxProps } from './types';
 import { getStyles } from './helpers';
 
 const Box = (props: BoxProps) => {
-  const { children, hasShadow, bgColor, radius, size } = props;
+  const { children, hasShadow, bgColor, radius, size, grow } = props;
 
   const componentClassNames = classnames(styles.box, {
     [styles[`box--size--${size}`]]: size,
@@ -15,7 +15,7 @@ const Box = (props: BoxProps) => {
   return (
     <div
       className={componentClassNames}
-      style={{ ...getStyles({ bgColor, radius }) }}
+      style={{ ...getStyles({ bgColor, radius, grow }) }}
     >
       {children}
     </div>

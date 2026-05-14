@@ -5,9 +5,9 @@ interface DashboardSummary {
 }
 
 interface SummaryDeltas {
-  incomeDelta: number | null;
-  expenseDelta: number | null;
-  totalDelta: number | null;
+  income: number | null;
+  expense: number | null;
+  total: number | null;
 }
 
 export type { DashboardSummary, SummaryDeltas };

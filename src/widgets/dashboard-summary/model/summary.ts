@@ -36,15 +36,24 @@ const getDelta = (current: number, prev: number): number | null => {
   return ((current - prev) / prev) * 100;
 };
 
+const formatDelta = (delta: number | null) => {
+  if (delta === null) {
+    return;
+  }
+
+  const sign = delta > 0 ? '+' : '';
+  return `${sign}${delta.toFixed(1)}%`;
+};
+
 const getSummaryDeltas = (
   current: DashboardSummary,
   prev: DashboardSummary,
 ): SummaryDeltas => {
   return {
-    incomeDelta: getDelta(current.income, prev.income),
-    expenseDelta: getDelta(current.expense, prev.expense),
-    totalDelta: getDelta(current.total, prev.total),
+    income: getDelta(current.income, prev.income),
+    expense: getDelta(current.expense, prev.expense),
+    total: getDelta(current.total, prev.total),
   };
 };
 
-export { getDashboardSummary, getSummaryDeltas };
+export { getDashboardSummary, getSummaryDeltas, formatDelta };
