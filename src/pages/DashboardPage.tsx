@@ -58,8 +58,6 @@ const DashboardPage = () => {
     },
   );
 
-  console.log('current', currentTransactions[0]);
-
   return (
     <div className={styles.page}>
       <h1>DashboardPage</h1>
