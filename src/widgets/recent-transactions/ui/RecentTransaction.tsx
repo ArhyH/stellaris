@@ -35,7 +35,7 @@ const RecentTransaction = (props: RecentTransactionProps) => {
   } = props;
 
   return (
-    <div className={styles['recent-transaction']}>
+    <li className={styles['recent-transaction']}>
       <div className={styles['recent-transaction__cell']}>
         <Box
           size={boxProps.sizes[30]}
@@ -58,7 +58,7 @@ const RecentTransaction = (props: RecentTransactionProps) => {
       >
         {formatAmount(amount, type)}
       </div>
-    </div>
+    </li>
   );
 };
 

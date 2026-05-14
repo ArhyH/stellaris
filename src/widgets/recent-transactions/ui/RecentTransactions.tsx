@@ -25,21 +25,23 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
             View All
           </Link>
         </BoxHeader>
-        {recentTransactions.map((transaction) => {
-          console.log(transaction);
-          return (
-            <RecentTransaction
-              key={transaction.id}
-              categoryIcon={transaction.categoryIcon}
-              categoryName={transaction.categoryName}
-              categoryColor={transaction.categoryColor}
-              date={transaction.date}
-              amount={transaction.amount}
-              note={transaction.note}
-              type={transaction.type}
-            />
-          );
-        })}
+        <ul className={styles['recent-transaction__list']}>
+          {recentTransactions.map((transaction) => {
+            console.log(transaction);
+            return (
+              <RecentTransaction
+                key={transaction.id}
+                categoryIcon={transaction.categoryIcon}
+                categoryName={transaction.categoryName}
+                categoryColor={transaction.categoryColor}
+                date={transaction.date}
+                amount={transaction.amount}
+                note={transaction.note}
+                type={transaction.type}
+              />
+            );
+          })}
+        </ul>
       </Box>
     </div>
   );

@@ -46,4 +46,10 @@
     color: var(--lightgray-2);
     font-size: var(--size-12);
   }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+  }
 }
