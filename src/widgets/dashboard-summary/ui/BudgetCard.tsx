@@ -4,16 +4,18 @@ import { ICON } from '@/shared/types/types';
 import { colors } from '@/shared/styles';
 import styles from './style.module.scss';
 import { formatDelta } from '../model/summary';
+import { DashboardSummary } from '../model/types';
 
 type BudgetCardProps = {
   title: string;
   icon: ICON;
   summary: number;
   delta?: number | null;
+  categoryKey: keyof DashboardSummary;
 };
 
 const BudgetCard = (props: BudgetCardProps) => {
-  const { title, icon, summary, delta } = props;
+  const { title, icon, summary, delta, categoryKey } = props;
 
   return (
     <Box
@@ -31,7 +33,9 @@ const BudgetCard = (props: BudgetCardProps) => {
           {!!delta && (
             <p
               className={classnames(styles['budget-card__delta'], {
-                [styles['is-reduced']]: delta < 0,
+                [styles['is-red']]:
+                  (categoryKey !== 'expense' && delta < 0) ||
+                  (categoryKey === 'expense' && delta > 0),
               })}
             >
               {formatDelta(delta)} vs last mounth

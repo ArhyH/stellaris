@@ -29,6 +29,7 @@ const BudgetCards = (props: BudgetCardsProps) => {
             icon={icon}
             summary={summaries[key]}
             delta={deltas[key]}
+            categoryKey={key}
           />
         );
       })}
