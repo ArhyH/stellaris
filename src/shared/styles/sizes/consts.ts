@@ -14,6 +14,7 @@ const sizeValues = {
   'size-40': 'size-40',
   'size-44': 'size-44',
   'size-216': 'size-216',
+  'size-300': 'size-300',
   half: 'half',
   parent: 'parent',
 };
@@ -33,6 +34,7 @@ const sizeList = {
   40: sizeValues['size-40'],
   44: sizeValues['size-44'],
   216: sizeValues['size-216'],
+  300: sizeValues['size-300'],
   parent: sizeValues.parent,
   half: sizeValues.half,
 };

@@ -1,0 +1,12 @@
+.router-link {
+  font-size: var(--size-12);
+  font-weight: 500;
+  color: var(--green-1);
+  text-decoration: none;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

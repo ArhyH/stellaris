@@ -4,6 +4,7 @@
   @include initializeCssVar(--box-background-color, var(--gray-4));
   @include initializeCssVar(--box-radius, var(--size-16));
   @include initializeCssVar(--box-grow, var(--initial));
+  @include initializeCssVar(--box-padding, var(--unset));
 
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@
   background-color: var(--box-background-color);
   color: var(--black);
   flex-grow: var(--box-grow);
+  padding: var(--box-padding);
   box-sizing: border-box;
 
   &__header {

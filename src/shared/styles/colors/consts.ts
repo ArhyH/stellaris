@@ -86,10 +86,36 @@ const categoryColors = {
   'category-green-3': 'category-green-3',
 } as const;
 
+const categoryOpColors = {
+  'category-lightblue-1': 'category-op-lightblue-1',
+  'category-lightblue-2': 'category-op-lightblue-2',
+  'category-lightblue-3': 'category-op-lightblue-3',
+  'category-blue-1': 'category-op-blue-1',
+  'category-blue-2': 'category-op-blue-2',
+  'category-blue-3': 'category-op-blue-3',
+  'category-blue-4': 'category-op-blue-4',
+  'category-yellow-1': 'category-op-yellow-1',
+  'category-yellow-2': 'category-op-yellow-2',
+  'category-yellow-3': 'category-op-yellow-3',
+  'category-yellow-4': 'category-op-yellow-4',
+  'category-pink-1': 'category-op-pink-1',
+  'category-pink-2': 'category-op-pink-2',
+  'category-pink-3': 'category-op-pink-3',
+  'category-red-1': 'category-op-red-1',
+  'category-red-2': 'category-op-red-2',
+  'category-red-3': 'category-op-red-3',
+  'category-red-4': 'category-op-red-4',
+  'category-violet-1': 'category-op-violet-1',
+  'category-violet-2': 'category-op-violet-2',
+  'category-violet-3': 'category-op-violet-3',
+  'category-green-3': 'category-op-green-3',
+} as const;
+
 const boxColors = {
-  ...categoryColors,
+  ...categoryOpColors,
   'green-1': greenColors[1],
   'gray-4': grayColors[4],
+  transparent: 'transparent',
 } as const;
 
 const colors = {
@@ -105,10 +131,13 @@ const colors = {
   violet: violetColors,
   label: labelColors,
   category: categoryColors,
+  categoryOp: categoryOpColors,
   box: boxColors,
 } as const;
 
-type CategoryColor = keyof typeof categoryColors;
+type CategoryColor =
+  | keyof typeof categoryColors
+  | keyof typeof categoryOpColors;
 
 export { colors };
 export type { CategoryColor };

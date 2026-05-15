@@ -2,6 +2,7 @@ import { Category } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
 import { FinanceTransferType, ID } from '@/shared/types/types';
 import { PieChartItem } from './types';
+import { colors } from '@/shared/styles';
 
 const mapTransactionsToPieChartData = (
   transactions: Transaction[],
@@ -46,6 +47,7 @@ const mapTransactionsToPieChartData = (
         categoryName: category?.name || '',
         value,
         percent: Math.round((value / total) * 100),
+        fill: `var(--${category?.color ? colors.category[category.color] : 'lightgray-4'})`,
       };
     },
   );

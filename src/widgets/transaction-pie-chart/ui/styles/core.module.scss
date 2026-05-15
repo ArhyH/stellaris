@@ -1,0 +1,25 @@
+.pie-chart {
+  &__legend-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__category {
+    color: var(--lightgray-4);
+    font-size: var(--size-16);
+  }
+
+  &__total {
+    color: var(--white);
+    font-size: var(--size-16);
+  }
+
+  &__dot {
+    display: inline-block;
+    width: var(--size-8);
+    height: var(--size-8);
+    border-radius: var(--half);
+    margin-right: var(--size-8);
+  }
+}

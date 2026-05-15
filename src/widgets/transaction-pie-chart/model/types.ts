@@ -7,6 +7,7 @@ interface PieChartItem {
   categoryName: LABEL;
   value: AMOUNT;
   percent: number;
+  fill: COLOR;
 }
 
 export type { PieChartItem };

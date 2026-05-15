@@ -1,8 +1,8 @@
 import { FinanceTransferTypes } from '@/shared/consts/consts';
-import { budgetsMock } from '@/shared/mocks/budgets';
+// import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
-import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
+// import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
 import {
   BudgetCards,
   getSummaryDeltas,
@@ -16,23 +16,19 @@ import {
 } from '@/shared/helpers/filterTransactions';
 import styles from './style.module.scss';
 import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTransactions';
+import { PieChartUi } from '@/widgets/transaction-pie-chart/ui/PieChart';
+import { Row } from '@/shared/ui/Row/Row';
 
 const DashboardPage = () => {
-  const pieChartData = mapTransactionsToPieChartData(
-    transactionsMock,
-    categoriesMock,
-    FinanceTransferTypes.expense,
-  );
-
-  const budgetsData = mapBudgetsToOverviewItems(
-    budgetsMock,
-    transactionsMock,
-    categoriesMock,
-    {
-      sortByProgress: true,
-      limit: true,
-    },
-  );
+  // const budgetsData = mapBudgetsToOverviewItems(
+  //   budgetsMock,
+  //   transactionsMock,
+  //   categoriesMock,
+  //   {
+  //     sortByProgress: true,
+  //     limit: true,
+  //   },
+  // );
 
   const now = new Date();
   const prevMonth = getPrevMonth(now);
@@ -54,38 +50,26 @@ const DashboardPage = () => {
     true,
   );
 
+  const pieChartData = mapTransactionsToPieChartData(
+    currentTransactions,
+    categoriesMock,
+    FinanceTransferTypes.expense,
+  );
+
   return (
     <div className={styles.page}>
       <h1>DashboardPage</h1>
-
       <BudgetCards summaries={currentSummary} deltas={deltas} />
-
-      {pieChartData.map((item) => {
-        return (
-          <div>
-            <h2>Chart Item</h2>
-            {Object.entries(item).map(([key, value]) => (
-              <span>
-                {key}: {value} <br />
-              </span>
-            ))}
-          </div>
-        );
-      })}
-
-      {budgetsData.map((item) => {
-        return (
-          <div>
-            <h2>Budgets Item</h2>
-            {Object.entries(item).map(([key, value]) => (
-              <span>
-                {key}: {value} <br />
-              </span>
-            ))}
-          </div>
-        );
-      })}
-
+      <Row>
+        <PieChartUi data={pieChartData} />
+        <div
+          style={{
+            backgroundColor: '#d4d4d4',
+            display: 'flex',
+            flexGrow: 2,
+          }}
+        />
+      </Row>
       <RecentTransactions recentTransactions={recentTransactions} />
     </div>
   );

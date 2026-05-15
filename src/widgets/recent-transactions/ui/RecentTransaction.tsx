@@ -40,7 +40,7 @@ const RecentTransaction = (props: RecentTransactionProps) => {
         <Box
           size={boxProps.sizes[30]}
           radius={sizes.radiuses[12]}
-          {...(categoryColor && { bgColor: colors.category[categoryColor] })}
+          {...(categoryColor && { bgColor: colors.categoryOp[categoryColor] })}
         >
           <BoxWrapper hasAlign>{categoryIcon}</BoxWrapper>
         </Box>
