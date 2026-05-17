@@ -5,6 +5,7 @@ import { colors } from '@/shared/styles';
 import styles from './style.module.scss';
 import { formatDelta } from '../model/summary';
 import { DashboardSummary } from '../model/types';
+import { formatAmount } from '@/shared/helpers/formatAmount';
 
 type BudgetCardProps = {
   title: string;
@@ -29,7 +30,9 @@ const BudgetCard = (props: BudgetCardProps) => {
           <span className={styles['budget-card__icon']}>{icon}</span>
         </div>
         <div className={styles['budget-card__content']}>
-          <p className={styles['budget-card__summary']}>{summary}</p>
+          <p className={styles['budget-card__summary']}>
+            {formatAmount(summary)}
+          </p>
           {!!delta && (
             <p
               className={classnames(styles['budget-card__delta'], {

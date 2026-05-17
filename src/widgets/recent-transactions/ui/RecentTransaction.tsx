@@ -8,10 +8,10 @@ import {
 } from '@/shared/types/types';
 import { Box, boxProps, BoxWrapper } from '@/shared/ui/Box';
 import { FinanceTransferTypes } from '@/shared/consts/consts';
-import { formatAmount } from '../model/helpers';
 import styles from './style.module.scss';
 import { colors, sizes } from '@/shared/styles';
 import { CategoryColor } from '@/shared/styles/colors/consts';
+import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
 
 type RecentTransactionProps = {
   categoryIcon: ICON;
@@ -56,7 +56,7 @@ const RecentTransaction = (props: RecentTransactionProps) => {
           [styles['is-red']]: type === FinanceTransferTypes.expense,
         })}
       >
-        {formatAmount(amount, type)}
+        {formatAmount(amount, formatTypes.full, type)}
       </div>
     </li>
   );

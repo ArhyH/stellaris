@@ -14,7 +14,11 @@ const BUDGET_CARDS_CONFIG = [
   { key: 'total', title: 'Total Balance', icon: '' },
   { key: 'income', title: 'Total Income', icon: '' },
   { key: 'expense', title: 'Total Expenses', icon: '' },
-] as const satisfies Array<{ key: SummaryKey; title: string; icon: ICON }>;
+] as const satisfies ReadonlyArray<{
+  key: SummaryKey;
+  title: string;
+  icon: ICON;
+}>;
 
 const BudgetCards = (props: BudgetCardsProps) => {
   const { summaries, deltas } = props;
