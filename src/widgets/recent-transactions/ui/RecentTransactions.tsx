@@ -1,8 +1,10 @@
 import styles from './style.module.scss';
-import { Box, BoxHeader, boxProps } from '@/shared/ui/Box';
 import { RecentTransaction as RecentTransactionType } from '../model/types';
 import { RecentTransaction } from './RecentTransaction';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
+import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { sizes } from '@/shared/styles';
 
 type RecentTransactionsProps = {
   recentTransactions: RecentTransactionType[];
@@ -13,13 +15,14 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
 
   return (
     <div className={styles['recent-transaction__wrapper']}>
-      <Box size={boxProps.sizes.parent} grow={boxProps.grow[1]}>
-        <BoxHeader>
-          <p className={styles['recent-transaction__title']}>
+      <ContentCard>
+        <ContentCardHeader paddingBottom={sizes.sizes[20]}>
+          <Typography type={typographyProps.types.title16}>
             Recent Transactions
-          </p>
+          </Typography>
           <RouterLink to={'/transactions'}>View All</RouterLink>
-        </BoxHeader>
+        </ContentCardHeader>
+
         <ul className={styles['recent-transaction__list']}>
           {recentTransactions.map((transaction) => {
             console.log(transaction);
@@ -37,7 +40,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
             );
           })}
         </ul>
-      </Box>
+      </ContentCard>
     </div>
   );
 };

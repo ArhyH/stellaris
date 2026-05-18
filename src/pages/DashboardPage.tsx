@@ -1,4 +1,4 @@
-import { FinanceTransferTypes } from '@/shared/consts/consts';
+import { FinanceTransferTypes } from '@/shared/consts';
 // import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
@@ -18,6 +18,7 @@ import styles from './style.module.scss';
 import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTransactions';
 import { PieChartUi } from '@/widgets/transaction-pie-chart/ui/PieChart';
 import { Row } from '@/shared/ui/Row/Row';
+import { getMouthFromDate } from '@/widgets/transaction-pie-chart/model/helpers';
 
 const DashboardPage = () => {
   // const budgetsData = mapBudgetsToOverviewItems(
@@ -56,12 +57,17 @@ const DashboardPage = () => {
     FinanceTransferTypes.expense,
   );
 
+  console.log('current', currentTransactions[0]);
+
   return (
     <div className={styles.page}>
       <h1>DashboardPage</h1>
       <BudgetCards summaries={currentSummary} deltas={deltas} />
       <Row>
-        <PieChartUi data={pieChartData} />
+        <PieChartUi
+          data={pieChartData}
+          date={getMouthFromDate(currentTransactions[0].date)}
+        />
         <div
           style={{
             backgroundColor: '#d4d4d4',

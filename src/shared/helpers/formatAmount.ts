@@ -1,5 +1,5 @@
-import { FinanceTransferTypes } from '../consts/consts';
-import { AMOUNT, FinanceTransferType } from '../types/types';
+import { FinanceTransferTypes } from '../consts';
+import { AMOUNT, FinanceTransferType } from '../types';
 
 const formatTypes = {
   full: 'full',

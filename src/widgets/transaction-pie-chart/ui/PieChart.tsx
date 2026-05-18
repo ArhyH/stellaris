@@ -1,20 +1,33 @@
 import { Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
-import { Box, boxProps } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
 import { PieChartItem } from '../model/types';
 import { PieChartTooltip } from './PieChartTooltip';
 import { PieChartLegend } from './PieChartLegend';
+import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
 
 type PieChartProps = {
   data: PieChartItem[];
+  date: string;
 };
 
 const PieChartUi = (props: PieChartProps) => {
-  const { data } = props;
+  const { data, date } = props;
 
   return (
-    <Box grow={boxProps.grow[1]} padding={sizes.sizes[24]}>
+    <ContentCard>
+      <ContentCardHeader paddingBottom={sizes.sizes[16]}>
+        <Typography
+          type={typographyProps.types.title16}
+          tag={typographyProps.tags.h3}
+        >
+          Expenses by Category
+        </Typography>
+        <Typography type={typographyProps.types.text12Lightgray}>
+          {date}
+        </Typography>
+      </ContentCardHeader>
       <ResponsiveContainer width="100%" height={350}>
         <PieChart>
           <Pie
@@ -38,7 +51,7 @@ const PieChartUi = (props: PieChartProps) => {
           />
         </PieChart>
       </ResponsiveContainer>
-    </Box>
+    </ContentCard>
   );
 };
 

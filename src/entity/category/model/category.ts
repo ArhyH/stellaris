@@ -1,5 +1,5 @@
-import { CategoryColor } from '@/shared/styles/colors/consts';
-import { FinanceTransferType, ICON, ID, LABEL } from '@/shared/types/types';
+import { CategoryColor } from '@/shared/styles';
+import { FinanceTransferType, ICON, ID, LABEL } from '@/shared/types';
 
 interface Category {
   id: ID;

@@ -21,13 +21,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: var(--size-14);
-    color: var(--green-1);
-
-    &.is-red {
-      color: var(--red-1);
-    }
   }
 
   &__content {
@@ -35,16 +28,6 @@
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
-  }
-
-  &__title {
-    color: var(--white);
-    font-size: var(--size-14);
-  }
-
-  &__description {
-    color: var(--lightgray-2);
-    font-size: var(--size-12);
   }
 
   &__list {

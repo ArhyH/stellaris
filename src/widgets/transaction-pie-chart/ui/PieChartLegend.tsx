@@ -2,6 +2,7 @@ import styles from './style.module.scss';
 import { DefaultLegendContentProps } from 'recharts';
 import { PieChartItem } from '../model/types';
 import { formatAmount } from '@/shared/helpers/formatAmount';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
 
 const PieChartLegend = (props: DefaultLegendContentProps) => {
   const { payload } = props;
@@ -13,16 +14,18 @@ const PieChartLegend = (props: DefaultLegendContentProps) => {
           const item = entry.payload as PieChartItem;
           return (
             <li key={index} className={styles['pie-chart__legend-item']}>
-              <span className={styles['pie-chart__category']}>
-                <span
-                  className={styles['pie-chart__dot']}
-                  style={{ background: entry.color }}
-                />
-                {item.categoryName}
-              </span>
-              <span className={styles['pie-chart__total']}>
+              <Typography type={typographyProps.types.text16Lightgray}>
+                <>
+                  <span
+                    className={styles['pie-chart__dot']}
+                    style={{ background: entry.color }}
+                  />
+                  {item.categoryName}
+                </>
+              </Typography>
+              <Typography type={typographyProps.types.subtitle16}>
                 {formatAmount(item.value)}
-              </span>
+              </Typography>
             </li>
           );
         })}

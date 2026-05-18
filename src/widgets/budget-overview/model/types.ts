@@ -1,5 +1,5 @@
-import { ICON, ID, LABEL } from '@/shared/types/types';
 import { ValueOf } from 'type-fest';
+import { ICON, ID, LABEL } from '@/shared/types';
 
 const budgetStatus = {
   normal: 'normal',

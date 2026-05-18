@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { BoxProps } from './types';
+import { BoxHeaderProps, BoxProps } from './types';
 
 const getBGColor = ({ bgColor }: Pick<BoxProps, 'bgColor'>) => {
   if (bgColor) {
@@ -21,9 +21,17 @@ const getGrow = ({ grow }: Pick<BoxProps, 'grow'>) => {
   }
 };
 
-const getPadding = ({ padding }: Pick<BoxProps, 'padding'>) => {
+const getBoxPadding = ({ padding }: Pick<BoxProps, 'padding'>) => {
   if (padding) {
     return getCssVarOrNothing('--box-padding', padding);
+  }
+};
+
+const getHeaderPadding = ({
+  paddingBottom,
+}: Pick<BoxHeaderProps, 'paddingBottom'>) => {
+  if (paddingBottom) {
+    return getCssVarOrNothing('--box-header-padding', paddingBottom);
   }
 };
 
@@ -37,8 +45,16 @@ const getStyles = ({
     ...getBGColor({ bgColor }),
     ...getRadius({ radius }),
     ...getGrow({ grow }),
-    ...getPadding({ padding }),
+    ...getBoxPadding({ padding }),
   };
 };
 
-export { getStyles };
+const getHeaderStyles = ({
+  paddingBottom,
+}: Pick<BoxHeaderProps, 'paddingBottom'>) => {
+  return {
+    ...getHeaderPadding({ paddingBottom }),
+  };
+};
+
+export { getStyles, getHeaderStyles };

@@ -15,6 +15,7 @@ type BoxProps = {
 
 type BoxHeaderProps = {
   children: ReactNode;
+  paddingBottom?: ValueOf<typeof sizes.sizes>;
 };
 
 type BoxWrapperProps = {

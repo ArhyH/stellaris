@@ -1,11 +1,11 @@
-import classnames from 'classnames';
 import { Box, boxProps } from '@/shared/ui/Box';
-import { ICON } from '@/shared/types/types';
+import { ICON } from '@/shared/types';
 import { colors } from '@/shared/styles';
 import styles from './style.module.scss';
 import { formatDelta } from '../model/summary';
 import { DashboardSummary } from '../model/types';
 import { formatAmount } from '@/shared/helpers/formatAmount';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
 
 type BudgetCardProps = {
   title: string;
@@ -26,23 +26,29 @@ const BudgetCard = (props: BudgetCardProps) => {
     >
       <div className={styles['budget-card']}>
         <div className={styles['budget-card__header']}>
-          <p className={styles['budget-card__title']}>{title}</p>
+          <Typography
+            type={typographyProps.types.text14Lightgray}
+            tag={typographyProps.tags.h3}
+          >
+            {title}
+          </Typography>
           <span className={styles['budget-card__icon']}>{icon}</span>
         </div>
         <div className={styles['budget-card__content']}>
-          <p className={styles['budget-card__summary']}>
+          <Typography type={typographyProps.types.title30}>
             {formatAmount(summary)}
-          </p>
+          </Typography>
           {!!delta && (
-            <p
-              className={classnames(styles['budget-card__delta'], {
-                [styles['is-red']]:
-                  (categoryKey !== 'expense' && delta < 0) ||
-                  (categoryKey === 'expense' && delta > 0),
-              })}
+            <Typography
+              type={
+                (categoryKey !== 'expense' && delta < 0) ||
+                (categoryKey === 'expense' && delta > 0)
+                  ? typographyProps.types.deltaNagative
+                  : typographyProps.types.deltaPositive
+              }
             >
-              {formatDelta(delta)} vs last month
-            </p>
+              {`${formatDelta(delta)} vs last month`}
+            </Typography>
           )}
         </div>
       </div>

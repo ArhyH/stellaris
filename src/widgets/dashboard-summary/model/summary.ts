@@ -1,6 +1,6 @@
 import { Transaction } from '@/entity/transaction';
 import { DashboardSummary, SummaryDeltas } from './types';
-import { FinanceTransferTypes } from '@/shared/consts/consts';
+import { FinanceTransferTypes } from '@/shared/consts';
 
 const getDashboardSummary = (transactions: Transaction[]): DashboardSummary => {
   const { income, expense } = transactions.reduce(
@@ -36,9 +36,9 @@ const getDelta = (current: number, prev: number): number | null => {
   return ((current - prev) / prev) * 100;
 };
 
-const formatDelta = (delta: number | null) => {
+const formatDelta = (delta: number | null): string => {
   if (delta === null) {
-    return;
+    return '';
   }
 
   const sign = delta > 0 ? '+' : '';

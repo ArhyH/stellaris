@@ -1,4 +1,4 @@
-import { CategoryColor } from '@/shared/styles/colors/consts';
+import { CategoryColor } from '@/shared/styles';
 import {
   AMOUNT,
   DATE,
@@ -6,7 +6,7 @@ import {
   ICON,
   ID,
   LABEL,
-} from '@/shared/types/types';
+} from '@/shared/types';
 
 interface RecentTransaction {
   id: ID;

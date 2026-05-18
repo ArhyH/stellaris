@@ -1,3 +1,5 @@
+import { ValueOf } from 'type-fest';
+
 const baseColors = {
   transparent: 'transparent',
   white: 'white',
@@ -139,5 +141,21 @@ type CategoryColor =
   | keyof typeof categoryColors
   | keyof typeof categoryOpColors;
 
+type ColorToken =
+  | ValueOf<typeof baseColors>
+  | ValueOf<typeof grayColors>
+  | ValueOf<typeof lightgrayColors>
+  | ValueOf<typeof greenColors>
+  | ValueOf<typeof redColors>
+  | ValueOf<typeof pinkColors>
+  | ValueOf<typeof yellowColors>
+  | ValueOf<typeof lightblueColors>
+  | ValueOf<typeof blueColos>
+  | ValueOf<typeof violetColors>
+  | ValueOf<typeof labelColors>
+  | ValueOf<typeof categoryColors>
+  | ValueOf<typeof categoryOpColors>
+  | ValueOf<typeof boxColors>;
+
 export { colors };
-export type { CategoryColor };
+export type { CategoryColor, ColorToken };

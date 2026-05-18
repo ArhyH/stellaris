@@ -6,6 +6,8 @@ import {
 } from 'recharts/types/component/DefaultTooltipContent';
 import { PieChartItem } from '../model/types';
 import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { colors } from '@/shared/styles';
 
 type CustomTooltipProps = TooltipContentProps<ValueType, NameType>;
 
@@ -16,13 +18,17 @@ const PieChartTooltip = ({ active, payload }: CustomTooltipProps) => {
 
   return (
     <div className={styles['pie-chart__tooltip']}>
-      <p>{item.categoryName}</p>
-      <p
-        className={styles['pie-chart__tooltip-value']}
-        style={{ color: `var(--${item.categoryColor})` }}
+      <Typography type={typographyProps.types.text16White}>
+        {item.categoryName}
+      </Typography>
+      <Typography
+        type={typographyProps.types.title18}
+        color={
+          item.categoryColor ? colors.category[item.categoryColor] : undefined
+        }
       >
         {formatAmount(item.value, formatTypes.short)}
-      </p>
+      </Typography>
     </div>
   );
 };

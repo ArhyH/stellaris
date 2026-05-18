@@ -1,7 +1,7 @@
 import styles from './style.module.scss';
 import { DashboardSummary, SummaryDeltas } from '../model/types';
 import { BudgetCard } from './BudgetCard';
-import { ICON } from '@/shared/types/types';
+import { ICON } from '@/shared/types';
 
 type BudgetCardsProps = {
   summaries: DashboardSummary;

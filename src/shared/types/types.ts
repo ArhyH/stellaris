@@ -1,5 +1,5 @@
 import { ValueOf } from 'type-fest';
-import { FinanceTransferTypes } from '../consts/consts';
+import { FinanceTransferTypes } from '../consts';
 
 type FinanceTransferType = ValueOf<typeof FinanceTransferTypes>;
 type ID = string;

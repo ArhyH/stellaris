@@ -1,8 +1,9 @@
-import { AMOUNT, COLOR, ICON, ID, LABEL } from '@/shared/types/types';
+import { CategoryColor } from '@/shared/styles';
+import { AMOUNT, COLOR, ICON, ID, LABEL } from '@/shared/types';
 
 interface PieChartItem {
   categoryId: ID;
-  categoryColor: COLOR;
+  categoryColor: CategoryColor | undefined;
   categoryIcon: ICON;
   categoryName: LABEL;
   value: AMOUNT;

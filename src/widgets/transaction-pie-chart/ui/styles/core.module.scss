@@ -5,17 +5,6 @@
     width: 100%;
   }
 
-  &__category {
-    color: var(--lightgray-4);
-    font-size: var(--size-16);
-  }
-
-  &__total {
-    color: var(--white);
-    font-size: var(--size-16);
-    font-weight: 600;
-  }
-
   &__dot {
     display: inline-block;
     width: var(--size-8);
@@ -32,12 +21,5 @@
     background-color: var(--gray-5);
     border-radius: var(--size-16);
     padding: var(--size-12) var(--size-16);
-    color: var(--white);
-    font-size: var(--size-16);
-  }
-
-  &__tooltip-value {
-    font-size: var(--size-18);
-    font-weight: 700;
   }
 }

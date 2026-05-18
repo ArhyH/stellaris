@@ -1,6 +1,6 @@
 import { Category } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
-import { FinanceTransferType, ID } from '@/shared/types/types';
+import { FinanceTransferType, ID } from '@/shared/types';
 import { PieChartItem } from './types';
 import { colors } from '@/shared/styles';
 
@@ -42,7 +42,7 @@ const mapTransactionsToPieChartData = (
       const category = categoriesMap.get(categoryId);
       return {
         categoryId,
-        categoryColor: category?.color || '',
+        categoryColor: category?.color,
         categoryIcon: category?.icon || '',
         categoryName: category?.name || '',
         value,
