@@ -2,7 +2,7 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
-// import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
+import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
 import {
   BudgetCards,
   getSummaryDeltas,
