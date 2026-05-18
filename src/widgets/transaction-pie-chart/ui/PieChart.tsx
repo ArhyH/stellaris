@@ -35,12 +35,12 @@ const PieChartUi = (props: PieChartProps) => {
       <ResponsiveContainer width="100%" height={350}>
         <PieChart>
           <Pie
-            cx={100}
-            cy="30%"
+            cx={90}
+            cy={90}
             data={data}
             dataKey="value"
-            innerRadius={60}
-            outerRadius={100}
+            innerRadius={55}
+            outerRadius={90}
             paddingAngle={3}
             isAnimationActive
             fill={`var(--${colors.gray[4]})`}
@@ -51,7 +51,7 @@ const PieChartUi = (props: PieChartProps) => {
             verticalAlign="top"
             align="right"
             content={PieChartLegend}
-            wrapperStyle={{ left: '55%', right: 5 }}
+            wrapperStyle={{ left: 210, right: 5 }}
           />
         </PieChart>
       </ResponsiveContainer>
