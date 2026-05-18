@@ -5,7 +5,7 @@ const budgetStatus = {
   normal: 'normal',
   warning: 'warning',
   over: 'over',
-};
+} as const;
 
 interface BudgetProgress {
   progressPercent: number;

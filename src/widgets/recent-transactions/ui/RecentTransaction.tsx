@@ -42,7 +42,7 @@ const RecentTransaction = (props: RecentTransactionProps) => {
         {note && (
           <Typography type={typographyProps.types.title14}>{note}</Typography>
         )}
-        <Typography type={typographyProps.types.text12Lightgray}>
+        <Typography type={typographyProps.types.text12Lightgray2}>
           {categoryName} &middot; ${date}
         </Typography>
       </div>

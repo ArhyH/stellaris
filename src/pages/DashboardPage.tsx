@@ -1,8 +1,8 @@
 import { FinanceTransferTypes } from '@/shared/consts';
-// import { budgetsMock } from '@/shared/mocks/budgets';
+import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
-// import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
+import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
 import {
   BudgetCards,
   getSummaryDeltas,
@@ -19,18 +19,9 @@ import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTrans
 import { PieChartUi } from '@/widgets/transaction-pie-chart/ui/PieChart';
 import { Row } from '@/shared/ui/Row/Row';
 import { getMouthFromDate } from '@/widgets/transaction-pie-chart/model/helpers';
+import { BudgetOverview } from '@/widgets/budget-overview/ui/BudgetOverview';
 
 const DashboardPage = () => {
-  // const budgetsData = mapBudgetsToOverviewItems(
-  //   budgetsMock,
-  //   transactionsMock,
-  //   categoriesMock,
-  //   {
-  //     sortByProgress: true,
-  //     limit: true,
-  //   },
-  // );
-
   const now = new Date();
   const prevMonth = getPrevMonth(now);
 
@@ -57,6 +48,16 @@ const DashboardPage = () => {
     FinanceTransferTypes.expense,
   );
 
+  const budgetData = mapBudgetsToOverviewItems(
+    budgetsMock,
+    currentTransactions,
+    categoriesMock,
+    {
+      sortByProgress: true,
+      limit: true,
+    },
+  );
+
   console.log('current', currentTransactions[0]);
 
   return (
@@ -68,13 +69,7 @@ const DashboardPage = () => {
           data={pieChartData}
           date={getMouthFromDate(currentTransactions[0].date)}
         />
-        <div
-          style={{
-            backgroundColor: '#d4d4d4',
-            display: 'flex',
-            flexGrow: 2,
-          }}
-        />
+        <BudgetOverview budgets={budgetData} />
       </Row>
       <RecentTransactions recentTransactions={recentTransactions} />
     </div>

@@ -4,7 +4,11 @@ import { colors, sizes } from '@/shared/styles';
 import { PieChartItem } from '../model/types';
 import { PieChartTooltip } from './PieChartTooltip';
 import { PieChartLegend } from './PieChartLegend';
-import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
+import {
+  ContentCard,
+  ContentCardHeader,
+  contentCardProps,
+} from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 
 type PieChartProps = {
@@ -16,7 +20,7 @@ const PieChartUi = (props: PieChartProps) => {
   const { data, date } = props;
 
   return (
-    <ContentCard>
+    <ContentCard grow={contentCardProps.grow[2]}>
       <ContentCardHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.title16}
@@ -24,7 +28,7 @@ const PieChartUi = (props: PieChartProps) => {
         >
           Expenses by Category
         </Typography>
-        <Typography type={typographyProps.types.text12Lightgray}>
+        <Typography type={typographyProps.types.text12Lightgray2}>
           {date}
         </Typography>
       </ContentCardHeader>

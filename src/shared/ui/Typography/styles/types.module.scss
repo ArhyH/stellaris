@@ -28,15 +28,27 @@
   font-weight: 600;
 }
 
+.text-12-lightgray-1 {
+  --typography-color: var(--lightgray-1);
+  font-size: var(--size-12);
+  font-weight: 500;
+}
+
+.text-12-lightgray-2 {
+  --typography-color: var(--lightgray-2);
+  font-size: var(--size-12);
+  font-weight: 500;
+}
+
 .text-14-lightgray {
   --typography-color: var(--lightgray-3);
   font-size: var(--size-14);
   font-weight: 500;
 }
 
-.text-12-lightgray {
-  --typography-color: var(--lightgray-2);
-  font-size: var(--size-12);
+.text-14-white {
+  --typography-color: var(--white);
+  font-size: var(--size-14);
   font-weight: 500;
 }
 

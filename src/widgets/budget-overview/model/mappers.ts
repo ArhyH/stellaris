@@ -25,15 +25,13 @@ const getBudgetProgress = (spent: number, limit: number): BudgetProgress => {
   const clampedProgressPercent = Math.min(progressPercent, 100);
   const overflowAmount = Math.max(spent - limit, 0);
   const remaining = Math.max(limit - spent, 0);
-  let status = budgetStatus.normal;
 
-  if (progressPercent >= 80) {
-    status = budgetStatus.warning;
-  }
-
-  if (progressPercent >= 100) {
-    status = budgetStatus.over;
-  }
+  const status =
+    progressPercent >= 100
+      ? budgetStatus.over
+      : progressPercent >= 80
+        ? budgetStatus.warning
+        : budgetStatus.normal;
 
   return {
     progressPercent,
