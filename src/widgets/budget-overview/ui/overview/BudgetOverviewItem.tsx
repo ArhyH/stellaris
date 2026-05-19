@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import styles from './style.module.scss';
+import styles from '../style.module.scss';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { BudgetOverviewItem as BudgetOverviewItemType } from '../model/types';
 import { colors } from '@/shared/styles';
 import { formatAmount } from '@/shared/helpers/formatAmount';
 import { Progress } from '@/shared/ui/Progress';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
+import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
 
 type BudgetOverviewItemProps = {
   budget: BudgetOverviewItemType;

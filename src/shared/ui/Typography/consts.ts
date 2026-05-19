@@ -2,6 +2,8 @@ const typographyTypes = {
   title14: 'title-14',
   title16: 'title-16',
   title18: 'title-18',
+  title20: 'title-20',
+  title28: 'title-28',
   title30: 'title-30',
   subtitle16: 'subtitle-16',
   text12: 'text-12',

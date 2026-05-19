@@ -2,7 +2,6 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
-import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview/model/mappers';
 import {
   BudgetCards,
   getSummaryDeltas,
@@ -19,7 +18,12 @@ import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTrans
 import { PieChartUi } from '@/widgets/transaction-pie-chart/ui/PieChart';
 import { Row } from '@/shared/ui/Row/Row';
 import { getMouthFromDate } from '@/widgets/transaction-pie-chart/model/helpers';
-import { BudgetOverview } from '@/widgets/budget-overview/ui/BudgetOverview';
+import {
+  BudgetOverview,
+  mapBudgetsToOverviewItems,
+} from '@/widgets/budget-overview';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { colors } from '@/shared/styles';
 
 const DashboardPage = () => {
   const now = new Date();
@@ -60,13 +64,25 @@ const DashboardPage = () => {
 
   return (
     <div className={styles.page}>
-      <h1>DashboardPage</h1>
+      <div className={styles.page__cell}>
+        <Typography
+          type={typographyProps.types.title28}
+          tag={typographyProps.tags.h1}
+        >
+          Good morning, John
+        </Typography>
+
+        <Typography
+          type={typographyProps.types.text14}
+          color={colors.lightgray[2]}
+        >
+          Here's your financial overview for {monthYear}
+        </Typography>
+      </div>
+
       <BudgetCards summaries={currentSummary} deltas={deltas} />
       <Row>
-        <PieChartUi
-          data={pieChartData}
-          date={getMouthFromDate(currentTransactions[0].date)}
-        />
+        <PieChartUi data={pieChartData} date={monthYear} />
         <BudgetOverview budgets={budgetData} />
       </Row>
       <RecentTransactions recentTransactions={recentTransactions} />

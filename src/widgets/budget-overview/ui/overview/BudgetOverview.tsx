@@ -6,11 +6,11 @@ import {
 import { sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
-import { BudgetOverviewItem as BudgetOverviewItemType } from '../model/types';
 import { BudgetOverviewItem } from './BudgetOverviewItem';
-import styles from './style.module.scss';
+import styles from '../style.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
+import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
 
 type BudgetOverviewProps = {
   budgets: BudgetOverviewItemType[];
