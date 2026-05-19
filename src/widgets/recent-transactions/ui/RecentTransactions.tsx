@@ -5,6 +5,8 @@ import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { sizes } from '@/shared/styles';
+import { Icon } from '@/shared/ui/Icon';
+import { icons } from '@/shared/assets';
 
 type RecentTransactionsProps = {
   recentTransactions: RecentTransactionType[];
@@ -20,7 +22,16 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
           <Typography type={typographyProps.types.title16}>
             Recent Transactions
           </Typography>
-          <RouterLink to={'/transactions'}>View All</RouterLink>
+          <RouterLink to={'/budgets'}>
+            <Typography type={typographyProps.types.text12}>
+              View All
+            </Typography>
+            <Icon
+              icon={icons.arrowRight12}
+              width={sizes.sizes[12]}
+              height={sizes.sizes[12]}
+            />
+          </RouterLink>
         </ContentCardHeader>
 
         <ul className={styles['recent-transaction__list']}>

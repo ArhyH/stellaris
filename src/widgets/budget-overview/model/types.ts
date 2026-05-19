@@ -17,7 +17,7 @@ interface BudgetProgress {
 
 interface BudgetOverviewItem extends BudgetProgress {
   id: ID;
-  categoryIcon: ICON;
+  categoryIcon: ICON | undefined;
   categoryName: LABEL;
   spent: number;
   limit: number;

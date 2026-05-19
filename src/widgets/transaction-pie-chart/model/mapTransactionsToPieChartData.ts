@@ -43,7 +43,7 @@ const mapTransactionsToPieChartData = (
       return {
         categoryId,
         categoryColor: category?.color,
-        categoryIcon: category?.icon || '',
+        categoryIcon: category?.icon,
         categoryName: category?.name || '',
         value,
         percent: Math.round((value / total) * 100),

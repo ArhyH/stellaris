@@ -28,7 +28,10 @@ const PieChartUi = (props: PieChartProps) => {
         >
           Expenses by Category
         </Typography>
-        <Typography type={typographyProps.types.text12Lightgray2}>
+        <Typography
+          type={typographyProps.types.text12}
+          color={colors.lightgray[2]}
+        >
           {date}
         </Typography>
       </ContentCardHeader>

@@ -116,6 +116,8 @@ const categoryOpColors = {
 const boxColors = {
   ...categoryOpColors,
   'green-1': greenColors[1],
+  'green-1-op': 'green-1-op',
+  'red-1-op': 'red-1-op',
   'gray-4': grayColors[4],
   transparent: 'transparent',
 } as const;

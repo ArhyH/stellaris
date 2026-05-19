@@ -1,7 +1,7 @@
 import styles from './style.module.scss';
 import { DashboardSummary, SummaryDeltas } from '../model/types';
 import { BudgetCard } from './BudgetCard';
-import { ICON } from '@/shared/types';
+import { icons } from '@/shared/assets';
 
 type BudgetCardsProps = {
   summaries: DashboardSummary;
@@ -11,13 +11,13 @@ type BudgetCardsProps = {
 type SummaryKey = keyof DashboardSummary;
 
 const BUDGET_CARDS_CONFIG = [
-  { key: 'total', title: 'Total Balance', icon: '' },
-  { key: 'income', title: 'Total Income', icon: '' },
-  { key: 'expense', title: 'Total Expenses', icon: '' },
+  { key: 'total', title: 'Total Balance', icon: icons.wallet18 },
+  { key: 'income', title: 'Total Income', icon: icons.arrowUp18 },
+  { key: 'expense', title: 'Total Expenses', icon: icons.arrowDown18 },
 ] as const satisfies ReadonlyArray<{
   key: SummaryKey;
   title: string;
-  icon: ICON;
+  icon: UtilityTypes.SvgContent;
 }>;
 
 const BudgetCards = (props: BudgetCardsProps) => {

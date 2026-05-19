@@ -9,6 +9,8 @@ import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '../model/types';
 import { BudgetOverviewItem } from './BudgetOverviewItem';
 import styles from './style.module.scss';
+import { Icon } from '@/shared/ui/Icon';
+import { icons } from '@/shared/assets';
 
 type BudgetOverviewProps = {
   budgets: BudgetOverviewItemType[];
@@ -23,7 +25,14 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
         <Typography type={typographyProps.types.title16}>
           Budget Overview
         </Typography>
-        <RouterLink to={'/budgets'}>View All</RouterLink>
+        <RouterLink to={'/budgets'}>
+          <Typography type={typographyProps.types.text12}>View All</Typography>
+          <Icon
+            icon={icons.arrowRight12}
+            width={sizes.sizes[12]}
+            height={sizes.sizes[12]}
+          />
+        </RouterLink>
       </ContentCardHeader>
       <ul className={styles['budget-overview']}>
         {budgets.map((budget) => {

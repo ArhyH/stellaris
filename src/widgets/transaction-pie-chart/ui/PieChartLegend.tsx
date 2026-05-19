@@ -3,6 +3,7 @@ import { DefaultLegendContentProps } from 'recharts';
 import { PieChartItem } from '../model/types';
 import { formatAmount } from '@/shared/helpers/formatAmount';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { colors } from '@/shared/styles';
 
 const PieChartLegend = (props: DefaultLegendContentProps) => {
   const { payload } = props;
@@ -14,7 +15,10 @@ const PieChartLegend = (props: DefaultLegendContentProps) => {
           const item = entry.payload as PieChartItem;
           return (
             <li key={index} className={styles['pie-chart__legend-item']}>
-              <Typography type={typographyProps.types.text16Lightgray}>
+              <Typography
+                type={typographyProps.types.text16}
+                color={colors.lightgray[4]}
+              >
                 <>
                   <span
                     className={styles['pie-chart__dot']}

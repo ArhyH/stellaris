@@ -5,6 +5,8 @@ import styles from './style.module.scss';
 import { colors, sizes, CategoryColor } from '@/shared/styles';
 import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { Icon } from '@/shared/ui/Icon';
+import { icons } from '@/shared/assets';
 
 type RecentTransactionProps = {
   categoryIcon: ICON;
@@ -35,14 +37,19 @@ const RecentTransaction = (props: RecentTransactionProps) => {
           radius={sizes.radiuses[12]}
           {...(categoryColor && { bgColor: colors.categoryOp[categoryColor] })}
         >
-          <BoxWrapper hasAlign>{categoryIcon}</BoxWrapper>
+          <BoxWrapper hasAlign>
+            <Icon icon={icons[categoryIcon]} />
+          </BoxWrapper>
         </Box>
       </div>
       <div className={styles['recent-transaction__content']}>
         {note && (
           <Typography type={typographyProps.types.title14}>{note}</Typography>
         )}
-        <Typography type={typographyProps.types.text12Lightgray2}>
+        <Typography
+          type={typographyProps.types.text12}
+          color={colors.lightgray[2]}
+        >
           {categoryName} &middot; ${date}
         </Typography>
       </div>

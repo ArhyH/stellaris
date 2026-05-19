@@ -4,7 +4,9 @@ import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '../model/types';
 import { colors } from '@/shared/styles';
 import { formatAmount } from '@/shared/helpers/formatAmount';
-import { Progress } from '@/shared/ui/Progress/Progress';
+import { Progress } from '@/shared/ui/Progress';
+import { Icon } from '@/shared/ui/Icon';
+import { icons } from '@/shared/assets';
 
 type BudgetOverviewItemProps = {
   budget: BudgetOverviewItemType;
@@ -38,8 +40,11 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
             styles['gap-8'],
           )}
         >
-          {categoryIcon}
-          <Typography type={typographyProps.types.text14White}>
+          <Icon icon={categoryIcon ? icons[categoryIcon] : icons.wallet18} />
+          <Typography
+            type={typographyProps.types.text14}
+            color={colors.base.white}
+          >
             {categoryName}
           </Typography>
         </div>
@@ -50,7 +55,10 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
           >
             {formatAmount(spent)}
           </Typography>
-          <Typography type={typographyProps.types.text14Lightgray}>
+          <Typography
+            type={typographyProps.types.text14}
+            color={colors.lightgray[3]}
+          >
             &#160;/ {formatAmount(limit)}
           </Typography>
         </div>
@@ -66,12 +74,15 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
       <div className={styles['budget-overview__row']}>
         <div className={styles['budget-overview__cell']}>
           {remaining > 0 ? (
-            <Typography type={typographyProps.types.text12Lightgray2}>
+            <Typography
+              type={typographyProps.types.text12}
+              color={colors.lightgray[2]}
+            >
               {formatAmount(remaining)} remaining
             </Typography>
           ) : (
             <Typography
-              type={typographyProps.types.text12Lightgray2}
+              type={typographyProps.types.text12}
               color={colors.red[1]}
             >
               {formatAmount(overflowAmount)} over

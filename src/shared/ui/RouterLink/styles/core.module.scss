@@ -1,6 +1,7 @@
 .router-link {
-  font-size: var(--size-12);
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
   color: var(--green-1);
   text-decoration: none;
 

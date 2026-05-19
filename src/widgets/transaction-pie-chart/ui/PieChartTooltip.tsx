@@ -18,7 +18,7 @@ const PieChartTooltip = ({ active, payload }: CustomTooltipProps) => {
 
   return (
     <div className={styles['pie-chart__tooltip']}>
-      <Typography type={typographyProps.types.text16White}>
+      <Typography type={typographyProps.types.text16} color={colors.base.white}>
         {item.categoryName}
       </Typography>
       <Typography

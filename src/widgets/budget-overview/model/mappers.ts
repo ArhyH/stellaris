@@ -65,7 +65,7 @@ const mapBudgetsToOverviewItems = (
 
     return {
       id: budget.id,
-      categoryIcon: category?.icon || '',
+      categoryIcon: category?.icon,
       categoryName: category?.name || '',
       spent,
       limit: budget.limit,
