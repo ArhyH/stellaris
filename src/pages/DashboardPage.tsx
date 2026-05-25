@@ -62,6 +62,8 @@ const DashboardPage = () => {
     },
   );
 
+  const monthYear = getMouthFromDate(currentTransactions[0].date);
+
   return (
     <div className={styles.page}>
       <div className={styles.page__cell}>
