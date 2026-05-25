@@ -1,24 +1,27 @@
 import classnames from 'classnames';
-
+import { ElementType } from 'react';
 import styles from './style.module.scss';
 import { BoxProps } from './types';
 import { getStyles } from './helpers';
 
 const Box = (props: BoxProps) => {
-  const { children, hasShadow, bgColor, radius, size, grow, padding } = props;
+  const { children, hasShadow, bgColor, radius, size, grow, padding, tag } =
+    props;
 
   const componentClassNames = classnames(styles.box, {
     [styles[`box--size--${size}`]]: size,
     [styles['has-shadow']]: hasShadow,
   });
 
+  const ComponentTag: ElementType = tag || 'div';
+
   return (
-    <div
+    <ComponentTag
       className={componentClassNames}
       style={{ ...getStyles({ bgColor, radius, grow, padding }) }}
     >
       {children}
-    </div>
+    </ComponentTag>
   );
 };
 

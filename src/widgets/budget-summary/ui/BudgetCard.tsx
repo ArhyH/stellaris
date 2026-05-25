@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import { Box, boxProps } from '@/shared/ui/Box';
-import { ColorToken, colors } from '@/shared/styles';
+import { ColorToken, colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { formatAmount } from '@/shared/helpers/formatAmount';
 import { BudgetsSummary, SummaryKey } from '../model/types';
@@ -29,6 +29,7 @@ const BudgetCard = (props: BudgetCardProps) => {
       size={boxProps.sizes.parent}
       bgColor={colors.box['gray-4']}
       grow={boxProps.grow[1]}
+      padding={sizes.sizes[16]}
     >
       <div className={styles['budget-card']}>
         <Typography

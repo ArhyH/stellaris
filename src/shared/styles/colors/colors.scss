@@ -112,9 +112,13 @@
     var(--white-rgb) / var(--opacity-6)
   ); /* rgba(255,255,255,0.1) || #ffffff1a */
 
+  --button-bg-2-red: rgb(var(--red-1-rgb) / var(--opacity-6));
+
   --button-bg-3: rgb(
     var(--white-rgb) / var(--opacity-7)
   ); /* rgba(255,255,255,0.2) || #ffffff33 */
+
+  --button-bg-3-red: rgb(var(--red-1-rgb) / var(--opacity-7));
 
   /* CARD / LABEL */
 

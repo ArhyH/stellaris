@@ -13,9 +13,15 @@ const boxGrows = {
   5: 5,
 } as const;
 
+const boxTags = {
+  div: 'div',
+  li: 'li',
+} as const;
+
 const boxProps = {
   sizes: boxSizes,
   grow: boxGrows,
+  tags: boxTags,
 };
 
 export { boxProps };

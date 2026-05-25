@@ -3,11 +3,11 @@ import {
   ContentCardHeader,
   contentCardProps,
 } from '@/features/ContentCard';
-import { sizes } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { BudgetOverviewItem } from './BudgetOverviewItem';
-import styles from '../style.module.scss';
+import styles from './style.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
@@ -22,7 +22,10 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
   return (
     <ContentCard grow={contentCardProps.grow[5]}>
       <ContentCardHeader paddingBottom={sizes.sizes[20]}>
-        <Typography type={typographyProps.types.title16}>
+        <Typography
+          type={typographyProps.types.title16}
+          color={colors.base.white}
+        >
           Budget Overview
         </Typography>
         <RouterLink to={'/budgets'}>

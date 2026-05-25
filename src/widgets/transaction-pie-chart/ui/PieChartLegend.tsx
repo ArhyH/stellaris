@@ -27,7 +27,10 @@ const PieChartLegend = (props: DefaultLegendContentProps) => {
                   {item.categoryName}
                 </>
               </Typography>
-              <Typography type={typographyProps.types.subtitle16}>
+              <Typography
+                type={typographyProps.types.subtitle16}
+                color={colors.base.white}
+              >
                 {formatAmount(item.value)}
               </Typography>
             </li>

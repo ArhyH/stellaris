@@ -4,7 +4,7 @@ import { RecentTransaction } from './RecentTransaction';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { sizes } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 
@@ -19,7 +19,10 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
     <div className={styles['recent-transaction__wrapper']}>
       <ContentCard>
         <ContentCardHeader paddingBottom={sizes.sizes[20]}>
-          <Typography type={typographyProps.types.title16}>
+          <Typography
+            type={typographyProps.types.title16}
+            color={colors.base.white}
+          >
             Recent Transactions
           </Typography>
           <RouterLink to={'/budgets'}>

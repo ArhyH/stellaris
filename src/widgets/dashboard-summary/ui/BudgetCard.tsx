@@ -53,7 +53,10 @@ const BudgetCard = (props: BudgetCardProps) => {
           </Box>
         </div>
         <div className={styles['budget-card__content']}>
-          <Typography type={typographyProps.types.title30}>
+          <Typography
+            type={typographyProps.types.title30}
+            color={colors.base.white}
+          >
             {formatAmount(summary)}
           </Typography>
           {!!delta && (

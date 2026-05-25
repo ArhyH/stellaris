@@ -67,6 +67,7 @@ const DashboardPage = () => {
       <div className={styles.page__cell}>
         <Typography
           type={typographyProps.types.title28}
+          color={colors.base.white}
           tag={typographyProps.tags.h1}
         >
           Good morning, John
