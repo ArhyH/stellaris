@@ -1,0 +1,13 @@
+.router-link {
+  display: flex;
+  align-items: center;
+  gap: var(--size-4);
+  color: var(--green-1);
+  text-decoration: none;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

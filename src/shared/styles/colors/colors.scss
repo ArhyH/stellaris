@@ -26,23 +26,34 @@
 
   --green-1-rgb: 74 222 128; /* #4ade80 */
   --green-2-rgb: 34 197 94; /* #22c55e */
+  --green-3-rgb: 0 184 148;
 
   --red-1-rgb: 248 113 113; /* #f87171 */
   --red-2-rgb: 243 129 129; /* #f38181 */
+  --red-3-rgb: 225 112 85;
+  --red-3-rgb: 214 48 49;
 
   --pink-1-rgb: 255 107 157; /* #ff6b9d */
+  --pink-2-rgb: 253 121 168;
+  --pink-3-rgb: 232 67 147;
 
   --yellow-1-rgb: 251 191 36; /* #fbbf24 */
   --yellow-2-rgb: 255 230 109; /* #ffe66d */
+  --yellow-3-rgb: 255 234 167;
+  --yellow-4-rgb: 253 203 110;
 
   --lightblue-1-rgb: 78 205 196; /* #4ecdc4 */
   --lightblue-2-rgb: 149 225 211; /* #95e1d3 */
   --lightblue-3-rgb: 168 230 207; /* #a8e6cf */
 
   --blue-1-rgb: 116 185 255; /* #74b9ff */
+  --blue-2-rgb: 85 239 196;
+  --blue-3-rgb: 9 132 237;
+  --blue-4-rgb: 0 206 201;
 
   --violet-1-rgb: 162 155 254; /* #a29bfe */
   --violet-2-rgb: 199 206 234; /* #c7ceea */
+  --violet-3-rgb: 108 92 231;
 
   /* COLORS */
 
@@ -123,16 +134,80 @@
     var(--lightblue-1-rgb) / var(--opacity-1)
   ); /* rgba(78,205,196,0.082) || #4ecdc415 */
 
+  --lightblue-1-op-1: rgb(var(--lightblue-1-rgb) / var(--opacity-7));
+  --lightblue-2-op: rgb(var(--lightblue-2-rgb) / var(--opacity-7));
+  --lightblue-3-op: rgb(var(--lightblue-3-rgb) / var(--opacity-7));
+
+  --pink-1-op: rgb(var(--pink-1-rgb) / var(--opacity-7));
+  --pink-2-op: rgb(var(--pink-2-rgb) / var(--opacity-7));
+  --pink-3-op: rgb(var(--pink-3-rgb) / var(--opacity-7));
+
+  --yellow-1-op: rgb(var(--yellow-1-rgb) / var(--opacity-7));
+  --yellow-2-op-1: rgb(var(--yellow-2-rgb) / var(--opacity-7));
+  --yellow-3-op: rgb(var(--yellow-3-rgb) / var(--opacity-7));
+  --yellow-4-op: rgb(var(--yellow-4-rgb) / var(--opacity-7));
+
+  --red-1-op: rgb(var(--red-1-rgb) / var(--opacity-7));
+  --red-2-op: rgb(var(--red-2-rgb) / var(--opacity-7));
+  --red-3-op: rgb(var(--red-3-rgb) / var(--opacity-7));
+  --red-4-op: rgb(var(--red-4-rgb) / var(--opacity-7));
+
+  --blue-1-op: rgb(var(--blue-1-rgb) / var(--opacity-7));
+  --blue-2-op: rgb(var(--blue-2-rgb) / var(--opacity-7));
+  --blue-3-op: rgb(var(--blue-3-rgb) / var(--opacity-7));
+  --blue-4-op: rgb(var(--blue-4-rgb) / var(--opacity-7));
+
+  --violet-1-op: rgb(var(--violet-1-rgb) / var(--opacity-7));
+  --violet-2-op: rgb(var(--violet-2-rgb) / var(--opacity-7));
+  --violet-3-op: rgb(var(--violet-3-rgb) / var(--opacity-7));
+
+  --green-3-op: rgb(var(--green-3-rgb) / var(--opacity-7));
+
   /* CATEGORIES (light) */
 
   --category-lightblue-1: var(--lightblue-1);
   --category-lightblue-2: var(--lightblue-2);
   --category-lightblue-3: var(--lightblue-3);
   --category-blue-1: var(--blue-1);
-  --category-yellow-1: var(--yellow-2);
+  --category-blue-2: var(--blue-2);
+  --category-blue-3: var(--blue-3);
+  --category-blue-4: var(--blue-4);
+  --category-yellow-1: var(--yellow-1);
+  --category-yellow-2: var(--yellow-2);
+  --category-yellow-3: var(--yellow-3);
+  --category-yellow-4: var(--yellow-4);
   --category-pink-1: var(--pink-1);
-  --category-red-1: var(--red-2);
-  --category-lightgray-1: var(--lightgray-5);
+  --category-pink-2: var(--pink-2);
+  --category-pink-3: var(--pink-3);
+  --category-red-1: var(--red-1);
+  --category-red-2: var(--red-2);
+  --category-red-3: var(--red-3);
+  --category-red-4: var(--red-4);
   --category-violet-1: var(--violet-1);
   --category-violet-2: var(--violet-2);
+  --category-violet-3: var(--violet-3);
+  --category-green-3: var(--green-3);
+
+  --category-op-lightblue-1: var(--lightblue-1-op-1);
+  --category-op-lightblue-2: var(--lightblue-2-op);
+  --category-op-lightblue-3: var(--lightblue-3-op);
+  --category-op-blue-1: var(--blue-1-op);
+  --category-op-blue-2: var(--blue-2-op);
+  --category-op-blue-3: var(--blue-3-op);
+  --category-op-blue-4: var(--blue-4-op);
+  --category-op-yellow-1: var(--yellow-1-op);
+  --category-op-yellow-2: var(--yellow-2-op-1);
+  --category-op-yellow-3: var(--yellow-3-op);
+  --category-op-yellow-4: var(--yellow-4-op);
+  --category-op-pink-1: var(--pink-1-op);
+  --category-op-pink-2: var(--pink-2-op);
+  --category-op-pink-3: var(--pink-3-op);
+  --category-op-red-1: var(--red-1-op);
+  --category-op-red-2: var(--red-2-op);
+  --category-op-red-3: var(--red-3-op);
+  --category-op-red-4: var(--red-4-op);
+  --category-op-violet-1: var(--violet-1-op);
+  --category-op-violet-2: var(--violet-2-op);
+  --category-op-violet-3: var(--violet-3-op);
+  --category-op-green-3: var(--green-3-op);
 }

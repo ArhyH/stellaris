@@ -31,7 +31,7 @@ const mapTransactionsToRecentItems = (
       type: transaction.type,
       note: transaction.note?.trim() || '',
       categoryIcon: category?.icon || '',
-      categoryColor: category?.color || '',
+      categoryColor: category?.color,
       categoryName: category?.name || '',
     };
   });

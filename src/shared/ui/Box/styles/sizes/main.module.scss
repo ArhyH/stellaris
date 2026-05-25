@@ -5,8 +5,18 @@
       height: var(--size-30);
     }
 
+    &--40 {
+      width: var(--size-40);
+      height: var(--size-40);
+    }
+
     &--fit-content {
       width: fit-content;
+      padding: var(--size-24);
+    }
+
+    &--parent {
+      width: var(--parent);
       padding: var(--size-24);
     }
   }

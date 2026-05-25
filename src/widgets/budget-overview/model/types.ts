@@ -1,11 +1,11 @@
-import { ICON, ID, LABEL } from '@/shared/types/types';
 import { ValueOf } from 'type-fest';
+import { ICON, ID, LABEL } from '@/shared/types';
 
 const budgetStatus = {
   normal: 'normal',
   warning: 'warning',
   over: 'over',
-};
+} as const;
 
 interface BudgetProgress {
   progressPercent: number;
@@ -17,7 +17,7 @@ interface BudgetProgress {
 
 interface BudgetOverviewItem extends BudgetProgress {
   id: ID;
-  categoryIcon: ICON;
+  categoryIcon: ICON | undefined;
   categoryName: LABEL;
   spent: number;
   limit: number;

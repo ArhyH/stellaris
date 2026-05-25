@@ -1,0 +1,30 @@
+.budget-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-16);
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-6);
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      justify-content: end;
+    }
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    height: var(--size-24);
+
+    &.gap-8 {
+      gap: var(--size-8);
+    }
+  }
+}

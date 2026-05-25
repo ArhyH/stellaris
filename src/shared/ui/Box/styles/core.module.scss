@@ -3,16 +3,24 @@
 .box {
   @include initializeCssVar(--box-background-color, var(--gray-4));
   @include initializeCssVar(--box-radius, var(--size-16));
+  @include initializeCssVar(--box-grow, var(--initial));
+  @include initializeCssVar(--box-padding, var(--unset));
+  @include initializeCssVar(--box-header-padding, var(--unset));
 
   display: flex;
   flex-direction: column;
   border-radius: var(--box-radius);
   background-color: var(--box-background-color);
   color: var(--black);
+  flex-grow: var(--box-grow);
+  padding: var(--box-padding);
+  box-sizing: border-box;
 
   &__header {
     display: flex;
     justify-content: space-between;
+    height: var(--size-24);
+    padding-bottom: var(--box-header-padding);
   }
 
   &__wrapper {

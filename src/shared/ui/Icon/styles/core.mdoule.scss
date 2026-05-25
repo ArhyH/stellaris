@@ -1,0 +1,10 @@
+@use '../../../styles/helpers.scss' as *;
+
+.icon {
+  @include initializeCssVar(--default-width);
+  @include initializeCssVar(--default-height);
+
+  display: block;
+  width: var(--default-width);
+  height: var(--default-height);
+}

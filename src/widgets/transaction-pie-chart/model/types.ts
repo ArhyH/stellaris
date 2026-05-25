@@ -1,12 +1,14 @@
-import { AMOUNT, COLOR, ICON, ID, LABEL } from '@/shared/types/types';
+import { CategoryColor } from '@/shared/styles';
+import { AMOUNT, COLOR, ICON, ID, LABEL } from '@/shared/types';
 
 interface PieChartItem {
   categoryId: ID;
-  categoryColor: COLOR;
-  categoryIcon: ICON;
+  categoryColor: CategoryColor | undefined;
+  categoryIcon: ICON | undefined;
   categoryName: LABEL;
   value: AMOUNT;
   percent: number;
+  fill: COLOR;
 }
 
 export type { PieChartItem };

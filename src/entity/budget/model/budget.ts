@@ -1,4 +1,4 @@
-import { AMOUNT, ID } from '@/shared/types/types';
+import { AMOUNT, ID } from '@/shared/types';
 
 interface Budget {
   categoryId: ID;

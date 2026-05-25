@@ -1,0 +1,7 @@
+@use '../../../styles/helpers.scss' as *;
+
+.typography {
+  @include initializeCssVar(--typography-color, inherit);
+
+  color: var(--typography-color);
+}

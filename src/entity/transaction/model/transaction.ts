@@ -1,10 +1,4 @@
-import {
-  AMOUNT,
-  DATE,
-  FinanceTransferType,
-  ID,
-  LABEL,
-} from '@/shared/types/types';
+import { AMOUNT, DATE, FinanceTransferType, ID, LABEL } from '@/shared/types';
 
 interface Transaction {
   type: FinanceTransferType;
