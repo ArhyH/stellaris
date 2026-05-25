@@ -24,6 +24,7 @@ const PieChartUi = (props: PieChartProps) => {
       <ContentCardHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.title16}
+          color={colors.base.white}
           tag={typographyProps.tags.h3}
         >
           Expenses by Category

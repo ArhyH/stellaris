@@ -44,7 +44,12 @@ const RecentTransaction = (props: RecentTransactionProps) => {
       </div>
       <div className={styles['recent-transaction__content']}>
         {note && (
-          <Typography type={typographyProps.types.title14}>{note}</Typography>
+          <Typography
+            type={typographyProps.types.title14}
+            color={colors.base.white}
+          >
+            {note}
+          </Typography>
         )}
         <Typography
           type={typographyProps.types.text12}

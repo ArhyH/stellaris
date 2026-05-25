@@ -2,14 +2,6 @@ import { ReactNode } from 'react';
 import { ValueOf } from 'type-fest';
 import { buttonProps } from './consts';
 
-type ButtonIconProps = {
-  children: ReactNode;
-};
-
-type ButtonTextProps = {
-  children: ReactNode;
-};
-
 type ButtonProps = {
   children: ReactNode;
   theme: ValueOf<typeof buttonProps.themes>;
@@ -17,4 +9,4 @@ type ButtonProps = {
   isActive?: boolean;
 };
 
-export type { ButtonIconProps, ButtonTextProps, ButtonProps };
+export type { ButtonProps };

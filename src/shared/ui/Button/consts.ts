@@ -5,6 +5,8 @@ const buttonThemes = {
 };
 
 const buttonSizes = {
+  40: 40,
+  '32x32': '32x32',
   '44-stretched': '44-stretched',
 };
 

@@ -11,6 +11,7 @@ type BoxProps = {
   grow?: ValueOf<typeof boxProps.grow>;
   padding?: ValueOf<typeof sizes.sizes>;
   hasShadow?: boolean;
+  tag?: keyof typeof boxProps.tags;
 };
 
 type BoxHeaderProps = {

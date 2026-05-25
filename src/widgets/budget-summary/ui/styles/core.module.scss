@@ -1,0 +1,11 @@
+.budget-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-12);
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--size-16);
+  }
+}

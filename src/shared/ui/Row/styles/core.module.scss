@@ -1,4 +1,10 @@
 .row {
   display: flex;
   gap: var(--size-20);
+
+  &--justify {
+    &--space-between {
+      justify-content: space-between;
+    }
+  }
 }

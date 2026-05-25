@@ -3,4 +3,15 @@
   flex-direction: column;
   gap: var(--size-32);
   padding: var(--size-32);
+
+  &__cell {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--size-4);
+
+    &.align-end {
+      align-self: flex-end;
+    }
+  }
 }

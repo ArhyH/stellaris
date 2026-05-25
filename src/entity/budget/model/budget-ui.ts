@@ -1,5 +1,6 @@
 import { ValueOf } from 'type-fest';
 import { ICON, ID, LABEL } from '@/shared/types';
+import { CategoryColor } from '@/shared/styles';
 
 const budgetStatus = {
   normal: 'normal',
@@ -19,6 +20,7 @@ interface BudgetOverviewItem extends BudgetProgress {
   id: ID;
   categoryIcon: ICON | undefined;
   categoryName: LABEL;
+  categoryColor: CategoryColor | undefined;
   spent: number;
   limit: number;
 }

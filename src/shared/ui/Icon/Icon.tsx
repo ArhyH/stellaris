@@ -14,17 +14,17 @@ const Icon = (props: IconProps) => {
   const { icon, color, width, height } = props;
 
   let defaultWidth;
-  let defultHeight;
+  let defaultHeight;
 
   if (icon.viewBox) {
     const viewBoxValues = icon.viewBox.split(' ');
     defaultWidth = `${viewBoxValues[2]}px`;
-    defultHeight = `${viewBoxValues[3]}px`;
+    defaultHeight = `${viewBoxValues[3]}px`;
   }
 
   const defalutSizes = {
     '--default-width': defaultWidth,
-    '--default-height': defultHeight,
+    '--default-height': defaultHeight,
   };
 
   return (
@@ -33,7 +33,7 @@ const Icon = (props: IconProps) => {
       style={{
         ...defalutSizes,
         ...(width && { ...getCssVarOrNothing('--default-width', width) }),
-        ...(height && { ...getCssVarOrNothing('--default-width', height) }),
+        ...(height && { ...getCssVarOrNothing('--default-height', height) }),
         ...(color && { ...getCssVarOrNothing('color', color) }),
       }}
     >

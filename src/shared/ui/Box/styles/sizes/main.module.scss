@@ -12,12 +12,12 @@
 
     &--fit-content {
       width: fit-content;
-      padding: var(--size-24);
+      --box-padding: var(--size-24);
     }
 
     &--parent {
       width: var(--parent);
-      padding: var(--size-24);
+      --box-padding: var(--size-24);
     }
   }
 }

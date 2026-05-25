@@ -1,12 +1,12 @@
-import { Budget } from '@/entity/budget';
-import { Category } from '@/entity/category';
-import { Transaction } from '@/entity/transaction';
 import {
+  Budget,
   BudgetOverviewItem,
   BudgetProgress,
-  budgetStatus,
   Options,
-} from './types';
+  budgetStatus,
+} from '@/entity/budget';
+import { Category } from '@/entity/category';
+import { Transaction } from '@/entity/transaction';
 
 const OVERVIEW_ITEMS_COUNT = 4;
 
@@ -67,6 +67,7 @@ const mapBudgetsToOverviewItems = (
       id: budget.id,
       categoryIcon: category?.icon,
       categoryName: category?.name || '',
+      categoryColor: category?.color,
       spent,
       limit: budget.limit,
       progressPercent: progress.progressPercent,
@@ -80,7 +81,9 @@ const mapBudgetsToOverviewItems = (
   let result = preparedBudgets;
 
   if (options?.sortByProgress) {
-    result.sort((a, b) => b.progressPercent - a.progressPercent);
+    result = [...preparedBudgets].sort(
+      (a, b) => b.progressPercent - a.progressPercent,
+    );
   }
 
   if (options?.limit) {
