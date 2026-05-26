@@ -1,6 +1,9 @@
-import styles from './style.module.scss';
 import { BudgetCard } from './BudgetCard';
 import { BudgetsSummary, SummaryKey } from '../model/types';
+import {
+  SummaryCardWrapper,
+  summaryCardWrapperProps,
+} from '@/shared/ui/SummaryCard';
 
 type BudgetSummaryProps = {
   summaries: BudgetsSummary;
@@ -20,13 +23,13 @@ const BudgetSummary = (props: BudgetSummaryProps) => {
   const { summaries } = props;
 
   return (
-    <div className={styles['budget-card__wrapper']}>
+    <SummaryCardWrapper columns={summaryCardWrapperProps.columns[4]}>
       {BUDGET_CARDS_CONFIG.map(({ title, key }) => {
         return (
           <BudgetCard title={title} budgetKey={key} summary={summaries[key]} />
         );
       })}
-    </div>
+    </SummaryCardWrapper>
   );
 };
 

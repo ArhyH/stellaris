@@ -1,14 +1,20 @@
-import styles from './style.module.scss';
-import { DashboardSummary, SummaryDeltas } from '../model/types';
-import { BudgetCard } from './BudgetCard';
+import {
+  DashboardSummary as DashboardSummaryType,
+  SummaryDeltas,
+} from '../model/types';
+import { DashboardCard } from './DashboardCard';
 import { icons } from '@/shared/assets';
+import {
+  SummaryCardWrapper,
+  summaryCardWrapperProps,
+} from '@/shared/ui/SummaryCard';
 
-type BudgetCardsProps = {
-  summaries: DashboardSummary;
+type DashboardSummaryProps = {
+  summaries: DashboardSummaryType;
   deltas: SummaryDeltas;
 };
 
-type SummaryKey = keyof DashboardSummary;
+type SummaryKey = keyof DashboardSummaryType;
 
 const BUDGET_CARDS_CONFIG = [
   { key: 'total', title: 'Total Balance', icon: icons.wallet18 },
@@ -20,14 +26,14 @@ const BUDGET_CARDS_CONFIG = [
   icon: UtilityTypes.SvgContent;
 }>;
 
-const BudgetCards = (props: BudgetCardsProps) => {
+const DashboardSummary = (props: DashboardSummaryProps) => {
   const { summaries, deltas } = props;
 
   return (
-    <div className={styles['budget-card__wrapper']}>
+    <SummaryCardWrapper columns={summaryCardWrapperProps.columns[3]}>
       {BUDGET_CARDS_CONFIG.map(({ key, icon, title }) => {
         return (
-          <BudgetCard
+          <DashboardCard
             key={key}
             title={title}
             icon={icon}
@@ -37,9 +43,9 @@ const BudgetCards = (props: BudgetCardsProps) => {
           />
         );
       })}
-    </div>
+    </SummaryCardWrapper>
   );
 };
 
-export { BudgetCards };
-export type { BudgetCardsProps };
+export { DashboardSummary };
+export type { DashboardSummaryProps };

@@ -2,11 +2,6 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
-import {
-  BudgetCards,
-  getSummaryDeltas,
-  getDashboardSummary,
-} from '@/widgets/dashboard-summary';
 import { mapTransactionsToRecentItems } from '@/widgets/recent-transactions/model/mappers';
 import { mapTransactionsToPieChartData } from '@/widgets/transaction-pie-chart/model/mapTransactionsToPieChartData';
 import {
@@ -24,6 +19,11 @@ import {
 } from '@/widgets/budget-overview';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors } from '@/shared/styles';
+import {
+  DashboardSummary,
+  getDashboardDeltas,
+  getDashboardSummary,
+} from '@/widgets/summary';
 
 const DashboardPage = () => {
   const now = new Date();
@@ -38,7 +38,7 @@ const DashboardPage = () => {
   const currentSummary = getDashboardSummary(currentTransactions);
   const prevSummary = getDashboardSummary(prevTransactions);
 
-  const deltas = getSummaryDeltas(currentSummary, prevSummary);
+  const deltas = getDashboardDeltas(currentSummary, prevSummary);
 
   const recentTransactions = mapTransactionsToRecentItems(
     currentTransactions,
@@ -83,7 +83,7 @@ const DashboardPage = () => {
         </Typography>
       </div>
 
-      <BudgetCards summaries={currentSummary} deltas={deltas} />
+      <DashboardSummary summaries={currentSummary} deltas={deltas} />
       <Row>
         <PieChartUi data={pieChartData} date={monthYear} />
         <BudgetOverview budgets={budgetData} />
