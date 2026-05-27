@@ -10,14 +10,17 @@ import {
   contentCardProps,
 } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { FinanceTransferType } from '@/shared/types';
+import { FinanceTransferTypes } from '@/shared/consts';
 
 type PieChartProps = {
+  type: FinanceTransferType;
   data: PieChartItem[];
   date: string;
 };
 
 const PieChartUi = (props: PieChartProps) => {
-  const { data, date } = props;
+  const { data, date, type } = props;
 
   return (
     <ContentCard grow={contentCardProps.grow[2]}>
@@ -27,7 +30,9 @@ const PieChartUi = (props: PieChartProps) => {
           color={colors.base.white}
           tag={typographyProps.tags.h3}
         >
-          Expenses by Category
+          {type === FinanceTransferTypes.expense
+            ? 'Expenses by Category'
+            : 'Income by Source'}
         </Typography>
         <Typography
           type={typographyProps.types.text12}
@@ -36,7 +41,7 @@ const PieChartUi = (props: PieChartProps) => {
           {date}
         </Typography>
       </ContentCardHeader>
-      <ResponsiveContainer width="100%" height={350}>
+      <ResponsiveContainer width="100%" height="100%" minHeight={200}>
         <PieChart>
           <Pie
             cx={90}

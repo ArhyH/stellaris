@@ -31,7 +31,7 @@
   --red-1-rgb: 248 113 113; /* #f87171 */
   --red-2-rgb: 243 129 129; /* #f38181 */
   --red-3-rgb: 225 112 85;
-  --red-3-rgb: 214 48 49;
+  --red-4-rgb: 214 48 49;
 
   --pink-1-rgb: 255 107 157; /* #ff6b9d */
   --pink-2-rgb: 253 121 168;
@@ -75,23 +75,34 @@
 
   --green-1: rgb(var(--green-1-rgb)); /* #4ade80 */
   --green-2: rgb(var(--green-2-rgb)); /* #22c55e */
+  --green-3: rgb(var(--green-3-rgb));
 
   --red-1: rgb(var(--red-1-rgb)); /* #f87171 */
   --red-2: rgb(var(--red-2-rgb)); /* #f38181 */
+  --red-3: rgb(var(--red-3-rgb));
+  --red-4: rgb(var(--red-4-rgb));
 
   --pink-1: rgb(var(--pink-1-rgb)); /* #ff6b9d */
+  --pink-2: rgb(var(--pink-2-rgb));
+  --pink-3: rgb(var(--pink-3-rgb));
 
   --yellow-1: rgb(var(--yellow-1-rgb)); /* #fbbf24 */
   --yellow-2: rgb(var(--yellow-2-rgb)); /* #ffe66d */
+  --yellow-3: rgb(var(--yellow-3-rgb));
+  --yellow-4: rgb(var(--yellow-4-rgb));
 
   --lightblue-1: rgb(var(--lightblue-1-rgb)); /* #4ecdc4 */
   --lightblue-2: rgb(var(--lightblue-2-rgb)); /* #95e1d3 */
   --lightblue-3: rgb(var(--lightblue-3-rgb)); /* #a8e6cf */
 
   --blue-1: rgb(var(--blue-1-rgb)); /* #74b9ff */
+  --blue-2: rgb(var(--blue-2-rgb));
+  --blue-3: rgb(var(--blue-3-rgb));
+  --blue-4: rgb(var(--blue-4-rgb));
 
   --violet-1: rgb(var(--violet-1-rgb)); /* #a29bfe */
   --violet-2: rgb(var(--violet-2-rgb)); /* #c7ceea */
+  --violet-3: rgb(var(--violet-3-rgb));
 
   /* SHADOWS */
 

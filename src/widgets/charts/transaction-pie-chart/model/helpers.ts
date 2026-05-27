@@ -1,4 +1,4 @@
-const getMouthFromDate = (date: string): string => {
+const getMonthYearFromDate = (date: string): string => {
   const d = new Date(date);
   const formatted = new Intl.DateTimeFormat('en-US', {
     month: 'long',
@@ -8,4 +8,4 @@ const getMouthFromDate = (date: string): string => {
   return formatted;
 };
 
-export { getMouthFromDate };
+export { getMonthYearFromDate };

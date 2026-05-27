@@ -34,14 +34,14 @@ const categoriesMock: Category[] = [
     name: 'salary',
     type: 'income',
     icon: 'arrowDown18',
-    color: 'category-lightblue-3',
+    color: 'category-blue-3',
   },
   {
     id: 'freelance',
     name: 'freelance',
     type: 'income',
     icon: 'arrowDown18',
-    color: 'category-lightblue-3',
+    color: 'category-pink-2',
   },
 ];
 

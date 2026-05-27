@@ -3,16 +3,18 @@ import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { mapTransactionsToRecentItems } from '@/widgets/recent-transactions/model/mappers';
-import { mapTransactionsToPieChartData } from '@/widgets/transaction-pie-chart/model/mapTransactionsToPieChartData';
 import {
   filterTransactionsByMonth,
   getPrevMonth,
 } from '@/shared/helpers/filterTransactions';
 import styles from './style.module.scss';
 import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTransactions';
-import { PieChartUi } from '@/widgets/transaction-pie-chart/ui/PieChart';
 import { Row } from '@/shared/ui/Row/Row';
-import { getMouthFromDate } from '@/widgets/transaction-pie-chart/model/helpers';
+import {
+  getMonthYearFromDate,
+  PieChartUi,
+  mapTransactionsToPieChartData,
+} from '@/widgets/charts';
 import {
   BudgetOverview,
   mapBudgetsToOverviewItems,
@@ -62,7 +64,7 @@ const DashboardPage = () => {
     },
   );
 
-  const monthYear = getMouthFromDate(currentTransactions[0].date);
+  const monthYear = getMonthYearFromDate(currentTransactions[0].date);
 
   return (
     <div className={styles.page}>
@@ -85,7 +87,11 @@ const DashboardPage = () => {
 
       <DashboardSummary summaries={currentSummary} deltas={deltas} />
       <Row>
-        <PieChartUi data={pieChartData} date={monthYear} />
+        <PieChartUi
+          data={pieChartData}
+          date={monthYear}
+          type={FinanceTransferTypes.expense}
+        />
         <BudgetOverview budgets={budgetData} />
       </Row>
       <RecentTransactions recentTransactions={recentTransactions} />

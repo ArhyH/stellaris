@@ -1,7 +1,6 @@
 import { Transaction } from '@/entity/transaction';
 import { AnalyticsSummary, SummaryDeltas } from './types';
-import { getDelta, getSummary } from '@/shared/helpers';
-import { FinanceTransferTypes } from '@/shared/consts';
+import { getDailyTotal, getDelta, getSummary } from '@/shared/helpers';
 
 const getSavingRate = (income: number, expense: number) => {
   if (income === 0) {
@@ -12,16 +11,7 @@ const getSavingRate = (income: number, expense: number) => {
 };
 
 const getDailySpent = (transactions: Transaction[]) => {
-  const dailyTotals = transactions
-    .filter((transaction) => transaction.type === FinanceTransferTypes.expense)
-    .reduce<Map<string, number>>((acc, transaction) => {
-      const day = transaction.date.slice(0, 10);
-      const current = acc.get(day) ?? 0;
-      acc.set(day, current + transaction.amount);
-
-      return acc;
-    }, new Map());
-
+  const dailyTotals = getDailyTotal(transactions);
   const sorted = Array.from(dailyTotals.values()).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
 

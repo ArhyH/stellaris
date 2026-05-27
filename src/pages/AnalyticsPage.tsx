@@ -10,6 +10,18 @@ import {
   getAnalyticsSummary,
 } from '@/widgets/summary';
 import { getPrevMonth } from '@/shared/helpers/filterTransactions';
+import { Row } from '@/shared/ui/Row/Row';
+import { categoriesMock } from '@/shared/mocks/categories';
+import { FinanceTransferTypes } from '@/shared/consts';
+import {
+  BarChartUI,
+  PieChartUi,
+  getMonthFromDate,
+  getMonthYearFromDate,
+  mapTransactionsToBarCtartData,
+  mapTransactionsToPieChartData,
+} from '@/widgets/charts';
+import { Grid, gridProps } from '@/shared/ui/Grid';
 
 const AnalyticsPage = () => {
   const now = new Date();
@@ -26,6 +38,24 @@ const AnalyticsPage = () => {
 
   const summaryDeltas = getAnalyticsDeltas(currentSummary, prevSummary);
 
+  const incomePieData = mapTransactionsToPieChartData(
+    currentTransactions,
+    categoriesMock,
+    FinanceTransferTypes.income,
+  );
+
+  const expencePieData = mapTransactionsToPieChartData(
+    currentTransactions,
+    categoriesMock,
+    FinanceTransferTypes.expense,
+  );
+
+  const monthYear = getMonthYearFromDate(currentTransactions[0].date);
+  const month = getMonthFromDate(currentTransactions[0].date);
+
+  const barChartData = mapTransactionsToBarCtartData(currentTransactions);
+
+  console.log(barChartData);
   return (
     <div className={styles.page}>
       <div className={styles.page__cell}>
@@ -46,6 +76,26 @@ const AnalyticsPage = () => {
       </div>
 
       <AnalyticsSummary summaries={currentSummary} deltas={summaryDeltas} />
+
+      <Row>
+        <PieChartUi
+          data={expencePieData}
+          date={monthYear}
+          type={FinanceTransferTypes.expense}
+        />
+
+        <PieChartUi
+          data={incomePieData}
+          date={monthYear}
+          type={FinanceTransferTypes.income}
+        />
+      </Row>
+
+      <Grid columns={gridProps.columns['2-1']}>
+        <BarChartUI data={barChartData} month={month} />
+
+        <BarChartUI data={barChartData} month={month} />
+      </Grid>
     </div>
   );
 };
