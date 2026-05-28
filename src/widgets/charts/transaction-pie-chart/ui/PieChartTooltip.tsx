@@ -21,6 +21,7 @@ const PieChartTooltip = ({ active, payload }: CustomTooltipProps) => {
       <Typography type={typographyProps.types.text16} color={colors.base.white}>
         {item.categoryName}
       </Typography>
+
       <Typography
         type={typographyProps.types.title18}
         color={
@@ -28,6 +29,13 @@ const PieChartTooltip = ({ active, payload }: CustomTooltipProps) => {
         }
       >
         {formatAmount(item.value, formatTypes.short)}
+      </Typography>
+
+      <Typography
+        type={typographyProps.types.text12}
+        color={colors.lightgray[3]}
+      >
+        {item.percent}%
       </Typography>
     </div>
   );

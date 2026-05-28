@@ -6,10 +6,11 @@ import {
   NameType,
   ValueType,
 } from 'recharts/types/component/DefaultTooltipContent';
-import { colors } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { formatAmount } from '@/shared/helpers';
 import { formatTypes } from '@/shared/helpers/formatAmount';
 import { Row } from '@/shared/ui/Row/Row';
+import { Dot, dotProps } from '@/shared/ui/Dot';
 
 type CustomTooltipProps = TooltipContentProps<ValueType, NameType>;
 
@@ -28,18 +29,14 @@ const LineChartTooltip = ({ active, payload }: CustomTooltipProps) => {
       </Typography>
 
       <div className={styles['pie-chart__tooltip-cell']}>
-        <Row>
+        <Row gap={sizes.sizes[8]}>
+          <Dot color={dotProps.colors.green} />
+
           <Typography
             type={typographyProps.types.text14}
             color={colors.lightgray[4]}
           >
-            <>
-              <span
-                className={styles['pie-chart__dot']}
-                style={{ background: `var(--${colors.red[1]})` }}
-              />
-              Income:
-            </>
+            Income:
           </Typography>
           <Typography
             type={typographyProps.types.title14}
@@ -49,18 +46,13 @@ const LineChartTooltip = ({ active, payload }: CustomTooltipProps) => {
           </Typography>
         </Row>
 
-        <Row>
+        <Row gap={sizes.sizes[8]}>
+          <Dot color={dotProps.colors.red} />
           <Typography
             type={typographyProps.types.text14}
             color={colors.lightgray[4]}
           >
-            <>
-              <span
-                className={styles['pie-chart__dot']}
-                style={{ background: `var(--${colors.red[1]})` }}
-              />
-              Expense:
-            </>
+            Expense:
           </Typography>
           <Typography
             type={typographyProps.types.title14}

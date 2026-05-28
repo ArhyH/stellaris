@@ -15,6 +15,7 @@ import {
 import { LineChartTooltip } from './LineChartUITooltip';
 import { formatAmount } from '@/shared/helpers';
 import { formatTypes } from '@/shared/helpers/formatAmount';
+import { Line as LineUI, lineProps } from '@/shared/ui/Line';
 
 type LineChartProps = {
   data: TrendChartItem[];
@@ -33,21 +34,28 @@ const LineChartUI = (props: LineChartProps) => {
         >
           Monthly Trend
         </Typography>
-        <Row>
-          <Typography
-            type={typographyProps.types.text12}
-            color={colors.lightgray[3]}
-            tag={typographyProps.tags.p}
-          >
-            Income
-          </Typography>
-          <Typography
-            type={typographyProps.types.text12}
-            color={colors.lightgray[3]}
-            tag={typographyProps.tags.p}
-          >
-            Expense
-          </Typography>
+        <Row gap={sizes.sizes[16]}>
+          <Row gap={sizes.sizes[6]}>
+            <LineUI color={lineProps.colors.green} />
+            <Typography
+              type={typographyProps.types.text12}
+              color={colors.lightgray[3]}
+              tag={typographyProps.tags.p}
+            >
+              Income
+            </Typography>
+          </Row>
+
+          <Row gap={sizes.sizes[6]}>
+            <LineUI color={lineProps.colors.red} />
+            <Typography
+              type={typographyProps.types.text12}
+              color={colors.lightgray[3]}
+              tag={typographyProps.tags.p}
+            >
+              Expense
+            </Typography>
+          </Row>
         </Row>
       </ContentCardHeader>
       <ResponsiveContainer width="100%" height="100%" minHeight={240}>

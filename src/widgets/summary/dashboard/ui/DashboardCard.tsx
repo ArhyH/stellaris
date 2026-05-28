@@ -23,7 +23,7 @@ const DashboardCard = (props: DashboardCardProps) => {
   const { title, icon, summary, delta, categoryKey } = props;
 
   return (
-    <SummaryCard gap={sizes.sizes[20]} padding={sizes.sizes[24]}>
+    <SummaryCard gap={sizes.sizes[16]} padding={sizes.sizes[24]}>
       <SummaryCardHeader>
         <Typography
           type={typographyProps.types.text14}

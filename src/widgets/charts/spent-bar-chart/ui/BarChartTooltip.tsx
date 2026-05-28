@@ -10,6 +10,7 @@ import { colors, sizes } from '@/shared/styles';
 import { formatAmount } from '@/shared/helpers';
 import { formatTypes } from '@/shared/helpers/formatAmount';
 import { Row } from '@/shared/ui/Row/Row';
+import { Dot, dotProps } from '@/shared/ui/Dot';
 
 type CustomTooltipProps = TooltipContentProps<ValueType, NameType>;
 
@@ -28,17 +29,12 @@ const BarChartTooltip = ({ active, payload }: CustomTooltipProps) => {
       </Typography>
 
       <Row gap={sizes.sizes[8]}>
+        <Dot color={dotProps.colors.red} />
         <Typography
           type={typographyProps.types.text14}
           color={colors.lightgray[4]}
         >
-          <>
-            <span
-              className={styles['pie-chart__dot']}
-              style={{ background: `var(--${colors.red[1]})` }}
-            />
-            Spent:
-          </>
+          Spent:
         </Typography>
         <Typography
           type={typographyProps.types.title14}
