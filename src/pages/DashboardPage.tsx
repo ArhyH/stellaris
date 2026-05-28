@@ -3,18 +3,11 @@ import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { mapTransactionsToRecentItems } from '@/widgets/recent-transactions/model/mappers';
-import {
-  filterTransactionsByMonth,
-  getPrevMonth,
-} from '@/shared/helpers/filterTransactions';
+import { filterTransactionsByMonth } from '@/shared/helpers/filterTransactions';
 import styles from './style.module.scss';
 import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTransactions';
 import { Row } from '@/shared/ui/Row/Row';
-import {
-  getMonthYearFromDate,
-  PieChartUi,
-  mapTransactionsToPieChartData,
-} from '@/widgets/charts';
+import { PieChartUi, mapTransactionsToPieChartData } from '@/widgets/charts';
 import {
   BudgetOverview,
   mapBudgetsToOverviewItems,
@@ -26,6 +19,7 @@ import {
   getDashboardDeltas,
   getDashboardSummary,
 } from '@/widgets/summary';
+import { getMonthYearFromDate, getPrevMonth } from '@/shared/helpers';
 
 const DashboardPage = () => {
   const now = new Date();

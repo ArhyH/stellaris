@@ -4,6 +4,7 @@ import { AMOUNT, FinanceTransferType } from '../types';
 const formatTypes = {
   full: 'full',
   short: 'short',
+  compact: 'compact',
 } as const;
 
 type FormatTypes = keyof typeof formatTypes;
@@ -27,6 +28,15 @@ const formatAmount = (
       maximumFractionDigits: 2,
       minimumFractionDigits: 0,
     }).format(amount)}`;
+  }
+
+  if (format === formatTypes.compact) {
+    formatted = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      notation: 'compact',
+      maximumFractionDigits: 1,
+    }).format(amount);
   }
 
   if (type) {

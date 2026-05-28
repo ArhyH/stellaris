@@ -1,0 +1,25 @@
+.pie-chart {
+  &__dot {
+    display: inline-block;
+    width: var(--size-8);
+    height: var(--size-8);
+    border-radius: var(--half);
+    margin-right: var(--size-8);
+  }
+
+  &__tooltip {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-8);
+    box-sizing: border-box;
+    background-color: var(--gray-5);
+    border-radius: var(--size-16);
+    padding: var(--size-12) var(--size-16);
+  }
+
+  &__tooltip-cell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+  }
+}

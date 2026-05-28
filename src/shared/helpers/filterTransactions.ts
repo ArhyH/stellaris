@@ -7,10 +7,6 @@ const isSameMonthAndYear = (date: Date, reference: Date): boolean => {
   );
 };
 
-const getPrevMonth = (date: Date): Date => {
-  return new Date(date.getFullYear(), date.getMonth() - 1, 1);
-};
-
 const filterTransactionsByMonth = (
   transactions: Transaction[],
   reference: Date,
@@ -20,4 +16,4 @@ const filterTransactionsByMonth = (
   );
 };
 
-export { filterTransactionsByMonth, getPrevMonth };
+export { filterTransactionsByMonth };

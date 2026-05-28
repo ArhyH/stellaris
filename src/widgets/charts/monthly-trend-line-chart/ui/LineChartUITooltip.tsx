@@ -1,0 +1,78 @@
+import styles from './style.module.scss';
+import { TrendChartItem } from '../model/types';
+import { Typography, typographyProps } from '@/shared/ui/Typography';
+import { TooltipContentProps } from 'recharts';
+import {
+  NameType,
+  ValueType,
+} from 'recharts/types/component/DefaultTooltipContent';
+import { colors } from '@/shared/styles';
+import { formatAmount } from '@/shared/helpers';
+import { formatTypes } from '@/shared/helpers/formatAmount';
+import { Row } from '@/shared/ui/Row/Row';
+
+type CustomTooltipProps = TooltipContentProps<ValueType, NameType>;
+
+const LineChartTooltip = ({ active, payload }: CustomTooltipProps) => {
+  if (!active || !payload?.length) return null;
+
+  const item = payload[0].payload as TrendChartItem;
+
+  return (
+    <div className={styles['pie-chart__tooltip']}>
+      <Typography
+        type={typographyProps.types.text12}
+        color={colors.lightgray[3]}
+      >
+        {item.date}
+      </Typography>
+
+      <div className={styles['pie-chart__tooltip-cell']}>
+        <Row>
+          <Typography
+            type={typographyProps.types.text14}
+            color={colors.lightgray[4]}
+          >
+            <>
+              <span
+                className={styles['pie-chart__dot']}
+                style={{ background: `var(--${colors.red[1]})` }}
+              />
+              Income:
+            </>
+          </Typography>
+          <Typography
+            type={typographyProps.types.title14}
+            color={colors.base.white}
+          >
+            {formatAmount(item.income, formatTypes.short)}
+          </Typography>
+        </Row>
+
+        <Row>
+          <Typography
+            type={typographyProps.types.text14}
+            color={colors.lightgray[4]}
+          >
+            <>
+              <span
+                className={styles['pie-chart__dot']}
+                style={{ background: `var(--${colors.red[1]})` }}
+              />
+              Expense:
+            </>
+          </Typography>
+          <Typography
+            type={typographyProps.types.title14}
+            color={colors.base.white}
+          >
+            {formatAmount(item.expense, formatTypes.short)}
+          </Typography>
+        </Row>
+      </div>
+    </div>
+  );
+};
+
+export { LineChartTooltip };
+export type { CustomTooltipProps };

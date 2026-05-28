@@ -1,6 +1,7 @@
 import {
   Bar,
   BarChart,
+  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -58,18 +59,29 @@ const BarChartUI = (props: BarChartProps) => {
             tickLine={false}
             axisLine={false}
           />
+
           <YAxis
             tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
             tickLine={false}
             axisLine={false}
             width="auto"
           />
+
           <Bar
             dataKey="spent"
             fill={`var(--${colors.red[1]})`}
             radius={[4, 4, 0, 0]}
           />
+
           <Tooltip content={BarChartTooltip} />
+
+          <CartesianGrid
+            horizontal={true}
+            vertical={false}
+            stroke={`var(--${colors.lightgray[3]})`}
+            strokeDasharray="4 4"
+            opacity="0.2"
+          />
         </BarChart>
       </ResponsiveContainer>
     </ContentCard>

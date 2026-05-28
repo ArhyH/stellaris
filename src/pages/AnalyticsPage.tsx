@@ -1,4 +1,9 @@
-import { filterTransactionsByMonth } from '@/shared/helpers';
+import {
+  filterTransactionsByMonth,
+  getMonthFromDate,
+  getMonthYearFromDate,
+  getPrevMonth,
+} from '@/shared/helpers';
 import { transactionsMock } from '@/shared/mocks/transactions';
 
 import styles from './style.module.scss';
@@ -9,16 +14,15 @@ import {
   getAnalyticsDeltas,
   getAnalyticsSummary,
 } from '@/widgets/summary';
-import { getPrevMonth } from '@/shared/helpers/filterTransactions';
 import { Row } from '@/shared/ui/Row/Row';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { FinanceTransferTypes } from '@/shared/consts';
 import {
   BarChartUI,
   PieChartUi,
-  getMonthFromDate,
-  getMonthYearFromDate,
+  LineChartUI,
   mapTransactionsToBarCtartData,
+  mapTransactionsToLineCharData,
   mapTransactionsToPieChartData,
 } from '@/widgets/charts';
 import { Grid, gridProps } from '@/shared/ui/Grid';
@@ -55,7 +59,8 @@ const AnalyticsPage = () => {
 
   const barChartData = mapTransactionsToBarCtartData(currentTransactions);
 
-  console.log(barChartData);
+  const lineChartData = mapTransactionsToLineCharData(transactionsMock);
+
   return (
     <div className={styles.page}>
       <div className={styles.page__cell}>
@@ -92,7 +97,7 @@ const AnalyticsPage = () => {
       </Row>
 
       <Grid columns={gridProps.columns['2-1']}>
-        <BarChartUI data={barChartData} month={month} />
+        <LineChartUI data={lineChartData} />
 
         <BarChartUI data={barChartData} month={month} />
       </Grid>

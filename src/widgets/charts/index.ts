@@ -1,11 +1,11 @@
 export {
-  mapTransactionsToPieChartData,
-  getMonthYearFromDate,
   PieChartUi,
+  mapTransactionsToPieChartData,
 } from './transaction-pie-chart';
 
+export { BarChartUI, mapTransactionsToBarCtartData } from './spent-bar-chart';
+
 export {
-  BarChartUI,
-  getMonthFromDate,
-  mapTransactionsToBarCtartData,
-} from './spent-bar-chart';
+  LineChartUI,
+  mapTransactionsToLineCharData,
+} from './monthly-trend-line-chart';

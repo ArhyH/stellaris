@@ -1,7 +1,6 @@
 import { Transaction } from '@/entity/transaction';
 import { BarChartItem } from './types';
-import { getDailyTotal } from '@/shared/helpers';
-import { getMonthDayFromDate } from './helpers';
+import { getDailyTotal, getMonthDayFromDate } from '@/shared/helpers';
 
 const mapTransactionsToBarCtartData = (
   transactions: Transaction[],
