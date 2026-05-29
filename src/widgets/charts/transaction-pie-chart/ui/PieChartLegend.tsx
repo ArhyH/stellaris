@@ -47,6 +47,8 @@ const PieChartLegend = (props: DefaultLegendContentProps) => {
       </ul>
     );
   }
+
+  return null;
 };
 
 export { PieChartLegend };
