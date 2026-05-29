@@ -14,7 +14,7 @@ interface RecentTransaction {
   date: DATE;
   type: FinanceTransferType;
   note: LABEL;
-  categoryIcon: ICON;
+  categoryIcon: ICON | undefined;
   categoryColor?: CategoryColor;
   categoryName: LABEL;
 }

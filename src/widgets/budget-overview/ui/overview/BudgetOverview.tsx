@@ -20,7 +20,7 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
   const { budgets } = props;
 
   return (
-    <ContentCard grow={contentCardProps.grow[5]}>
+    <ContentCard grow={contentCardProps.grow[3]}>
       <ContentCardHeader paddingBottom={sizes.sizes[20]}>
         <Typography
           type={typographyProps.types.title16}

@@ -65,7 +65,7 @@ const transactionsMock = [
   },
   {
     id: 't-3',
-    amount: 2100,
+    amount: 1800,
     type: 'expense',
     categoryId: 'shopping',
     note: 'new bag',

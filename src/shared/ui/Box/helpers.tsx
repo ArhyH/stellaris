@@ -13,6 +13,12 @@ const getRadius = ({ radius }: Pick<BoxProps, 'radius'>) => {
   }
 };
 
+const getGap = ({ gap }: Pick<BoxProps, 'gap'>) => {
+  if (gap) {
+    return getCssVarOrNothing('--box-gap', gap);
+  }
+};
+
 const getGrow = ({ grow }: Pick<BoxProps, 'grow'>) => {
   if (grow) {
     return {
@@ -40,11 +46,13 @@ const getStyles = ({
   radius,
   grow,
   padding,
-}: Pick<BoxProps, 'bgColor' | 'radius' | 'grow' | 'padding'>) => {
+  gap,
+}: Pick<BoxProps, 'bgColor' | 'radius' | 'grow' | 'padding' | 'gap'>) => {
   return {
     ...getBGColor({ bgColor }),
     ...getRadius({ radius }),
     ...getGrow({ grow }),
+    ...getGap({ gap }),
     ...getBoxPadding({ padding }),
   };
 };

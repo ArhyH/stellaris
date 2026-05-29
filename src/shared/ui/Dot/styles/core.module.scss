@@ -1,0 +1,14 @@
+@use '../../../styles/helpers.scss' as *;
+
+.dot {
+  @include initializeCssVar(--dot-color, var(--green-1));
+
+  display: inline-block;
+  width: var(--size-8);
+  height: var(--size-8);
+  border-radius: var(--half);
+  background-color: var(--dot-color);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

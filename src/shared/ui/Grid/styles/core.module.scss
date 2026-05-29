@@ -1,0 +1,8 @@
+.grid {
+  display: grid;
+  gap: var(--size-20);
+
+  &._col-2-1 {
+    grid-template-columns: 2fr 1fr;
+  }
+}

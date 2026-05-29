@@ -1,6 +1,6 @@
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
-import { BudgetSummary, getBudgetsSummary } from '@/widgets/budget-summary';
+
 import { filterTransactionsByMonth } from '@/shared/helpers/filterTransactions';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { budgetsMock } from '@/shared/mocks/budgets';
@@ -15,6 +15,7 @@ import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
+import { BudgetSummary, getBudgetsSummary } from '@/widgets/summary';
 
 const BudgetsPage = () => {
   const now = new Date();
@@ -44,7 +45,7 @@ const BudgetsPage = () => {
             type={typographyProps.types.text14}
             color={colors.lightgray[2]}
           >
-            et and track spending limits by category
+            Set and track spending limits by category
           </Typography>
         </div>
 

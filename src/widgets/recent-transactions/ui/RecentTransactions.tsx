@@ -25,7 +25,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
           >
             Recent Transactions
           </Typography>
-          <RouterLink to={'/budgets'}>
+          <RouterLink to={'/transactions'}>
             <Typography type={typographyProps.types.text12}>
               View All
             </Typography>
@@ -43,7 +43,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
             return (
               <RecentTransaction
                 key={transaction.id}
-                categoryIcon={transaction.categoryIcon}
+                categoryIcon={transaction.categoryIcon ?? 'wallet18'}
                 categoryName={transaction.categoryName}
                 categoryColor={transaction.categoryColor}
                 date={transaction.date}

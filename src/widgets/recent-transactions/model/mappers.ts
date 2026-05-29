@@ -30,7 +30,7 @@ const mapTransactionsToRecentItems = (
       date: transaction.date,
       type: transaction.type,
       note: transaction.note?.trim() || '',
-      categoryIcon: category?.icon || '',
+      categoryIcon: category?.icon,
       categoryColor: category?.color,
       categoryName: category?.name || '',
     };

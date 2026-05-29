@@ -1,0 +1,13 @@
+@use '../../../styles/helpers.scss' as *;
+
+.line {
+  @include initializeCssVar(--line-color, var(--green-1));
+
+  display: inline-block;
+  width: var(--size-12);
+  height: var(--size-2);
+  background-color: var(--line-color);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
