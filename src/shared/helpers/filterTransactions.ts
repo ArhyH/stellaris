@@ -1,4 +1,5 @@
 import { Transaction } from '@/entity/transaction';
+import { FinanceTransferType } from '../types';
 
 const isSameMonthAndYear = (date: Date, reference: Date): boolean => {
   return (
@@ -16,4 +17,11 @@ const filterTransactionsByMonth = (
   );
 };
 
-export { filterTransactionsByMonth };
+const filterTransactionsByType = (
+  transactions: Transaction[],
+  reference: FinanceTransferType,
+) => {
+  return transactions.filter((transaction) => transaction.type === reference);
+};
+
+export { filterTransactionsByMonth, filterTransactionsByType };

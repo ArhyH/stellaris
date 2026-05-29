@@ -1,3 +1,5 @@
+import classnames from 'classnames';
+
 import {
   filterTransactionsByMonth,
   getMonthFromDate,
@@ -26,6 +28,7 @@ import {
   mapTransactionsToPieChartData,
 } from '@/widgets/charts';
 import { Grid, gridProps } from '@/shared/ui/Grid';
+import { TopSpending, getTopSpendingCategory } from '@/widgets/top-spending';
 
 const AnalyticsPage = () => {
   const now = new Date();
@@ -60,6 +63,11 @@ const AnalyticsPage = () => {
   const barChartData = mapTransactionsToBarCtartData(currentTransactions);
 
   const lineChartData = mapTransactionsToLineCharData(transactionsMock);
+
+  const topCategory = getTopSpendingCategory(
+    currentTransactions,
+    categoriesMock,
+  );
 
   return (
     <div className={styles.page}>
@@ -99,7 +107,11 @@ const AnalyticsPage = () => {
       <Grid columns={gridProps.columns['2-1']}>
         <LineChartUI data={lineChartData} />
 
-        <BarChartUI data={barChartData} month={month} />
+        <div className={classnames(styles.page__cell, styles['gap-20'])}>
+          <TopSpending data={topCategory} />
+
+          <BarChartUI data={barChartData} month={month} />
+        </div>
       </Grid>
     </div>
   );

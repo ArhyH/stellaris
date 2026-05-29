@@ -10,7 +10,9 @@ type BoxProps = {
   radius?: ValueOf<typeof sizes.radiuses>;
   grow?: ValueOf<typeof boxProps.grow>;
   padding?: ValueOf<typeof sizes.sizes>;
+  gap?: ValueOf<typeof sizes.sizes>;
   hasShadow?: boolean;
+  hasAlign?: boolean;
   tag?: keyof typeof boxProps.tags;
 };
 

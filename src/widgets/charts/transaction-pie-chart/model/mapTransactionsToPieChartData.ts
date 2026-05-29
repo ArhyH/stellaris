@@ -1,8 +1,13 @@
 import { Category } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
-import { FinanceTransferType, ID } from '@/shared/types';
+import { FinanceTransferType } from '@/shared/types';
 import { PieChartItem } from './types';
 import { colors } from '@/shared/styles';
+import { filterTransactionsByType } from '@/shared/helpers/filterTransactions';
+import {
+  getTotalByCategory,
+  getTotalFromAllCategories,
+} from '@/shared/helpers/getTotalByCategories';
 
 const mapTransactionsToPieChartData = (
   transactions: Transaction[],
@@ -15,23 +20,9 @@ const mapTransactionsToPieChartData = (
       .map((category) => [category.id, category]),
   );
 
-  const targetTransactions = [...transactions].filter(
-    (transaction) => transaction.type === type,
-  );
-
-  const totalByCategories = targetTransactions.reduce<Map<ID, number>>(
-    (acc, transaction) => {
-      const current = acc.get(transaction.categoryId) ?? 0;
-      acc.set(transaction.categoryId, current + transaction.amount);
-      return acc;
-    },
-    new Map(),
-  );
-
-  const total = Array.from(totalByCategories.values()).reduce(
-    (acc, value) => acc + value,
-    0,
-  );
+  const targetTransactions = filterTransactionsByType(transactions, type);
+  const totalByCategories = getTotalByCategory(targetTransactions);
+  const total = getTotalFromAllCategories(totalByCategories);
 
   if (total === 0) {
     return [];

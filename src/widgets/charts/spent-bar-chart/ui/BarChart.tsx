@@ -13,7 +13,7 @@ import {
   contentCardProps,
 } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { colors } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { BarChartItem } from '../model/types';
 import { BarChartTooltip } from './BarChartTooltip';
 
@@ -27,7 +27,7 @@ const BarChartUI = (props: BarChartProps) => {
 
   return (
     <ContentCard grow={contentCardProps.grow[1]}>
-      <ContentCardHeader>
+      <ContentCardHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.title14}
           color={colors.base.white}
