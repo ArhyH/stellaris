@@ -8,8 +8,17 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
 import { Page, PageCell } from './ui';
+import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
+import { transactionsMock } from '@/shared/mocks/transactions';
+import { filterTransactionsByMonth } from '@/shared/helpers';
 
+const now = new Date();
 const categoriesSummary = getCategoriesSummary(categoriesMock);
+const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
+const categories = mapCategoriesToCategoryItems(
+  categoriesMock,
+  currentTransactions,
+);
 
 const CategoriesPage = () => {
   return (
@@ -51,6 +60,8 @@ const CategoriesPage = () => {
       </Row>
 
       <CategoriesSummary summaries={categoriesSummary} />
+
+      <Categories categories={categories} />
     </Page>
   );
 };

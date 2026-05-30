@@ -4,7 +4,7 @@ import { Progress } from '@/shared/ui/Progress';
 import { statusColors } from '../../model/consts';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { formatAmount } from '@/shared/helpers/formatAmount';
-import { colors } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
@@ -95,13 +95,21 @@ const BudgetItem = (props: BudgetItemProps) => {
               theme={buttonProps.themes.lightgray}
               size={buttonProps.sizes['32x32']}
             >
-              <Icon icon={icons.pen24} />
+              <Icon
+                icon={icons.pen24}
+                width={sizes.sizes[12]}
+                height={sizes.sizes[12]}
+              />
             </Button>
             <Button
               theme={buttonProps.themes.red}
               size={buttonProps.sizes['32x32']}
             >
-              <Icon icon={icons.trash24} />
+              <Icon
+                icon={icons.trash24}
+                width={sizes.sizes[12]}
+                height={sizes.sizes[12]}
+              />
             </Button>
           </div>
         </div>

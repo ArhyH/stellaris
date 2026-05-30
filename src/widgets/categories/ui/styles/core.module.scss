@@ -1,22 +1,21 @@
-.budget-overview {
-  display: flex;
-  flex-direction: column;
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--size-16);
 
   &__item {
     display: flex;
-    flex-direction: column;
     background-color: var(--gray-4);
-    padding: var(--size-20);
+    padding: var(--size-16);
     border-radius: var(--size-16);
-    gap: var(--size-8);
+    gap: var(--size-16);
     transition: transform 0.5s ease;
 
     @media (hover: hover) {
       &:hover {
         transform: scale(1.03);
 
-        .budget-overview__buttons {
+        .categories__buttons {
           max-width: var(--size-68);
           opacity: 1;
           transition-delay: 0s;
@@ -42,29 +41,17 @@
 
   &__row {
     display: flex;
-    justify-content: space-between;
-
-    &.m-top-4 {
-      margin-top: var(--size-4);
-    }
-  }
-
-  &__cell {
-    display: flex;
+    gap: var(--size-8);
     align-items: center;
-    min-height: var(--size-16);
 
-    &.gap-12 {
-      gap: var(--size-12);
-    }
-
-    &.gap-4 {
-      gap: var(--size-4);
+    & + & {
+      margin-top: var(--size-4);
     }
   }
 
   &__column {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 }

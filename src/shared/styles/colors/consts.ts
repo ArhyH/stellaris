@@ -57,10 +57,10 @@ const violetColors = {
 } as const;
 
 const labelColors = {
-  green: 'green-1-op',
-  red: 'red-1-op',
-  yellow: 'yellow-2-op',
-  lightblue: 'lightblue-1-op',
+  green: 'green-1-label',
+  red: 'red-1-label',
+  yellow: 'yellow-2-label',
+  lightblue: 'lightblue-1-label',
 } as const;
 
 const categoryColors = {

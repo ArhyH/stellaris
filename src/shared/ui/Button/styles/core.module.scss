@@ -5,6 +5,8 @@
   gap: var(--size-8);
   background-color: var(--transparent);
   border: none;
+  padding: var(--size-0);
+  border-image-width: var(--size-0);
   color: var(--white);
   cursor: pointer;
 }

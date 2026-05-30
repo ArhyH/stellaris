@@ -133,19 +133,19 @@
 
   /* CARD / LABEL */
 
-  --green-1-op: rgb(
+  --green-1-label: rgb(
     var(--green-1-rgb) / var(--opacity-2)
   ); /* rgba(74,222,128,0.125) || #4ade8020 */
 
-  --red-1-op: rgb(
+  --red-1-label: rgb(
     var(--red-1-rgb) / var(--opacity-2)
   ); /* rgba(248,113,113,0.125) || #f8717120 */
 
-  --yellow-2-op: rgb(
+  --yellow-2-label: rgb(
     var(--yellow-2-rgb) / var(--opacity-2)
   ); /* rgba(255,230,109,0.125) || #ffe66d20 */
 
-  --lightblue-1-op: rgb(
+  --lightblue-1-label: rgb(
     var(--lightblue-1-rgb) / var(--opacity-1)
   ); /* rgba(78,205,196,0.082) || #4ecdc415 */
 

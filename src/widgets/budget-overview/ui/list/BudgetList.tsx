@@ -8,10 +8,11 @@ type BudgetListProps = {
 
 const BudgetList = (props: BudgetListProps) => {
   const { budgets } = props;
+
   return (
     <ul className={styles['budget-overview']}>
       {budgets.map((budget) => {
-        return <BudgetItem budget={budget} />;
+        return <BudgetItem budget={budget} key={budget.id} />;
       })}
     </ul>
   );
