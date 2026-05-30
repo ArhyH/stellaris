@@ -1,14 +1,15 @@
-export { DashboardSummary } from './dashboard/ui/DashboardSummary';
 export {
-  getDashboardSummary,
   getDashboardDeltas,
-} from './dashboard/model/summary';
+  getDashboardSummary,
+  DashboardSummary,
+} from './dashboard';
 
-export { BudgetSummary } from './budget/ui/BudgetSummary';
-export { getBudgetsSummary } from './budget/model/summary';
+export { BudgetSummary, getBudgetsSummary } from './budget';
 
-export { AnalyticsSummary } from './analytics/ui/AnalyticsSummary';
 export {
+  AnalyticsSummary,
   getAnalyticsSummary,
   getAnalyticsDeltas,
-} from './analytics/model/summary';
+} from './analytics';
+
+export { getCategoriesSummary, CategoriesSummary } from './categories';

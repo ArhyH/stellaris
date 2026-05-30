@@ -26,7 +26,12 @@ const BudgetSummary = (props: BudgetSummaryProps) => {
     <SummaryCardWrapper columns={summaryCardWrapperProps.columns[4]}>
       {BUDGET_CARDS_CONFIG.map(({ title, key }) => {
         return (
-          <BudgetCard title={title} budgetKey={key} summary={summaries[key]} />
+          <BudgetCard
+            title={title}
+            budgetKey={key}
+            summary={summaries[key]}
+            key={key}
+          />
         );
       })}
     </SummaryCardWrapper>

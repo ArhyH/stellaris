@@ -9,13 +9,13 @@ import {
   BudgetList,
   mapBudgetsToOverviewItems,
 } from '@/widgets/budget-overview';
-import styles from './style.module.scss';
 import { Row } from '@/shared/ui/Row/Row';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary, getBudgetsSummary } from '@/widgets/summary';
+import { Page, PageCell } from './ui';
 
 const BudgetsPage = () => {
   const now = new Date();
@@ -30,9 +30,9 @@ const BudgetsPage = () => {
   const budgetSummaries = getBudgetsSummary(budgetData);
 
   return (
-    <div className={styles.page}>
+    <Page>
       <Row justify={rowProps.justifies.spaceBetween}>
-        <div className={styles.page__cell}>
+        <PageCell gap={sizes.sizes[4]}>
           <Typography
             type={typographyProps.types.title28}
             color={colors.base.white}
@@ -47,9 +47,9 @@ const BudgetsPage = () => {
           >
             Set and track spending limits by category
           </Typography>
-        </div>
+        </PageCell>
 
-        <div className={styles.page__cell}>
+        <PageCell>
           <Button theme={buttonProps.themes.green} size={buttonProps.sizes[40]}>
             <Icon
               icon={icons.plus24}
@@ -63,12 +63,12 @@ const BudgetsPage = () => {
               Add Budget
             </Typography>
           </Button>
-        </div>
+        </PageCell>
       </Row>
 
       <BudgetSummary summaries={budgetSummaries} />
       <BudgetList budgets={budgetData} />
-    </div>
+    </Page>
   );
 };
 

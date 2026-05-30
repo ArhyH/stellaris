@@ -1,5 +1,3 @@
-import classnames from 'classnames';
-
 import {
   filterTransactionsByMonth,
   getMonthFromDate,
@@ -7,10 +5,8 @@ import {
   getPrevMonth,
 } from '@/shared/helpers';
 import { transactionsMock } from '@/shared/mocks/transactions';
-
-import styles from './style.module.scss';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { colors } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import {
   AnalyticsSummary,
   getAnalyticsDeltas,
@@ -29,6 +25,7 @@ import {
 } from '@/widgets/charts';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { TopSpending, getTopSpendingCategory } from '@/widgets/top-spending';
+import { Page, PageCell } from './ui';
 
 const AnalyticsPage = () => {
   const now = new Date();
@@ -70,8 +67,8 @@ const AnalyticsPage = () => {
   );
 
   return (
-    <div className={styles.page}>
-      <div className={styles.page__cell}>
+    <Page>
+      <PageCell gap={sizes.sizes[4]}>
         <Typography
           type={typographyProps.types.title28}
           color={colors.base.white}
@@ -86,7 +83,7 @@ const AnalyticsPage = () => {
         >
           Deeper insights into your financial patterns
         </Typography>
-      </div>
+      </PageCell>
 
       <AnalyticsSummary summaries={currentSummary} deltas={summaryDeltas} />
 
@@ -107,13 +104,13 @@ const AnalyticsPage = () => {
       <Grid columns={gridProps.columns['2-1']}>
         <LineChartUI data={lineChartData} />
 
-        <div className={classnames(styles.page__cell, styles['gap-20'])}>
+        <PageCell gap={sizes.sizes[20]}>
           <TopSpending data={topCategory} />
 
           <BarChartUI data={barChartData} month={month} />
-        </div>
+        </PageCell>
       </Grid>
-    </div>
+    </Page>
   );
 };
 
