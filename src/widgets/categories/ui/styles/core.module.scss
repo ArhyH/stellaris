@@ -54,4 +54,10 @@
     flex-direction: column;
     flex-grow: 1;
   }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-20);
+  }
 }
