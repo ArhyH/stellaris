@@ -2,10 +2,11 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
-import { mapTransactionsToRecentItems } from '@/widgets/recent-transactions/model/mappers';
+import {
+  mapTransactionsToRecentItems,
+  RecentTransactions,
+} from '@/widgets/recent-transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers/filterTransactions';
-import styles from './style.module.scss';
-import { RecentTransactions } from '@/widgets/recent-transactions/ui/RecentTransactions';
 import { Row } from '@/shared/ui/Row/Row';
 import { PieChartUi, mapTransactionsToPieChartData } from '@/widgets/charts';
 import {
@@ -13,13 +14,14 @@ import {
   mapBudgetsToOverviewItems,
 } from '@/widgets/budget-overview';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { colors } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import {
   DashboardSummary,
   getDashboardDeltas,
   getDashboardSummary,
 } from '@/widgets/summary';
 import { getMonthYearFromDate, getPrevMonth } from '@/shared/helpers';
+import { Page, PageCell } from './ui';
 
 const DashboardPage = () => {
   const now = new Date();
@@ -61,8 +63,8 @@ const DashboardPage = () => {
   const monthYear = getMonthYearFromDate(currentTransactions[0].date);
 
   return (
-    <div className={styles.page}>
-      <div className={styles.page__cell}>
+    <Page>
+      <PageCell gap={sizes.sizes[4]}>
         <Typography
           type={typographyProps.types.title28}
           color={colors.base.white}
@@ -77,7 +79,7 @@ const DashboardPage = () => {
         >
           Here's your financial overview for {monthYear}
         </Typography>
-      </div>
+      </PageCell>
 
       <DashboardSummary summaries={currentSummary} deltas={deltas} />
       <Row>
@@ -89,7 +91,7 @@ const DashboardPage = () => {
         <BudgetOverview budgets={budgetData} />
       </Row>
       <RecentTransactions recentTransactions={recentTransactions} />
-    </div>
+    </Page>
   );
 };
 

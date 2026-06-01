@@ -1,0 +1,12 @@
+@use '../../../styles/helpers.scss' as *;
+
+.label {
+  @include initializeCssVar(--label-bg-color, var(--green-1));
+  @include initializeCssVar(--label-color, var(--green-1-op));
+
+  display: flex;
+  padding: var(--size-2) var(--size-8);
+  background-color: var(--label-bg-color);
+  color: var(--label-color);
+  border-radius: var(--size-8);
+}
