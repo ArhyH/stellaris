@@ -15,7 +15,6 @@ const getDailySpent = (transactions: Transaction[]) => {
   const sorted = Array.from(dailyTotals.values()).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
 
-  console.log(sorted);
   return sorted.length % 2 !== 0
     ? sorted[mid]
     : (sorted[mid - 1] + sorted[mid]) / 2;
@@ -23,7 +22,6 @@ const getDailySpent = (transactions: Transaction[]) => {
 
 const getAnalyticsSummary = (transactions: Transaction[]): AnalyticsSummary => {
   const { income, expense } = getSummary(transactions);
-  console.log('income', income, 'expense', expense);
   const saving = getSavingRate(income, expense);
   const daily = getDailySpent(transactions);
 

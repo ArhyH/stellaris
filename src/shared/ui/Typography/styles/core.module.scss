@@ -2,6 +2,8 @@
 
 .typography {
   @include initializeCssVar(--typography-color, inherit);
+  @include initializeCssVar(--typography-text-align, unset);
 
   color: var(--typography-color);
+  text-align: var(--typography-text-align);
 }

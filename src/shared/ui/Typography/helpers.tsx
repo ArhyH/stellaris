@@ -7,9 +7,19 @@ const getColor = ({ color }: Pick<TypographyProps, 'color'>) => {
   }
 };
 
-const getStyles = ({ color }: Pick<TypographyProps, 'color'>) => {
+const getTextAlign = ({ textAlign }: Pick<TypographyProps, 'textAlign'>) => {
+  if (textAlign) {
+    return { '--typography-text-align': textAlign };
+  }
+};
+
+const getStyles = ({
+  color,
+  textAlign,
+}: Pick<TypographyProps, 'color' | 'textAlign'>) => {
   return {
     ...getColor({ color }),
+    ...getTextAlign({ textAlign }),
   };
 };
 

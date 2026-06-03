@@ -1,22 +1,12 @@
-import { ReactNode, useState } from 'react';
-import styles from './style.module.scss';
+import { useState } from 'react';
+import classnames from 'classnames';
+
 import { SegmentedButton } from './SegmentedButton';
-
-type Option = {
-  value: string;
-  label: ReactNode;
-  disabled?: boolean;
-};
-
-type SegmentedControlProps = {
-  options: Option[];
-  value?: string;
-  defaultValue?: string;
-  onChange?: (value: string) => void;
-};
+import { SegmentedControlProps } from './types';
+import styles from './style.module.scss';
 
 const SegmentedControl = (props: SegmentedControlProps) => {
-  const { value, defaultValue, options, onChange } = props;
+  const { theme, size, value, defaultValue, options, onChange } = props;
 
   const [internalValue, setInternalValue] = useState(
     defaultValue ?? options[0]?.value,
@@ -32,9 +22,14 @@ const SegmentedControl = (props: SegmentedControlProps) => {
     onChange?.(newValue);
   };
 
+  const componentClassNames = classnames(styles['segmented-control'], {
+    [styles[`segmented-control--theme--${theme}`]]: theme,
+    [styles[`segmented-control--size--${size}`]]: size,
+  });
+
   return (
     <div
-      className={styles['segmented-control']}
+      className={componentClassNames}
       role="radiogroup"
       aria-orientation="horizontal"
     >

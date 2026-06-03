@@ -48,7 +48,7 @@ const transactionsMock = [
     date: '2026-05-09',
   },
   {
-    id: 't-1',
+    id: 't-7',
     amount: 2100,
     type: 'expense',
     categoryId: 'housing',
@@ -56,7 +56,7 @@ const transactionsMock = [
     date: '2026-06-01',
   },
   {
-    id: 't-2',
+    id: 't-8',
     amount: 100,
     type: 'expense',
     categoryId: 'food',
@@ -64,7 +64,7 @@ const transactionsMock = [
     date: '2026-06-04',
   },
   {
-    id: 't-3',
+    id: 't-9',
     amount: 1800,
     type: 'expense',
     categoryId: 'shopping',
@@ -72,7 +72,7 @@ const transactionsMock = [
     date: '2026-06-05',
   },
   {
-    id: 't-4',
+    id: 't-10',
     amount: 5000,
     type: 'income',
     categoryId: 'salary',
@@ -80,7 +80,7 @@ const transactionsMock = [
     date: '2026-06-07',
   },
   {
-    id: 't-5',
+    id: 't-11',
     amount: 1800,
     type: 'income',
     categoryId: 'freelance',
@@ -88,7 +88,7 @@ const transactionsMock = [
     date: '2026-06-04',
   },
   {
-    id: 't-6',
+    id: 't-12',
     amount: 100,
     type: 'expense',
     categoryId: 'food',

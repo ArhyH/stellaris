@@ -1,0 +1,11 @@
+.segmented-control {
+  &--theme {
+    &--gray-1 {
+      background-color: var(--gray-1);
+    }
+
+    &--gray-4 {
+      background-color: var(--gray-4);
+    }
+  }
+}

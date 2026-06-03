@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
-import { RecentTransaction as RecentTransactionType } from '../../model/types';
-import { RecentTransaction } from './RecentTransaction';
+import { RecentTransaction } from '../../model/types';
+import { Transaction } from './Transaction';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
@@ -9,7 +9,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 
 type RecentTransactionsProps = {
-  recentTransactions: RecentTransactionType[];
+  recentTransactions: RecentTransaction[];
 };
 
 const RecentTransactions = (props: RecentTransactionsProps) => {
@@ -40,7 +40,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
         <ul className={styles['recent-transaction__list']}>
           {recentTransactions.map((transaction) => {
             return (
-              <RecentTransaction
+              <Transaction
                 key={transaction.id}
                 categoryIcon={transaction.categoryIcon ?? 'wallet18'}
                 categoryName={transaction.categoryName}

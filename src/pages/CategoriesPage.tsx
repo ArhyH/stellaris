@@ -11,15 +11,31 @@ import { Page, PageCell } from './ui';
 import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
+import { CategoriesFilter } from '@/widgets/categories-filter';
+import { useMemo, useState } from 'react';
+import {
+  DEFAULT_FILTER,
+  FilterType,
+  filterDataByFinanceTransferType,
+} from '@/features/FilterByFinanceTransferType';
 
 const CategoriesPage = () => {
+  const [currentFilter, setCurrentFilter] =
+    useState<FilterType>(DEFAULT_FILTER);
+
+  const currentCategories = useMemo(() => {
+    return filterDataByFinanceTransferType(categoriesMock, currentFilter);
+  }, [categoriesMock, currentFilter]);
+
   const now = new Date();
   const categoriesSummary = getCategoriesSummary(categoriesMock);
   const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
   const categories = mapCategoriesToCategoryItems(
-    categoriesMock,
+    currentCategories,
     currentTransactions,
   );
+
+  console.log(categories);
 
   return (
     <Page>
@@ -60,6 +76,8 @@ const CategoriesPage = () => {
       </Row>
 
       <CategoriesSummary summaries={categoriesSummary} />
+
+      <CategoriesFilter onFilterChange={setCurrentFilter} />
 
       <Categories categories={categories} />
     </Page>

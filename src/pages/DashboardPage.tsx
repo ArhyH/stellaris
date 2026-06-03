@@ -5,7 +5,7 @@ import { transactionsMock } from '@/shared/mocks/transactions';
 import {
   mapTransactionsToRecentItems,
   RecentTransactions,
-} from '@/widgets/recent-transactions';
+} from '@/widgets/transactions-list';
 import { filterTransactionsByMonth } from '@/shared/helpers/filterTransactions';
 import { Row } from '@/shared/ui/Row/Row';
 import { PieChartUi, mapTransactionsToPieChartData } from '@/widgets/charts';

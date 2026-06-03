@@ -4,17 +4,33 @@ import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary, getTransactionsSummary } from '@/widgets/summary';
 import {
-  TransactionsList,
+  FullTransactionsList,
   mapTransactionsToRecentItems,
-} from '@/widgets/recent-transactions';
+} from '@/widgets/transactions-list';
 import { categoriesMock } from '@/shared/mocks/categories';
+import { TransactionsFilter } from '@/widgets/transactions-filter';
+import { useMemo, useState } from 'react';
+import {
+  DEFAULT_FILTER,
+  FilterType,
+  filterDataByFinanceTransferType,
+} from '@/features/FilterByFinanceTransferType';
 
 const TransactionsPage = () => {
-  const summaries = getTransactionsSummary(transactionsMock);
+  const [currentFilter, setCurrentFilter] =
+    useState<FilterType>(DEFAULT_FILTER);
+
+  const currentTransactions = useMemo(() => {
+    return filterDataByFinanceTransferType(transactionsMock, currentFilter);
+  }, [currentFilter, transactionsMock]);
+
   const transactions = mapTransactionsToRecentItems(
-    transactionsMock,
+    currentTransactions,
     categoriesMock,
   );
+
+  const summaries = getTransactionsSummary(currentTransactions);
+
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -36,7 +52,9 @@ const TransactionsPage = () => {
 
       <TransactionsSummary summaries={summaries} />
 
-      <TransactionsList recentTransactions={transactions} />
+      <TransactionsFilter onFilterChange={setCurrentFilter} />
+
+      <FullTransactionsList transactions={transactions} />
     </Page>
   );
 };

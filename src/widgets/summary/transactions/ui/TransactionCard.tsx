@@ -17,7 +17,13 @@ type TransactionCardProps = {
 
 const getTextColor = (key: SummaryKey, summary: AMOUNT): ColorToken => {
   const color =
-    key !== 'expense' && summary > 0 ? colors.green[1] : colors.red[1];
+    key === 'income'
+      ? colors.green[1]
+      : key === 'expense'
+        ? colors.red[1]
+        : summary >= 0
+          ? colors.green[1]
+          : colors.red[1];
 
   return color;
 };

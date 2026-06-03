@@ -1,4 +1,4 @@
 export { filterDataByFinanceTransferType } from './model/filterByFinanceTransferType';
-export { FilterByType, DEFAULT_FILTER } from './ui/FilterByType';
-export { filterTypes } from './ui/consts';
-export type { FilterType } from './ui/FilterByType';
+export { FilterByType } from './ui/FilterByType';
+export { filterTypes, DEFAULT_FILTER, filterModes } from './ui/consts';
+export type { FilterType } from './ui/types';

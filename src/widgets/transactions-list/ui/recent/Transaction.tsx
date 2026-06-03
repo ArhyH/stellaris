@@ -8,7 +8,7 @@ import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 
-type RecentTransactionProps = {
+type TransactionProps = {
   categoryIcon: ICON;
   categoryName: LABEL;
   categoryColor?: CategoryColor;
@@ -18,7 +18,7 @@ type RecentTransactionProps = {
   type: FinanceTransferType;
 };
 
-const RecentTransaction = (props: RecentTransactionProps) => {
+const Transaction = (props: TransactionProps) => {
   const {
     categoryIcon,
     categoryName,
@@ -74,5 +74,5 @@ const RecentTransaction = (props: RecentTransactionProps) => {
   );
 };
 
-export { RecentTransaction };
-export type { RecentTransactionProps };
+export { Transaction };
+export type { TransactionProps };

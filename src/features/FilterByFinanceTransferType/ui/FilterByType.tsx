@@ -1,38 +1,40 @@
-import { SegmentedControl } from '@/shared/ui/SegmentedControl';
-import { ValueOf } from 'type-fest';
-import { filterTypes } from './consts';
-// import { useState } from 'react';
+import {
+  SegmentedControl,
+  SegmentedControlProps,
+  segmentedControlProps,
+} from '@/shared/ui/SegmentedControl';
+import { FILTERS, filterModes } from './consts';
+import { FilterByTypeProps, FilterMode, FilterType } from './types';
 
-type FilterByTypeProps = {
-  onChange: (filter: FilterType) => void;
+const getFilterSettings = (
+  mode: FilterMode,
+): Pick<SegmentedControlProps, 'size' | 'theme'> => {
+  if (mode === filterModes.categories) {
+    return {
+      size: segmentedControlProps.sizes[44],
+      theme: segmentedControlProps.themes.gray4,
+    };
+  }
+
+  return {
+    size: segmentedControlProps.sizes[36],
+    theme: segmentedControlProps.themes.gray1,
+  };
 };
 
-type FilterType = ValueOf<typeof filterTypes>;
-
-const DEFAULT_FILTER: FilterType = filterTypes.all;
-
-const FILTERS = [
-  { label: 'All', value: filterTypes.all },
-  { label: 'Income', value: filterTypes.income },
-  { label: 'Expense', value: filterTypes.expense },
-];
-
 const FilterByType = (props: FilterByTypeProps) => {
-  const { onChange } = props;
-
-  // const [filterConfig, setFilterConfig] = useState<FilterType>(DEFAULT_FILTER);
+  const { onChange, filterMode } = props;
 
   return (
     <SegmentedControl
+      {...getFilterSettings(filterMode)}
       options={FILTERS}
       defaultValue={FILTERS[0].value}
       onChange={(value) => {
-        // setFilterConfig(value as FilterType);
         onChange(value as FilterType);
       }}
     />
   );
 };
 
-export { FilterByType, DEFAULT_FILTER };
-export type { FilterByTypeProps, FilterType };
+export { FilterByType };

@@ -32,14 +32,14 @@ const Transaction = (props: TransactionProps) => {
   } = props;
 
   return (
-    <li className={styles['recent-transaction']}>
+    <li className={styles['transactions-list__item']}>
       <Typography
         type={typographyProps.types.text14}
         color={colors.lightgray[6]}
       >
         {date}
       </Typography>
-      <div className={styles['recent-transaction__cell']}>
+      <div className={styles['transactions-list__cell']}>
         <Box
           bgColor={
             categoryColor
@@ -82,6 +82,7 @@ const Transaction = (props: TransactionProps) => {
       </Typography>
       <Typography
         type={typographyProps.types.title14}
+        textAlign={typographyProps.aligns.end}
         color={
           type === FinanceTransferTypes.expense
             ? colors.red[1]
@@ -91,7 +92,7 @@ const Transaction = (props: TransactionProps) => {
         {formatAmount(amount, formatTypes.full, type)}
       </Typography>
 
-      <div className={styles['recent-transaction__button']}>
+      <div className={styles['transactions-list__button']}>
         <Button
           size={buttonProps.sizes['28x28']}
           theme={buttonProps.themes.lightgray}

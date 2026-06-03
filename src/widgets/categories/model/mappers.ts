@@ -20,20 +20,18 @@ const mapCategoriesToCategoryItems = (
     new Map(),
   );
 
-  return Array.from(totalTransactionsByCategory.entries()).map(
-    ([categoryId, value]) => {
-      const category = categoriesMap.get(categoryId);
+  return Array.from(categoriesMap.entries()).map(([categoryId, category]) => {
+    const transactionsCount = totalTransactionsByCategory.get(categoryId);
 
-      return {
-        categoryId,
-        categoryIcon: category?.icon,
-        categoryName: category?.name,
-        categoryColor: category?.color,
-        transactionsCount: value,
-        type: category?.type,
-      };
-    },
-  );
+    return {
+      categoryId,
+      categoryIcon: category.icon,
+      categoryName: category.name,
+      categoryColor: category.color,
+      transactionsCount: transactionsCount || 0,
+      type: category.type,
+    };
+  });
 };
 
 export { mapCategoriesToCategoryItems };
