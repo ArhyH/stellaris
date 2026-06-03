@@ -1,15 +1,20 @@
-import { filterTransactionsByMonth } from '@/shared/helpers';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { Page, PageCell } from './ui';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary, getTransactionsSummary } from '@/widgets/summary';
+import {
+  TransactionsList,
+  mapTransactionsToRecentItems,
+} from '@/widgets/recent-transactions';
+import { categoriesMock } from '@/shared/mocks/categories';
 
 const TransactionsPage = () => {
-  const now = new Date();
-  const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
-  const summaries = getTransactionsSummary(currentTransactions);
-
+  const summaries = getTransactionsSummary(transactionsMock);
+  const transactions = mapTransactionsToRecentItems(
+    transactionsMock,
+    categoriesMock,
+  );
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -30,6 +35,8 @@ const TransactionsPage = () => {
       </PageCell>
 
       <TransactionsSummary summaries={summaries} />
+
+      <TransactionsList recentTransactions={transactions} />
     </Page>
   );
 };

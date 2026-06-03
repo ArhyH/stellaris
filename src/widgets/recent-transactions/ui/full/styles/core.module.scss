@@ -1,0 +1,36 @@
+.recent-transaction {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 60px;
+  gap: var(--size-16);
+  padding: var(--size-14) var(--size-24);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--button-bg-1);
+    }
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    gap: var(--size-10);
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__list-header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1.5fr 1fr 1fr 60px;
+    padding: var(--size-12) var(--size-24);
+  }
+
+  &__list-footer {
+    padding: var(--size-12) var(--size-24);
+    border-top: 1px solid var(--button-bg-1);
+  }
+}

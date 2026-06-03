@@ -1,5 +1,5 @@
 import styles from './style.module.scss';
-import { RecentTransaction as RecentTransactionType } from '../model/types';
+import { RecentTransaction as RecentTransactionType } from '../../model/types';
 import { RecentTransaction } from './RecentTransaction';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
@@ -39,7 +39,6 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
 
         <ul className={styles['recent-transaction__list']}>
           {recentTransactions.map((transaction) => {
-            console.log(transaction);
             return (
               <RecentTransaction
                 key={transaction.id}

@@ -1,27 +1,34 @@
 import styles from './style.module.scss';
 import { CategoryItem as CategoryItemType } from '../model/types';
 import { CategoryItem } from './CategoryItem';
-import { SegmentedControl } from '@/shared/ui/SegmentedControl';
+import { useMemo, useState } from 'react';
+import {
+  DEFAULT_FILTER,
+  FilterByType,
+  FilterType,
+  filterDataByFinanceTransferType,
+} from '@/features/FilterByFinanceTransferType';
 
 type CategoriesProps = {
   categories: CategoryItemType[];
 };
 
-const FILTERS = [
-  { label: 'All', value: 'all' },
-  { label: 'Income', value: 'income' },
-  { label: 'Expense', value: 'expense' },
-];
-
 const Categories = (props: CategoriesProps) => {
   const { categories } = props;
 
+  const [currentFilter, setCurrentFilter] =
+    useState<FilterType>(DEFAULT_FILTER);
+
+  const currentCategories = useMemo(() => {
+    return filterDataByFinanceTransferType(categories, currentFilter);
+  }, [categories, currentFilter]);
+
   return (
     <div className={styles.categories__wrapper}>
-      <SegmentedControl options={FILTERS} defaultValue={FILTERS[0].value} />
+      <FilterByType onChange={setCurrentFilter} />
 
       <ul className={styles.categories}>
-        {categories.map((category) => {
+        {currentCategories.map((category) => {
           return <CategoryItem data={category} key={category.categoryId} />;
         })}
       </ul>

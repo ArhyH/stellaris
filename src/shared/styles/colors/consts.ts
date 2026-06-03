@@ -20,6 +20,7 @@ const lightgrayColors = {
   3: 'lightgray-3',
   4: 'lightgray-4',
   5: 'lightgray-5',
+  6: 'lightgray-6',
 } as const;
 
 const greenColors = {

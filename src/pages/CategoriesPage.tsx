@@ -12,15 +12,15 @@ import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
 
-const now = new Date();
-const categoriesSummary = getCategoriesSummary(categoriesMock);
-const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
-const categories = mapCategoriesToCategoryItems(
-  categoriesMock,
-  currentTransactions,
-);
-
 const CategoriesPage = () => {
+  const now = new Date();
+  const categoriesSummary = getCategoriesSummary(categoriesMock);
+  const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
+  const categories = mapCategoriesToCategoryItems(
+    categoriesMock,
+    currentTransactions,
+  );
+
   return (
     <Page>
       <Row justify={rowProps.justifies.spaceBetween}>
