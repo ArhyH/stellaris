@@ -35,6 +35,7 @@
     display: grid;
     align-items: center;
     grid-template-columns: 2fr 1.5fr 1fr 1fr 60px;
+    gap: var(--size-16);
     padding: var(--size-12) var(--size-24);
     border-bottom: 1px solid var(--button-bg-1);
   }

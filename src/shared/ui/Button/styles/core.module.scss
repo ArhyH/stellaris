@@ -9,4 +9,16 @@
   border-image-width: var(--size-0);
   color: var(--white);
   cursor: pointer;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.is-rotated {
+    .button__icon {
+      rotate: 180deg;
+    }
+  }
 }

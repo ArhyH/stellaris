@@ -95,7 +95,7 @@ const Transaction = (props: TransactionProps) => {
       <div className={styles['transactions-list__button']}>
         <Button
           size={buttonProps.sizes['28x28']}
-          theme={buttonProps.themes.lightgray}
+          theme={buttonProps.themes.red}
         >
           <Icon
             icon={icons.trash24}
