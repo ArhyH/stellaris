@@ -6,6 +6,7 @@ import arrowRight12 from './arrow-right-12.svg';
 import pen24 from './pen-24.svg';
 import trash24 from './trash-24.svg';
 import plus24 from './plus-24.svg';
+import search24 from './search-24.svg';
 
 const icons = {
   wallet18: wallet18,
@@ -16,6 +17,7 @@ const icons = {
   pen24: pen24,
   trash24: trash24,
   plus24: plus24,
+  search24: search24,
 } as const satisfies Record<string, UtilityTypes.SvgContent>;
 
 type IconName = keyof typeof icons;

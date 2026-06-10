@@ -9,10 +9,12 @@ import {
 import { FilterByCategory } from '@/features/FilterByCategory';
 import { ID } from '@/shared/types';
 import { Category } from '@/entity/category';
+import { FilterByQuery } from '@/features/FilterByQuery';
 
 type TransactionsFilterProps = {
   onTypeFilterChange: (filter: FilterType) => void;
   onCategoryFilterChange: (categoryId: ID) => void;
+  onQueryFilterChange: (value: string) => void;
   categories: Category[];
   currentCategory: ID;
 };
@@ -23,12 +25,15 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
     currentCategory,
     onTypeFilterChange,
     onCategoryFilterChange,
+    onQueryFilterChange,
   } = props;
 
   return (
     <ContentCard padding={sizes.sizes[16]}>
       <div className={styles['transactions-filter']}>
-        <div style={{ flexGrow: 1, flexShrink: 1 }}>Input</div>
+        <div style={{ flexGrow: 1, flexShrink: 1 }}>
+          <FilterByQuery onChange={onQueryFilterChange} />
+        </div>
 
         <FilterByType
           filterMode={filterModes.transactions}

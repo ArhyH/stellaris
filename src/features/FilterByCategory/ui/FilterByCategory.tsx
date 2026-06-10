@@ -1,6 +1,6 @@
 import { Category } from '@/entity/category';
-import { Select } from '@/shared/ui/Select/Select';
-import { mapCategoryToSelectItems } from './model/mappers';
+import { Select } from '@/shared/ui/Select';
+import { mapCategoryToSelectItems } from '../model/mappers';
 import { ID } from '@/shared/types';
 
 type FilterByCategoryProps = {

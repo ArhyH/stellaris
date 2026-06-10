@@ -1,0 +1,22 @@
+.input {
+  border: none;
+  background-color: var(--transparent);
+  color: var(--white);
+  font-size: var(--size-16);
+  width: var(--parent);
+  outline: none;
+
+  &::placeholder {
+    color: var(--lightgray-2);
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--size-8);
+    color: var(--lightgray-2);
+    padding: var(--size-8) var(--size-12);
+    background-color: var(--gray-1);
+    border-radius: var(--size-14);
+  }
+}

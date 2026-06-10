@@ -19,6 +19,7 @@ import {
 import { ID } from '@/shared/types';
 import { filterByCategory } from '@/features/FilterByCategory';
 import { FinanceTransferTypes } from '@/shared/consts';
+import { filterBySearchQuery } from '@/features/FilterByQuery';
 
 const TransactionsPage = () => {
   const [filters, setFilters] = useState({
@@ -43,6 +44,13 @@ const TransactionsPage = () => {
     }));
   };
 
+  const onQueryFilterChange = (value: string) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      searchQuery: value,
+    }));
+  };
+
   const currentTransactions = useMemo(() => {
     const transactionsByType = filterDataByFinanceTransferType(
       transactionsMock,
@@ -54,7 +62,12 @@ const TransactionsPage = () => {
       filters.category,
     );
 
-    return transactionsByCategory;
+    const transactionsByQuery = filterBySearchQuery(
+      transactionsByCategory,
+      filters.searchQuery,
+    );
+
+    return transactionsByQuery;
   }, [filters]);
 
   const currentCategories = useMemo(() => {
@@ -100,6 +113,7 @@ const TransactionsPage = () => {
         currentCategory={filters.category}
         onTypeFilterChange={onFinanceTypeFilterChange}
         onCategoryFilterChange={onCategoryFilterChange}
+        onQueryFilterChange={onQueryFilterChange}
       />
 
       <FullTransactionsList transactions={transactions} />
