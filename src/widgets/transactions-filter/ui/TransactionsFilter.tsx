@@ -6,13 +6,24 @@ import {
   FilterType,
   filterModes,
 } from '@/features/FilterByFinanceTransferType';
+import { FilterByCategory } from '@/features/FilterByCategory';
+import { ID } from '@/shared/types';
+import { Category } from '@/entity/category';
 
 type TransactionsFilterProps = {
-  onFilterChange: (filter: FilterType) => void;
+  onTypeFilterChange: (filter: FilterType) => void;
+  onCategoryFilterChange: (categoryId: ID) => void;
+  categories: Category[];
+  currentCategory: ID;
 };
 
 const TransactionsFilter = (props: TransactionsFilterProps) => {
-  const { onFilterChange } = props;
+  const {
+    categories,
+    currentCategory,
+    onTypeFilterChange,
+    onCategoryFilterChange,
+  } = props;
 
   return (
     <ContentCard padding={sizes.sizes[16]}>
@@ -21,10 +32,14 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
 
         <FilterByType
           filterMode={filterModes.transactions}
-          onChange={onFilterChange}
+          onChange={onTypeFilterChange}
         />
 
-        <div>Dropwown</div>
+        <FilterByCategory
+          categories={categories}
+          currentCategory={currentCategory}
+          onChange={onCategoryFilterChange}
+        />
 
         <div>Date</div>
       </div>

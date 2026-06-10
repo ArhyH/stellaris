@@ -14,15 +14,58 @@ import {
   DEFAULT_FILTER,
   FilterType,
   filterDataByFinanceTransferType,
+  filterTypes,
 } from '@/features/FilterByFinanceTransferType';
+import { ID } from '@/shared/types';
+import { filterByCategory } from '@/features/FilterByCategory';
+import { FinanceTransferTypes } from '@/shared/consts';
 
 const TransactionsPage = () => {
-  const [currentFilter, setCurrentFilter] =
-    useState<FilterType>(DEFAULT_FILTER);
+  const [filters, setFilters] = useState({
+    category: FinanceTransferTypes.all,
+    financeType: DEFAULT_FILTER,
+    searchQuery: '',
+    date: '',
+  });
+
+  const onCategoryFilterChange = (categoryId: ID) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      category: categoryId,
+    }));
+  };
+
+  const onFinanceTypeFilterChange = (filterType: FilterType) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      category: FinanceTransferTypes.all,
+      financeType: filterType,
+    }));
+  };
 
   const currentTransactions = useMemo(() => {
-    return filterDataByFinanceTransferType(transactionsMock, currentFilter);
-  }, [currentFilter, transactionsMock]);
+    const transactionsByType = filterDataByFinanceTransferType(
+      transactionsMock,
+      filters.financeType,
+    );
+
+    const transactionsByCategory = filterByCategory(
+      transactionsByType,
+      filters.category,
+    );
+
+    return transactionsByCategory;
+  }, [filters]);
+
+  const currentCategories = useMemo(() => {
+    if (filters.financeType === filterTypes.all) {
+      return categoriesMock;
+    }
+
+    return [...categoriesMock].filter(
+      (category) => category.type === filters.financeType,
+    );
+  }, [filters.financeType]);
 
   const transactions = mapTransactionsToRecentItems(
     currentTransactions,
@@ -52,7 +95,12 @@ const TransactionsPage = () => {
 
       <TransactionsSummary summaries={summaries} />
 
-      <TransactionsFilter onFilterChange={setCurrentFilter} />
+      <TransactionsFilter
+        categories={currentCategories}
+        currentCategory={filters.category}
+        onTypeFilterChange={onFinanceTypeFilterChange}
+        onCategoryFilterChange={onCategoryFilterChange}
+      />
 
       <FullTransactionsList transactions={transactions} />
     </Page>
