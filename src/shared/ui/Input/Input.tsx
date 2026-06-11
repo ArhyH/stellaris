@@ -1,35 +1,31 @@
 import styles from './style.module.scss';
 import { Icon } from '../Icon';
 import { sizes } from '@/shared/styles';
-import { ValueOf } from 'type-fest';
-import { inputProps } from './consts';
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
 
 type InputProps = {
   placeholder: string;
   name: string;
-  type: ValueOf<typeof inputProps.types>;
+  value?: string;
   leftIcon?: UtilityTypes.SvgContent;
   rightElement?: ReactNode;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
+  readOnly?: boolean;
 };
 
 const Input = (props: InputProps) => {
-  const { leftIcon, rightElement, type, name, placeholder, onChange } = props;
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const onDateInputClick = () => {
-    if (type === inputProps.types.date) {
-      inputRef.current?.showPicker();
-    }
-  };
+  const {
+    leftIcon,
+    rightElement,
+    name,
+    placeholder,
+    onChange,
+    value,
+    readOnly,
+  } = props;
 
   return (
-    <label
-      className={styles.input__wrapper}
-      onPointerDown={() => onDateInputClick()}
-    >
+    <label className={styles.input__wrapper}>
       {leftIcon && (
         <Icon
           icon={leftIcon}
@@ -40,11 +36,12 @@ const Input = (props: InputProps) => {
 
       <input
         className={styles.input}
-        type={type}
+        type="text"
         placeholder={placeholder}
         name={name}
-        ref={inputRef}
-        onChange={(e) => onChange(e.target.value)}
+        readOnly={readOnly}
+        value={value ?? ''}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
       />
 
       {rightElement && rightElement}
