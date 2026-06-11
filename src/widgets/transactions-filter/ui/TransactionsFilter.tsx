@@ -10,11 +10,15 @@ import { FilterByCategory } from '@/features/FilterByCategory';
 import { ID } from '@/shared/types';
 import { Category } from '@/entity/category';
 import { FilterByQuery } from '@/features/FilterByQuery';
+import { FilterByDate } from '@/features/FilterByDate';
+import { Row } from '@/shared/ui/Row/Row';
 
 type TransactionsFilterProps = {
   onTypeFilterChange: (filter: FilterType) => void;
   onCategoryFilterChange: (categoryId: ID) => void;
   onQueryFilterChange: (value: string) => void;
+  onStartDateChange: (value: string) => void;
+  onEndDateChange: (value: string) => void;
   categories: Category[];
   currentCategory: ID;
 };
@@ -26,12 +30,14 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
     onTypeFilterChange,
     onCategoryFilterChange,
     onQueryFilterChange,
+    onStartDateChange,
+    onEndDateChange,
   } = props;
 
   return (
     <ContentCard padding={sizes.sizes[16]}>
       <div className={styles['transactions-filter']}>
-        <div style={{ flexGrow: 1, flexShrink: 1 }}>
+        <div className={styles['transactions-filter__cell']}>
           <FilterByQuery onChange={onQueryFilterChange} />
         </div>
 
@@ -46,7 +52,12 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
           onChange={onCategoryFilterChange}
         />
 
-        <div>Date</div>
+        <Row>
+          <FilterByDate
+            onStartDateChange={onStartDateChange}
+            onEndDateChange={onEndDateChange}
+          />
+        </Row>
       </div>
     </ContentCard>
   );

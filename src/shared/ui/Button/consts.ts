@@ -8,6 +8,7 @@ const buttonThemes = {
 const buttonSizes = {
   24: 24,
   40: 40,
+  '18x18': '18x18',
   '28x28': '28x28',
   '32x32': '32x32',
   '44-stretched': '44-stretched',

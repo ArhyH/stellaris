@@ -20,13 +20,17 @@ import { ID } from '@/shared/types';
 import { filterByCategory } from '@/features/FilterByCategory';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { filterBySearchQuery } from '@/features/FilterByQuery';
+import { filterByDateRange } from '@/features/FilterByDate/model/filterByDateRange';
 
 const TransactionsPage = () => {
   const [filters, setFilters] = useState({
     category: FinanceTransferTypes.all,
     financeType: DEFAULT_FILTER,
     searchQuery: '',
-    date: '',
+    date: {
+      start: '',
+      end: '',
+    },
   });
 
   const onCategoryFilterChange = (categoryId: ID) => {
@@ -51,6 +55,26 @@ const TransactionsPage = () => {
     }));
   };
 
+  const onStartDateChange = (value: string) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      date: {
+        start: value,
+        end: prevFilters.date.end,
+      },
+    }));
+  };
+
+  const onEndDateChange = (value: string) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      date: {
+        end: value,
+        start: prevFilters.date.start,
+      },
+    }));
+  };
+
   const currentTransactions = useMemo(() => {
     const transactionsByType = filterDataByFinanceTransferType(
       transactionsMock,
@@ -67,7 +91,12 @@ const TransactionsPage = () => {
       filters.searchQuery,
     );
 
-    return transactionsByQuery;
+    const transactionsByDate = filterByDateRange(
+      transactionsByQuery,
+      filters.date,
+    );
+
+    return transactionsByDate;
   }, [filters]);
 
   const currentCategories = useMemo(() => {
@@ -114,6 +143,8 @@ const TransactionsPage = () => {
         onTypeFilterChange={onFinanceTypeFilterChange}
         onCategoryFilterChange={onCategoryFilterChange}
         onQueryFilterChange={onQueryFilterChange}
+        onStartDateChange={onStartDateChange}
+        onEndDateChange={onEndDateChange}
       />
 
       <FullTransactionsList transactions={transactions} />

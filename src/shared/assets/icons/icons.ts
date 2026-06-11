@@ -7,6 +7,8 @@ import pen24 from './pen-24.svg';
 import trash24 from './trash-24.svg';
 import plus24 from './plus-24.svg';
 import search24 from './search-24.svg';
+import dateTrigger14 from './date-trigger-14.svg';
+import calendar24 from './calendar-24.svg';
 
 const icons = {
   wallet18: wallet18,
@@ -18,6 +20,8 @@ const icons = {
   trash24: trash24,
   plus24: plus24,
   search24: search24,
+  dateTrigger14: dateTrigger14,
+  calendar24: calendar24,
 } as const satisfies Record<string, UtilityTypes.SvgContent>;
 
 type IconName = keyof typeof icons;

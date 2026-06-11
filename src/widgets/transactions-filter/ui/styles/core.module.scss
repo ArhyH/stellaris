@@ -2,4 +2,9 @@
   display: flex;
   gap: var(--size-12);
   flex-wrap: wrap;
+
+  &__cell {
+    display: flex;
+    flex-grow: 1;
+  }
 }

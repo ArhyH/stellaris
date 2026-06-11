@@ -1,5 +1,5 @@
 import { icons } from '@/shared/assets';
-import { Input } from '@/shared/ui/Input';
+import { Input, inputProps } from '@/shared/ui/Input';
 
 type FilterByQueryProps = {
   onChange: (value: string) => void;
@@ -12,7 +12,9 @@ const FilterByQuery = (props: FilterByQueryProps) => {
     <Input
       onChange={onChange}
       placeholder="Search transactions..."
-      icon={icons.search24}
+      name="search"
+      type={inputProps.types.text}
+      leftIcon={icons.search24}
     />
   );
 };
