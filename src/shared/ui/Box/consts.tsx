@@ -3,6 +3,7 @@ const boxSizes = {
   32: '32',
   40: '40',
   48: '48',
+  56: '56',
   fitContent: 'fit-content',
   parent: 'parent',
 } as const;

@@ -1,0 +1,11 @@
+@use '../../../styles/helpers.scss' as *;
+
+.cell {
+  @include initializeCssVar(--cell-gap, unset);
+  @include initializeCssVar(--cell-grow, unset);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--cell-gap);
+  flex-grow: var(--cell-grow);
+}

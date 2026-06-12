@@ -7,6 +7,7 @@ const buttonThemes = {
 
 const buttonSizes = {
   24: 24,
+  36: 36,
   40: 40,
   '18x18': '18x18',
   '28x28': '28x28',
