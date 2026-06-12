@@ -11,7 +11,6 @@ import { ID } from '@/shared/types';
 import { Category } from '@/entity/category';
 import { FilterByQuery } from '@/features/FilterByQuery';
 import { FilterByDate } from '@/features/FilterByDate';
-import { Row } from '@/shared/ui/Row/Row';
 
 type TransactionsFilterProps = {
   onTypeFilterChange: (filter: FilterType) => void;
@@ -21,12 +20,14 @@ type TransactionsFilterProps = {
   onEndDateChange: (value: string) => void;
   categories: Category[];
   currentCategory: ID;
+  currentQuery: string;
 };
 
 const TransactionsFilter = (props: TransactionsFilterProps) => {
   const {
     categories,
     currentCategory,
+    currentQuery,
     onTypeFilterChange,
     onCategoryFilterChange,
     onQueryFilterChange,
@@ -38,26 +39,33 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
     <ContentCard padding={sizes.sizes[16]}>
       <div className={styles['transactions-filter']}>
         <div className={styles['transactions-filter__cell']}>
-          <FilterByQuery onChange={onQueryFilterChange} />
+          <FilterByQuery
+            onChange={onQueryFilterChange}
+            currentQuery={currentQuery}
+          />
         </div>
 
-        <FilterByType
-          filterMode={filterModes.transactions}
-          onChange={onTypeFilterChange}
-        />
+        <div className={styles['transactions-filter__cell']}>
+          <FilterByType
+            filterMode={filterModes.transactions}
+            onChange={onTypeFilterChange}
+          />
+        </div>
 
-        <FilterByCategory
-          categories={categories}
-          currentCategory={currentCategory}
-          onChange={onCategoryFilterChange}
-        />
+        <div className={styles['transactions-filter__cell']}>
+          <FilterByCategory
+            categories={categories}
+            currentCategory={currentCategory}
+            onChange={onCategoryFilterChange}
+          />
+        </div>
 
-        <Row>
+        <div className={styles['transactions-filter__cell']}>
           <FilterByDate
             onStartDateChange={onStartDateChange}
             onEndDateChange={onEndDateChange}
           />
-        </Row>
+        </div>
       </div>
     </ContentCard>
   );

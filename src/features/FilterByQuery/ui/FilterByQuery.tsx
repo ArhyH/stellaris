@@ -3,10 +3,11 @@ import { Input } from '@/shared/ui/Input';
 
 type FilterByQueryProps = {
   onChange: (value: string) => void;
+  currentQuery: string;
 };
 
 const FilterByQuery = (props: FilterByQueryProps) => {
-  const { onChange } = props;
+  const { onChange, currentQuery } = props;
 
   return (
     <Input
@@ -14,6 +15,7 @@ const FilterByQuery = (props: FilterByQueryProps) => {
       placeholder="Search transactions..."
       name="search"
       leftIcon={icons.search24}
+      value={currentQuery}
     />
   );
 };

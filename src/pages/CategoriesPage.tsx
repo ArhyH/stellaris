@@ -12,20 +12,11 @@ import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
 import { CategoriesFilter } from '@/widgets/categories-filter';
-import { useMemo, useState } from 'react';
-import {
-  DEFAULT_FILTER,
-  FilterType,
-  filterDataByFinanceTransferType,
-} from '@/features/FilterByFinanceTransferType';
+import { useCategoriesFilter } from './hooks';
 
 const CategoriesPage = () => {
-  const [currentFilter, setCurrentFilter] =
-    useState<FilterType>(DEFAULT_FILTER);
-
-  const currentCategories = useMemo(() => {
-    return filterDataByFinanceTransferType(categoriesMock, currentFilter);
-  }, [categoriesMock, currentFilter]);
+  const { setCurrentFilter, currentCategories } =
+    useCategoriesFilter(categoriesMock);
 
   const now = new Date();
   const categoriesSummary = getCategoriesSummary(categoriesMock);
@@ -34,8 +25,6 @@ const CategoriesPage = () => {
     currentCategories,
     currentTransactions,
   );
-
-  console.log(categories);
 
   return (
     <Page>

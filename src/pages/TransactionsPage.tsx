@@ -9,105 +9,25 @@ import {
 } from '@/widgets/transactions-list';
 import { categoriesMock } from '@/shared/mocks/categories';
 import { TransactionsFilter } from '@/widgets/transactions-filter';
-import { useMemo, useState } from 'react';
-import {
-  DEFAULT_FILTER,
-  FilterType,
-  filterDataByFinanceTransferType,
-  filterTypes,
-} from '@/features/FilterByFinanceTransferType';
-import { ID } from '@/shared/types';
-import { filterByCategory } from '@/features/FilterByCategory';
-import { FinanceTransferTypes } from '@/shared/consts';
-import { filterBySearchQuery } from '@/features/FilterByQuery';
-import { filterByDateRange } from '@/features/FilterByDate/model/filterByDateRange';
+import { useTransactionsFilter } from './hooks';
+import { getTransactionsPageCallbacks } from './heplers';
 
 const TransactionsPage = () => {
-  const [filters, setFilters] = useState({
-    category: FinanceTransferTypes.all,
-    financeType: DEFAULT_FILTER,
-    searchQuery: '',
-    date: {
-      start: '',
-      end: '',
-    },
-  });
+  const {
+    setFilters,
+    currentTransactions,
+    currentQuery,
+    currentCategories,
+    currerntCatefory,
+  } = useTransactionsFilter(categoriesMock, transactionsMock);
 
-  const onCategoryFilterChange = (categoryId: ID) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      category: categoryId,
-    }));
-  };
-
-  const onFinanceTypeFilterChange = (filterType: FilterType) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      category: FinanceTransferTypes.all,
-      financeType: filterType,
-    }));
-  };
-
-  const onQueryFilterChange = (value: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      searchQuery: value,
-    }));
-  };
-
-  const onStartDateChange = (value: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      date: {
-        start: value,
-        end: prevFilters.date.end,
-      },
-    }));
-  };
-
-  const onEndDateChange = (value: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      date: {
-        end: value,
-        start: prevFilters.date.start,
-      },
-    }));
-  };
-
-  const currentTransactions = useMemo(() => {
-    const transactionsByType = filterDataByFinanceTransferType(
-      transactionsMock,
-      filters.financeType,
-    );
-
-    const transactionsByCategory = filterByCategory(
-      transactionsByType,
-      filters.category,
-    );
-
-    const transactionsByQuery = filterBySearchQuery(
-      transactionsByCategory,
-      filters.searchQuery,
-    );
-
-    const transactionsByDate = filterByDateRange(
-      transactionsByQuery,
-      filters.date,
-    );
-
-    return transactionsByDate;
-  }, [filters]);
-
-  const currentCategories = useMemo(() => {
-    if (filters.financeType === filterTypes.all) {
-      return categoriesMock;
-    }
-
-    return [...categoriesMock].filter(
-      (category) => category.type === filters.financeType,
-    );
-  }, [filters.financeType]);
+  const {
+    onCategoryFilterChange,
+    onFinanceTypeFilterChange,
+    onQueryFilterChange,
+    onStartDateChange,
+    onEndDateChange,
+  } = getTransactionsPageCallbacks(setFilters);
 
   const transactions = mapTransactionsToRecentItems(
     currentTransactions,
@@ -139,7 +59,8 @@ const TransactionsPage = () => {
 
       <TransactionsFilter
         categories={currentCategories}
-        currentCategory={filters.category}
+        currentCategory={currerntCatefory}
+        currentQuery={currentQuery}
         onTypeFilterChange={onFinanceTypeFilterChange}
         onCategoryFilterChange={onCategoryFilterChange}
         onQueryFilterChange={onQueryFilterChange}
