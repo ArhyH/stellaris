@@ -23,9 +23,14 @@ const typographyTags = {
   span: 'span',
 } as const;
 
+const textAlign = {
+  end: 'end',
+};
+
 const typographyProps = {
   types: typographyTypes,
   tags: typographyTags,
+  aligns: textAlign,
 } as const;
 
 export { typographyProps };

@@ -1,0 +1,18 @@
+.popover {
+  position: relative;
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray-2);
+    color: var(--white);
+    border-radius: var(--size-14);
+    padding: var(--size-16);
+    z-index: 3;
+  }
+
+  &__trigger {
+    display: flex;
+  }
+}

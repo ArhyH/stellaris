@@ -1,0 +1,32 @@
+.input {
+  border: none;
+  background-color: var(--transparent);
+  color: var(--white);
+  font-size: var(--size-16);
+  width: var(--parent);
+  outline: none;
+
+  &::placeholder {
+    color: var(--lightgray-2);
+  }
+
+  &[type='date']::-webkit-calendar-picker-indicator {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--size-8);
+    color: var(--lightgray-2);
+    padding: var(--size-8) var(--size-12);
+    background-color: var(--gray-1);
+    border-radius: var(--size-14);
+    width: var(--parent);
+    z-index: 2;
+    min-width: 120px;
+  }
+}

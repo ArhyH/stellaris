@@ -11,16 +11,21 @@ import { Page, PageCell } from './ui';
 import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
-
-const now = new Date();
-const categoriesSummary = getCategoriesSummary(categoriesMock);
-const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
-const categories = mapCategoriesToCategoryItems(
-  categoriesMock,
-  currentTransactions,
-);
+import { CategoriesFilter } from '@/widgets/categories-filter';
+import { useCategoriesFilter } from './hooks';
 
 const CategoriesPage = () => {
+  const { setCurrentFilter, currentCategories } =
+    useCategoriesFilter(categoriesMock);
+
+  const now = new Date();
+  const categoriesSummary = getCategoriesSummary(categoriesMock);
+  const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
+  const categories = mapCategoriesToCategoryItems(
+    currentCategories,
+    currentTransactions,
+  );
+
   return (
     <Page>
       <Row justify={rowProps.justifies.spaceBetween}>
@@ -60,6 +65,8 @@ const CategoriesPage = () => {
       </Row>
 
       <CategoriesSummary summaries={categoriesSummary} />
+
+      <CategoriesFilter onFilterChange={setCurrentFilter} />
 
       <Categories categories={categories} />
     </Page>

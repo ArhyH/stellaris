@@ -13,3 +13,5 @@ export {
 } from './analytics';
 
 export { getCategoriesSummary, CategoriesSummary } from './categories';
+
+export { getTransactionsSummary, TransactionsSummary } from './transactions';

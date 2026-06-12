@@ -7,6 +7,7 @@ import {
   ID,
   LABEL,
 } from '@/shared/types';
+import { sortDirections, sortFields } from './consts';
 
 interface RecentTransaction {
   id: ID;
@@ -19,4 +20,12 @@ interface RecentTransaction {
   categoryName: LABEL;
 }
 
-export type { RecentTransaction };
+type SortField = keyof typeof sortFields;
+type SortDirection = keyof typeof sortDirections;
+
+type SortConfig = {
+  field: SortField;
+  direction: SortDirection;
+};
+
+export type { RecentTransaction, SortField, SortDirection, SortConfig };

@@ -1,0 +1,11 @@
+.segmented-control {
+  &--size {
+    &--36 {
+      height: var(--size-36);
+    }
+
+    &--44 {
+      height: var(--size-44);
+    }
+  }
+}

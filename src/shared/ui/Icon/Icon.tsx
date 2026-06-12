@@ -8,10 +8,11 @@ type IconProps = {
   width?: ValueOf<typeof sizes.sizes>;
   height?: ValueOf<typeof sizes.sizes>;
   color?: ColorToken;
+  onClick?: () => void;
 };
 
 const Icon = (props: IconProps) => {
-  const { icon, color, width, height } = props;
+  const { icon, color, width, height, onClick } = props;
 
   let defaultWidth;
   let defaultHeight;
@@ -36,6 +37,7 @@ const Icon = (props: IconProps) => {
         ...(height && { ...getCssVarOrNothing('--default-height', height) }),
         ...(color && { ...getCssVarOrNothing('color', color) }),
       }}
+      onClick={onClick}
     >
       <use href={`#${icon.id}`} />
     </svg>

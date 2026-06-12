@@ -1,5 +1,6 @@
 const boxSizes = {
   30: '30',
+  32: '32',
   40: '40',
   48: '48',
   fitContent: 'fit-content',

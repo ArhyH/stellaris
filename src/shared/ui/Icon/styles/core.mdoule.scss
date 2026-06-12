@@ -5,6 +5,8 @@
   @include initializeCssVar(--default-height);
 
   display: block;
+  flex-shrink: 0;
   width: var(--default-width);
   height: var(--default-height);
+  pointer-events: none;
 }

@@ -12,9 +12,17 @@ const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar__title}>
-        <Box bgColor={colors.box['green-1']} size={boxProps.sizes[30]}>
+        <Box
+          bgColor={colors.box['green-1']}
+          size={boxProps.sizes[32]}
+          radius={sizes.sizes[14]}
+        >
           <BoxWrapper hasAlign>
-            <span>JD</span>
+            <Icon
+              icon={icons.wallet18}
+              width={sizes.sizes[16]}
+              height={sizes.sizes[16]}
+            />
           </BoxWrapper>
         </Box>
         Fintrack
