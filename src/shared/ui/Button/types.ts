@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Ref } from 'react';
 import { ValueOf } from 'type-fest';
 import { buttonProps } from './consts';
 
@@ -10,6 +10,7 @@ type ButtonProps = {
   onClick?: () => void;
   isActive?: boolean;
   isRotated?: boolean;
+  ref?: Ref<HTMLButtonElement>;
 };
 
 export type { ButtonProps };

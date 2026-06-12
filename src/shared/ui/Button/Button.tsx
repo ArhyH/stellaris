@@ -11,6 +11,7 @@ const Button = (props: ButtonProps) => {
     isActive,
     isRotated,
     onClick,
+    ref,
     ...rest
   } = props;
 
@@ -28,6 +29,7 @@ const Button = (props: ButtonProps) => {
       type="button"
       className={componentClassNames}
       onClick={onClick}
+      ref={ref}
     >
       {children}
     </button>

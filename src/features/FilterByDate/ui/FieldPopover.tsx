@@ -1,4 +1,4 @@
-import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/Popover';
+import { Popover, PopoverContent } from '@/shared/ui/Popover';
 import { DatePicker } from './DatePicker';
 import { Input } from '@/shared/ui/Input';
 import { Button, buttonProps } from '@/shared/ui/Button';
@@ -25,27 +25,25 @@ const FieldPopover = (props: FieldPopoverProps) => {
 
   return (
     <Popover>
-      <PopoverTrigger>
-        <Input
-          readOnly
-          placeholder="дд.мм.гггг"
-          name="end-date"
-          value={formatted}
-          rightElement={
-            <Button
-              size={buttonProps.sizes['18x18']}
-              theme={buttonProps.themes.transparent}
-            >
-              <Icon
-                icon={icons.calendar24}
-                width={sizes.sizes[18]}
-                height={sizes.sizes[18]}
-                color={colors.base.white}
-              />
-            </Button>
-          }
-        />
-      </PopoverTrigger>
+      <Input
+        readOnly
+        placeholder="дд.мм.гггг"
+        name="end-date"
+        value={formatted}
+        rightElement={
+          <Button
+            size={buttonProps.sizes['18x18']}
+            theme={buttonProps.themes.transparent}
+          >
+            <Icon
+              icon={icons.calendar24}
+              width={sizes.sizes[18]}
+              height={sizes.sizes[18]}
+              color={colors.base.white}
+            />
+          </Button>
+        }
+      />
 
       <PopoverContent>
         <DatePicker value={value} onSelect={handleDateChange} />
