@@ -34,9 +34,7 @@ const DashboardCard = (props: DashboardCardProps) => {
         </Typography>
         <Box
           bgColor={
-            categoryKey === 'expense'
-              ? colors.box['red-1-op']
-              : colors.box['green-1-op']
+            categoryKey === 'expense' ? colors.label.red : colors.label.green
           }
           padding={sizes.sizes[6]}
           radius={sizes.radiuses[12]}

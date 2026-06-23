@@ -47,9 +47,15 @@ const Transaction = (props: TransactionProps) => {
               : colors.categoryOp['category-blue-1']
           }
           size={boxProps.sizes[32]}
+          radius={sizes.radiuses[14]}
         >
           <BoxWrapper hasAlign>
-            <Icon icon={icons[categoryIcon]} />
+            <Icon
+              icon={icons[categoryIcon]}
+              color={categoryColor}
+              width={sizes.sizes[20]}
+              height={sizes.sizes[20]}
+            />
           </BoxWrapper>
         </Box>
         <div>

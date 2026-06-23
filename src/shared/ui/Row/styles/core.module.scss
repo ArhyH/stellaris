@@ -2,9 +2,12 @@
 
 .row {
   @include initializeCssVar(--row-gap, var(--size-20));
+  @include initializeCssVar(--row-padding-vertical, var(--size-0));
 
   display: flex;
   gap: var(--row-gap);
+  padding-top: var(--row-padding-vertical);
+  padding-bottom: var(--row-padding-vertical);
   align-items: center;
 
   &--justify {

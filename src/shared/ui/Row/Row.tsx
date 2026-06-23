@@ -11,17 +11,21 @@ type RowProps = {
   children: ReactNode;
   justify?: ValueOf<typeof rowProps.justifies>;
   gap?: ValueOf<typeof sizes.sizes>;
+  paddingVertical?: ValueOf<typeof sizes.sizes>;
 };
 
 const Row = (props: RowProps) => {
-  const { children, justify, gap } = props;
+  const { children, justify, gap, paddingVertical } = props;
 
   const componentClassNames = classnames(styles.row, {
     [styles[`row--justify--${justify}`]]: justify,
   });
 
   return (
-    <div className={componentClassNames} style={{ ...getStyles({ gap }) }}>
+    <div
+      className={componentClassNames}
+      style={{ ...getStyles({ gap, paddingVertical }) }}
+    >
       {children}
     </div>
   );

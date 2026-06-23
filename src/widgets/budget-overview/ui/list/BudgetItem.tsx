@@ -45,10 +45,14 @@ const BudgetItem = (props: BudgetItemProps) => {
                 : colors.categoryOp['category-blue-1']
             }
             size={boxProps.sizes[40]}
+            radius={sizes.radiuses[12]}
           >
             <BoxWrapper hasAlign>
               <Icon
                 icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
+                color={categoryColor}
+                width={sizes.sizes[24]}
+                height={sizes.sizes[24]}
               />
             </BoxWrapper>
           </Box>

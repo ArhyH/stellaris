@@ -1,0 +1,13 @@
+.separator {
+  &--type {
+    &--vertical {
+      height: var(--parent);
+      width: var(--size-1);
+    }
+
+    &--horizontal {
+      width: var(--parent);
+      height: var(--size-1);
+    }
+  }
+}

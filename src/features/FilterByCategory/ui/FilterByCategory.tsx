@@ -13,7 +13,15 @@ const FilterByCategory = (props: FilterByCategoryProps) => {
   const { onChange, categories, currentCategory } = props;
   const data = mapCategoryToSelectItems(categories);
 
-  return <Select options={data} value={currentCategory} onChange={onChange} />;
+  return (
+    <Select
+      options={data}
+      value={currentCategory}
+      onChange={onChange}
+      hasAllOption
+      name="category-filter"
+    />
+  );
 };
 
 export { FilterByCategory };
