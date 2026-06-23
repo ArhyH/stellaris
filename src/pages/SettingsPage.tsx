@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { colors, sizes } from '@/shared/styles';
 import { Page, PageCell } from './ui';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Preferences, Profile } from '@/widgets/settings';
+import { getSettingsPageCallbacks } from './heplers/getSettingsPageCallbacks';
 
 const user = {
   name: 'John Doe',
@@ -10,6 +12,27 @@ const user = {
 };
 
 const SettingsPage = () => {
+  const [settings, setSettings] = useState({
+    currency: '$ USD — US Dollar',
+    language: 'English',
+    dateFormat: 'Apr 09, 2026',
+    weekStart: 'Monday',
+  });
+
+  // const [user, setUser] = useState({
+  //   name: 'John Doe',
+  //   email: 'example.mail@.com',
+  //   initials: 'JD',
+  // });
+
+  const preferencesCallbacks = new Map(
+    getSettingsPageCallbacks(setSettings).map((item) => [item.key, item.cb]),
+  );
+
+  const selectedPreferences = new Map(
+    Object.entries(settings).map(([key, value]) => [key, value]),
+  );
+
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -29,8 +52,12 @@ const SettingsPage = () => {
         </Typography>
       </PageCell>
 
-      <Profile user={user} />
-      <Preferences />
+      <Profile user={user} onClick={() => null} />
+
+      <Preferences
+        preferencesCallbacks={preferencesCallbacks}
+        selectedPreferences={selectedPreferences}
+      />
     </Page>
   );
 };

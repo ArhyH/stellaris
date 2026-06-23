@@ -12,6 +12,7 @@ const grayColors = {
   3: 'gray-3',
   4: 'gray-4',
   5: 'gray-5',
+  6: 'gray-6',
 } as const;
 
 const lightgrayColors = {
@@ -120,6 +121,7 @@ const boxColors = {
   'green-1-op': 'green-1-op',
   'red-1-op': 'red-1-op',
   'gray-4': grayColors[4],
+  'button-1': 'button-bg-1',
   transparent: 'transparent',
 } as const;
 

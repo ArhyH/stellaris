@@ -7,9 +7,21 @@ const getGap = ({ gap }: Pick<RowProps, 'gap'>) => {
   }
 };
 
-const getStyles = ({ gap }: Pick<RowProps, 'gap'>) => {
+const getPaddingVertical = ({
+  paddingVertical,
+}: Pick<RowProps, 'paddingVertical'>) => {
+  if (paddingVertical) {
+    return getCssVarOrNothing('--row-padding-vertical', paddingVertical);
+  }
+};
+
+const getStyles = ({
+  gap,
+  paddingVertical,
+}: Pick<RowProps, 'gap' | 'paddingVertical'>) => {
   return {
     ...getGap({ gap }),
+    ...getPaddingVertical({ paddingVertical }),
   };
 };
 

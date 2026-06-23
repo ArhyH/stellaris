@@ -1,5 +1,6 @@
 const sizeValues = {
   'size-0': 'size-0',
+  'size-1': 'size-1',
   'size-2': 'size-2',
   'size-4': 'size-4',
   'size-6': 'size-6',
@@ -27,6 +28,7 @@ const sizeValues = {
 
 const sizeList = {
   0: sizeValues['size-0'],
+  1: sizeValues['size-1'],
   2: sizeValues['size-2'],
   4: sizeValues['size-4'],
   6: sizeValues['size-6'],
@@ -53,6 +55,7 @@ const sizeList = {
 
 const radiusList = {
   12: sizeValues['size-12'],
+  14: sizeValues['size-14'],
   16: sizeValues['size-16'],
   half: sizeValues.half,
 };

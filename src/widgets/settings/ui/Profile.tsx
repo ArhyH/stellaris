@@ -9,10 +9,11 @@ import { Cell, cellProps } from '@/shared/ui/Cell';
 
 type ProfileProps = {
   user: User;
+  onClick: () => void;
 };
 
 const Profile = (props: ProfileProps) => {
-  const { user } = props;
+  const { user, onClick } = props;
   const { initials, name, email } = user;
 
   return (
@@ -46,6 +47,7 @@ const Profile = (props: ProfileProps) => {
         <Button
           size={buttonProps.sizes[36]}
           theme={buttonProps.themes.lightgray}
+          onClick={onClick}
         >
           <Typography type={typographyProps.types.text14}>
             EditProfile

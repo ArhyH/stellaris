@@ -1,7 +1,14 @@
+import { ID } from '@/shared/types';
+
 interface User {
   name: string;
   email: string;
   initials: string;
 }
 
-export type { User };
+interface Setting {
+  id: ID;
+  value: string;
+}
+
+export type { User, Setting };
