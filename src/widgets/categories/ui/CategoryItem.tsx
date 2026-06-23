@@ -28,9 +28,13 @@ const CategoryItem = (props: CategoryItemProps) => {
             : colors.categoryOp['category-blue-1']
         }
         size={boxProps.sizes[40]}
+        radius={sizes.radiuses[12]}
       >
         <BoxWrapper hasAlign>
-          <Icon icon={categoryIcon ? icons[categoryIcon] : icons.wallet18} />
+          <Icon
+            icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
+            color={categoryColor}
+          />
         </BoxWrapper>
       </Box>
 

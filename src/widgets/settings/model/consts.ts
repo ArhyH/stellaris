@@ -4,7 +4,7 @@ const SETTINGS_CONFIG = [
   {
     key: 'currency',
     name: 'Currency',
-    icon: icons.arrowDown14,
+    icon: icons.currency24,
     description: 'Your primary currency',
     settingVariants: [
       {
@@ -36,7 +36,7 @@ const SETTINGS_CONFIG = [
   {
     key: 'language',
     name: 'Language',
-    icon: icons.arrowDown14,
+    icon: icons.planet24,
     description: 'Display language',
     settingVariants: [
       {
@@ -52,7 +52,7 @@ const SETTINGS_CONFIG = [
   {
     key: 'dateFormat',
     name: 'Date Format',
-    icon: icons.arrowDown14,
+    icon: icons.calendar24,
     description: 'How dates are displayed',
     settingVariants: [
       {
@@ -76,7 +76,7 @@ const SETTINGS_CONFIG = [
   {
     key: 'weekStart',
     name: 'Start of Week',
-    icon: icons.arrowDown14,
+    icon: icons.clock24,
     description: 'First day of the week',
     settingVariants: [
       {

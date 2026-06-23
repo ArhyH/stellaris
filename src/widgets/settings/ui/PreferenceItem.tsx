@@ -41,7 +41,12 @@ const PreferenceItem = (props: PreferenceItemProps) => {
           radius={sizes.radiuses[14]}
         >
           <BoxWrapper hasAlign>
-            <Icon icon={icon} color={colors.lightgray[3]} />
+            <Icon
+              icon={icon}
+              color={colors.lightgray[3]}
+              width={sizes.sizes[18]}
+              height={sizes.sizes[18]}
+            />
           </BoxWrapper>
         </Box>
 

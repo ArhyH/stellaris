@@ -39,6 +39,7 @@ const TransactionCard = (props: TransactionCardProps) => {
             budgetKey === 'expense' ? colors.label.red : colors.label.green
           }
           size={boxProps.sizes[40]}
+          radius={sizes.radiuses[12]}
         >
           <BoxWrapper hasAlign>
             <Icon

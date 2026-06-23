@@ -50,6 +50,7 @@ const TopSpending = (props: TopSpendingProps) => {
           icon={icons.wallet18}
           width={sizes.sizes[36]}
           height={sizes.sizes[36]}
+          color={categoryColor}
         />
 
         <Typography

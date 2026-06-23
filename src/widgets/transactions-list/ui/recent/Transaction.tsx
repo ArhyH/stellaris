@@ -33,12 +33,17 @@ const Transaction = (props: TransactionProps) => {
     <li className={styles['recent-transaction']}>
       <div className={styles['recent-transaction__cell']}>
         <Box
-          size={boxProps.sizes[30]}
+          size={boxProps.sizes[40]}
           radius={sizes.radiuses[12]}
           {...(categoryColor && { bgColor: colors.categoryOp[categoryColor] })}
         >
           <BoxWrapper hasAlign>
-            <Icon icon={icons[categoryIcon]} />
+            <Icon
+              icon={icons[categoryIcon]}
+              color={categoryColor}
+              width={sizes.sizes[24]}
+              height={sizes.sizes[24]}
+            />
           </BoxWrapper>
         </Box>
       </div>

@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import styles from './style.module.scss';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { colors } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { formatAmount } from '@/shared/helpers/formatAmount';
 import { Progress } from '@/shared/ui/Progress';
 import { Icon } from '@/shared/ui/Icon';
@@ -18,6 +18,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
   const {
     categoryName,
     categoryIcon,
+    categoryColor,
     spent,
     limit,
     status,
@@ -35,7 +36,12 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
             styles['gap-8'],
           )}
         >
-          <Icon icon={categoryIcon ? icons[categoryIcon] : icons.wallet18} />
+          <Icon
+            icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
+            color={categoryColor}
+            width={sizes.sizes[16]}
+            height={sizes.sizes[16]}
+          />
           <Typography
             type={typographyProps.types.text14}
             color={colors.base.white}
