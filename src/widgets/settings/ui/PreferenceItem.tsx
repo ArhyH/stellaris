@@ -19,8 +19,8 @@ type PreferenceItemProps = {
 const mapSettingsToSelectOptions = (settings: Setting[]) => {
   return settings.map((item) => {
     return {
-      value: item.id,
-      description: item.value,
+      value: item,
+      description: item,
     };
   });
 };
