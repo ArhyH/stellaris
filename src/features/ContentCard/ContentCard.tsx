@@ -7,16 +7,18 @@ type ContentCardProps = {
   children: ReactNode;
   grow?: keyof typeof boxProps.grow;
   padding?: ValueOf<typeof sizes.sizes>;
+  isStretch?: boolean;
 };
 
 const ContentCard = (props: ContentCardProps) => {
-  const { children, grow, padding } = props;
+  const { children, grow, padding, isStretch } = props;
 
   return (
     <Box
       bgColor={colors.box['gray-4']}
       grow={grow ? grow : boxProps.grow[1]}
       padding={padding ? padding : sizes.sizes[24]}
+      isStretch={isStretch}
     >
       {children}
     </Box>

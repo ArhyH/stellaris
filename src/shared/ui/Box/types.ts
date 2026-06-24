@@ -16,6 +16,7 @@ type BoxProps = {
   gap?: ValueOf<typeof sizes.sizes>;
   hasShadow?: boolean;
   hasAlign?: boolean;
+  isStretch?: boolean;
   tag?: keyof typeof boxProps.tags;
 };
 

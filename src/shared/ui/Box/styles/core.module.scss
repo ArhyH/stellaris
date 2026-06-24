@@ -17,7 +17,10 @@
   padding: var(--box-padding);
   gap: var(--box-gap);
   box-sizing: border-box;
-  align-self: stretch;
+
+  &.is-stretch {
+    align-self: stretch;
+  }
 
   &.has-align {
     align-items: center;

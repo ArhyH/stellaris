@@ -23,7 +23,7 @@ const PieChartUi = (props: PieChartProps) => {
   const { data, date, type } = props;
 
   return (
-    <ContentCard grow={contentCardProps.grow[2]}>
+    <ContentCard grow={contentCardProps.grow[2]} isStretch>
       <ContentCardHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.title16}

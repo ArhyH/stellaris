@@ -8,6 +8,7 @@ const Button = (props: ButtonProps) => {
     theme,
     size,
     justify,
+    radius,
     isActive,
     isRotated,
     onClick,
@@ -18,6 +19,7 @@ const Button = (props: ButtonProps) => {
   const componentClassNames = classnames(styles.button, {
     [styles[`button--theme--${theme}`]]: theme,
     [styles[`button--size--${size}`]]: size,
+    [styles[`button--radius--${radius}`]]: radius,
     [styles[`button--justify--${justify}`]]: justify,
     [styles['is-active']]: isActive,
     [styles['is-rotated']]: isRotated,

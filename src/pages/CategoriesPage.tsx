@@ -13,6 +13,7 @@ import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
 import { CategoriesFilter } from '@/widgets/categories-filter';
 import { useCategoriesFilter } from './hooks';
+import { AddCategoryModal } from '@/features/AddCategory';
 
 const CategoriesPage = () => {
   const { setCurrentFilter, currentCategories } =
@@ -48,19 +49,7 @@ const CategoriesPage = () => {
         </PageCell>
 
         <PageCell>
-          <Button theme={buttonProps.themes.green} size={buttonProps.sizes[40]}>
-            <Icon
-              icon={icons.plus24}
-              width={sizes.sizes[16]}
-              height={sizes.sizes[16]}
-            />
-            <Typography
-              tag={typographyProps.tags.h3}
-              type={typographyProps.types.title14}
-            >
-              Add Category
-            </Typography>
-          </Button>
+          <AddCategoryModal />
         </PageCell>
       </Row>
 

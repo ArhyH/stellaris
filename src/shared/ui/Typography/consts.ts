@@ -25,12 +25,17 @@ const typographyTags = {
 
 const textAlign = {
   end: 'end',
-};
+} as const;
+
+const textTransform = {
+  uppercase: 'uppercase',
+} as const;
 
 const typographyProps = {
   types: typographyTypes,
   tags: typographyTags,
   aligns: textAlign,
+  transforms: textTransform,
 } as const;
 
 export { typographyProps };

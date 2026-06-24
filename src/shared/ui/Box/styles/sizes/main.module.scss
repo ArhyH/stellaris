@@ -30,6 +30,11 @@
       height: var(--size-56);
     }
 
+    &--64 {
+      width: var(--size-64);
+      height: var(--size-64);
+    }
+
     &--fit-content {
       width: fit-content;
       --box-padding: var(--size-24);

@@ -5,6 +5,10 @@ const buttonThemes = {
   transparent: 'transparent',
 };
 
+const buttonRadiuses = {
+  14: 14,
+};
+
 const buttonSizes = {
   24: 24,
   36: 36,
@@ -24,6 +28,7 @@ const buttonProps = {
   sizes: buttonSizes,
   themes: buttonThemes,
   justifies: buttonJustifies,
+  radiuses: buttonRadiuses,
 };
 
 export { buttonProps };

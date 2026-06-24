@@ -6,6 +6,7 @@ type ButtonProps = {
   children: ReactNode;
   theme: ValueOf<typeof buttonProps.themes>;
   size: ValueOf<typeof buttonProps.sizes>;
+  radius?: ValueOf<typeof buttonProps.radiuses>;
   justify?: ValueOf<typeof buttonProps.justifies>;
   onClick?: () => void;
   isActive?: boolean;
