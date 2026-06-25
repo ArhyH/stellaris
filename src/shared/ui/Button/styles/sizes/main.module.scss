@@ -39,5 +39,10 @@
       width: var(--parent);
       height: var(--size-44);
     }
+
+    &--48-stretched {
+      width: var(--parent);
+      height: var(--size-48);
+    }
   }
 }

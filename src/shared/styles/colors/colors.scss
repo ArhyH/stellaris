@@ -179,7 +179,14 @@
   --violet-2-op: rgb(var(--violet-2-rgb) / var(--opacity-7));
   --violet-3-op: rgb(var(--violet-3-rgb) / var(--opacity-7));
 
+  --green-1-op: rgb(var(--green-1-rgb) / var(--opacity-7));
+  --green-2-op: rgb(var(--green-2-rgb) / var(--opacity-7));
   --green-3-op: rgb(var(--green-3-rgb) / var(--opacity-7));
+
+  --gray-1-op: rgb(var(--gray-1-rgb) / var(--opacity-7));
+
+  --black-1-op: rgb(var(--black-rgb) / var(--opacity-7));
+  --white-1-op: rgb(var(--white-rgb) / var(--opacity-7));
 
   /* CATEGORIES (light) */
 
@@ -204,7 +211,12 @@
   --category-violet-1: var(--violet-1);
   --category-violet-2: var(--violet-2);
   --category-violet-3: var(--violet-3);
+  --category-green-1: var(--green-1);
+  --category-green-2: var(--green-2);
   --category-green-3: var(--green-3);
+  --category-gray-1: var(--gray-1);
+  --category-black-1: var(--black);
+  --category-white-1: var(--white);
 
   --category-op-lightblue-1: var(--lightblue-1-op-1);
   --category-op-lightblue-2: var(--lightblue-2-op);
@@ -227,5 +239,10 @@
   --category-op-violet-1: var(--violet-1-op);
   --category-op-violet-2: var(--violet-2-op);
   --category-op-violet-3: var(--violet-3-op);
+  --category-op-green-1: var(--green-1-op);
+  --category-op-green-2: var(--green-2-op);
   --category-op-green-3: var(--green-3-op);
+  --category-op-gray-1: var(--gray-1-op);
+  --category-op-black-1: var(--black-1-op);
+  --category-op-white-1: var(--white-1-op);
 }

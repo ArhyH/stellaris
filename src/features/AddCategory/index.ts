@@ -1,1 +1,1 @@
-export { AddCategory } from './AddCategory';
+export { AddCategory } from './ui/AddCategory';

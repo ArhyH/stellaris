@@ -1,5 +1,6 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
 import { BoxHeaderProps, BoxProps } from './types';
+import { BoxScrollWrapperProps } from './BoxScrollWrapper';
 
 const getBGColor = ({ bgColor }: Pick<BoxProps, 'bgColor'>) => {
   if (bgColor) {
@@ -41,6 +42,14 @@ const getHeaderPadding = ({
   }
 };
 
+const getWrapperMaxHeight = ({
+  maxHeight,
+}: Pick<BoxScrollWrapperProps, 'maxHeight'>) => {
+  if (maxHeight) {
+    return getCssVarOrNothing('--box-scroll-wrapper-max-height', maxHeight);
+  }
+};
+
 const getStyles = ({
   bgColor,
   radius,
@@ -65,4 +74,12 @@ const getHeaderStyles = ({
   };
 };
 
-export { getStyles, getHeaderStyles };
+const getBoxWrapperStyles = ({
+  maxHeight,
+}: Pick<BoxScrollWrapperProps, 'maxHeight'>) => {
+  return {
+    ...getWrapperMaxHeight({ maxHeight }),
+  };
+};
+
+export { getStyles, getHeaderStyles, getBoxWrapperStyles };

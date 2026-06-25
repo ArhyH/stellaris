@@ -1,7 +1,7 @@
 .button {
   &--theme {
     &--transparent {
-      background-color: var(--transparent);
+      --button-background-color: var(--transparent);
       color: var(--lightgray-1);
 
       @media (hover: hover) {

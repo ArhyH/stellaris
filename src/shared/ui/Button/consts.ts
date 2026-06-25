@@ -1,3 +1,5 @@
+import { sizes } from '@/shared/styles';
+
 const buttonThemes = {
   green: 'green',
   lightgray: 'lightgray',
@@ -8,6 +10,7 @@ const buttonThemes = {
 
 const buttonRadiuses = {
   14: 14,
+  hafl: sizes.sizes.half,
 } as const;
 
 const buttonSizes = {
@@ -19,6 +22,7 @@ const buttonSizes = {
   '32x32': '32x32',
   '36x36': '36x36',
   '44-stretched': '44-stretched',
+  '48-stretched': '48-stretched',
 } as const;
 
 const buttonJustifies = {

@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import styles from './style.module.scss';
 import { ButtonProps } from './types';
+import { getStyles } from './helpers';
 
 const Button = (props: ButtonProps) => {
   const {
@@ -11,7 +12,9 @@ const Button = (props: ButtonProps) => {
     radius,
     isActive,
     isRotated,
+    isDisabled,
     onClick,
+    bgColor,
     ref,
     ...rest
   } = props;
@@ -22,6 +25,7 @@ const Button = (props: ButtonProps) => {
     [styles[`button--radius--${radius}`]]: radius,
     [styles[`button--justify--${justify}`]]: justify,
     [styles['is-active']]: isActive,
+    [styles['is-disabled']]: isDisabled,
     [styles['is-rotated']]: isRotated,
   });
 
@@ -32,6 +36,8 @@ const Button = (props: ButtonProps) => {
       className={componentClassNames}
       onClick={onClick}
       ref={ref}
+      disabled={isDisabled}
+      style={{ ...getStyles({ bgColor }) }}
     >
       {children}
     </button>

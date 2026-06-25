@@ -13,6 +13,7 @@ import currency24 from './currency-24.svg';
 import planet24 from './planet-24.svg';
 import clock24 from './clock-24.svg';
 import cross14 from './cross-14.svg';
+import check12 from './check-12.svg';
 
 import house24 from './house-24.svg';
 import car24 from './car-24.svg';
@@ -94,6 +95,7 @@ const icons = {
   planet24,
   clock24,
   cross14,
+  check12,
   ...categoriesIcons,
 } as const satisfies Record<string, UtilityTypes.SvgContent>;
 

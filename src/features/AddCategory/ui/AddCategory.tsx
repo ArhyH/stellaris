@@ -8,9 +8,9 @@ import {
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { colors, sizes } from '@/shared/styles';
+import { CategoryColor, colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { Box, BoxScrollWrapper, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
 import { Category } from '@/entity/category';
 import { IconName, categoriesIcons } from '@/shared/assets/icons/icons';
 import { Input } from '@/shared/ui/Input';
@@ -21,7 +21,8 @@ import {
   segmentedControlProps,
 } from '@/shared/ui/SegmentedControl';
 import { FinanceTransferType } from '@/shared/types';
-import { Cell } from '@/shared/ui/Cell';
+import { FormCell } from './FormCell';
+import { Row } from '@/shared/ui/Row';
 
 type AddCategoryProps = {
   onSubmit: () => void;
@@ -33,7 +34,7 @@ const AddCategory = (props: AddCategoryProps) => {
   const createInitialCategory = (): Category => ({
     name: '',
     icon: 'house24',
-    iconColor: 'category-blue-1',
+    iconColor: 'category-green-1',
     color: 'category-blue-1',
     type: FinanceTransferTypes.expense,
     id: Date.now().toString(),
@@ -66,10 +67,30 @@ const AddCategory = (props: AddCategoryProps) => {
     }));
   };
 
+  const onColorChange = (value: CategoryColor) => {
+    setCategory((prevCategory) => ({
+      ...prevCategory,
+      color: value,
+    }));
+  };
+
+  const onIconColorCHange = (value: CategoryColor) => {
+    setCategory((prevCategory) => ({
+      ...prevCategory,
+      iconColor: value,
+    }));
+  };
+
   const TYPES = [
     { label: 'Expense', value: FinanceTransferTypes.expense },
     { label: 'Income', value: FinanceTransferTypes.income },
   ];
+
+  const isDarkColor = (color: CategoryColor) =>
+    color === colors.category['category-gray-1'] ||
+    color === colors.category['category-black-1']
+      ? true
+      : false;
 
   console.log(category);
 
@@ -122,9 +143,9 @@ const AddCategory = (props: AddCategoryProps) => {
             <BoxWrapper hasAlign>
               <Icon
                 icon={icons[category.icon]}
-                color={colors.category[category.color]}
-                width={sizes.sizes[32]}
-                height={sizes.sizes[32]}
+                color={colors.category[category.iconColor]}
+                width={sizes.sizes[38]}
+                height={sizes.sizes[38]}
               />
             </BoxWrapper>
           </Box>
@@ -137,15 +158,7 @@ const AddCategory = (props: AddCategoryProps) => {
             label="Category Name"
           />
 
-          <Cell width={sizes.sizes.parent} gap={sizes.sizes[6]}>
-            <Typography
-              type={typographyProps.types.text12}
-              color={colors.lightgray[2]}
-              textTransform={typographyProps.transforms.uppercase}
-            >
-              Type
-            </Typography>
-
+          <FormCell title="Type">
             <SegmentedControl
               size={segmentedControlProps.sizes[44]}
               theme={segmentedControlProps.themes.switch}
@@ -156,33 +169,84 @@ const AddCategory = (props: AddCategoryProps) => {
                 onTypeChange(value as FinanceTransferType);
               }}
             />
-          </Cell>
+          </FormCell>
 
-          <Cell width={sizes.sizes.parent} gap={sizes.sizes[6]}>
+          <FormCell title="Icon" hasScroll maxHeight={sizes.sizes[150]}>
+            {Object.entries(categoriesIcons).map(([key, value]) => (
+              <Button
+                size={buttonProps.sizes['36x36']}
+                theme={buttonProps.themes.transparentGray}
+                isActive={category.icon === key}
+                onClick={() => onIconChange(key as IconName)}
+                key={key}
+              >
+                <Icon icon={value} />
+              </Button>
+            ))}
+          </FormCell>
+
+          <Row gap={sizes.sizes[12]}>
+            <FormCell title="color" hasScroll>
+              {Object.entries(colors.category).map(([key, value]) => (
+                <Button
+                  size={buttonProps.sizes['28x28']}
+                  radius={sizes.radiuses.half}
+                  isActive={category.icon === key}
+                  onClick={() => onColorChange(key as CategoryColor)}
+                  bgColor={value}
+                  key={key}
+                >
+                  {key === category.color && (
+                    <Icon
+                      icon={icons.check12}
+                      color={
+                        isDarkColor(key) ? colors.base.white : colors.base.black
+                      }
+                      width={sizes.sizes[14]}
+                      height={sizes.sizes[14]}
+                    />
+                  )}
+                </Button>
+              ))}
+            </FormCell>
+
+            <FormCell title="Icon Color" hasScroll>
+              {Object.entries(colors.category).map(([key, value]) => (
+                <Button
+                  size={buttonProps.sizes['28x28']}
+                  radius={sizes.radiuses.half}
+                  isActive={category.icon === key}
+                  onClick={() => onIconColorCHange(key as CategoryColor)}
+                  bgColor={value}
+                  key={key}
+                >
+                  {key === category.iconColor && (
+                    <Icon
+                      icon={icons.check12}
+                      color={
+                        isDarkColor(key) ? colors.base.white : colors.base.black
+                      }
+                      width={sizes.sizes[14]}
+                      height={sizes.sizes[14]}
+                    />
+                  )}
+                </Button>
+              ))}
+            </FormCell>
+          </Row>
+
+          <Button
+            theme={buttonProps.themes.green}
+            size={buttonProps.sizes['44-stretched']}
+            isDisabled={!category.name}
+          >
             <Typography
-              type={typographyProps.types.text12}
-              color={colors.lightgray[2]}
-              textTransform={typographyProps.transforms.uppercase}
+              tag={typographyProps.tags.h3}
+              type={typographyProps.types.title14}
             >
-              Icon
+              Save Category
             </Typography>
-
-            <Box>
-              <BoxScrollWrapper>
-                {Object.entries(categoriesIcons).map(([key, value]) => (
-                  <Button
-                    size={buttonProps.sizes['36x36']}
-                    theme={buttonProps.themes.transparentGray}
-                    isActive={category.icon === key}
-                    onClick={() => onIconChange(key as IconName)}
-                    key={key}
-                  >
-                    <Icon icon={value} />
-                  </Button>
-                ))}
-              </BoxScrollWrapper>
-            </Box>
-          </Cell>
+          </Button>
         </DialogBody>
       </DialogContent>
     </Dialog>

@@ -7,6 +7,7 @@
   @include initializeCssVar(--box-gap, var(--size-0));
   @include initializeCssVar(--box-padding, var(--unset));
   @include initializeCssVar(--box-header-padding, var(--unset));
+  @include initializeCssVar(--box-scroll-wrapper-max-height, var(--unset));
 
   display: flex;
   flex-direction: column;
@@ -47,10 +48,11 @@
     display: flex;
     gap: var(--size-8);
     flex-wrap: wrap;
-    height: var(--size-132);
+    max-height: var(--box-scroll-wrapper-max-height);
     width: var(--parent);
     overflow: scroll;
-    padding: var(--size-12);
+    margin: var(--size-8);
+    box-sizing: border-box;
   }
 
   &.has-shadow {
