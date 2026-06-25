@@ -1,1 +1,1 @@
-export { AddCategoryModal } from './AddCategoryModal';
+export { AddCategory } from './AddCategory';

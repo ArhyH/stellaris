@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   Dialog,
   DialogBody,
@@ -15,15 +14,51 @@ import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
 import { Category } from '@/entity/category';
 import { categoriesIcons } from '@/shared/assets/icons/icons';
 import { Input } from '@/shared/ui/Input';
+import { useState } from 'react';
+import { FinanceTransferTypes } from '@/shared/consts';
+import {
+  SegmentedControl,
+  segmentedControlProps,
+} from '@/shared/ui/SegmentedControl';
+import { FinanceTransferType } from '@/shared/types';
+import { Cell } from '@/shared/ui/Cell';
 
-type AddCategoryModalProps = {
+type AddCategoryProps = {
   onSubmit: () => void;
-  category: Category;
-  onNameChange: (value: string) => void;
 };
 
-const AddCategoryModal = (props: AddCategoryModalProps) => {
-  const { onSubmit, onNameChange, category } = props;
+const AddCategory = (props: AddCategoryProps) => {
+  const { onSubmit } = props;
+
+  const [category, setCategory] = useState<Category>({
+    name: '',
+    icon: 'house24',
+    iconColor: 'category-blue-1',
+    color: 'category-blue-1',
+    type: FinanceTransferTypes.expense,
+    id: Date.now().toString(),
+  });
+
+  const onNameChange = (value: string) => {
+    setCategory((prevCategory) => ({
+      ...prevCategory,
+      name: value,
+    }));
+  };
+
+  const onTypeChange = (value: FinanceTransferType) => {
+    setCategory((prevCategory) => ({
+      ...prevCategory,
+      type: value,
+    }));
+  };
+
+  const TYPES = [
+    { label: 'Expense', value: FinanceTransferTypes.expense },
+    { label: 'Income', value: FinanceTransferTypes.income },
+  ];
+
+  console.log(category);
 
   return (
     <Dialog>
@@ -68,19 +103,13 @@ const AddCategoryModal = (props: AddCategoryModalProps) => {
 
         <DialogBody>
           <Box
-            bgColor={
-              colors.categoryOp[category?.color] ??
-              colors.categoryOp['category-blue-1']
-            }
+            bgColor={colors.categoryOp[category.color]}
             size={boxProps.sizes[64]}
           >
             <BoxWrapper hasAlign>
               <Icon
                 icon={icons[category?.icon] ?? categoriesIcons.house24}
-                color={
-                  colors.category[category?.color] ??
-                  colors.category['category-blue-1']
-                }
+                color={colors.category[category.color]}
               />
             </BoxWrapper>
           </Box>
@@ -92,11 +121,32 @@ const AddCategoryModal = (props: AddCategoryModalProps) => {
             name="category-name"
             label="Category Name"
           />
+
+          <Cell width={sizes.sizes.parent}>
+            <Typography
+              type={typographyProps.types.text12}
+              color={colors.lightgray[2]}
+              textTransform={typographyProps.transforms.uppercase}
+            >
+              Type
+            </Typography>
+
+            <SegmentedControl
+              size={segmentedControlProps.sizes[44]}
+              theme={segmentedControlProps.themes.switch}
+              type={segmentedControlProps.types.stretched}
+              options={TYPES}
+              defaultValue={TYPES[0].value}
+              onChange={(value) => {
+                onTypeChange(value as FinanceTransferType);
+              }}
+            />
+          </Cell>
         </DialogBody>
       </DialogContent>
     </Dialog>
   );
 };
 
-export { AddCategoryModal };
-export type { AddCategoryModalProps };
+export { AddCategory };
+export type { AddCategoryProps };

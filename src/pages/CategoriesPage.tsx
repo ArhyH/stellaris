@@ -3,9 +3,6 @@ import { CategoriesSummary, getCategoriesSummary } from '@/widgets/summary';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Row } from '@/shared/ui/Row/Row';
-import { Button, buttonProps } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
 import { Page, PageCell } from './ui';
 import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
@@ -13,7 +10,7 @@ import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
 import { CategoriesFilter } from '@/widgets/categories-filter';
 import { useCategoriesFilter } from './hooks';
-import { AddCategoryModal } from '@/features/AddCategory';
+import { AddCategory } from '@/features/AddCategory';
 
 const CategoriesPage = () => {
   const { setCurrentFilter, currentCategories } =
@@ -49,7 +46,7 @@ const CategoriesPage = () => {
         </PageCell>
 
         <PageCell>
-          <AddCategoryModal />
+          <AddCategory />
         </PageCell>
       </Row>
 

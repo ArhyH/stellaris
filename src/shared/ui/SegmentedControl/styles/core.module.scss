@@ -16,6 +16,8 @@
     color: var(--lightgray-2);
     background-color: var(--transparent);
     border-radius: var(--size-10);
+    font-size: var(--size-14);
+    font-weight: 500;
 
     @media (hover: hover) {
       &:hover {

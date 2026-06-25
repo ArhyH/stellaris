@@ -6,6 +6,7 @@ interface Category {
   name: LABEL;
   icon: ICON;
   color: CategoryColor;
+  iconColor: CategoryColor;
   type: FinanceTransferType;
 }
 

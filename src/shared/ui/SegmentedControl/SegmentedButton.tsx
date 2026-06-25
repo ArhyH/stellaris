@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import classnames from 'classnames';
 import styles from './style.module.scss';
-import { Typography, typographyProps } from '../Typography';
 
 type SegmentedButtonProps = {
   isSelected?: boolean;
@@ -27,7 +26,7 @@ const SegmentedButton = (props: SegmentedButtonProps) => {
       disabled={isDisabled}
       onClick={onChange}
     >
-      <Typography type={typographyProps.types.text14}>{children}</Typography>
+      {children}
     </button>
   );
 };

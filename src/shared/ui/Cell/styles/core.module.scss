@@ -3,9 +3,11 @@
 .cell {
   @include initializeCssVar(--cell-gap, unset);
   @include initializeCssVar(--cell-grow, unset);
+  @include initializeCssVar(--cell-width, unset);
 
   display: flex;
   flex-direction: column;
   gap: var(--cell-gap);
   flex-grow: var(--cell-grow);
+  width: var(--cell-width);
 }
