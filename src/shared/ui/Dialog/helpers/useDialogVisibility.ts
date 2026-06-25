@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useDialogVisibility = () => {
+const useDialogVisibility = (onClose: () => void) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -13,7 +13,7 @@ const useDialogVisibility = () => {
     const clickedTrigger = triggerRef.current?.contains(target);
 
     if (!clickedInsideDialog && !clickedTrigger) {
-      setIsOpen(false);
+      onClose();
     }
   };
 

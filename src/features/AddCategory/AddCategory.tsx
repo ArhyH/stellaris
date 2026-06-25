@@ -10,9 +10,9 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxScrollWrapper, BoxWrapper, boxProps } from '@/shared/ui/Box';
 import { Category } from '@/entity/category';
-import { categoriesIcons } from '@/shared/assets/icons/icons';
+import { IconName, categoriesIcons } from '@/shared/assets/icons/icons';
 import { Input } from '@/shared/ui/Input';
 import { useState } from 'react';
 import { FinanceTransferTypes } from '@/shared/consts';
@@ -30,7 +30,7 @@ type AddCategoryProps = {
 const AddCategory = (props: AddCategoryProps) => {
   const { onSubmit } = props;
 
-  const [category, setCategory] = useState<Category>({
+  const createInitialCategory = (): Category => ({
     name: '',
     icon: 'house24',
     iconColor: 'category-blue-1',
@@ -38,6 +38,12 @@ const AddCategory = (props: AddCategoryProps) => {
     type: FinanceTransferTypes.expense,
     id: Date.now().toString(),
   });
+
+  const [category, setCategory] = useState<Category>(createInitialCategory);
+
+  const onClose = () => {
+    setCategory(createInitialCategory());
+  };
 
   const onNameChange = (value: string) => {
     setCategory((prevCategory) => ({
@@ -53,6 +59,13 @@ const AddCategory = (props: AddCategoryProps) => {
     }));
   };
 
+  const onIconChange = (value: IconName) => {
+    setCategory((prevCategory) => ({
+      ...prevCategory,
+      icon: value,
+    }));
+  };
+
   const TYPES = [
     { label: 'Expense', value: FinanceTransferTypes.expense },
     { label: 'Income', value: FinanceTransferTypes.income },
@@ -61,7 +74,7 @@ const AddCategory = (props: AddCategoryProps) => {
   console.log(category);
 
   return (
-    <Dialog>
+    <Dialog onClose={onClose}>
       <Button theme={buttonProps.themes.green} size={buttonProps.sizes[40]}>
         <Icon
           icon={icons.plus24}
@@ -108,21 +121,23 @@ const AddCategory = (props: AddCategoryProps) => {
           >
             <BoxWrapper hasAlign>
               <Icon
-                icon={icons[category?.icon] ?? categoriesIcons.house24}
+                icon={icons[category.icon]}
                 color={colors.category[category.color]}
+                width={sizes.sizes[32]}
+                height={sizes.sizes[32]}
               />
             </BoxWrapper>
           </Box>
 
           <Input
-            value={category?.name}
+            value={category.name}
             placeholder="e.g. Groceries"
             onChange={onNameChange}
             name="category-name"
             label="Category Name"
           />
 
-          <Cell width={sizes.sizes.parent}>
+          <Cell width={sizes.sizes.parent} gap={sizes.sizes[6]}>
             <Typography
               type={typographyProps.types.text12}
               color={colors.lightgray[2]}
@@ -136,11 +151,37 @@ const AddCategory = (props: AddCategoryProps) => {
               theme={segmentedControlProps.themes.switch}
               type={segmentedControlProps.types.stretched}
               options={TYPES}
-              defaultValue={TYPES[0].value}
+              defaultValue={category.type}
               onChange={(value) => {
                 onTypeChange(value as FinanceTransferType);
               }}
             />
+          </Cell>
+
+          <Cell width={sizes.sizes.parent} gap={sizes.sizes[6]}>
+            <Typography
+              type={typographyProps.types.text12}
+              color={colors.lightgray[2]}
+              textTransform={typographyProps.transforms.uppercase}
+            >
+              Icon
+            </Typography>
+
+            <Box>
+              <BoxScrollWrapper>
+                {Object.entries(categoriesIcons).map(([key, value]) => (
+                  <Button
+                    size={buttonProps.sizes['36x36']}
+                    theme={buttonProps.themes.transparentGray}
+                    isActive={category.icon === key}
+                    onClick={() => onIconChange(key as IconName)}
+                    key={key}
+                  >
+                    <Icon icon={value} />
+                  </Button>
+                ))}
+              </BoxScrollWrapper>
+            </Box>
           </Cell>
         </DialogBody>
       </DialogContent>

@@ -15,18 +15,25 @@ import { DialogContext } from './helpers/context';
 
 type DialogProps = {
   children: ReactNode;
+  onClose?: () => void;
 };
 
 const Dialog = (props: DialogProps) => {
-  const { children } = props;
-
-  const { isOpen, setIsOpen, dialogRef, triggerRef } = useDialogVisibility();
-
-  const [trigger, content] = Children.toArray(children).filter(isValidElement);
+  const { children, onClose } = props;
 
   const handleIsOpen = () => {
     setIsOpen((prev) => !prev);
   };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose?.();
+  };
+
+  const { isOpen, setIsOpen, dialogRef, triggerRef } =
+    useDialogVisibility(handleClose);
+
+  const [trigger, content] = Children.toArray(children).filter(isValidElement);
 
   const triggerElement = trigger
     ? cloneElement(
@@ -41,10 +48,8 @@ const Dialog = (props: DialogProps) => {
       )
     : null;
 
-  console.log(isOpen);
-
   return (
-    <DialogContext.Provider value={{ close: () => setIsOpen(false) }}>
+    <DialogContext.Provider value={{ close: handleClose }}>
       {triggerElement}
 
       {isOpen &&

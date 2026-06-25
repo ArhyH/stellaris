@@ -1,0 +1,19 @@
+.button {
+  &--theme {
+    &--transparent-gray {
+      border-radius: var(--size-14);
+      background-color: var(--transparent);
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--button-bg-2);
+        }
+      }
+
+      &:active,
+      &.is-active {
+        background-color: var(--button-bg-3);
+      }
+    }
+  }
+}

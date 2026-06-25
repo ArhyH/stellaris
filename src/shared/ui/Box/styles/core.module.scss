@@ -43,6 +43,16 @@
     }
   }
 
+  &__scroll-wrapper {
+    display: flex;
+    gap: var(--size-8);
+    flex-wrap: wrap;
+    height: var(--size-132);
+    width: var(--parent);
+    overflow: scroll;
+    padding: var(--size-12);
+  }
+
   &.has-shadow {
     box-shadow: var(--gray-shadow-1) var(--size-4) var(--size-0) var(--size-24);
   }
