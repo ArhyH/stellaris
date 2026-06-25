@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Dialog,
   DialogBody,
@@ -8,21 +9,20 @@ import {
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { CategoryColor, colors, sizes } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
 import { Category } from '@/entity/category';
-import { IconName, categoriesIcons } from '@/shared/assets/icons/icons';
-import { Input } from '@/shared/ui/Input';
-import { useState } from 'react';
-import { FinanceTransferTypes } from '@/shared/consts';
-import {
-  SegmentedControl,
-  segmentedControlProps,
-} from '@/shared/ui/SegmentedControl';
-import { FinanceTransferType } from '@/shared/types';
-import { FormCell } from './FormCell';
 import { Row } from '@/shared/ui/Row';
+import { createInitialCategory } from '../model/heplers';
+import { getModalCallbacks } from '../model/getModalCallbacks';
+import {
+  CategoryName,
+  CategoryType,
+  CategoryIcon,
+  CategoryColor,
+  CategoryIconColor,
+} from './parts';
 
 type AddCategoryProps = {
   onSubmit: () => void;
@@ -31,66 +31,15 @@ type AddCategoryProps = {
 const AddCategory = (props: AddCategoryProps) => {
   const { onSubmit } = props;
 
-  const createInitialCategory = (): Category => ({
-    name: '',
-    icon: 'house24',
-    iconColor: 'category-green-1',
-    color: 'category-blue-1',
-    type: FinanceTransferTypes.expense,
-    id: Date.now().toString(),
-  });
-
   const [category, setCategory] = useState<Category>(createInitialCategory);
-
-  const onClose = () => {
-    setCategory(createInitialCategory());
-  };
-
-  const onNameChange = (value: string) => {
-    setCategory((prevCategory) => ({
-      ...prevCategory,
-      name: value,
-    }));
-  };
-
-  const onTypeChange = (value: FinanceTransferType) => {
-    setCategory((prevCategory) => ({
-      ...prevCategory,
-      type: value,
-    }));
-  };
-
-  const onIconChange = (value: IconName) => {
-    setCategory((prevCategory) => ({
-      ...prevCategory,
-      icon: value,
-    }));
-  };
-
-  const onColorChange = (value: CategoryColor) => {
-    setCategory((prevCategory) => ({
-      ...prevCategory,
-      color: value,
-    }));
-  };
-
-  const onIconColorCHange = (value: CategoryColor) => {
-    setCategory((prevCategory) => ({
-      ...prevCategory,
-      iconColor: value,
-    }));
-  };
-
-  const TYPES = [
-    { label: 'Expense', value: FinanceTransferTypes.expense },
-    { label: 'Income', value: FinanceTransferTypes.income },
-  ];
-
-  const isDarkColor = (color: CategoryColor) =>
-    color === colors.category['category-gray-1'] ||
-    color === colors.category['category-black-1']
-      ? true
-      : false;
+  const {
+    onClose,
+    onNameChange,
+    onTypeChange,
+    onIconChange,
+    onCategoryColorChange,
+    onIconColorChange,
+  } = getModalCallbacks(setCategory);
 
   console.log(category);
 
@@ -150,89 +99,22 @@ const AddCategory = (props: AddCategoryProps) => {
             </BoxWrapper>
           </Box>
 
-          <Input
-            value={category.name}
-            placeholder="e.g. Groceries"
-            onChange={onNameChange}
-            name="category-name"
-            label="Category Name"
-          />
+          <CategoryName name={category.name} onNameChange={onNameChange} />
 
-          <FormCell title="Type">
-            <SegmentedControl
-              size={segmentedControlProps.sizes[44]}
-              theme={segmentedControlProps.themes.switch}
-              type={segmentedControlProps.types.stretched}
-              options={TYPES}
-              defaultValue={category.type}
-              onChange={(value) => {
-                onTypeChange(value as FinanceTransferType);
-              }}
-            />
-          </FormCell>
+          <CategoryType type={category.type} onTypeChange={onTypeChange} />
 
-          <FormCell title="Icon" hasScroll maxHeight={sizes.sizes[150]}>
-            {Object.entries(categoriesIcons).map(([key, value]) => (
-              <Button
-                size={buttonProps.sizes['36x36']}
-                theme={buttonProps.themes.transparentGray}
-                isActive={category.icon === key}
-                onClick={() => onIconChange(key as IconName)}
-                key={key}
-              >
-                <Icon icon={value} />
-              </Button>
-            ))}
-          </FormCell>
+          <CategoryIcon icon={category.icon} onIconChange={onIconChange} />
 
           <Row gap={sizes.sizes[12]}>
-            <FormCell title="color" hasScroll>
-              {Object.entries(colors.category).map(([key, value]) => (
-                <Button
-                  size={buttonProps.sizes['28x28']}
-                  radius={sizes.radiuses.half}
-                  isActive={category.icon === key}
-                  onClick={() => onColorChange(key as CategoryColor)}
-                  bgColor={value}
-                  key={key}
-                >
-                  {key === category.color && (
-                    <Icon
-                      icon={icons.check12}
-                      color={
-                        isDarkColor(key) ? colors.base.white : colors.base.black
-                      }
-                      width={sizes.sizes[14]}
-                      height={sizes.sizes[14]}
-                    />
-                  )}
-                </Button>
-              ))}
-            </FormCell>
+            <CategoryColor
+              color={category.color}
+              onCategoryColorChange={onCategoryColorChange}
+            />
 
-            <FormCell title="Icon Color" hasScroll>
-              {Object.entries(colors.category).map(([key, value]) => (
-                <Button
-                  size={buttonProps.sizes['28x28']}
-                  radius={sizes.radiuses.half}
-                  isActive={category.icon === key}
-                  onClick={() => onIconColorCHange(key as CategoryColor)}
-                  bgColor={value}
-                  key={key}
-                >
-                  {key === category.iconColor && (
-                    <Icon
-                      icon={icons.check12}
-                      color={
-                        isDarkColor(key) ? colors.base.white : colors.base.black
-                      }
-                      width={sizes.sizes[14]}
-                      height={sizes.sizes[14]}
-                    />
-                  )}
-                </Button>
-              ))}
-            </FormCell>
+            <CategoryIconColor
+              iconColor={category.iconColor}
+              onIconColorChange={onIconColorChange}
+            />
           </Row>
 
           <Button
