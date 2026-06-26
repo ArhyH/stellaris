@@ -50,7 +50,7 @@ const useTransactionsFilter = (
     );
 
     return transactionsByDate;
-  }, [filters]);
+  }, [filters, transactions]);
 
   const currentCategories = useMemo(() => {
     if (filters.financeType === filterTypes.all) {
@@ -60,7 +60,7 @@ const useTransactionsFilter = (
     return [...categories].filter(
       (category) => category.type === filters.financeType,
     );
-  }, [filters.financeType]);
+  }, [filters.financeType, transactions]);
 
   return {
     setFilters,

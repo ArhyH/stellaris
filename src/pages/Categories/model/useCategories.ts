@@ -1,19 +1,8 @@
-import { useEffect } from 'react';
 import { useCategoryStore } from '@/entity/category';
-import { categoriesMock } from '@/shared/mocks/categories';
 
 const useCategories = () => {
-  const {
-    categories,
-    initCategories,
-    addCategory,
-    editCategory,
-    deleteCategory,
-  } = useCategoryStore((state) => state);
-
-  useEffect(() => {
-    initCategories(categoriesMock);
-  }, [initCategories]);
+  const { categories, addCategory, editCategory, deleteCategory } =
+    useCategoryStore((state) => state);
 
   const categoriesList = Object.values(categories);
 
