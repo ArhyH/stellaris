@@ -39,7 +39,7 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
       </ContentCardHeader>
       <ul className={styles['budget-overview']}>
         {budgets.map((budget) => {
-          return <BudgetOverviewItem budget={budget} />;
+          return <BudgetOverviewItem key={budget.id} budget={budget} />;
         })}
       </ul>
     </ContentCard>

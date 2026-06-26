@@ -25,7 +25,7 @@ import {
 } from '@/widgets/charts';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { TopSpending, getTopSpendingCategory } from '@/widgets/top-spending';
-import { Page, PageCell } from './ui';
+import { Page, PageCell } from '@/shared/ui/Page';
 
 const AnalyticsPage = () => {
   const now = new Date();

@@ -1,1 +1,2 @@
-export type { Transaction } from './model/transaction';
+export type { Transaction } from './model/types';
+export { useTransactionStore } from './model/store';

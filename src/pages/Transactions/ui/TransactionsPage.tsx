@@ -1,5 +1,4 @@
-import { transactionsMock } from '@/shared/mocks/transactions';
-import { Page, PageCell } from './ui';
+import { Page, PageCell } from '@/shared/ui/Page';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary, getTransactionsSummary } from '@/widgets/summary';
@@ -7,19 +6,29 @@ import {
   FullTransactionsList,
   mapTransactionsToRecentItems,
 } from '@/widgets/transactions-list';
-import { categoriesMock } from '@/shared/mocks/categories';
 import { TransactionsFilter } from '@/widgets/transactions-filter';
-import { useTransactionsFilter } from './hooks';
-import { getTransactionsPageCallbacks } from './heplers';
+import {
+  getTransactionsPageCallbacks,
+  useTransactions,
+  useTransactionsFilter,
+} from '../model';
 
 const TransactionsPage = () => {
+  const {
+    transactions,
+    transactionsList,
+    categories,
+    addTransaction,
+    deleteTransaction,
+  } = useTransactions();
+
   const {
     setFilters,
     currentTransactions,
     currentQuery,
     currentCategories,
     currerntCatefory,
-  } = useTransactionsFilter(categoriesMock, transactionsMock);
+  } = useTransactionsFilter(categories, transactionsList);
 
   const {
     onCategoryFilterChange,
@@ -29,9 +38,11 @@ const TransactionsPage = () => {
     onEndDateChange,
   } = getTransactionsPageCallbacks(setFilters);
 
-  const transactions = mapTransactionsToRecentItems(
+  console.log(transactionsList);
+
+  const recentTransactions = mapTransactionsToRecentItems(
     currentTransactions,
-    categoriesMock,
+    categories,
   );
 
   const summaries = getTransactionsSummary(currentTransactions);
@@ -68,7 +79,7 @@ const TransactionsPage = () => {
         onEndDateChange={onEndDateChange}
       />
 
-      <FullTransactionsList transactions={transactions} />
+      <FullTransactionsList transactions={recentTransactions} />
     </Page>
   );
 };

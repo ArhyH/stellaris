@@ -9,4 +9,6 @@ interface Transaction {
   note?: LABEL;
 }
 
-export type { Transaction };
+type TransactionItem = Record<string, Transaction>;
+
+export type { Transaction, TransactionItem };

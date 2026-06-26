@@ -1,4 +1,4 @@
-@use '../../../shared/styles/helpers.scss' as *;
+@use '../../../styles/helpers.scss' as *;
 
 .page {
   @include initializeCssVar(--page-cell-gap, var(--size-4));

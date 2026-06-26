@@ -21,7 +21,7 @@ import {
   getDashboardSummary,
 } from '@/widgets/summary';
 import { getMonthYearFromDate, getPrevMonth } from '@/shared/helpers';
-import { Page, PageCell } from './ui';
+import { Page, PageCell } from '@/shared/ui/Page';
 
 const DashboardPage = () => {
   const now = new Date();

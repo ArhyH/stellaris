@@ -15,7 +15,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary, getBudgetsSummary } from '@/widgets/summary';
-import { Page, PageCell } from './ui';
+import { Page, PageCell } from '@/shared/ui/Page';
 
 const BudgetsPage = () => {
   const now = new Date();
