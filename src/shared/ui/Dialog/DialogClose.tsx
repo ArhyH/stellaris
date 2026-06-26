@@ -9,7 +9,12 @@ const DialogClose = (props: DialogCloseProps) => {
   const { children } = props;
   const { close } = useDialogContext();
 
-  return cloneElement(children, { onClick: close });
+  return cloneElement(children, {
+    onClick: () => {
+      close();
+      children.props.onClick?.();
+    },
+  });
 };
 
 export { DialogClose };

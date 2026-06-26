@@ -28,6 +28,7 @@ const mapCategoriesToCategoryItems = (
       categoryIcon: category.icon,
       categoryName: category.name,
       categoryColor: category.color,
+      categoryIconColor: category.iconColor,
       transactionsCount: transactionsCount || 0,
       type: category.type,
     };

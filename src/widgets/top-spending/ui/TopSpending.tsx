@@ -27,7 +27,8 @@ const TopSpending = (props: TopSpendingProps) => {
     );
   }
 
-  const { categoryName, categoryColor, amount, percent } = data;
+  const { categoryName, categoryColor, categoryIconColor, amount, percent } =
+    data;
 
   return (
     <ContentCard>
@@ -50,7 +51,7 @@ const TopSpending = (props: TopSpendingProps) => {
           icon={icons.wallet18}
           width={sizes.sizes[36]}
           height={sizes.sizes[36]}
-          color={categoryColor}
+          color={categoryIconColor}
         />
 
         <Typography

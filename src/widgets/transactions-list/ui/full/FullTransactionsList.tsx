@@ -117,6 +117,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
                 categoryIcon={transaction.categoryIcon ?? 'wallet18'}
                 categoryName={transaction.categoryName}
                 categoryColor={transaction.categoryColor}
+                categorIconColor={transaction.categoryIconColor}
                 date={transaction.date}
                 amount={transaction.amount}
                 note={transaction.note}

@@ -14,6 +14,7 @@ type TransactionProps = {
   categoryIcon: ICON;
   categoryName: LABEL;
   categoryColor?: CategoryColor;
+  categorIconColor?: CategoryColor;
   date: DATE;
   amount: AMOUNT;
   note: LABEL;
@@ -25,6 +26,7 @@ const Transaction = (props: TransactionProps) => {
     categoryIcon,
     categoryName,
     categoryColor,
+    categorIconColor,
     date,
     amount,
     note,
@@ -52,7 +54,7 @@ const Transaction = (props: TransactionProps) => {
           <BoxWrapper hasAlign>
             <Icon
               icon={icons[categoryIcon]}
-              color={categoryColor}
+              color={categorIconColor}
               width={sizes.sizes[20]}
               height={sizes.sizes[20]}
             />

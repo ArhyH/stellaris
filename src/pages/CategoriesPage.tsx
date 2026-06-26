@@ -11,18 +11,37 @@ import { filterTransactionsByMonth } from '@/shared/helpers';
 import { CategoriesFilter } from '@/widgets/categories-filter';
 import { useCategoriesFilter } from './hooks';
 import { AddCategory } from '@/features/AddCategory';
+import { Category } from '@/entity/category';
+import { useState } from 'react';
+import { CategoriesState } from './types/categories';
 
 const CategoriesPage = () => {
+  const [categories, setCategories] = useState<CategoriesState>(() =>
+    categoriesMock.reduce<Record<string, Category>>((acc, category) => {
+      acc[category.id] = category;
+      return acc;
+    }, {}),
+  );
+
+  const categoriesList = Object.values(categories);
+
   const { setCurrentFilter, currentCategories } =
-    useCategoriesFilter(categoriesMock);
+    useCategoriesFilter(categoriesList);
 
   const now = new Date();
-  const categoriesSummary = getCategoriesSummary(categoriesMock);
+  const categoriesSummary = getCategoriesSummary(categoriesList);
   const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
-  const categories = mapCategoriesToCategoryItems(
+  const categoryItems = mapCategoriesToCategoryItems(
     currentCategories,
     currentTransactions,
   );
+
+  const onCategoryCreate = (category: Category) => {
+    setCategories((prevCategories) => ({
+      ...prevCategories,
+      [category.id]: category,
+    }));
+  };
 
   return (
     <Page>
@@ -46,7 +65,7 @@ const CategoriesPage = () => {
         </PageCell>
 
         <PageCell>
-          <AddCategory />
+          <AddCategory onSubmit={onCategoryCreate} />
         </PageCell>
       </Row>
 
@@ -54,7 +73,7 @@ const CategoriesPage = () => {
 
       <CategoriesFilter onFilterChange={setCurrentFilter} />
 
-      <Categories categories={categories} />
+      <Categories categories={categoryItems} />
     </Page>
   );
 };

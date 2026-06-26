@@ -25,13 +25,14 @@ import {
 } from './parts';
 
 type AddCategoryProps = {
-  onSubmit: () => void;
+  onSubmit: (category: Category) => void;
 };
 
 const AddCategory = (props: AddCategoryProps) => {
   const { onSubmit } = props;
 
   const [category, setCategory] = useState<Category>(createInitialCategory);
+
   const {
     onClose,
     onNameChange,
@@ -40,8 +41,6 @@ const AddCategory = (props: AddCategoryProps) => {
     onCategoryColorChange,
     onIconColorChange,
   } = getModalCallbacks(setCategory);
-
-  console.log(category);
 
   return (
     <Dialog onClose={onClose}>
@@ -117,18 +116,21 @@ const AddCategory = (props: AddCategoryProps) => {
             />
           </Row>
 
-          <Button
-            theme={buttonProps.themes.green}
-            size={buttonProps.sizes['44-stretched']}
-            isDisabled={!category.name}
-          >
-            <Typography
-              tag={typographyProps.tags.h3}
-              type={typographyProps.types.title14}
+          <DialogClose>
+            <Button
+              theme={buttonProps.themes.green}
+              size={buttonProps.sizes['44-stretched']}
+              isDisabled={!category.name}
+              onClick={() => onSubmit(category)}
             >
-              Save Category
-            </Typography>
-          </Button>
+              <Typography
+                tag={typographyProps.tags.h3}
+                type={typographyProps.types.title14}
+              >
+                Save Category
+              </Typography>
+            </Button>
+          </DialogClose>
         </DialogBody>
       </DialogContent>
     </Dialog>

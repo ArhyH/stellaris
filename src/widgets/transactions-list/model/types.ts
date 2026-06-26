@@ -17,6 +17,7 @@ interface RecentTransaction {
   note: LABEL;
   categoryIcon: ICON | undefined;
   categoryColor?: CategoryColor;
+  categoryIconColor?: CategoryColor;
   categoryName: LABEL;
 }
 

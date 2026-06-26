@@ -48,6 +48,8 @@ const getTopSpendingCategory = (
     return {
       categoryName: category?.name || '',
       categoryColor: category?.color || colors.category['category-blue-1'],
+      categoryIconColor:
+        category?.iconColor || colors.category['category-blue-1'],
       amount: topCategory.value,
       percent: ((topCategory.value / total) * 100).toFixed(1),
     };

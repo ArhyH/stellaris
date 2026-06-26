@@ -16,8 +16,14 @@ type CategoryItemProps = {
 
 const CategoryItem = (props: CategoryItemProps) => {
   const { data } = props;
-  const { categoryName, categoryColor, categoryIcon, transactionsCount, type } =
-    data;
+  const {
+    categoryName,
+    categoryColor,
+    categoryIconColor,
+    categoryIcon,
+    transactionsCount,
+    type,
+  } = data;
 
   return (
     <li className={styles.categories__item}>
@@ -33,7 +39,7 @@ const CategoryItem = (props: CategoryItemProps) => {
         <BoxWrapper hasAlign>
           <Icon
             icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
-            color={categoryColor}
+            color={categoryIconColor}
           />
         </BoxWrapper>
       </Box>

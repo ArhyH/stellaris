@@ -66,6 +66,7 @@ const sizeList = {
 };
 
 const radiusList = {
+  8: sizeValues['size-8'],
   12: sizeValues['size-12'],
   14: sizeValues['size-14'],
   16: sizeValues['size-16'],
