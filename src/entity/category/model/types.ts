@@ -10,4 +10,6 @@ interface Category {
   type: FinanceTransferType;
 }
 
-export type { Category };
+type CategoryItem = Record<string, Category>;
+
+export type { Category, CategoryItem };

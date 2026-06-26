@@ -1,5 +1,5 @@
 import { transactionsMock } from '@/shared/mocks/transactions';
-import { Page, PageCell } from './ui';
+import { Page, PageCell } from '@/shared/ui/Page';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary, getTransactionsSummary } from '@/widgets/summary';

@@ -1,37 +1,30 @@
-import { categoriesMock } from '@/shared/mocks/categories';
 import { CategoriesSummary, getCategoriesSummary } from '@/widgets/summary';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
-import { Row } from '@/shared/ui/Row/Row';
-import { rowProps } from '@/shared/ui/Row/consts';
-import { Page, PageCell } from './ui';
+import { Row, rowProps } from '@/shared/ui/Row';
+import { Page, PageCell } from '../../../shared/ui/Page';
 import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { filterTransactionsByMonth } from '@/shared/helpers';
 import { CategoriesFilter } from '@/widgets/categories-filter';
-import { useCategoriesFilter } from './hooks';
 import { AddCategory } from '@/features/AddCategory';
-import { Category } from '@/entity/category';
-import { useState } from 'react';
-import { CategoriesState } from './types/categories';
-import { ID } from '@/shared/types';
 import { EditCategory } from '@/features/EditCategory';
+import { useCategoriesFilter, useCategories, useEditCategory } from '../model';
 
 const CategoriesPage = () => {
-  const [categories, setCategories] = useState<CategoriesState>(() =>
-    categoriesMock.reduce<Record<string, Category>>((acc, category) => {
-      acc[category.id] = category;
-      return acc;
-    }, {}),
-  );
-
-  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
-  const [isEditOpen, setIsEditOpen] = useState(false);
-
-  const categoriesList = Object.values(categories);
+  const {
+    categories,
+    categoriesList,
+    addCategory,
+    editCategory,
+    deleteCategory,
+  } = useCategories();
 
   const { setCurrentFilter, currentCategories } =
     useCategoriesFilter(categoriesList);
+
+  const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
+    useEditCategory(categories);
 
   const now = new Date();
   const categoriesSummary = getCategoriesSummary(categoriesList);
@@ -40,33 +33,6 @@ const CategoriesPage = () => {
     currentCategories,
     currentTransactions,
   );
-
-  const onCategoryCreate = (category: Category) => {
-    setCategories((prevCategories) => ({
-      ...prevCategories,
-      [category.id]: category,
-    }));
-  };
-
-  const onCategoryEdit = (category: Category) => {
-    setCategories((prevCategories) => ({
-      ...prevCategories,
-      [category.id]: category,
-    }));
-  };
-
-  const handleEditCategory = (id: ID) => {
-    setEditingCategory(categories[id]);
-    setIsEditOpen(true);
-  };
-
-  const onCategoryDelete = (id: ID) => {
-    setCategories((prevCategories) => {
-      const copy = { ...prevCategories };
-      delete copy[id];
-      return copy;
-    });
-  };
 
   return (
     <Page>
@@ -90,7 +56,7 @@ const CategoriesPage = () => {
         </PageCell>
 
         <PageCell>
-          <AddCategory onSubmit={onCategoryCreate} />
+          <AddCategory onSubmit={addCategory} />
         </PageCell>
       </Row>
 
@@ -101,14 +67,14 @@ const CategoriesPage = () => {
       <Categories
         categories={categoryItems}
         onEdit={handleEditCategory}
-        onDelete={onCategoryDelete}
+        onDelete={deleteCategory}
       />
 
       <EditCategory
         category={editingCategory}
         open={isEditOpen}
         onOpen={setIsEditOpen}
-        onSubmit={onCategoryEdit}
+        onSubmit={editCategory}
       />
     </Page>
   );
