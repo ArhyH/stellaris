@@ -9,13 +9,15 @@ import { Dot } from '@/shared/ui/Dot';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Label, labelProps } from '@/shared/ui/Label';
 import { FinanceTransferTypes } from '@/shared/consts';
+import { ID } from '@/shared/types';
 
 type CategoryItemProps = {
   data: CategoryItemType;
+  onEdit: (id: ID) => void;
 };
 
 const CategoryItem = (props: CategoryItemProps) => {
-  const { data } = props;
+  const { data, onEdit } = props;
   const {
     categoryName,
     categoryColor,
@@ -23,6 +25,7 @@ const CategoryItem = (props: CategoryItemProps) => {
     categoryIcon,
     transactionsCount,
     type,
+    categoryId,
   } = data;
 
   return (
@@ -85,6 +88,7 @@ const CategoryItem = (props: CategoryItemProps) => {
         <Button
           theme={buttonProps.themes.lightgray}
           size={buttonProps.sizes['32x32']}
+          onClick={() => onEdit(categoryId)}
         >
           <Icon
             icon={icons.pen24}

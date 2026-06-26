@@ -5,10 +5,11 @@ import {
   Ref,
   cloneElement,
   isValidElement,
+  useState,
 } from 'react';
 import styles from './style.module.scss';
 import { useDialogVisibility } from './helpers/useDialogVisibility';
-import { DialogContentProps } from './DialogContent';
+import { DialogContent } from './DialogContent';
 import { createPortal } from 'react-dom';
 import { Overlay } from '../Overlay';
 import { DialogContext } from './helpers/context';
@@ -16,29 +17,46 @@ import { DialogContext } from './helpers/context';
 type DialogProps = {
   children: ReactNode;
   onClose?: () => void;
+  open?: boolean;
+  onOpen?: (open: boolean) => void;
 };
 
 const Dialog = (props: DialogProps) => {
-  const { children, onClose } = props;
+  const { children, onClose, open, onOpen } = props;
+
+  const [internalOpen, setinternalOpen] = useState(false);
+
+  const isControlled = open !== undefined;
+
+  const isOpen = isControlled ? open : internalOpen;
+
+  const setOpen = (value: boolean) => {
+    if (!isControlled) {
+      setinternalOpen(value);
+    }
+
+    onOpen?.(value);
+  };
 
   const handleIsOpen = () => {
-    setIsOpen((prev) => !prev);
+    setOpen(true);
   };
 
   const handleClose = () => {
-    setIsOpen(false);
+    setOpen(false);
     onClose?.();
   };
 
-  const { isOpen, setIsOpen, dialogRef, triggerRef } =
-    useDialogVisibility(handleClose);
+  const { dialogRef, triggerRef } = useDialogVisibility(handleClose);
 
-  const [trigger, content] = Children.toArray(children).filter(isValidElement);
+  const elements = Children.toArray(children).filter(isValidElement);
+  const trigger = elements.find((element) => element.type !== DialogContent);
+  const content = elements.find((element) => element.type === DialogContent);
 
   const triggerElement = trigger
     ? cloneElement(
         trigger as ReactElement<{
-          onClick: () => void;
+          onClick?: () => void;
           ref?: Ref<HTMLElement>;
         }>,
         {
@@ -56,8 +74,7 @@ const Dialog = (props: DialogProps) => {
         createPortal(
           <Overlay>
             <div className={styles.dialog} ref={dialogRef}>
-              {content &&
-                (content as ReactElement<DialogContentProps>).props.children}
+              {content}
             </div>
           </Overlay>,
           document.body,

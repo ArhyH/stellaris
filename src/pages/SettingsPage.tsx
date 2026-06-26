@@ -19,8 +19,6 @@ const SettingsPage = () => {
     weekStart: 'Monday',
   });
 
-  console.log(settings);
-
   // const [user, setUser] = useState({
   //   name: 'John Doe',
   //   email: 'example.mail@.com',

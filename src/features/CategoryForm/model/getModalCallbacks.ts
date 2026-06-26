@@ -3,11 +3,13 @@ import { Category } from '@/entity/category';
 import { IconName } from '@/shared/assets';
 import { CategoryColor } from '@/shared/styles';
 import { FinanceTransferType } from '@/shared/types';
-import { createInitialCategory } from './heplers';
 
-const getModalCallbacks = (setCategory: Dispatch<SetStateAction<Category>>) => {
+const getModalCallbacks = (
+  setCategory: Dispatch<SetStateAction<Category>>,
+  category: Category,
+) => {
   const onClose = () => {
-    setCategory(createInitialCategory());
+    setCategory(category);
   };
 
   const onNameChange = (name: string) => {

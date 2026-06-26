@@ -1,19 +1,27 @@
 import styles from './style.module.scss';
 import { CategoryItem as CategoryItemType } from '../model/types';
 import { CategoryItem } from './CategoryItem';
+import { ID } from '@/shared/types';
 
 type CategoriesProps = {
   categories: CategoryItemType[];
+  onEdit: (id: ID) => void;
 };
 
 const Categories = (props: CategoriesProps) => {
-  const { categories } = props;
+  const { categories, onEdit } = props;
 
   return (
     <div className={styles.categories__wrapper}>
       <ul className={styles.categories}>
         {categories.map((category) => {
-          return <CategoryItem data={category} key={category.categoryId} />;
+          return (
+            <CategoryItem
+              data={category}
+              key={category.categoryId}
+              onEdit={onEdit}
+            />
+          );
         })}
       </ul>
     </div>

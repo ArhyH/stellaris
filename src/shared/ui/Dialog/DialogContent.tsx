@@ -10,5 +10,7 @@ const DialogContent = (props: DialogContentProps) => {
   return <>{children}</>;
 };
 
+DialogContent.displayName = 'DialogContent';
+
 export { DialogContent };
 export type { DialogContentProps };

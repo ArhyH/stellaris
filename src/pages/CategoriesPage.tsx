@@ -14,6 +14,8 @@ import { AddCategory } from '@/features/AddCategory';
 import { Category } from '@/entity/category';
 import { useState } from 'react';
 import { CategoriesState } from './types/categories';
+import { ID } from '@/shared/types';
+import { EditCategory } from '@/features/EditCategory';
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState<CategoriesState>(() =>
@@ -22,6 +24,9 @@ const CategoriesPage = () => {
       return acc;
     }, {}),
   );
+
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   const categoriesList = Object.values(categories);
 
@@ -41,6 +46,18 @@ const CategoriesPage = () => {
       ...prevCategories,
       [category.id]: category,
     }));
+  };
+
+  const onCategoryEdit = (category: Category) => {
+    setCategories((prevCategories) => ({
+      ...prevCategories,
+      [category.id]: category,
+    }));
+  };
+
+  const handleEditCategory = (id: ID) => {
+    setEditingCategory(categories[id]);
+    setIsEditOpen(true);
   };
 
   return (
@@ -73,7 +90,14 @@ const CategoriesPage = () => {
 
       <CategoriesFilter onFilterChange={setCurrentFilter} />
 
-      <Categories categories={categoryItems} />
+      <Categories categories={categoryItems} onEdit={handleEditCategory} />
+
+      <EditCategory
+        category={editingCategory}
+        open={isEditOpen}
+        onOpen={setIsEditOpen}
+        onSubmit={onCategoryEdit}
+      />
     </Page>
   );
 };
