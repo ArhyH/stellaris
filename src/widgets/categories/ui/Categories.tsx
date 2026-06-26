@@ -6,10 +6,11 @@ import { ID } from '@/shared/types';
 type CategoriesProps = {
   categories: CategoryItemType[];
   onEdit: (id: ID) => void;
+  onDelete: (id: ID) => void;
 };
 
 const Categories = (props: CategoriesProps) => {
-  const { categories, onEdit } = props;
+  const { categories, onEdit, onDelete } = props;
 
   return (
     <div className={styles.categories__wrapper}>
@@ -20,6 +21,7 @@ const Categories = (props: CategoriesProps) => {
               data={category}
               key={category.categoryId}
               onEdit={onEdit}
+              onDelete={onDelete}
             />
           );
         })}

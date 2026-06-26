@@ -60,6 +60,14 @@ const CategoriesPage = () => {
     setIsEditOpen(true);
   };
 
+  const onCategoryDelete = (id: ID) => {
+    setCategories((prevCategories) => {
+      const copy = { ...prevCategories };
+      delete copy[id];
+      return copy;
+    });
+  };
+
   return (
     <Page>
       <Row justify={rowProps.justifies.spaceBetween}>
@@ -90,7 +98,11 @@ const CategoriesPage = () => {
 
       <CategoriesFilter onFilterChange={setCurrentFilter} />
 
-      <Categories categories={categoryItems} onEdit={handleEditCategory} />
+      <Categories
+        categories={categoryItems}
+        onEdit={handleEditCategory}
+        onDelete={onCategoryDelete}
+      />
 
       <EditCategory
         category={editingCategory}

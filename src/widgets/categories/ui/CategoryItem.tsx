@@ -14,10 +14,11 @@ import { ID } from '@/shared/types';
 type CategoryItemProps = {
   data: CategoryItemType;
   onEdit: (id: ID) => void;
+  onDelete: (id: ID) => void;
 };
 
 const CategoryItem = (props: CategoryItemProps) => {
-  const { data, onEdit } = props;
+  const { data, onEdit, onDelete } = props;
   const {
     categoryName,
     categoryColor,
@@ -99,6 +100,7 @@ const CategoryItem = (props: CategoryItemProps) => {
         <Button
           theme={buttonProps.themes.red}
           size={buttonProps.sizes['32x32']}
+          onClick={() => onDelete(categoryId)}
         >
           <Icon
             icon={icons.trash24}
