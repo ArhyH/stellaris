@@ -20,6 +20,7 @@ const BudgetItem = (props: BudgetItemProps) => {
   const {
     categoryName,
     categoryColor,
+    categoryIconColor,
     categoryIcon,
     spent,
     limit,
@@ -50,7 +51,7 @@ const BudgetItem = (props: BudgetItemProps) => {
             <BoxWrapper hasAlign>
               <Icon
                 icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
-                color={categoryColor}
+                color={categoryIconColor}
                 width={sizes.sizes[24]}
                 height={sizes.sizes[24]}
               />

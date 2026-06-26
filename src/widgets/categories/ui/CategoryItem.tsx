@@ -9,15 +9,25 @@ import { Dot } from '@/shared/ui/Dot';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Label, labelProps } from '@/shared/ui/Label';
 import { FinanceTransferTypes } from '@/shared/consts';
+import { ID } from '@/shared/types';
 
 type CategoryItemProps = {
   data: CategoryItemType;
+  onEdit: (id: ID) => void;
+  onDelete: (id: ID) => void;
 };
 
 const CategoryItem = (props: CategoryItemProps) => {
-  const { data } = props;
-  const { categoryName, categoryColor, categoryIcon, transactionsCount, type } =
-    data;
+  const { data, onEdit, onDelete } = props;
+  const {
+    categoryName,
+    categoryColor,
+    categoryIconColor,
+    categoryIcon,
+    transactionsCount,
+    type,
+    categoryId,
+  } = data;
 
   return (
     <li className={styles.categories__item}>
@@ -33,7 +43,7 @@ const CategoryItem = (props: CategoryItemProps) => {
         <BoxWrapper hasAlign>
           <Icon
             icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
-            color={categoryColor}
+            color={categoryIconColor}
           />
         </BoxWrapper>
       </Box>
@@ -79,6 +89,7 @@ const CategoryItem = (props: CategoryItemProps) => {
         <Button
           theme={buttonProps.themes.lightgray}
           size={buttonProps.sizes['32x32']}
+          onClick={() => onEdit(categoryId)}
         >
           <Icon
             icon={icons.pen24}
@@ -89,6 +100,7 @@ const CategoryItem = (props: CategoryItemProps) => {
         <Button
           theme={buttonProps.themes.red}
           size={buttonProps.sizes['32x32']}
+          onClick={() => onDelete(categoryId)}
         >
           <Icon
             icon={icons.trash24}

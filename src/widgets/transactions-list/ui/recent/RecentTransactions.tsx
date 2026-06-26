@@ -45,6 +45,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
                 categoryIcon={transaction.categoryIcon ?? 'wallet18'}
                 categoryName={transaction.categoryName}
                 categoryColor={transaction.categoryColor}
+                categoryIconColor={transaction.categoryIconColor}
                 date={transaction.date}
                 amount={transaction.amount}
                 note={transaction.note}

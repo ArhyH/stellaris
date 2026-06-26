@@ -15,6 +15,7 @@ type SegmentedControlProps = {
   onChange?: (value: string) => void;
   theme: ValueOf<typeof segmentedControlProps.themes>;
   size: ValueOf<typeof segmentedControlProps.sizes>;
+  type?: ValueOf<typeof segmentedControlProps.types>;
 };
 
 export type { Option, SegmentedControlProps };

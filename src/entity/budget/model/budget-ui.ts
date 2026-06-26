@@ -21,6 +21,7 @@ interface BudgetOverviewItem extends BudgetProgress {
   categoryIcon: ICON | undefined;
   categoryName: LABEL;
   categoryColor: CategoryColor | undefined;
+  categoryIconColor: CategoryColor | undefined;
   spent: number;
   limit: number;
 }

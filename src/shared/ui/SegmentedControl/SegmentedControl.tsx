@@ -6,7 +6,7 @@ import { SegmentedControlProps } from './types';
 import styles from './style.module.scss';
 
 const SegmentedControl = (props: SegmentedControlProps) => {
-  const { theme, size, value, defaultValue, options, onChange } = props;
+  const { theme, size, type, value, defaultValue, options, onChange } = props;
 
   const [internalValue, setInternalValue] = useState(
     defaultValue ?? options[0]?.value,
@@ -25,6 +25,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
   const componentClassNames = classnames(styles['segmented-control'], {
     [styles[`segmented-control--theme--${theme}`]]: theme,
     [styles[`segmented-control--size--${size}`]]: size,
+    [styles[`segmented-control--type--${type}`]]: type,
   });
 
   return (

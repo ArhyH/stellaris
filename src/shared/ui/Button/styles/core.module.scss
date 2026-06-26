@@ -1,14 +1,22 @@
+@use '../../../styles/helpers.scss' as *;
+
 .button {
+  @include initializeCssVar(--button-background-color, var(--transparent));
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--size-8);
-  background-color: var(--transparent);
+  background-color: var(--button-background-color);
   border: none;
   padding: var(--size-0);
   border-image-width: var(--size-0);
   color: var(--white);
   cursor: pointer;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    transform 0.25s ease;
 
   &__icon {
     display: flex;
@@ -20,5 +28,11 @@
     .button__icon {
       rotate: 180deg;
     }
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    --button-background-color: var(--button-bg-1);
+    color: var(--lightgray-2);
   }
 }

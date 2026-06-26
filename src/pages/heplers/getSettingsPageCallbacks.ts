@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Settings } from '../types';
+import { Settings } from '@/widgets/settings/model/types';
 
 const getSettingsPageCallbacks = (
   setSettings: Dispatch<SetStateAction<Settings>>,
@@ -32,12 +32,12 @@ const getSettingsPageCallbacks = (
     }));
   };
 
-  return [
-    { key: 'currency', cb: onCurrencyChange },
-    { key: 'language', cb: onLanguageChange },
-    { key: 'dateFormat', cb: onDateFormatChange },
-    { key: 'weekStart', cb: onWeekStartChange },
-  ];
+  return {
+    currency: onCurrencyChange,
+    language: onLanguageChange,
+    dateFormat: onDateFormatChange,
+    weekStart: onWeekStartChange,
+  };
 };
 
 export { getSettingsPageCallbacks };

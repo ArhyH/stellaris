@@ -68,6 +68,7 @@ const mapBudgetsToOverviewItems = (
       categoryIcon: category?.icon,
       categoryName: category?.name || '',
       categoryColor: category?.color,
+      categoryIconColor: category?.iconColor,
       spent,
       limit: budget.limit,
       progressPercent: progress.progressPercent,

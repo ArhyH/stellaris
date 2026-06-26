@@ -9,6 +9,7 @@ const Box = (props: BoxProps) => {
     children,
     hasShadow,
     hasAlign,
+    isStretch,
     bgColor,
     radius,
     size,
@@ -22,6 +23,7 @@ const Box = (props: BoxProps) => {
     [styles[`box--size--${size}`]]: size,
     [styles['has-shadow']]: hasShadow,
     [styles['has-align']]: hasAlign,
+    [styles['is-stretch']]: isStretch,
   });
 
   const ComponentTag: ElementType = tag || 'div';

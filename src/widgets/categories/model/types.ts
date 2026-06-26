@@ -8,6 +8,7 @@ interface CategoryItem {
   categoryIcon: ICON | undefined;
   categoryName: LABEL | undefined;
   categoryColor: CategoryColor | undefined;
+  categoryIconColor: CategoryColor | undefined;
 }
 
 export { CategoryItem };

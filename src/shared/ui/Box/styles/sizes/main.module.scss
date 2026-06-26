@@ -1,5 +1,10 @@
 .box {
   &--size {
+    &--24 {
+      width: var(--size-24);
+      height: var(--size-24);
+    }
+
     &--30 {
       width: var(--size-30);
       height: var(--size-30);
@@ -28,6 +33,11 @@
     &--56 {
       width: var(--size-56);
       height: var(--size-56);
+    }
+
+    &--64 {
+      width: var(--size-64);
+      height: var(--size-64);
     }
 
     &--fit-content {

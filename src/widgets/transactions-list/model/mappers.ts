@@ -32,6 +32,7 @@ const mapTransactionsToRecentItems = (
       note: transaction.note?.trim() || '',
       categoryIcon: category?.icon,
       categoryColor: category?.color,
+      categoryIconColor: category?.iconColor,
       categoryName: category?.name || '',
     };
   });

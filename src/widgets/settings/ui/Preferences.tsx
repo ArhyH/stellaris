@@ -5,14 +5,29 @@ import { Separator, separatorProps } from '@/shared/ui/Separator';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { PreferenceItem } from './PreferenceItem';
 import { SETTINGS_CONFIG } from '../model/consts';
+import { ConfigItem, Settings, SettingsCallbacks } from '../model/types';
 
 type PreferencesProps = {
-  preferencesCallbacks: Map<string, (value: string) => void>;
-  selectedPreferences: Map<string, string>;
+  callbacks: SettingsCallbacks;
+  settings: Settings;
+};
+
+const mapDtaToPreferenceItem = (
+  callbacks: SettingsCallbacks,
+  currentSettings: Settings,
+  config: ConfigItem[],
+) => {
+  return config.map((item) => ({
+    ...item,
+    selectedSetting: currentSettings[item.key],
+    onChange: callbacks[item.key],
+  }));
 };
 
 const Preferences = (props: PreferencesProps) => {
-  const { preferencesCallbacks, selectedPreferences } = props;
+  const { callbacks, settings } = props;
+
+  const items = mapDtaToPreferenceItem(callbacks, settings, SETTINGS_CONFIG);
 
   return (
     <ContentCard>
@@ -27,15 +42,15 @@ const Preferences = (props: PreferencesProps) => {
       <Separator type={separatorProps.types.horizontal} />
 
       <>
-        {SETTINGS_CONFIG.map((item, index) => (
+        {items.map((item, index) => (
           <Fragment key={item.name}>
             <PreferenceItem
               icon={item.icon}
               name={item.name}
               description={item.description}
               settings={item.settingVariants}
-              selectedSetting={selectedPreferences.get(item.key)!}
-              onChange={preferencesCallbacks.get(item.key)!}
+              selectedSetting={item.selectedSetting}
+              onChange={item.onChange}
             />
 
             {index < SETTINGS_CONFIG.length - 1 && (

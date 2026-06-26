@@ -25,14 +25,6 @@ const SettingsPage = () => {
   //   initials: 'JD',
   // });
 
-  const preferencesCallbacks = new Map(
-    getSettingsPageCallbacks(setSettings).map((item) => [item.key, item.cb]),
-  );
-
-  const selectedPreferences = new Map(
-    Object.entries(settings).map(([key, value]) => [key, value]),
-  );
-
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -55,8 +47,8 @@ const SettingsPage = () => {
       <Profile user={user} onClick={() => null} />
 
       <Preferences
-        preferencesCallbacks={preferencesCallbacks}
-        selectedPreferences={selectedPreferences}
+        callbacks={getSettingsPageCallbacks(setSettings)}
+        settings={settings}
       />
     </Page>
   );

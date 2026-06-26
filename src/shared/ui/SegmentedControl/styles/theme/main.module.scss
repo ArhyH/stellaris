@@ -7,5 +7,29 @@
     &--gray-4 {
       background-color: var(--gray-4);
     }
+
+    &--switch {
+      background-color: var(--gray-3);
+
+      .segmented-control__button {
+        font-weight: 600;
+
+        &.is-selected {
+          color: var(--black);
+        }
+
+        &:nth-child(1) {
+          &.is-selected {
+            background-color: var(--red-1);
+          }
+        }
+
+        &:nth-child(2).is-selected {
+          &.is-selected {
+            background-color: var(--green-1);
+          }
+        }
+      }
+    }
   }
 }

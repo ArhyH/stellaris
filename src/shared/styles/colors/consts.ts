@@ -87,7 +87,12 @@ const categoryColors = {
   'category-violet-1': 'category-violet-1',
   'category-violet-2': 'category-violet-2',
   'category-violet-3': 'category-violet-3',
+  'category-green-1': 'category-green-1',
+  'category-green-2': 'category-green-2',
   'category-green-3': 'category-green-3',
+  'category-gray-1': 'category-gray-1',
+  'category-black-1': 'category-black-1',
+  'category-white-1': 'category-white-1',
 } as const;
 
 const categoryOpColors = {
@@ -112,7 +117,12 @@ const categoryOpColors = {
   'category-violet-1': 'category-op-violet-1',
   'category-violet-2': 'category-op-violet-2',
   'category-violet-3': 'category-op-violet-3',
+  'category-green-1': 'category-op-green-1',
+  'category-green-2': 'category-op-green-2',
   'category-green-3': 'category-op-green-3',
+  'category-gray-1': 'category-op-gray-1',
+  'category-black-1': 'category-op-black-1',
+  'category-white-1': 'category-op-white-1',
 } as const;
 
 const boxColors = {

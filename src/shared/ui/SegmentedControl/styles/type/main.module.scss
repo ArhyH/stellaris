@@ -1,0 +1,11 @@
+.segmented-control {
+  &--type {
+    &--stretched {
+      width: var(--parent);
+
+      .segmented-control__button {
+        width: var(--parent);
+      }
+    }
+  }
+}

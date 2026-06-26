@@ -13,13 +13,23 @@ const getTextAlign = ({ textAlign }: Pick<TypographyProps, 'textAlign'>) => {
   }
 };
 
+const getTextTransform = ({
+  textTransform,
+}: Pick<TypographyProps, 'textTransform'>) => {
+  if (textTransform) {
+    return { '--typography-text-transform': textTransform };
+  }
+};
+
 const getStyles = ({
   color,
   textAlign,
-}: Pick<TypographyProps, 'color' | 'textAlign'>) => {
+  textTransform,
+}: Pick<TypographyProps, 'color' | 'textAlign' | 'textTransform'>) => {
   return {
     ...getColor({ color }),
     ...getTextAlign({ textAlign }),
+    ...getTextTransform({ textTransform }),
   };
 };
 

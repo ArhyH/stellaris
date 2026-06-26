@@ -10,13 +10,14 @@ type CellProps = {
   children: ReactNode;
   gap?: ValueOf<typeof sizes.sizes>;
   grow?: ValueOf<typeof cellProps.grow>;
+  width?: ValueOf<typeof sizes.sizes>;
 };
 
 const Cell = (props: CellProps) => {
-  const { children, gap, grow } = props;
+  const { children, gap, grow, width } = props;
 
   return (
-    <div className={styles.cell} style={{ ...getStyles({ gap, grow }) }}>
+    <div className={styles.cell} style={{ ...getStyles({ gap, grow, width }) }}>
       {children}
     </div>
   );

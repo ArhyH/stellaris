@@ -12,10 +12,11 @@ type TypographyProps = {
   color?: ColorToken;
   tag?: keyof typeof typographyProps.tags;
   textAlign?: ValueOf<typeof typographyProps.aligns>;
+  textTransform?: ValueOf<typeof typographyProps.transforms>;
 };
 
 const Typography = (props: TypographyProps) => {
-  const { children, type, tag, color, textAlign } = props;
+  const { children, type, tag, color, textAlign, textTransform } = props;
 
   const ComponentTag: ElementType = tag || 'span';
 
@@ -26,7 +27,7 @@ const Typography = (props: TypographyProps) => {
   return (
     <ComponentTag
       className={componentClassNames}
-      style={{ ...getStyles({ color, textAlign }) }}
+      style={{ ...getStyles({ color, textAlign, textTransform }) }}
     >
       {children}
     </ComponentTag>
