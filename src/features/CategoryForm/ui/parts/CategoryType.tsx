@@ -3,8 +3,8 @@ import {
   SegmentedControl,
   segmentedControlProps,
 } from '@/shared/ui/SegmentedControl';
-import { TYPES } from '../../model/consts';
 import { FinanceTransferType } from '@/shared/types';
+import { SELECT_TYPES_DATA } from '@/shared/consts/consts';
 
 type CategoryTypeProps = {
   type: string;
@@ -20,7 +20,7 @@ const CategoryType = (props: CategoryTypeProps) => {
         size={segmentedControlProps.sizes[44]}
         theme={segmentedControlProps.themes.switch}
         type={segmentedControlProps.types.stretched}
-        options={TYPES}
+        options={SELECT_TYPES_DATA}
         defaultValue={type}
         onChange={(value) => {
           onTypeChange(value as FinanceTransferType);

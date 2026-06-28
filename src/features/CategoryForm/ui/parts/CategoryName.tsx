@@ -1,4 +1,4 @@
-import { Input } from '@/shared/ui/Input';
+import { Input, inputProps } from '@/shared/ui/Input';
 
 type CategoryNameProps = {
   name: string;
@@ -10,6 +10,8 @@ const CategoryName = (props: CategoryNameProps) => {
 
   return (
     <Input
+      theme={inputProps.themes.lightgray}
+      type={inputProps.types.regular}
       value={name}
       placeholder="e.g. Groceries"
       onChange={onNameChange}

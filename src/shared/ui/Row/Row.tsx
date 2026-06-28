@@ -3,7 +3,7 @@ import { ValueOf } from 'type-fest';
 import classnames from 'classnames';
 
 import { rowProps } from './consts';
-import { sizes } from '@/shared/styles';
+import { ColorToken, sizes } from '@/shared/styles';
 import { getStyles } from './helpers';
 import styles from './style.module.scss';
 
@@ -12,10 +12,11 @@ type RowProps = {
   justify?: ValueOf<typeof rowProps.justifies>;
   gap?: ValueOf<typeof sizes.sizes>;
   paddingVertical?: ValueOf<typeof sizes.sizes>;
+  color?: ColorToken;
 };
 
 const Row = (props: RowProps) => {
-  const { children, justify, gap, paddingVertical } = props;
+  const { children, justify, gap, paddingVertical, color } = props;
 
   const componentClassNames = classnames(styles.row, {
     [styles[`row--justify--${justify}`]]: justify,
@@ -24,7 +25,7 @@ const Row = (props: RowProps) => {
   return (
     <div
       className={componentClassNames}
-      style={{ ...getStyles({ gap, paddingVertical }) }}
+      style={{ ...getStyles({ gap, paddingVertical, color }) }}
     >
       {children}
     </div>

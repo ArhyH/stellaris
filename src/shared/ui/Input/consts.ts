@@ -1,10 +1,16 @@
+const inputThemes = {
+  lightgray: 'lightgray',
+  inherit: 'inherit',
+} as const;
+
 const inputTypes = {
-  text: 'text',
-  date: 'date',
-};
+  regular: 'regular',
+  transaction: 'transaction',
+} as const;
 
 const inputProps = {
+  themes: inputThemes,
   types: inputTypes,
-};
+} as const;
 
 export { inputProps };

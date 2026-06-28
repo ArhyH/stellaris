@@ -3,11 +3,13 @@
 .row {
   @include initializeCssVar(--row-gap, var(--size-20));
   @include initializeCssVar(--row-padding-vertical, var(--size-0));
+  @include initializeCssVar(--row-color, inherit);
 
   display: flex;
   gap: var(--row-gap);
   padding-top: var(--row-padding-vertical);
   padding-bottom: var(--row-padding-vertical);
+  color: var(--row-color);
   align-items: center;
 
   &--justify {

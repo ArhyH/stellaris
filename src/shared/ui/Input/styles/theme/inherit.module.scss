@@ -1,0 +1,18 @@
+.input {
+  &--theme {
+    &--inherit {
+      .input__field {
+        color: inherit;
+
+        &::placeholder {
+          color: inherit;
+        }
+      }
+
+      .input__body {
+        color: inherit;
+        background-color: var(--transparent);
+      }
+    }
+  }
+}

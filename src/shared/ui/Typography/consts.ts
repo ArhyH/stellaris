@@ -6,6 +6,7 @@ const typographyTypes = {
   title24: 'title-24',
   title28: 'title-28',
   title30: 'title-30',
+  title40: 'title-40',
   subtitle16: 'subtitle-16',
   text12: 'text-12',
   text14: 'text-14',
@@ -24,6 +25,7 @@ const typographyTags = {
 } as const;
 
 const textAlign = {
+  center: 'center',
   end: 'end',
 } as const;
 

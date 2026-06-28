@@ -9,7 +9,8 @@ type BoxProps = {
   bgColor?:
     | ValueOf<typeof colors.box>
     | ValueOf<typeof colors.category>
-    | ValueOf<typeof colors.label>;
+    | ValueOf<typeof colors.label>
+    | ValueOf<typeof colors.gray>;
   radius?: ValueOf<typeof sizes.radiuses>;
   grow?: ValueOf<typeof boxProps.grow>;
   padding?: ValueOf<typeof sizes.sizes>;

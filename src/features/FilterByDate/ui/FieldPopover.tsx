@@ -1,6 +1,6 @@
 import { Popover, PopoverContent } from '@/shared/ui/Popover';
 import { DatePicker } from './DatePicker';
-import { Input } from '@/shared/ui/Input';
+import { Input, inputProps } from '@/shared/ui/Input';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
@@ -26,6 +26,8 @@ const FieldPopover = (props: FieldPopoverProps) => {
   return (
     <Popover>
       <Input
+        theme={inputProps.themes.lightgray}
+        type={inputProps.types.regular}
         readOnly
         placeholder="дд.мм.гггг"
         name="end-date"

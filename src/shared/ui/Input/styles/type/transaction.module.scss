@@ -1,0 +1,10 @@
+.input {
+  &--type {
+    &--transaction {
+      .input__field {
+        font-size: var(--size-40);
+        font-weight: 700;
+      }
+    }
+  }
+}

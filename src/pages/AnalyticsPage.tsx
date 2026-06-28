@@ -101,7 +101,7 @@ const AnalyticsPage = () => {
         />
       </Row>
 
-      <Grid columns={gridProps.columns['2-1']}>
+      <Grid templateColumns={gridProps.columns['2-1']}>
         <LineChartUI data={lineChartData} />
 
         <PageCell gap={sizes.sizes[20]}>

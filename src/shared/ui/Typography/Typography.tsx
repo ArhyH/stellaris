@@ -7,7 +7,7 @@ import { ElementType, ReactNode } from 'react';
 import { ValueOf } from 'type-fest';
 
 type TypographyProps = {
-  children: ReactNode;
+  children: ReactNode | string;
   type: ValueOf<typeof typographyProps.types>;
   color?: ColorToken;
   tag?: keyof typeof typographyProps.tags;

@@ -1,38 +1,52 @@
+import { ReactNode, Ref } from 'react';
+import classnames from 'classnames';
 import styles from './style.module.scss';
 import { Icon } from '../Icon';
 import { colors, sizes } from '@/shared/styles';
-import { ReactNode, Ref } from 'react';
 import { Typography, typographyProps } from '../Typography';
+import { ValueOf } from 'type-fest';
+import { inputProps } from '.';
 
 type InputProps = {
   placeholder: string;
   name: string;
-  value?: string;
+  theme: ValueOf<typeof inputProps.themes>;
+  type: ValueOf<typeof inputProps.types>;
+  value?: string | number;
   leftIcon?: UtilityTypes.SvgContent;
   rightElement?: ReactNode;
-  onChange?: (value: string) => void;
-  onClick?: () => void;
   readOnly?: boolean;
   ref?: Ref<HTMLLabelElement>;
   label?: string;
+  sign?: ReactNode;
+  onChange?: (value: string) => void;
+  onClick?: () => void;
 };
 
 const Input = (props: InputProps) => {
   const {
-    leftIcon,
-    rightElement,
     name,
     placeholder,
+    theme,
+    type,
+    leftIcon,
+    rightElement,
     label,
     onChange,
     onClick,
     value,
     readOnly,
     ref,
+    sign,
   } = props;
 
+  const componentClassNames = classnames(styles.input, {
+    [styles[`input--theme--${theme}`]]: theme,
+    [styles[`input--type--${type}`]]: type,
+  });
+
   return (
-    <label className={styles.input__wrapper} ref={ref} onClick={onClick}>
+    <label className={componentClassNames} ref={ref} onClick={onClick}>
       {label && (
         <Typography
           type={typographyProps.types.text12}
@@ -44,6 +58,8 @@ const Input = (props: InputProps) => {
       )}
 
       <span className={styles.input__body}>
+        {sign && sign}
+
         {leftIcon && (
           <Icon
             icon={leftIcon}
@@ -53,7 +69,7 @@ const Input = (props: InputProps) => {
         )}
 
         <input
-          className={styles.input}
+          className={styles.input__field}
           type="text"
           placeholder={placeholder}
           name={name}

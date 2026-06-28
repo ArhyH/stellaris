@@ -7,6 +7,12 @@ const getGap = ({ gap }: Pick<RowProps, 'gap'>) => {
   }
 };
 
+const getColor = ({ color }: Pick<RowProps, 'color'>) => {
+  if (color) {
+    return getCssVarOrNothing('--row-color', color);
+  }
+};
+
 const getPaddingVertical = ({
   paddingVertical,
 }: Pick<RowProps, 'paddingVertical'>) => {
@@ -18,10 +24,12 @@ const getPaddingVertical = ({
 const getStyles = ({
   gap,
   paddingVertical,
-}: Pick<RowProps, 'gap' | 'paddingVertical'>) => {
+  color,
+}: Pick<RowProps, 'gap' | 'paddingVertical' | 'color'>) => {
   return {
     ...getGap({ gap }),
     ...getPaddingVertical({ paddingVertical }),
+    ...getColor({ color }),
   };
 };
 

@@ -1,5 +1,5 @@
 import { icons } from '@/shared/assets';
-import { Input } from '@/shared/ui/Input';
+import { Input, inputProps } from '@/shared/ui/Input';
 
 type FilterByQueryProps = {
   onChange: (value: string) => void;
@@ -11,6 +11,8 @@ const FilterByQuery = (props: FilterByQueryProps) => {
 
   return (
     <Input
+      theme={inputProps.themes.lightgray}
+      type={inputProps.types.regular}
       onChange={onChange}
       placeholder="Search transactions..."
       name="search"
