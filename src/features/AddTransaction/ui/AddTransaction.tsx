@@ -16,7 +16,7 @@ import {
   SegmentedControl,
   segmentedControlProps,
 } from '@/shared/ui/SegmentedControl';
-import { FinanceTransferType } from '@/shared/types';
+import { FinanceTransferType, ID } from '@/shared/types';
 import { SELECT_TYPES_DATA } from '@/shared/consts/consts';
 import { Transaction } from '@/entity/transaction';
 import { Box, boxProps } from '@/shared/ui/Box';
@@ -30,9 +30,11 @@ import {
 } from '../model/helpers';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { AMOUNT_BUTTONS } from '../model/consts';
+import { Category } from '@/entity/category';
+import { formatDate } from '@/shared/helpers/formatDate';
 
 type AddTransactionProps = {
-  onClose: () => void;
+  categories: Category[];
   onSubmit: (transaction: Transaction) => void;
 };
 
@@ -41,16 +43,19 @@ type FormTransaction = Omit<Transaction, 'amount'> & {
 };
 
 const AddTransaction = (props: AddTransactionProps) => {
-  const { onClose, onSubmit } = props;
+  const { categories, onSubmit } = props;
 
-  const [transaction, setTransaction] = useState<FormTransaction>({
-    id: Date().toString(),
+  const createTransaction = (): FormTransaction => ({
+    id: new Date().toString(),
     type: FinanceTransferTypes.expense,
-    date: Date(),
+    date: formatDate(new Date()),
     amount: '',
     categoryId: '',
     note: '',
   });
+
+  const [transaction, setTransaction] =
+    useState<FormTransaction>(createTransaction());
 
   const onTypeChange = (type: FinanceTransferType) => {
     setTransaction((prevTransaction) => ({
@@ -86,6 +91,13 @@ const AddTransaction = (props: AddTransactionProps) => {
     });
   };
 
+  const onCategoryButtonClick = (categoryId: ID) => {
+    setTransaction((prevTransaction) => ({
+      ...prevTransaction,
+      categoryId,
+    }));
+  };
+
   const handleSubmit = () => {
     const amount = transaction.amount;
 
@@ -101,8 +113,11 @@ const AddTransaction = (props: AddTransactionProps) => {
     onSubmit(result);
   };
 
+  const getCurrentCategories = (type: FinanceTransferType) =>
+    [...categories].filter((category) => category.type === type);
+
   return (
-    <Dialog onClose={onClose}>
+    <Dialog onClose={() => setTransaction(createTransaction())}>
       <Button
         theme={buttonProps.themes.green}
         size={buttonProps.sizes['44-stretched']}
@@ -208,6 +223,7 @@ const AddTransaction = (props: AddTransactionProps) => {
                 theme={buttonProps.themes.lightgray}
                 size={buttonProps.sizes['48-stretched']}
                 onClick={() => onValueButtonClick(item.value)}
+                key={item.value}
               >
                 {item.value !== 'delete' ? (
                   <Typography
@@ -225,6 +241,35 @@ const AddTransaction = (props: AddTransactionProps) => {
               </Button>
             ))}
           </Grid>
+
+          <Row gap={sizes.sizes[8]} width={sizes.sizes.parent} wrap>
+            {getCurrentCategories(transaction.type).map((category) => {
+              const isActiveCategory = transaction.categoryId === category.id;
+
+              return (
+                <Button
+                  key={category.id}
+                  theme={buttonProps.themes.transparentCategory}
+                  size={buttonProps.sizes[34]}
+                  activeBgColor={category.color}
+                  isActive={isActiveCategory}
+                  onClick={() => onCategoryButtonClick(category.id)}
+                >
+                  <Icon
+                    icon={icons[category.icon]}
+                    width={sizes.sizes[14]}
+                    height={sizes.sizes[14]}
+                    color={
+                      isActiveCategory ? colors.base.black : category.color
+                    }
+                  />
+                  <Typography type={typographyProps.types.text14}>
+                    {category.name}
+                  </Typography>
+                </Button>
+              );
+            })}
+          </Row>
 
           <DialogClose>
             <Button

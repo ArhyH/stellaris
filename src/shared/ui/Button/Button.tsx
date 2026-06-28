@@ -15,6 +15,7 @@ const Button = (props: ButtonProps) => {
     isDisabled,
     onClick,
     bgColor,
+    activeBgColor,
     ref,
     ...rest
   } = props;
@@ -37,7 +38,7 @@ const Button = (props: ButtonProps) => {
       onClick={onClick}
       ref={ref}
       disabled={isDisabled}
-      style={{ ...getStyles({ bgColor }) }}
+      style={{ ...getStyles({ bgColor, activeBgColor }) }}
     >
       {children}
     </button>

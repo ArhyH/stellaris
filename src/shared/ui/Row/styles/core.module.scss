@@ -4,17 +4,23 @@
   @include initializeCssVar(--row-gap, var(--size-20));
   @include initializeCssVar(--row-padding-vertical, var(--size-0));
   @include initializeCssVar(--row-color, inherit);
+  @include initializeCssVar(--row-width, unset);
 
   display: flex;
   gap: var(--row-gap);
   padding-top: var(--row-padding-vertical);
   padding-bottom: var(--row-padding-vertical);
   color: var(--row-color);
+  width: var(--row-width);
   align-items: center;
 
   &--justify {
     &--space-between {
       justify-content: space-between;
     }
+  }
+
+  &.flex-wrap {
+    flex-wrap: wrap;
   }
 }

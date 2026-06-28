@@ -12,20 +12,23 @@ type RowProps = {
   justify?: ValueOf<typeof rowProps.justifies>;
   gap?: ValueOf<typeof sizes.sizes>;
   paddingVertical?: ValueOf<typeof sizes.sizes>;
+  width?: ValueOf<typeof sizes.sizes>;
+  wrap?: boolean;
   color?: ColorToken;
 };
 
 const Row = (props: RowProps) => {
-  const { children, justify, gap, paddingVertical, color } = props;
+  const { children, justify, gap, paddingVertical, width, color, wrap } = props;
 
   const componentClassNames = classnames(styles.row, {
     [styles[`row--justify--${justify}`]]: justify,
+    [styles[`flex-wrap`]]: wrap,
   });
 
   return (
     <div
       className={componentClassNames}
-      style={{ ...getStyles({ gap, paddingVertical, color }) }}
+      style={{ ...getStyles({ gap, paddingVertical, width, color }) }}
     >
       {children}
     </div>

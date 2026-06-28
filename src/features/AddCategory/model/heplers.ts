@@ -9,4 +9,5 @@ const createInitialCategory = (): Category => ({
   type: FinanceTransferTypes.expense,
   id: Date.now().toString(),
 });
+
 export { createInitialCategory };

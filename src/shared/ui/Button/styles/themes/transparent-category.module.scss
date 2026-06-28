@@ -1,0 +1,21 @@
+.button {
+  &--theme {
+    &--transparent-category {
+      --button-background-color: var(--button-bg-1);
+      border-radius: var(--size-14);
+      color: var(--lightgray-3);
+
+      @media (hover: hover) {
+        &:hover {
+          --button-background-color: var(--button-bg-2);
+          color: var(--white);
+        }
+      }
+
+      &.is-active {
+        color: var(--black);
+        cursor: default;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ const buttonThemes = {
   lightgray: 'lightgray',
   red: 'red',
   transparent: 'transparent',
+  transparentCategory: 'transparent-category',
   transparentGray: 'transparent-gray',
 } as const;
 
@@ -15,6 +16,7 @@ const buttonRadiuses = {
 
 const buttonSizes = {
   24: 24,
+  34: 34,
   36: 36,
   40: 40,
   '18x18': '18x18',

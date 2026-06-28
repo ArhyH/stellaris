@@ -7,9 +7,24 @@ const getBGColor = ({ bgColor }: Pick<ButtonProps, 'bgColor'>) => {
   }
 };
 
-const getStyles = ({ bgColor }: Pick<ButtonProps, 'bgColor'>) => {
+const getActiveBGColor = ({
+  activeBgColor,
+}: Pick<ButtonProps, 'activeBgColor'>) => {
+  if (activeBgColor) {
+    return getCssVarOrNothing(
+      '--button-active-background-color',
+      activeBgColor,
+    );
+  }
+};
+
+const getStyles = ({
+  bgColor,
+  activeBgColor,
+}: Pick<ButtonProps, 'bgColor' | 'activeBgColor'>) => {
   return {
     ...getBGColor({ bgColor }),
+    ...getActiveBGColor({ activeBgColor }),
   };
 };
 
