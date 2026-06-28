@@ -1,11 +1,10 @@
-import { Row } from '@/shared/ui/Row/Row';
 import { colors, sizes } from '@/shared/styles';
-import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 
+import { Icon } from '@/shared/ui/Icon';
+import { Row } from '@/shared/ui/Row/Row';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-
-import { FieldPopover } from './FieldPopover';
+import { DatePicker } from '@/shared/ui/DatePicker';
 
 type FilterByDateProps = {
   onStartDateChange: (value: string) => void;
@@ -24,7 +23,7 @@ const FilterByDate = (props: FilterByDateProps) => {
         color={colors.lightgray[1]}
       />
 
-      <FieldPopover onChange={onStartDateChange} />
+      <DatePicker onChange={onStartDateChange} name="filter-start-date" />
 
       <Typography
         type={typographyProps.types.text12}
@@ -33,7 +32,7 @@ const FilterByDate = (props: FilterByDateProps) => {
         to
       </Typography>
 
-      <FieldPopover onChange={onEndDateChange} />
+      <DatePicker onChange={onEndDateChange} name="filter-end-date" />
     </Row>
   );
 };

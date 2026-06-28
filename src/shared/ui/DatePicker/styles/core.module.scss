@@ -21,8 +21,10 @@
   }
 }
 
-.selected > .day_button {
+.selected > .day_button,
+.today.selected > .day_button {
   background-color: var(--green-1);
+  color: var(--black);
 
   @media (hover: hover) {
     &:hover {

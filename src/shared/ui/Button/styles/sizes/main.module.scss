@@ -40,6 +40,11 @@
       width: var(--parent);
     }
 
+    &--40-stretched {
+      width: var(--parent);
+      height: var(--size-40);
+    }
+
     &--44-stretched {
       width: var(--parent);
       height: var(--size-44);

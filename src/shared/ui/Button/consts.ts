@@ -1,6 +1,7 @@
 import { sizes } from '@/shared/styles';
 
 const buttonThemes = {
+  gray5green: 'gray-5-green',
   green: 'green',
   lightgray: 'lightgray',
   red: 'red',
@@ -23,6 +24,7 @@ const buttonSizes = {
   '28x28': '28x28',
   '32x32': '32x32',
   '36x36': '36x36',
+  '40-stretched': '40-stretched',
   '44-stretched': '44-stretched',
   '48-stretched': '48-stretched',
 } as const;

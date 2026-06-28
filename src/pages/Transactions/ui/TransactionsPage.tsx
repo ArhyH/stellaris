@@ -14,13 +14,7 @@ import {
 } from '../model';
 
 const TransactionsPage = () => {
-  const {
-    transactions,
-    transactionsList,
-    categories,
-    addTransaction,
-    deleteTransaction,
-  } = useTransactions();
+  const { transactionsList, categories } = useTransactions();
 
   const {
     setFilters,

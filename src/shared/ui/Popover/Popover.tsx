@@ -12,10 +12,11 @@ import { usePopover } from './helpers/usePopover';
 
 type PopoverProps = {
   children: ReactNode;
+  onClose?: () => void;
 };
 
 const Popover = (props: PopoverProps) => {
-  const { children } = props;
+  const { children, onClose } = props;
 
   const {
     isOpen,
@@ -35,6 +36,11 @@ const Popover = (props: PopoverProps) => {
 
   const handleIsOpen = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose?.();
   };
 
   const triggerElement = trigger
@@ -57,7 +63,9 @@ const Popover = (props: PopoverProps) => {
           style={popoverStyle}
           ref={contentRef}
         >
-          {content.props.children}
+          {cloneElement(content, {
+            onClose: handleClose,
+          })}
         </div>
       )}
     </div>

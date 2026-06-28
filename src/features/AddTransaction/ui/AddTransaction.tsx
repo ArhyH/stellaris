@@ -32,6 +32,7 @@ import { Grid, gridProps } from '@/shared/ui/Grid';
 import { AMOUNT_BUTTONS } from '../model/consts';
 import { Category } from '@/entity/category';
 import { formatDate } from '@/shared/helpers/formatDate';
+import { DatePicker } from '@/shared/ui/DatePicker';
 
 type AddTransactionProps = {
   categories: Category[];
@@ -48,7 +49,7 @@ const AddTransaction = (props: AddTransactionProps) => {
   const createTransaction = (): FormTransaction => ({
     id: new Date().toString(),
     type: FinanceTransferTypes.expense,
-    date: formatDate(new Date()),
+    date: new Date().toISOString(),
     amount: '',
     categoryId: '',
     note: '',
@@ -98,8 +99,23 @@ const AddTransaction = (props: AddTransactionProps) => {
     }));
   };
 
+  const onDateChange = (date: string) => {
+    setTransaction((prevTransaction) => ({
+      ...prevTransaction,
+      date,
+    }));
+  };
+
+  const onNoteChange = (note: string) => {
+    setTransaction((prevTransaction) => ({
+      ...prevTransaction,
+      note,
+    }));
+  };
+
   const handleSubmit = () => {
     const amount = transaction.amount;
+    const date = transaction.date;
 
     if (!isPositiveAmount(amount)) {
       return;
@@ -108,6 +124,7 @@ const AddTransaction = (props: AddTransactionProps) => {
     const result = {
       ...transaction,
       amount: Number(amount),
+      date: formatDate(new Date(date)),
     };
 
     onSubmit(result);
@@ -271,12 +288,34 @@ const AddTransaction = (props: AddTransactionProps) => {
             })}
           </Row>
 
+          <Grid
+            templateColumns={gridProps.columns['1-1']}
+            gap={sizes.sizes[12]}
+            width={sizes.sizes.parent}
+          >
+            <DatePicker
+              onChange={onDateChange}
+              label="Date"
+              name="transaction-date"
+            />
+
+            <Input
+              label="Note"
+              theme={inputProps.themes.lightgray}
+              type={inputProps.types.regular}
+              placeholder="Optional note..."
+              name="transaction-note"
+              value={transaction.note}
+              onChange={onNoteChange}
+            />
+          </Grid>
+
           <DialogClose>
             <Button
               theme={buttonProps.themes.green}
               size={buttonProps.sizes['44-stretched']}
               isDisabled={
-                !isPositiveAmount(transaction.amount) && !transaction.categoryId
+                !isPositiveAmount(transaction.amount) || !transaction.categoryId
               }
               onClick={handleSubmit}
             >

@@ -38,7 +38,18 @@ const getMonthYearFromDate = (date: string): string => {
   return formatted;
 };
 
+const isSameDay = (a?: Date, b?: Date) => {
+  if (!a || !b) return false;
+
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
+};
+
 export {
+  isSameDay,
   getPrevMonth,
   getLastNMonth,
   getMonthFromDate,
