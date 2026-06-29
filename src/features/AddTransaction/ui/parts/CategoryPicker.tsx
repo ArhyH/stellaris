@@ -25,7 +25,9 @@ const CategoryPicker = (props: CategoryPickerProps) => {
           <Button
             key={category.id}
             theme={buttonProps.themes.transparentCategory}
-            size={buttonProps.sizes[34]}
+            height={sizes.sizes[34]}
+            paddingVertical={sizes.sizes[6]}
+            paddingHorizontal={sizes.sizes[12]}
             activeBgColor={category.color}
             isActive={isActiveCategory}
             onClick={() => onCategoryButtonClick(category.id)}

@@ -1,5 +1,3 @@
-import { sizes } from '@/shared/styles';
-
 const buttonThemes = {
   gray5green: 'gray-5-green',
   green: 'green',
@@ -10,35 +8,14 @@ const buttonThemes = {
   transparentGray: 'transparent-gray',
 } as const;
 
-const buttonRadiuses = {
-  14: 14,
-  hafl: sizes.sizes.half,
-} as const;
-
-const buttonSizes = {
-  24: 24,
-  34: 34,
-  36: 36,
-  40: 40,
-  '18x18': '18x18',
-  '28x28': '28x28',
-  '32x32': '32x32',
-  '36x36': '36x36',
-  '40-stretched': '40-stretched',
-  '44-stretched': '44-stretched',
-  '48-stretched': '48-stretched',
-} as const;
-
 const buttonJustifies = {
   left: 'left',
   right: 'right',
 } as const;
 
 const buttonProps = {
-  sizes: buttonSizes,
   themes: buttonThemes,
   justifies: buttonJustifies,
-  radiuses: buttonRadiuses,
 } as const;
 
 export { buttonProps };

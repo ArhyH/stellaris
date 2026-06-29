@@ -97,14 +97,11 @@ const BudgetItem = (props: BudgetItemProps) => {
           <div className={styles['budget-overview__buttons']}>
             <Button
               theme={buttonProps.themes.lightgray}
-              size={buttonProps.sizes['32x32']}
+              size={sizes.sizes['32']}
             >
               <Icon icon={icons.pen24} size={sizes.sizes[12]} />
             </Button>
-            <Button
-              theme={buttonProps.themes.red}
-              size={buttonProps.sizes['32x32']}
-            >
+            <Button theme={buttonProps.themes.red} size={sizes.sizes['32']}>
               <Icon icon={icons.trash24} size={sizes.sizes[12]} />
             </Button>
           </div>

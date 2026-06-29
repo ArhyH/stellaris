@@ -45,7 +45,9 @@ const Profile = (props: ProfileProps) => {
         </Cell>
 
         <Button
-          size={buttonProps.sizes[36]}
+          height={sizes.sizes[36]}
+          paddingVertical={sizes.sizes[8]}
+          paddingHorizontal={sizes.sizes[16]}
           theme={buttonProps.themes.lightgray}
           onClick={onClick}
         >

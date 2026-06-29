@@ -57,8 +57,8 @@ const CategoryForm = (props: CategoryFormProps) => {
           <DialogClose>
             <Button
               theme={buttonProps.themes.lightgray}
-              size={buttonProps.sizes['32x32']}
-              radius={buttonProps.radiuses[14]}
+              size={sizes.sizes['32']}
+              radius={sizes.radiuses[14]}
             >
               <Icon icon={icons.cross14} size={sizes.sizes[14]} />
             </Button>
@@ -100,7 +100,8 @@ const CategoryForm = (props: CategoryFormProps) => {
           <DialogClose>
             <Button
               theme={buttonProps.themes.green}
-              size={buttonProps.sizes['44-stretched']}
+              height={sizes.sizes[44]}
+              width={sizes.sizes.parent}
               isDisabled={!category.name}
               onClick={() => onSubmit(category)}
             >

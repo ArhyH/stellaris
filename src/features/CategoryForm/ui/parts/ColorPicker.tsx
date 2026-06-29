@@ -1,6 +1,6 @@
 import { FormCell } from './FormCell';
 import { CategoryColor, colors, sizes } from '@/shared/styles';
-import { Button, buttonProps } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { isDarkColor } from '../../model/heplers';
@@ -17,7 +17,7 @@ const ColorPicker = (props: ColorPickerProps) => {
     <FormCell title="Category Color" hasScroll>
       {Object.entries(colors.category).map(([key, value]) => (
         <Button
-          size={buttonProps.sizes['28x28']}
+          size={sizes.sizes['28']}
           radius={sizes.radiuses.half}
           onClick={() => onColorChange(key as CategoryColor)}
           bgColor={value}

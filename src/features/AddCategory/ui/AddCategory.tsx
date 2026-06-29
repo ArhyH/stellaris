@@ -20,7 +20,12 @@ const AddCategory = (props: AddCategoryProps) => {
       currentCategory={createInitialCategory()}
       onSubmit={onSubmit}
     >
-      <Button theme={buttonProps.themes.green} size={buttonProps.sizes[40]}>
+      <Button
+        theme={buttonProps.themes.green}
+        height={sizes.sizes[40]}
+        paddingVertical={sizes.sizes[10]}
+        paddingHorizontal={sizes.sizes[16]}
+      >
         <Icon icon={icons.plus24} size={sizes.sizes[16]} />
         <Typography
           tag={typographyProps.tags.h3}

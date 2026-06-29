@@ -88,14 +88,14 @@ const CategoryItem = (props: CategoryItemProps) => {
       <div className={styles.categories__buttons}>
         <Button
           theme={buttonProps.themes.lightgray}
-          size={buttonProps.sizes['32x32']}
+          size={sizes.sizes['32']}
           onClick={() => onEdit(categoryId)}
         >
           <Icon icon={icons.pen24} size={sizes.sizes[12]} />
         </Button>
         <Button
           theme={buttonProps.themes.red}
-          size={buttonProps.sizes['32x32']}
+          size={sizes.sizes['32']}
           onClick={() => onDelete(categoryId)}
         >
           <Icon icon={icons.trash24} size={sizes.sizes[12]} />

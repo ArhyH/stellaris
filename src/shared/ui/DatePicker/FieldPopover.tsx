@@ -54,7 +54,7 @@ const FieldPopover = (props: FieldPopoverProps) => {
         value={formatted}
         rightElement={
           <Button
-            size={buttonProps.sizes['18x18']}
+            size={sizes.sizes['18']}
             theme={buttonProps.themes.transparent}
           >
             <Icon
@@ -79,7 +79,8 @@ const FieldPopover = (props: FieldPopoverProps) => {
 
             <Row gap={sizes.sizes[12]}>
               <Button
-                size={buttonProps.sizes['40-stretched']}
+                height={sizes.sizes[40]}
+                width={sizes.sizes.parent}
                 theme={buttonProps.themes.gray5green}
                 isActive={isSameDay(value, today)}
                 onClick={() => {
@@ -93,7 +94,8 @@ const FieldPopover = (props: FieldPopoverProps) => {
               </Button>
 
               <Button
-                size={buttonProps.sizes['40-stretched']}
+                height={sizes.sizes[40]}
+                width={sizes.sizes.parent}
                 theme={buttonProps.themes.gray5green}
                 onClick={() => {
                   handleDeleteCkick();

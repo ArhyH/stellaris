@@ -21,7 +21,8 @@ const AmountButtons = (props: AmountButtonsProps) => {
       {AMOUNT_BUTTONS.map((item) => (
         <Button
           theme={buttonProps.themes.lightgray}
-          size={buttonProps.sizes['48-stretched']}
+          height={sizes.sizes[48]}
+          width={sizes.sizes.parent}
           onClick={() => onValueButtonClick(item.value)}
           key={item.value}
         >

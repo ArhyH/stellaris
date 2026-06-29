@@ -99,7 +99,7 @@ const Transaction = (props: TransactionProps) => {
 
       <div className={styles['transactions-list__button']}>
         <Button
-          size={buttonProps.sizes['28x28']}
+          size={sizes.sizes['28']}
           theme={buttonProps.themes.red}
           onClick={() => onDelete(id)}
         >

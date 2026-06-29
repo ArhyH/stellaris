@@ -65,7 +65,8 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
         <div className={styles['transactions-list__header']}>
           <Button
             theme={buttonProps.themes.transparent}
-            size={buttonProps.sizes[24]}
+            height={sizes.sizes[24]}
+            width={sizes.sizes.parent}
             justify={buttonProps.justifies.left}
             onClick={() => handleSort(sortFields.date)}
             {...getButtonState(sortFields.date)}
@@ -78,7 +79,8 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
 
           <Button
             theme={buttonProps.themes.transparent}
-            size={buttonProps.sizes[24]}
+            height={sizes.sizes[24]}
+            width={sizes.sizes.parent}
             justify={buttonProps.justifies.left}
             onClick={() => handleSort(sortFields.category)}
             {...getButtonState(sortFields.category)}
@@ -100,7 +102,8 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
 
           <Button
             theme={buttonProps.themes.transparent}
-            size={buttonProps.sizes[24]}
+            height={sizes.sizes[24]}
+            width={sizes.sizes.parent}
             justify={buttonProps.justifies.right}
             onClick={() => handleSort(sortFields.amount)}
             {...getButtonState(sortFields.amount)}
