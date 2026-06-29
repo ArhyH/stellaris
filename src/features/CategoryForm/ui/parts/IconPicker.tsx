@@ -1,15 +1,15 @@
-import { FormCell } from '../FormCell';
+import { FormCell } from './FormCell';
 import { IconName, categoriesIcons } from '@/shared/assets/icons/icons';
 import { sizes } from '@/shared/styles';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 
-type CategoryIconProps = {
+type IconPickerProps = {
   icon: string;
   onIconChange: (value: IconName) => void;
 };
 
-const CategoryIcon = (props: CategoryIconProps) => {
+const IconPicker = (props: IconPickerProps) => {
   const { icon, onIconChange } = props;
 
   return (
@@ -29,5 +29,4 @@ const CategoryIcon = (props: CategoryIconProps) => {
   );
 };
 
-export { CategoryIcon };
-export type { CategoryIconProps };
+export { IconPicker };

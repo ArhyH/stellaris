@@ -1,4 +1,4 @@
-import { FormCell } from '../FormCell';
+import { FormCell } from './FormCell';
 import {
   SegmentedControl,
   segmentedControlProps,
@@ -6,12 +6,12 @@ import {
 import { FinanceTransferType } from '@/shared/types';
 import { SELECT_TYPES_DATA } from '@/shared/consts/consts';
 
-type CategoryTypeProps = {
+type TypeSelectProps = {
   type: string;
   onTypeChange: (value: string) => void;
 };
 
-const CategoryType = (props: CategoryTypeProps) => {
+const TypeSelect = (props: TypeSelectProps) => {
   const { type, onTypeChange } = props;
 
   return (
@@ -30,5 +30,4 @@ const CategoryType = (props: CategoryTypeProps) => {
   );
 };
 
-export { CategoryType };
-export type { CategoryTypeProps };
+export { TypeSelect };

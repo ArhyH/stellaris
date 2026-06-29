@@ -1,11 +1,11 @@
 import { Input, inputProps } from '@/shared/ui/Input';
 
-type CategoryNameProps = {
+type NameFieldProps = {
   name: string;
   onNameChange: (value: string) => void;
 };
 
-const CategoryName = (props: CategoryNameProps) => {
+const NameField = (props: NameFieldProps) => {
   const { name, onNameChange } = props;
 
   return (
@@ -21,5 +21,4 @@ const CategoryName = (props: CategoryNameProps) => {
   );
 };
 
-export { CategoryName };
-export type { CategoryNameProps };
+export { NameField };
