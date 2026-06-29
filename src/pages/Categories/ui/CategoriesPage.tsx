@@ -11,6 +11,7 @@ import { AddCategory } from '@/features/AddCategory';
 import { EditCategory } from '@/features/EditCategory';
 import { useCategoriesFilter, useEditCategory } from '../model';
 import { useCategories } from '@/entity/category';
+import { useCurrentDate } from '@/shared/hooks';
 
 const CategoriesPage = () => {
   const {
@@ -27,9 +28,13 @@ const CategoriesPage = () => {
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
     useEditCategory(categories);
 
-  const now = new Date();
+  const { currentMonth } = useCurrentDate();
+
   const categoriesSummary = getCategoriesSummary(categoriesList);
-  const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
+  const currentTransactions = filterTransactionsByMonth(
+    transactionsMock,
+    currentMonth,
+  );
   const categoryItems = mapCategoriesToCategoryItems(
     currentCategories,
     currentTransactions,

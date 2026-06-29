@@ -16,10 +16,14 @@ import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary, getBudgetsSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
+import { useCurrentDate } from '@/shared/hooks';
 
 const BudgetsPage = () => {
-  const now = new Date();
-  const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
+  const { currentMonth } = useCurrentDate();
+  const currentTransactions = filterTransactionsByMonth(
+    transactionsMock,
+    currentMonth,
+  );
 
   const budgetData = mapBudgetsToOverviewItems(
     budgetsMock,

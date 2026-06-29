@@ -2,7 +2,6 @@ import {
   filterTransactionsByMonth,
   getMonthFromDate,
   getMonthYearFromDate,
-  getPrevMonth,
 } from '@/shared/helpers';
 import { transactionsMock } from '@/shared/mocks/transactions';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
@@ -26,12 +25,15 @@ import {
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { TopSpending, getTopSpendingCategory } from '@/widgets/top-spending';
 import { Page, PageCell } from '@/shared/ui/Page';
+import { useCurrentDate } from '@/shared/hooks';
 
 const AnalyticsPage = () => {
-  const now = new Date();
-  const prevMonth = getPrevMonth(now);
+  const { currentMonth, prevMonth } = useCurrentDate();
 
-  const currentTransactions = filterTransactionsByMonth(transactionsMock, now);
+  const currentTransactions = filterTransactionsByMonth(
+    transactionsMock,
+    currentMonth,
+  );
   const prevTransactions = filterTransactionsByMonth(
     transactionsMock,
     prevMonth,

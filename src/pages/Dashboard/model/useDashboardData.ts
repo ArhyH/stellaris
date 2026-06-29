@@ -4,7 +4,6 @@ import { useTransactions } from '@/entity/transaction';
 import {
   filterTransactionsByMonth,
   getMonthYearFromDate,
-  getPrevMonth,
 } from '@/shared/helpers';
 import { getDashboardDeltas, getDashboardSummary } from '@/widgets/summary';
 import { mapTransactionsToRecentItems } from '@/widgets/transactions-list';
@@ -12,19 +11,18 @@ import { mapTransactionsToPieChartData } from '@/widgets/charts';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { budgetsMock } from '@/shared/mocks/budgets';
 import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview';
+import { useCurrentDate } from '@/shared/hooks';
 
 const useDashboardData = () => {
   const { transactionsList } = useTransactions();
   const { categoriesList } = useCategories();
-
-  const now = new Date();
-  const prevMonth = getPrevMonth(now);
+  const { currentMonth, prevMonth } = useCurrentDate();
 
   const { currentTransactions, currentSummary, deltas, monthYear } =
     useMemo(() => {
       const currentTransactions = filterTransactionsByMonth(
         transactionsList,
-        now,
+        currentMonth,
       );
 
       const prevTransactions = filterTransactionsByMonth(
