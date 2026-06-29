@@ -11,128 +11,37 @@ import { colors, sizes } from '@/shared/styles';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { FinanceTransferTypes } from '@/shared/consts';
-import {
-  SegmentedControl,
-  segmentedControlProps,
-} from '@/shared/ui/SegmentedControl';
-import { FinanceTransferType, ID } from '@/shared/types';
-import { SELECT_TYPES_DATA } from '@/shared/consts/consts';
-import { Transaction } from '@/entity/transaction';
-import { Box, boxProps } from '@/shared/ui/Box';
-import { Row } from '@/shared/ui/Row';
-import { Input, inputProps } from '@/shared/ui/Input';
-import {
-  getColor,
-  getSign,
-  isPositiveAmount,
-  isValidInputAmount,
-} from '../model/helpers';
+import { createTransaction, isPositiveAmount } from '../model/helpers';
 import { Grid, gridProps } from '@/shared/ui/Grid';
-import { AMOUNT_BUTTONS } from '../model/consts';
-import { Category } from '@/entity/category';
-import { formatDate } from '@/shared/helpers/formatDate';
-import { DatePicker } from '@/shared/ui/DatePicker';
-
-type AddTransactionProps = {
-  categories: Category[];
-  onSubmit: (transaction: Transaction) => void;
-};
-
-type FormTransaction = Omit<Transaction, 'amount'> & {
-  amount: string;
-};
+import { getModalCallbacks } from '../model/getModalCallbacks';
+import { AddTransactionProps, FormTransaction } from '../model/types';
+import {
+  AmountField,
+  AmountButtons,
+  CategoryPicker,
+  DatePicker,
+  NoteField,
+  TypeSelect,
+} from './parts';
+import { useCurrentCategories } from '../model/useCurrentCategories';
 
 const AddTransaction = (props: AddTransactionProps) => {
   const { categories, onSubmit } = props;
 
-  const createTransaction = (): FormTransaction => ({
-    id: new Date().toString(),
-    type: FinanceTransferTypes.expense,
-    date: new Date().toISOString(),
-    amount: '',
-    categoryId: '',
-    note: '',
-  });
-
   const [transaction, setTransaction] =
     useState<FormTransaction>(createTransaction());
 
-  const onTypeChange = (type: FinanceTransferType) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
-      type,
-      categoryId: '',
-    }));
-  };
+  const {
+    onTypeChange,
+    onValueChange,
+    onValueButtonClick,
+    onCategoryButtonClick,
+    onDateChange,
+    onNoteChange,
+    handleSubmit,
+  } = getModalCallbacks(transaction, setTransaction, onSubmit);
 
-  const onValueChange = (amount: string) => {
-    if (isValidInputAmount(amount)) {
-      setTransaction((prevTransaction) => ({
-        ...prevTransaction,
-        amount,
-      }));
-    }
-  };
-
-  const onValueButtonClick = (value: string) => {
-    setTransaction((prevTransaction) => {
-      const amount =
-        value === 'delete'
-          ? prevTransaction.amount.slice(0, -1)
-          : prevTransaction.amount + value;
-
-      if (!isValidInputAmount(amount)) {
-        return prevTransaction;
-      }
-
-      return {
-        ...prevTransaction,
-        amount,
-      };
-    });
-  };
-
-  const onCategoryButtonClick = (categoryId: ID) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
-      categoryId,
-    }));
-  };
-
-  const onDateChange = (date: string) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
-      date,
-    }));
-  };
-
-  const onNoteChange = (note: string) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
-      note,
-    }));
-  };
-
-  const handleSubmit = () => {
-    const amount = transaction.amount;
-    const date = transaction.date;
-
-    if (!isPositiveAmount(amount)) {
-      return;
-    }
-
-    const result = {
-      ...transaction,
-      amount: Number(amount),
-      date: formatDate(new Date(date)),
-    };
-
-    onSubmit(result);
-  };
-
-  const getCurrentCategories = (type: FinanceTransferType) =>
-    [...categories].filter((category) => category.type === type);
+  const currentCategories = useCurrentCategories(categories, transaction.type);
 
   return (
     <Dialog onClose={() => setTransaction(createTransaction())}>
@@ -179,137 +88,30 @@ const AddTransaction = (props: AddTransactionProps) => {
         </DialogHeader>
 
         <DialogBody>
-          <SegmentedControl
-            size={segmentedControlProps.sizes[44]}
-            theme={segmentedControlProps.themes.switch}
-            type={segmentedControlProps.types.stretched}
-            options={SELECT_TYPES_DATA}
-            defaultValue={SELECT_TYPES_DATA[0].value}
-            onChange={(value) => {
-              onTypeChange(value as FinanceTransferType);
-            }}
+          <TypeSelect onTypeChange={onTypeChange} />
+
+          <AmountField
+            type={transaction.type}
+            amount={transaction.amount}
+            onValueChange={onValueChange}
           />
 
-          <Box
-            bgColor={colors.gray[1]}
-            padding={sizes.sizes[16]}
-            radius={sizes.radiuses[16]}
-            gap={sizes.sizes[4]}
-            size={boxProps.sizes.parent}
-          >
-            <Typography
-              type={typographyProps.types.text12}
-              textTransform={typographyProps.transforms.uppercase}
-              color={colors.lightgray[2]}
-              textAlign={typographyProps.aligns.center}
-            >
-              Amount
-            </Typography>
+          <AmountButtons onValueButtonClick={onValueButtonClick} />
 
-            <Row color={getColor(transaction.type)}>
-              <Input
-                placeholder="0"
-                name="transaction-amount"
-                value={transaction.amount}
-                theme={inputProps.themes.inherit}
-                type={inputProps.types.transaction}
-                onChange={onValueChange}
-                sign={
-                  <>
-                    <Icon
-                      icon={getSign(transaction.type)}
-                      width={sizes.sizes[40]}
-                      height={sizes.sizes[40]}
-                    />
-
-                    <Typography type={typographyProps.types.title40}>
-                      $
-                    </Typography>
-                  </>
-                }
-              />
-            </Row>
-          </Box>
-
-          <Grid
-            templateColumns={gridProps.columns['repeat-3']}
-            width={sizes.sizes.parent}
-            gap={sizes.sizes[8]}
-          >
-            {AMOUNT_BUTTONS.map((item) => (
-              <Button
-                theme={buttonProps.themes.lightgray}
-                size={buttonProps.sizes['48-stretched']}
-                onClick={() => onValueButtonClick(item.value)}
-                key={item.value}
-              >
-                {item.value !== 'delete' ? (
-                  <Typography
-                    type={typographyProps.types.text16}
-                    color={colors.base.white}
-                  >
-                    {item.label as string}
-                  </Typography>
-                ) : (
-                  <Icon
-                    color={colors.base.white}
-                    icon={item.label as UtilityTypes.SvgContent}
-                  />
-                )}
-              </Button>
-            ))}
-          </Grid>
-
-          <Row gap={sizes.sizes[8]} width={sizes.sizes.parent} wrap>
-            {getCurrentCategories(transaction.type).map((category) => {
-              const isActiveCategory = transaction.categoryId === category.id;
-
-              return (
-                <Button
-                  key={category.id}
-                  theme={buttonProps.themes.transparentCategory}
-                  size={buttonProps.sizes[34]}
-                  activeBgColor={category.color}
-                  isActive={isActiveCategory}
-                  onClick={() => onCategoryButtonClick(category.id)}
-                >
-                  <Icon
-                    icon={icons[category.icon]}
-                    width={sizes.sizes[14]}
-                    height={sizes.sizes[14]}
-                    color={
-                      isActiveCategory ? colors.base.black : category.color
-                    }
-                  />
-                  <Typography type={typographyProps.types.text14}>
-                    {category.name}
-                  </Typography>
-                </Button>
-              );
-            })}
-          </Row>
+          <CategoryPicker
+            categories={currentCategories}
+            transaction={transaction}
+            onCategoryButtonClick={onCategoryButtonClick}
+          />
 
           <Grid
             templateColumns={gridProps.columns['1-1']}
             gap={sizes.sizes[12]}
             width={sizes.sizes.parent}
           >
-            <DatePicker
-              onChange={onDateChange}
-              label="Date"
-              name="transaction-date"
-              todayPlaceholder
-            />
+            <DatePicker onDateChange={onDateChange} />
 
-            <Input
-              label="Note"
-              theme={inputProps.themes.lightgray}
-              type={inputProps.types.regular}
-              placeholder="Optional note..."
-              name="transaction-note"
-              value={transaction.note}
-              onChange={onNoteChange}
-            />
+            <NoteField value={transaction.note} onNoteChange={onNoteChange} />
           </Grid>
 
           <DialogClose>
