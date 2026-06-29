@@ -7,14 +7,13 @@ import {
   mapTransactionsToRecentItems,
 } from '@/widgets/transactions-list';
 import { TransactionsFilter } from '@/widgets/transactions-filter';
-import {
-  getTransactionsPageCallbacks,
-  useTransactions,
-  useTransactionsFilter,
-} from '../model';
+import { getTransactionsPageCallbacks, useTransactionsFilter } from '../model';
+import { useTransactions } from '@/entity/transaction';
+import { useCategories } from '@/entity/category';
 
 const TransactionsPage = () => {
-  const { transactionsList, categories, deleteTransaction } = useTransactions();
+  const { transactionsList, deleteTransaction } = useTransactions();
+  const { categoriesList } = useCategories();
 
   const {
     setFilters,
@@ -22,7 +21,7 @@ const TransactionsPage = () => {
     currentQuery,
     currentCategories,
     currerntCatefory,
-  } = useTransactionsFilter(categories, transactionsList);
+  } = useTransactionsFilter(categoriesList, transactionsList);
 
   const {
     onCategoryFilterChange,
@@ -32,11 +31,9 @@ const TransactionsPage = () => {
     onEndDateChange,
   } = getTransactionsPageCallbacks(setFilters);
 
-  console.log(transactionsList);
-
   const recentTransactions = mapTransactionsToRecentItems(
     currentTransactions,
-    categories,
+    categoriesList,
   );
 
   const summaries = getTransactionsSummary(currentTransactions);

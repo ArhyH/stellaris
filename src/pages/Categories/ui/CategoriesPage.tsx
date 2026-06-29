@@ -9,7 +9,8 @@ import { filterTransactionsByMonth } from '@/shared/helpers';
 import { CategoriesFilter } from '@/widgets/categories-filter';
 import { AddCategory } from '@/features/AddCategory';
 import { EditCategory } from '@/features/EditCategory';
-import { useCategoriesFilter, useCategories, useEditCategory } from '../model';
+import { useCategoriesFilter, useEditCategory } from '../model';
+import { useCategories } from '@/entity/category';
 
 const CategoriesPage = () => {
   const {

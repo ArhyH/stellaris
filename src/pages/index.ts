@@ -1,4 +1,4 @@
-export { DashboardPage } from './DashboardPage';
+export { DashboardPage } from './Dashboard/ui/DashboardPage';
 export { AnalyticsPage } from './AnalyticsPage';
 export { BudgetsPage } from './BudgetsPage';
 export { CategoriesPage } from './Categories';
