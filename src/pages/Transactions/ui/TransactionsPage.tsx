@@ -1,15 +1,13 @@
 import { Page, PageCell } from '@/shared/ui/Page';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { TransactionsSummary, getTransactionsSummary } from '@/widgets/summary';
-import {
-  FullTransactionsList,
-  mapTransactionsToRecentItems,
-} from '@/widgets/transactions-list';
+import { TransactionsSummary } from '@/widgets/summary';
+import { FullTransactionsList } from '@/widgets/transactions-list';
 import { TransactionsFilter } from '@/widgets/transactions-filter';
 import { getTransactionsPageCallbacks, useTransactionsFilter } from '../model';
 import { useTransactions } from '@/entity/transaction';
 import { useCategories } from '@/entity/category';
+import { useTransactionsData } from '../model/useTransactionsData';
 
 const TransactionsPage = () => {
   const { transactionsList, deleteTransaction } = useTransactions();
@@ -31,12 +29,10 @@ const TransactionsPage = () => {
     onEndDateChange,
   } = getTransactionsPageCallbacks(setFilters);
 
-  const recentTransactions = mapTransactionsToRecentItems(
+  const { recentTransactions, summaries } = useTransactionsData(
     currentTransactions,
     categoriesList,
   );
-
-  const summaries = getTransactionsSummary(currentTransactions);
 
   return (
     <Page>

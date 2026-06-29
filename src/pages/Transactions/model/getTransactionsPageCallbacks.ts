@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { FilterType } from '@/features/FilterByFinanceTransferType';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { ID } from '@/shared/types';
-import { Filters } from '../../types';
+import { Filters } from './types';
 
 const getTransactionsPageCallbacks = (
   setFilters: Dispatch<SetStateAction<Filters>>,

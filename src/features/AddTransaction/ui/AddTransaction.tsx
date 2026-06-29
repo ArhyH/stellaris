@@ -62,6 +62,7 @@ const AddTransaction = (props: AddTransactionProps) => {
     setTransaction((prevTransaction) => ({
       ...prevTransaction,
       type,
+      categoryId: '',
     }));
   };
 
