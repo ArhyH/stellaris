@@ -14,7 +14,7 @@ import {
 } from '../model';
 
 const TransactionsPage = () => {
-  const { transactionsList, categories } = useTransactions();
+  const { transactionsList, categories, deleteTransaction } = useTransactions();
 
   const {
     setFilters,
@@ -73,7 +73,10 @@ const TransactionsPage = () => {
         onEndDateChange={onEndDateChange}
       />
 
-      <FullTransactionsList transactions={recentTransactions} />
+      <FullTransactionsList
+        transactions={recentTransactions}
+        onDelete={deleteTransaction}
+      />
     </Page>
   );
 };

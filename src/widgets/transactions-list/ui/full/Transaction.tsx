@@ -1,6 +1,6 @@
-import { AMOUNT, DATE, FinanceTransferType, ICON, LABEL } from '@/shared/types';
+import { ID } from '@/shared/types';
 import styles from './style.module.scss';
-import { CategoryColor, colors, sizes } from '@/shared/styles';
+import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
 import { Icon } from '@/shared/ui/Icon';
@@ -9,29 +9,31 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { formatAmount } from '@/shared/helpers';
 import { formatTypes } from '@/shared/helpers/formatAmount';
 import { Button, buttonProps } from '@/shared/ui/Button';
+import { RecentTransaction } from '../../model/types';
 
 type TransactionProps = {
-  categoryIcon: ICON;
-  categoryName: LABEL;
-  categoryColor?: CategoryColor;
-  categorIconColor?: CategoryColor;
-  date: DATE;
-  amount: AMOUNT;
-  note: LABEL;
-  type: FinanceTransferType;
+  data: RecentTransaction;
+  onDelete: (id: ID) => void;
 };
 
 const Transaction = (props: TransactionProps) => {
+  const { data, onDelete } = props;
+
   const {
     categoryIcon,
     categoryName,
     categoryColor,
-    categorIconColor,
+    categoryIconColor,
     date,
     amount,
     note,
     type,
-  } = props;
+    id,
+  } = data;
+
+  if (!categoryIcon || !categoryColor || !categoryIconColor) {
+    return;
+  }
 
   return (
     <li className={styles['transactions-list__item']}>
@@ -43,18 +45,14 @@ const Transaction = (props: TransactionProps) => {
       </Typography>
       <div className={styles['transactions-list__cell']}>
         <Box
-          bgColor={
-            categoryColor
-              ? colors.categoryOp[categoryColor]
-              : colors.categoryOp['category-blue-1']
-          }
+          bgColor={colors.categoryOp[categoryColor]}
           size={boxProps.sizes[32]}
           radius={sizes.radiuses[14]}
         >
           <BoxWrapper hasAlign>
             <Icon
               icon={icons[categoryIcon]}
-              color={categorIconColor}
+              color={categoryIconColor}
               width={sizes.sizes[20]}
               height={sizes.sizes[20]}
             />
@@ -104,6 +102,7 @@ const Transaction = (props: TransactionProps) => {
         <Button
           size={buttonProps.sizes['28x28']}
           theme={buttonProps.themes.red}
+          onClick={() => onDelete(id)}
         >
           <Icon
             icon={icons.trash24}

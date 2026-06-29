@@ -14,10 +14,11 @@ type FieldPopoverProps = {
   onChange: (value: string) => void;
   name: string;
   label?: string;
+  todayPlaceholder?: boolean;
 };
 
 const FieldPopover = (props: FieldPopoverProps) => {
-  const { onChange, label, name } = props;
+  const { onChange, label, name, todayPlaceholder } = props;
 
   const [value, setValue] = useState<Date>();
   const today = new Date();
@@ -46,7 +47,9 @@ const FieldPopover = (props: FieldPopoverProps) => {
         theme={inputProps.themes.lightgray}
         type={inputProps.types.regular}
         readOnly
-        placeholder="дд.мм.гггг"
+        placeholder={
+          todayPlaceholder ? today.toLocaleDateString('ru-RU') : 'дд.мм.гггг'
+        }
         name={name}
         value={formatted}
         rightElement={

@@ -297,6 +297,7 @@ const AddTransaction = (props: AddTransactionProps) => {
               onChange={onDateChange}
               label="Date"
               name="transaction-date"
+              todayPlaceholder
             />
 
             <Input
