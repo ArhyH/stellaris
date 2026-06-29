@@ -2,7 +2,7 @@ import { SummaryKey } from '../model/types';
 import { AMOUNT } from '@/shared/types';
 import { ColorToken, colors, sizes } from '@/shared/styles';
 import { SummaryCard, SummaryCardContent } from '@/shared/ui/SummaryCard';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
@@ -38,7 +38,7 @@ const TransactionCard = (props: TransactionCardProps) => {
           bgColor={
             budgetKey === 'expense' ? colors.label.red : colors.label.green
           }
-          size={boxProps.sizes[40]}
+          size={sizes.sizes[40]}
           radius={sizes.radiuses[12]}
         >
           <BoxWrapper hasAlign>

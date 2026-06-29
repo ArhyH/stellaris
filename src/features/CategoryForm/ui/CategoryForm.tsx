@@ -11,7 +11,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Category } from '@/entity/category';
 import { Row } from '@/shared/ui/Row';
 import { getModalCallbacks } from '../model/getModalCallbacks';
@@ -68,7 +68,7 @@ const CategoryForm = (props: CategoryFormProps) => {
         <DialogBody>
           <Box
             bgColor={colors.categoryOp[category.color]}
-            size={boxProps.sizes[64]}
+            size={sizes.sizes[64]}
           >
             <BoxWrapper hasAlign>
               <Icon

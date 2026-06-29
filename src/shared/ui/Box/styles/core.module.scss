@@ -6,6 +6,10 @@
   @include initializeCssVar(--box-grow, var(--initial));
   @include initializeCssVar(--box-gap, var(--size-0));
   @include initializeCssVar(--box-padding, var(--unset));
+  @include initializeCssVar(--box-size, unset);
+  @include initializeCssVar(--box-width, var(--box-size));
+  @include initializeCssVar(--box-height, var(--box-size));
+
   @include initializeCssVar(--box-header-padding, var(--unset));
   @include initializeCssVar(--box-scroll-wrapper-max-height, var(--unset));
 
@@ -18,6 +22,8 @@
   padding: var(--box-padding);
   gap: var(--box-gap);
   box-sizing: border-box;
+  width: var(--box-width);
+  height: var(--box-height);
 
   &.is-stretch {
     align-self: stretch;

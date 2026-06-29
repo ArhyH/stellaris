@@ -7,7 +7,7 @@ import { formatAmount } from '@/shared/helpers/formatAmount';
 import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import styles from './style.module.scss';
 
@@ -45,7 +45,7 @@ const BudgetItem = (props: BudgetItemProps) => {
                 ? colors.categoryOp[categoryColor]
                 : colors.categoryOp['category-blue-1']
             }
-            size={boxProps.sizes[40]}
+            size={sizes.sizes[40]}
             radius={sizes.radiuses[12]}
           >
             <BoxWrapper hasAlign>

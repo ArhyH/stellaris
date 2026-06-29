@@ -1,4 +1,4 @@
-import { Box, boxProps } from '@/shared/ui/Box';
+import { Box } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Row } from '@/shared/ui/Row';
@@ -22,7 +22,7 @@ const AmountField = (props: AmountFieldProps) => {
       padding={sizes.sizes[16]}
       radius={sizes.radiuses[16]}
       gap={sizes.sizes[4]}
-      size={boxProps.sizes.parent}
+      width={sizes.sizes.parent}
     >
       <Typography
         type={typographyProps.types.text12}

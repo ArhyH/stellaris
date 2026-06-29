@@ -2,7 +2,7 @@ import { ID } from '@/shared/types';
 import styles from './style.module.scss';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { FinanceTransferTypes } from '@/shared/consts';
@@ -46,7 +46,7 @@ const Transaction = (props: TransactionProps) => {
       <div className={styles['transactions-list__cell']}>
         <Box
           bgColor={colors.categoryOp[categoryColor]}
-          size={boxProps.sizes[32]}
+          size={sizes.sizes[32]}
           radius={sizes.radiuses[14]}
         >
           <BoxWrapper hasAlign>

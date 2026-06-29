@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
 import { statusColors } from '../../model/consts';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 
 type BudgetOverviewItemProps = {
   budget: BudgetOverviewItemType;
@@ -39,7 +39,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
           )}
         >
           <Box
-            size={boxProps.sizes[24]}
+            size={sizes.sizes[24]}
             radius={sizes.radiuses[8]}
             bgColor={
               categoryColor

@@ -1,4 +1,4 @@
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { CategoryItem as CategoryItemType } from '../model/types';
 import styles from './style.module.scss';
 import { colors, sizes } from '@/shared/styles';
@@ -37,7 +37,7 @@ const CategoryItem = (props: CategoryItemProps) => {
             ? colors.categoryOp[categoryColor]
             : colors.categoryOp['category-blue-1']
         }
-        size={boxProps.sizes[40]}
+        size={sizes.sizes[40]}
         radius={sizes.radiuses[12]}
       >
         <BoxWrapper hasAlign>
