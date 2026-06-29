@@ -91,22 +91,14 @@ const CategoryItem = (props: CategoryItemProps) => {
           size={buttonProps.sizes['32x32']}
           onClick={() => onEdit(categoryId)}
         >
-          <Icon
-            icon={icons.pen24}
-            width={sizes.sizes[12]}
-            height={sizes.sizes[12]}
-          />
+          <Icon icon={icons.pen24} size={sizes.sizes[12]} />
         </Button>
         <Button
           theme={buttonProps.themes.red}
           size={buttonProps.sizes['32x32']}
           onClick={() => onDelete(categoryId)}
         >
-          <Icon
-            icon={icons.trash24}
-            width={sizes.sizes[12]}
-            height={sizes.sizes[12]}
-          />
+          <Icon icon={icons.trash24} size={sizes.sizes[12]} />
         </Button>
       </div>
     </li>

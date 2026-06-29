@@ -43,11 +43,7 @@ const AmountField = (props: AmountFieldProps) => {
           onChange={onValueChange}
           sign={
             <>
-              <Icon
-                icon={getSign(type)}
-                width={sizes.sizes[40]}
-                height={sizes.sizes[40]}
-              />
+              <Icon icon={getSign(type)} size={sizes.sizes[40]} />
 
               <Typography type={typographyProps.types.title40}>$</Typography>
             </>

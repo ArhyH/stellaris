@@ -51,8 +51,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
               <Icon
                 icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
                 color={categoryIconColor}
-                width={sizes.sizes[16]}
-                height={sizes.sizes[16]}
+                size={sizes.sizes[16]}
               />
             </BoxWrapper>
           </Box>

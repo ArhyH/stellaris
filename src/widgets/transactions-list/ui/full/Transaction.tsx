@@ -53,8 +53,7 @@ const Transaction = (props: TransactionProps) => {
             <Icon
               icon={icons[categoryIcon]}
               color={categoryIconColor}
-              width={sizes.sizes[20]}
-              height={sizes.sizes[20]}
+              size={sizes.sizes[20]}
             />
           </BoxWrapper>
         </Box>
@@ -104,11 +103,7 @@ const Transaction = (props: TransactionProps) => {
           theme={buttonProps.themes.red}
           onClick={() => onDelete(id)}
         >
-          <Icon
-            icon={icons.trash24}
-            width={sizes.sizes[14]}
-            height={sizes.sizes[14]}
-          />
+          <Icon icon={icons.trash24} size={sizes.sizes[14]} />
         </Button>
       </div>
     </li>

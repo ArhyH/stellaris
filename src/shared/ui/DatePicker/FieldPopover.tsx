@@ -59,8 +59,7 @@ const FieldPopover = (props: FieldPopoverProps) => {
           >
             <Icon
               icon={icons.calendar24}
-              width={sizes.sizes[18]}
-              height={sizes.sizes[18]}
+              size={sizes.sizes[18]}
               color={colors.base.white}
             />
           </Button>

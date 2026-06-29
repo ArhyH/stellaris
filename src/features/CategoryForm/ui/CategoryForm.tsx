@@ -60,11 +60,7 @@ const CategoryForm = (props: CategoryFormProps) => {
               size={buttonProps.sizes['32x32']}
               radius={buttonProps.radiuses[14]}
             >
-              <Icon
-                icon={icons.cross14}
-                width={sizes.sizes[14]}
-                height={sizes.sizes[14]}
-              />
+              <Icon icon={icons.cross14} size={sizes.sizes[14]} />
             </Button>
           </DialogClose>
         </DialogHeader>
@@ -78,8 +74,7 @@ const CategoryForm = (props: CategoryFormProps) => {
               <Icon
                 icon={icons[category.icon]}
                 color={colors.category[category.iconColor]}
-                width={sizes.sizes[38]}
-                height={sizes.sizes[38]}
+                size={sizes.sizes[38]}
               />
             </BoxWrapper>
           </Box>

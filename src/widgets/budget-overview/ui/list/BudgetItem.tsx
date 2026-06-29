@@ -52,8 +52,7 @@ const BudgetItem = (props: BudgetItemProps) => {
               <Icon
                 icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
                 color={categoryIconColor}
-                width={sizes.sizes[24]}
-                height={sizes.sizes[24]}
+                size={sizes.sizes[24]}
               />
             </BoxWrapper>
           </Box>
@@ -100,21 +99,13 @@ const BudgetItem = (props: BudgetItemProps) => {
               theme={buttonProps.themes.lightgray}
               size={buttonProps.sizes['32x32']}
             >
-              <Icon
-                icon={icons.pen24}
-                width={sizes.sizes[12]}
-                height={sizes.sizes[12]}
-              />
+              <Icon icon={icons.pen24} size={sizes.sizes[12]} />
             </Button>
             <Button
               theme={buttonProps.themes.red}
               size={buttonProps.sizes['32x32']}
             >
-              <Icon
-                icon={icons.trash24}
-                width={sizes.sizes[12]}
-                height={sizes.sizes[12]}
-              />
+              <Icon icon={icons.trash24} size={sizes.sizes[12]} />
             </Button>
           </div>
         </div>
