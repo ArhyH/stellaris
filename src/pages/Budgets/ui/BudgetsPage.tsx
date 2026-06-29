@@ -1,37 +1,17 @@
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
-
-import { filterTransactionsByMonth } from '@/shared/helpers/filterTransactions';
-import { transactionsMock } from '@/shared/mocks/transactions';
-import { budgetsMock } from '@/shared/mocks/budgets';
-import { categoriesMock } from '@/shared/mocks/categories';
-import {
-  BudgetList,
-  mapBudgetsToOverviewItems,
-} from '@/widgets/budget-overview';
+import { BudgetList } from '@/widgets/budget-overview';
 import { Row } from '@/shared/ui/Row/Row';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
-import { BudgetSummary, getBudgetsSummary } from '@/widgets/summary';
+import { BudgetSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
-import { useCurrentDate } from '@/shared/hooks';
+import { useBudgetsData } from '../model/useBudgetsData';
 
 const BudgetsPage = () => {
-  const { currentMonth } = useCurrentDate();
-  const currentTransactions = filterTransactionsByMonth(
-    transactionsMock,
-    currentMonth,
-  );
-
-  const budgetData = mapBudgetsToOverviewItems(
-    budgetsMock,
-    currentTransactions,
-    categoriesMock,
-  );
-
-  const budgetSummaries = getBudgetsSummary(budgetData);
+  const { budgetData, budgetSummaries } = useBudgetsData();
 
   return (
     <Page>

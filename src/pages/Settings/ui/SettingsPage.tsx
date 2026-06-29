@@ -3,7 +3,7 @@ import { colors, sizes } from '@/shared/styles';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Preferences, Profile } from '@/widgets/settings';
-import { getSettingsPageCallbacks } from './heplers/getSettingsPageCallbacks';
+import { getSettingsPageCallbacks } from '../model/getSettingsPageCallbacks';
 
 const user = {
   name: 'John Doe',

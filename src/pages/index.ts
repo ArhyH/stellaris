@@ -1,6 +1,6 @@
-export { DashboardPage } from './Dashboard/ui/DashboardPage';
-export { AnalyticsPage } from './Analytics/ui/AnalyticsPage';
-export { BudgetsPage } from './BudgetsPage';
+export { DashboardPage } from './Dashboard';
+export { AnalyticsPage } from './Analytics';
+export { BudgetsPage } from './Budgets';
 export { CategoriesPage } from './Categories';
-export { SettingsPage } from './SettingsPage';
+export { SettingsPage } from './Settings';
 export { TransactionsPage } from './Transactions/ui/TransactionsPage';
