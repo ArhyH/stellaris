@@ -6,6 +6,7 @@ import arrowRight12 from './arrow-right-12.svg';
 import pen24 from './pen-24.svg';
 import trash24 from './trash-24.svg';
 import plus24 from './plus-24.svg';
+import minus24 from './minus-24.svg';
 import search24 from './search-24.svg';
 import dateTrigger14 from './date-trigger-14.svg';
 import calendar24 from './calendar-24.svg';
@@ -14,6 +15,7 @@ import planet24 from './planet-24.svg';
 import clock24 from './clock-24.svg';
 import cross14 from './cross-14.svg';
 import check12 from './check-12.svg';
+import delete24 from './delete-24.svg';
 
 import house24 from './house-24.svg';
 import car24 from './car-24.svg';
@@ -88,6 +90,7 @@ const icons = {
   pen24,
   trash24,
   plus24,
+  minus24,
   search24,
   dateTrigger14,
   calendar24,
@@ -96,6 +99,7 @@ const icons = {
   clock24,
   cross14,
   check12,
+  delete24,
   ...categoriesIcons,
 } as const satisfies Record<string, UtilityTypes.SvgContent>;
 

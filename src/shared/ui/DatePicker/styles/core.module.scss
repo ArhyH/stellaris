@@ -1,0 +1,95 @@
+.day {
+  display: flex;
+  width: 100%;
+}
+
+.day_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-5);
+  border: none;
+  width: var(--size-36);
+  height: var(--size-48);
+  color: var(--white);
+  border-radius: var(--size-8);
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.selected > .day_button,
+.today.selected > .day_button {
+  background-color: var(--green-1);
+  color: var(--black);
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.today > .day_button {
+  background-color: var(--lightgray-1);
+}
+
+.week,
+.week_days {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: var(--size-8);
+}
+
+.week_days {
+  margin-bottom: var(--size-10);
+}
+
+.weeks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-8);
+}
+
+.month_grid {
+  margin-top: var(--size-10);
+}
+
+.nav {
+  position: absolute;
+  right: var(--size-16);
+  top: var(--size-16);
+  display: flex;
+  gap: var(--size-4);
+}
+
+.caption_label {
+  display: flex;
+  align-items: center;
+  height: var(--size-36);
+}
+
+.button_prev,
+.button_next {
+  display: flex;
+  align-items: center;
+  height: var(--size-36);
+  width: var(--size-36);
+  box-sizing: border-box;
+  border-radius: var(--size-10);
+  border: none;
+  fill: currentColor;
+  stroke: currentColor;
+
+  background-color: var(--transparent);
+  color: var(--lightgray-1);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--white);
+    }
+  }
+}

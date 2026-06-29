@@ -10,6 +10,7 @@ type ButtonProps = {
   radius?: ValueOf<typeof buttonProps.radiuses>;
   justify?: ValueOf<typeof buttonProps.justifies>;
   bgColor?: ColorToken;
+  activeBgColor?: ColorToken;
   onClick?: () => void;
   isActive?: boolean;
   isRotated?: boolean;

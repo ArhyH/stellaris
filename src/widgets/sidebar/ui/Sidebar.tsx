@@ -1,14 +1,22 @@
 import { NavigationItem, navigationItems } from '@/shared/configs/navigation';
 import { SidebarLink } from './SidebarLink';
 import styles from './style.module.scss';
-import { Button, buttonProps } from '@/shared/ui/Button';
 import { Box, boxProps, BoxWrapper } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
-import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
+import { AddTransaction } from '@/features/AddTransaction';
+import { Category } from '@/entity/category';
+import { Transaction } from '@/entity/transaction';
 
-const Sidebar = () => {
+type SidebarProps = {
+  onSubmit: (transaction: Transaction) => void;
+  categories: Category[];
+};
+
+const Sidebar = (props: SidebarProps) => {
+  const { onSubmit, categories } = props;
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar__title}>
@@ -27,22 +35,8 @@ const Sidebar = () => {
         </Box>
         Fintrack
       </div>
-      <Button
-        theme={buttonProps.themes.green}
-        size={buttonProps.sizes['44-stretched']}
-      >
-        <Icon
-          icon={icons.plus24}
-          width={sizes.sizes[18]}
-          height={sizes.sizes[18]}
-        />
-        <Typography
-          tag={typographyProps.tags.h3}
-          type={typographyProps.types.title14}
-        >
-          Add Transaction
-        </Typography>
-      </Button>
+
+      <AddTransaction onSubmit={onSubmit} categories={categories} />
 
       <nav className={styles.sidebar__nav}>
         {navigationItems.map((item: NavigationItem) => {

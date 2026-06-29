@@ -14,13 +14,15 @@ import { icons } from '@/shared/assets';
 import { useMemo, useState } from 'react';
 import { sortDirections, sortFields } from '../../model/consts';
 import { SORT_CONFID } from '../../model/sort';
+import { ID } from '@/shared/types';
 
 type FullTransactionsListProps = {
   transactions: RecentTransactionType[];
+  onDelete: (id: ID) => void;
 };
 
 const FullTransactionsList = (props: FullTransactionsListProps) => {
-  const { transactions } = props;
+  const { transactions, onDelete } = props;
 
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     field: sortFields.date,
@@ -114,14 +116,8 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             return (
               <Transaction
                 key={transaction.id}
-                categoryIcon={transaction.categoryIcon ?? 'wallet18'}
-                categoryName={transaction.categoryName}
-                categoryColor={transaction.categoryColor}
-                categorIconColor={transaction.categoryIconColor}
-                date={transaction.date}
-                amount={transaction.amount}
-                note={transaction.note}
-                type={transaction.type}
+                data={transaction}
+                onDelete={onDelete}
               />
             );
           })}

@@ -19,6 +19,10 @@ type BudgetOverviewProps = {
 const BudgetOverview = (props: BudgetOverviewProps) => {
   const { budgets } = props;
 
+  if (!budgets) {
+    return;
+  }
+
   return (
     <ContentCard grow={contentCardProps.grow[3]}>
       <ContentCardHeader paddingBottom={sizes.sizes[20]}>

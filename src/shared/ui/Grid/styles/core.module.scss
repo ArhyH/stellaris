@@ -1,8 +1,12 @@
-.grid {
-  display: grid;
-  gap: var(--size-20);
+@use '../../../styles/helpers.scss' as *;
 
-  &._col-2-1 {
-    grid-template-columns: 2fr 1fr;
-  }
+.grid {
+  @include initializeCssVar(--grid-gap, var(--size-20));
+  @include initializeCssVar(--grid-width, unset);
+  @include initializeCssVar(--grid-template-columns, unset);
+
+  display: grid;
+  gap: var(--grid-gap);
+  width: var(--grid-width);
+  grid-template-columns: var(--grid-template-columns);
 }

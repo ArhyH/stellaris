@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 
 type PopoverContentProps = {
-  children: ReactNode;
+  children: ReactNode | ((props: { onClose?: () => void }) => ReactNode);
+  onClose?: () => void;
 };
 
-const PopoverContent = (props: PopoverContentProps) => {
-  const { children } = props;
-
-  return <>{children}</>;
+const PopoverContent = ({ children, onClose }: PopoverContentProps) => {
+  return typeof children === 'function' ? children({ onClose }) : children;
 };
 
 export { PopoverContent };

@@ -4,4 +4,9 @@ const FinanceTransferTypes = {
   all: 'all',
 };
 
-export { FinanceTransferTypes };
+const SELECT_TYPES_DATA = [
+  { label: 'Expense', value: FinanceTransferTypes.expense },
+  { label: 'Income', value: FinanceTransferTypes.income },
+];
+
+export { FinanceTransferTypes, SELECT_TYPES_DATA };

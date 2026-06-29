@@ -18,6 +18,14 @@ const categoriesMock: Category[] = [
     iconColor: 'category-blue-1',
   },
   {
+    id: 'other',
+    name: 'other',
+    type: 'expense',
+    icon: 'lightbulb24',
+    color: 'category-red-1',
+    iconColor: 'category-red-1',
+  },
+  {
     id: 'housing',
     name: 'housing',
     type: 'expense',

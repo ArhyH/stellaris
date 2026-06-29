@@ -1,10 +1,12 @@
 import { sizes } from '@/shared/styles';
 
 const buttonThemes = {
+  gray5green: 'gray-5-green',
   green: 'green',
   lightgray: 'lightgray',
   red: 'red',
   transparent: 'transparent',
+  transparentCategory: 'transparent-category',
   transparentGray: 'transparent-gray',
 } as const;
 
@@ -15,12 +17,14 @@ const buttonRadiuses = {
 
 const buttonSizes = {
   24: 24,
+  34: 34,
   36: 36,
   40: 40,
   '18x18': '18x18',
   '28x28': '28x28',
   '32x32': '32x32',
   '36x36': '36x36',
+  '40-stretched': '40-stretched',
   '44-stretched': '44-stretched',
   '48-stretched': '48-stretched',
 } as const;

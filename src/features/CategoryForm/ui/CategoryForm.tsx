@@ -15,13 +15,7 @@ import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
 import { Category } from '@/entity/category';
 import { Row } from '@/shared/ui/Row';
 import { getModalCallbacks } from '../model/getModalCallbacks';
-import {
-  CategoryName,
-  CategoryType,
-  CategoryIcon,
-  CategoryColor,
-  CategoryIconColor,
-} from './parts';
+import { ColorPicker, IconPicker, NameField, TypeSelect } from './parts';
 
 type CategoryFormProps = {
   title: string;
@@ -90,21 +84,21 @@ const CategoryForm = (props: CategoryFormProps) => {
             </BoxWrapper>
           </Box>
 
-          <CategoryName name={category.name} onNameChange={onNameChange} />
+          <NameField name={category.name} onNameChange={onNameChange} />
 
-          <CategoryType type={category.type} onTypeChange={onTypeChange} />
+          <TypeSelect type={category.type} onTypeChange={onTypeChange} />
 
-          <CategoryIcon icon={category.icon} onIconChange={onIconChange} />
+          <IconPicker icon={category.icon} onIconChange={onIconChange} />
 
           <Row gap={sizes.sizes[12]}>
-            <CategoryColor
+            <ColorPicker
               color={category.color}
-              onCategoryColorChange={onCategoryColorChange}
+              onColorChange={onCategoryColorChange}
             />
 
-            <CategoryIconColor
-              iconColor={category.iconColor}
-              onIconColorChange={onIconColorChange}
+            <ColorPicker
+              color={category.iconColor}
+              onColorChange={onIconColorChange}
             />
           </Row>
 

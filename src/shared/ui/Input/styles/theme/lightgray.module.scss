@@ -1,0 +1,18 @@
+.input {
+  &--theme {
+    &--lightgray {
+      .input__field {
+        color: var(--white);
+
+        &::placeholder {
+          color: var(--lightgray-2);
+        }
+      }
+
+      .input__body {
+        color: var(--lightgray-2);
+        background-color: var(--gray-1);
+      }
+    }
+  }
+}

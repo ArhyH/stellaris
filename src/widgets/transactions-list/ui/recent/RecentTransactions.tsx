@@ -15,6 +15,10 @@ type RecentTransactionsProps = {
 const RecentTransactions = (props: RecentTransactionsProps) => {
   const { recentTransactions } = props;
 
+  if (!recentTransactions) {
+    return;
+  }
+
   return (
     <div className={styles['recent-transaction__wrapper']}>
       <ContentCard>

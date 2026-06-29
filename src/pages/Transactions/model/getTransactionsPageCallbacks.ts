@@ -2,49 +2,49 @@ import { Dispatch, SetStateAction } from 'react';
 import { FilterType } from '@/features/FilterByFinanceTransferType';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { ID } from '@/shared/types';
-import { Filters } from '../../types';
+import { Filters } from './types';
 
 const getTransactionsPageCallbacks = (
   setFilters: Dispatch<SetStateAction<Filters>>,
 ) => {
   const onCategoryFilterChange = (categoryId: ID) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    setFilters((prev) => ({
+      ...prev,
       category: categoryId,
     }));
   };
 
   const onFinanceTypeFilterChange = (filterType: FilterType) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    setFilters((prev) => ({
+      ...prev,
       category: FinanceTransferTypes.all,
       financeType: filterType,
     }));
   };
 
   const onQueryFilterChange = (value: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    setFilters((prev) => ({
+      ...prev,
       searchQuery: value,
     }));
   };
 
   const onStartDateChange = (value: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    setFilters((prev) => ({
+      ...prev,
       date: {
+        ...prev.date,
         start: value,
-        end: prevFilters.date.end,
       },
     }));
   };
 
   const onEndDateChange = (value: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    setFilters((prev) => ({
+      ...prev,
       date: {
+        ...prev.date,
         end: value,
-        start: prevFilters.date.start,
       },
     }));
   };

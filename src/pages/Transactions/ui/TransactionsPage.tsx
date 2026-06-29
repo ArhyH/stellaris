@@ -1,26 +1,17 @@
 import { Page, PageCell } from '@/shared/ui/Page';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { TransactionsSummary, getTransactionsSummary } from '@/widgets/summary';
-import {
-  FullTransactionsList,
-  mapTransactionsToRecentItems,
-} from '@/widgets/transactions-list';
+import { TransactionsSummary } from '@/widgets/summary';
+import { FullTransactionsList } from '@/widgets/transactions-list';
 import { TransactionsFilter } from '@/widgets/transactions-filter';
-import {
-  getTransactionsPageCallbacks,
-  useTransactions,
-  useTransactionsFilter,
-} from '../model';
+import { getTransactionsPageCallbacks, useTransactionsFilter } from '../model';
+import { useTransactions } from '@/entity/transaction';
+import { useCategories } from '@/entity/category';
+import { useTransactionsData } from '../model/useTransactionsData';
 
 const TransactionsPage = () => {
-  const {
-    transactions,
-    transactionsList,
-    categories,
-    addTransaction,
-    deleteTransaction,
-  } = useTransactions();
+  const { transactionsList, deleteTransaction } = useTransactions();
+  const { categoriesList } = useCategories();
 
   const {
     setFilters,
@@ -28,7 +19,7 @@ const TransactionsPage = () => {
     currentQuery,
     currentCategories,
     currerntCatefory,
-  } = useTransactionsFilter(categories, transactionsList);
+  } = useTransactionsFilter(categoriesList, transactionsList);
 
   const {
     onCategoryFilterChange,
@@ -38,14 +29,10 @@ const TransactionsPage = () => {
     onEndDateChange,
   } = getTransactionsPageCallbacks(setFilters);
 
-  console.log(transactionsList);
-
-  const recentTransactions = mapTransactionsToRecentItems(
+  const { recentTransactions, summaries } = useTransactionsData(
     currentTransactions,
-    categories,
+    categoriesList,
   );
-
-  const summaries = getTransactionsSummary(currentTransactions);
 
   return (
     <Page>
@@ -79,7 +66,10 @@ const TransactionsPage = () => {
         onEndDateChange={onEndDateChange}
       />
 
-      <FullTransactionsList transactions={recentTransactions} />
+      <FullTransactionsList
+        transactions={recentTransactions}
+        onDelete={deleteTransaction}
+      />
     </Page>
   );
 };

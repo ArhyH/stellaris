@@ -9,16 +9,21 @@ const filterByDateRange = (
   transactions: Transaction[],
   date: filterDate,
 ): Transaction[] => {
-  if (!date.start || !date.end) {
-    return transactions;
-  }
-
   return [...transactions].filter((transaction) => {
     const transactionDate = new Date(transaction.date);
-    return (
-      transactionDate >= new Date(date.start) &&
-      transactionDate <= new Date(date.end)
-    );
+
+    const startDate = date?.start ? new Date(date.start) : null;
+    const endDate = date?.end ? new Date(date.end) : null;
+
+    if (startDate && transactionDate < startDate) {
+      return false;
+    }
+
+    if (endDate && transactionDate > endDate) {
+      return false;
+    }
+
+    return true;
   });
 };
 

@@ -12,7 +12,7 @@ type PreferencesProps = {
   settings: Settings;
 };
 
-const mapDtaToPreferenceItem = (
+const mapDataToPreferenceItem = (
   callbacks: SettingsCallbacks,
   currentSettings: Settings,
   config: ConfigItem[],
@@ -27,7 +27,7 @@ const mapDtaToPreferenceItem = (
 const Preferences = (props: PreferencesProps) => {
   const { callbacks, settings } = props;
 
-  const items = mapDtaToPreferenceItem(callbacks, settings, SETTINGS_CONFIG);
+  const items = mapDataToPreferenceItem(callbacks, settings, SETTINGS_CONFIG);
 
   return (
     <ContentCard>
