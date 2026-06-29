@@ -1,12 +1,11 @@
 @use '../../../styles/helpers.scss' as *;
 
 .icon {
-  @include initializeCssVar(--default-width);
-  @include initializeCssVar(--default-height);
+  @include initializeCssVar(--default-size);
 
   display: block;
   flex-shrink: 0;
-  width: var(--default-width);
-  height: var(--default-height);
+  width: var(--default-size);
+  height: var(--default-size);
   pointer-events: none;
 }

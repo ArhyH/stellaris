@@ -49,11 +49,7 @@ const AddTransaction = (props: AddTransactionProps) => {
         theme={buttonProps.themes.green}
         size={buttonProps.sizes['44-stretched']}
       >
-        <Icon
-          icon={icons.plus24}
-          width={sizes.sizes[18]}
-          height={sizes.sizes[18]}
-        />
+        <Icon icon={icons.plus24} size={sizes.sizes[18]} />
         <Typography
           tag={typographyProps.tags.h3}
           type={typographyProps.types.title14}
@@ -78,11 +74,7 @@ const AddTransaction = (props: AddTransactionProps) => {
               size={buttonProps.sizes['32x32']}
               radius={buttonProps.radiuses[14]}
             >
-              <Icon
-                icon={icons.cross14}
-                width={sizes.sizes[14]}
-                height={sizes.sizes[14]}
-              />
+              <Icon icon={icons.cross14} size={sizes.sizes[14]} />
             </Button>
           </DialogClose>
         </DialogHeader>

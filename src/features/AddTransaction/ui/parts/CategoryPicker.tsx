@@ -32,8 +32,7 @@ const CategoryPicker = (props: CategoryPickerProps) => {
           >
             <Icon
               icon={icons[category.icon]}
-              width={sizes.sizes[14]}
-              height={sizes.sizes[14]}
+              size={sizes.sizes[14]}
               color={isActiveCategory ? colors.base.black : category.color}
             />
             <Typography type={typographyProps.types.text14}>

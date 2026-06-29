@@ -43,8 +43,7 @@ const Transaction = (props: TransactionProps) => {
             <Icon
               icon={icons[categoryIcon]}
               color={categoryIconColor}
-              width={sizes.sizes[24]}
-              height={sizes.sizes[24]}
+              size={sizes.sizes[24]}
             />
           </BoxWrapper>
         </Box>

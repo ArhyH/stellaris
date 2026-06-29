@@ -21,11 +21,7 @@ const AddCategory = (props: AddCategoryProps) => {
       onSubmit={onSubmit}
     >
       <Button theme={buttonProps.themes.green} size={buttonProps.sizes[40]}>
-        <Icon
-          icon={icons.plus24}
-          width={sizes.sizes[16]}
-          height={sizes.sizes[16]}
-        />
+        <Icon icon={icons.plus24} size={sizes.sizes[16]} />
         <Typography
           tag={typographyProps.tags.h3}
           type={typographyProps.types.title14}

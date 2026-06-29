@@ -60,13 +60,7 @@ const Input = (props: InputProps) => {
       <span className={styles.input__body}>
         {sign && sign}
 
-        {leftIcon && (
-          <Icon
-            icon={leftIcon}
-            width={sizes.sizes[16]}
-            height={sizes.sizes[16]}
-          />
-        )}
+        {leftIcon && <Icon icon={leftIcon} size={sizes.sizes[16]} />}
 
         <input
           className={styles.input__field}

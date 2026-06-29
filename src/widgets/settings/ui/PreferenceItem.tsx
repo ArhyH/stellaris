@@ -44,8 +44,7 @@ const PreferenceItem = (props: PreferenceItemProps) => {
             <Icon
               icon={icon}
               color={colors.lightgray[3]}
-              width={sizes.sizes[18]}
-              height={sizes.sizes[18]}
+              size={sizes.sizes[18]}
             />
           </BoxWrapper>
         </Box>

@@ -26,11 +26,7 @@ const Sidebar = (props: SidebarProps) => {
           radius={sizes.sizes[14]}
         >
           <BoxWrapper hasAlign>
-            <Icon
-              icon={icons.wallet18}
-              width={sizes.sizes[16]}
-              height={sizes.sizes[16]}
-            />
+            <Icon icon={icons.wallet18} size={sizes.sizes[16]} />
           </BoxWrapper>
         </Box>
         Fintrack

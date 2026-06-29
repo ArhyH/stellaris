@@ -27,8 +27,7 @@ const ColorPicker = (props: ColorPickerProps) => {
             <Icon
               icon={icons.check12}
               color={isDarkColor(key) ? colors.base.white : colors.base.black}
-              width={sizes.sizes[14]}
-              height={sizes.sizes[14]}
+              size={sizes.sizes[14]}
             />
           )}
         </Button>

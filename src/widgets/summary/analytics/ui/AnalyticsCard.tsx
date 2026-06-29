@@ -47,8 +47,7 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
         <Icon
           icon={icon}
           color={getTextColor(budgetKey)}
-          width={sizes.sizes[14]}
-          height={sizes.sizes[14]}
+          size={sizes.sizes[14]}
         />
       </SummaryCardHeader>
 
