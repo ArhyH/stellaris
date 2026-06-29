@@ -1,17 +1,18 @@
-import { CategoriesSummary, getCategoriesSummary } from '@/widgets/summary';
+import { CategoriesSummary } from '@/widgets/summary';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Row, rowProps } from '@/shared/ui/Row';
 import { Page, PageCell } from '../../../shared/ui/Page';
-import { Categories, mapCategoriesToCategoryItems } from '@/widgets/categories';
-import { transactionsMock } from '@/shared/mocks/transactions';
-import { filterTransactionsByMonth } from '@/shared/helpers';
+import { Categories } from '@/widgets/categories';
 import { CategoriesFilter } from '@/widgets/categories-filter';
 import { AddCategory } from '@/features/AddCategory';
 import { EditCategory } from '@/features/EditCategory';
-import { useCategoriesFilter, useEditCategory } from '../model';
+import {
+  useCategoriesData,
+  useCategoriesFilter,
+  useEditCategory,
+} from '../model';
 import { useCategories } from '@/entity/category';
-import { useCurrentDate } from '@/shared/hooks';
 
 const CategoriesPage = () => {
   const {
@@ -28,16 +29,9 @@ const CategoriesPage = () => {
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
     useEditCategory(categories);
 
-  const { currentMonth } = useCurrentDate();
-
-  const categoriesSummary = getCategoriesSummary(categoriesList);
-  const currentTransactions = filterTransactionsByMonth(
-    transactionsMock,
-    currentMonth,
-  );
-  const categoryItems = mapCategoriesToCategoryItems(
+  const { categoriesSummary, categoryItems } = useCategoriesData(
+    categoriesList,
     currentCategories,
-    currentTransactions,
   );
 
   return (
