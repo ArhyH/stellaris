@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-
-type DialogBodyProps = {
-  children: ReactNode;
-};
+import { DialogBodyProps } from './types';
 
 const DialogBody = (props: DialogBodyProps) => {
   const { children } = props;
@@ -12,4 +8,3 @@ const DialogBody = (props: DialogBodyProps) => {
 };
 
 export { DialogBody };
-export type { DialogBodyProps };

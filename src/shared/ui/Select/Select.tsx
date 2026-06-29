@@ -1,25 +1,7 @@
 import classnames from 'classnames';
 import styles from './style.module.scss';
 import { Option } from './Option';
-import { ID } from '@/shared/types';
-import { ValueOf } from 'type-fest';
-
-const selectThemes = {
-  gray6: 'gray-6',
-} as const;
-
-const selectProps = {
-  themes: selectThemes,
-} as const;
-
-type SelectProps = {
-  options: { value: string; description: string }[];
-  onChange: (value: string) => void;
-  theme?: ValueOf<typeof selectProps.themes>;
-  value: ID;
-  hasAllOption?: boolean;
-  name: string;
-};
+import { SelectProps } from './types';
 
 const Select = (props: SelectProps) => {
   const { options, onChange, value, theme, hasAllOption, name } = props;
@@ -50,5 +32,4 @@ const Select = (props: SelectProps) => {
   );
 };
 
-export { Select, selectProps };
-export type { SelectProps };
+export { Select };

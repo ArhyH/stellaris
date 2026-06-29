@@ -23,4 +23,8 @@ type ButtonProps = {
   ref?: Ref<HTMLButtonElement>;
 };
 
-export type { ButtonProps };
+type ButtonIconProps = {
+  children: ReactNode;
+};
+
+export type { ButtonProps, ButtonIconProps };

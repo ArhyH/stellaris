@@ -1,12 +1,6 @@
 import styles from './style.module.scss';
-import { ValueOf } from 'type-fest';
-import { ColorToken } from '@/shared/styles';
 import { getStyles } from './helpers';
-import { lineProps } from './consts';
-
-type LineProps = {
-  color: ColorToken | ValueOf<typeof lineProps.colors> | string;
-};
+import { LineProps } from './types';
 
 const Line = (props: LineProps) => {
   const { color } = props;
@@ -15,4 +9,3 @@ const Line = (props: LineProps) => {
 };
 
 export { Line };
-export type { LineProps };

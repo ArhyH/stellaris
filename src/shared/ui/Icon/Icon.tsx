@@ -32,4 +32,3 @@ const Icon = (props: IconProps) => {
 };
 
 export { Icon };
-export type { IconProps };

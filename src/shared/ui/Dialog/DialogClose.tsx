@@ -1,9 +1,6 @@
-import { ReactElement, cloneElement } from 'react';
+import { cloneElement } from 'react';
 import { useDialogContext } from './helpers/context';
-
-type DialogCloseProps = {
-  children: ReactElement<{ onClick: () => void }>;
-};
+import { DialogCloseProps } from './types';
 
 const DialogClose = (props: DialogCloseProps) => {
   const { children } = props;
@@ -18,4 +15,3 @@ const DialogClose = (props: DialogCloseProps) => {
 };
 
 export { DialogClose };
-export type { DialogCloseProps };

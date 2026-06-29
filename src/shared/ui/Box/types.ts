@@ -33,4 +33,14 @@ type BoxWrapperProps = {
   hasAlign?: boolean;
 };
 
-export type { BoxProps, BoxHeaderProps, BoxWrapperProps };
+type BoxScrollWrapperProps = {
+  children: ReactNode;
+  maxHeight?: ValueOf<typeof sizes.sizes>;
+};
+
+export type {
+  BoxProps,
+  BoxHeaderProps,
+  BoxWrapperProps,
+  BoxScrollWrapperProps,
+};

@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { DotProps } from './Dot';
+import { DotProps } from './types';
 
 const getColor = ({ color }: Pick<DotProps, 'color'>) => {
   if (color) {

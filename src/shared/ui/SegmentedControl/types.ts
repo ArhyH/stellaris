@@ -18,4 +18,11 @@ type SegmentedControlProps = {
   type?: ValueOf<typeof segmentedControlProps.types>;
 };
 
-export type { Option, SegmentedControlProps };
+type SegmentedButtonProps = {
+  isSelected?: boolean;
+  isDisabled?: boolean;
+  children: ReactNode;
+  onChange: () => void;
+};
+
+export type { Option, SegmentedControlProps, SegmentedButtonProps };

@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-
-type SummaryCardHeaderProps = {
-  children: ReactNode;
-};
+import { SummaryCardHeaderProps } from './types';
 
 const SummaryCardHeader = (props: SummaryCardHeaderProps) => {
   const { children } = props;
@@ -12,4 +8,3 @@ const SummaryCardHeader = (props: SummaryCardHeaderProps) => {
 };
 
 export { SummaryCardHeader };
-export type { SummaryCardHeaderProps };

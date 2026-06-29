@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { TypographyProps } from './Typography';
+import { TypographyProps } from './types';
 
 const getColor = ({ color }: Pick<TypographyProps, 'color'>) => {
   if (color) {

@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { SummaryCardProps } from './SummaryCard';
+import { SummaryCardProps } from './types';
 
 const getCardPadding = ({ padding }: Pick<SummaryCardProps, 'padding'>) => {
   if (padding) {

@@ -1,16 +1,6 @@
-import { ReactNode } from 'react';
-import { ValueOf } from 'type-fest';
-
-import { sizes } from '@/shared/styles';
 import styles from './style.module.scss';
-import { pageCellProps } from './const';
 import { getStyles } from './helpers';
-
-type PageCellProps = {
-  children: ReactNode;
-  align?: ValueOf<typeof pageCellProps.align>;
-  gap?: ValueOf<typeof sizes.sizes>;
-};
+import { PageCellProps } from './types';
 
 const PageCell = (props: PageCellProps) => {
   const { gap, align, children } = props;
@@ -23,4 +13,3 @@ const PageCell = (props: PageCellProps) => {
 };
 
 export { PageCell };
-export type { PageCellProps };

@@ -1,1 +1,2 @@
-export { Select, selectProps } from './Select';
+export { Select } from './Select';
+export { selectProps } from './consts';

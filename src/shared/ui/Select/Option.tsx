@@ -1,9 +1,5 @@
 import styles from './style.module.scss';
-
-type OptionProps = {
-  value: string;
-  description: string;
-};
+import { OptionProps } from './types';
 
 const Option = (props: OptionProps) => {
   const { value, description } = props;
@@ -16,4 +12,3 @@ const Option = (props: OptionProps) => {
 };
 
 export { Option };
-export type { OptionProps };

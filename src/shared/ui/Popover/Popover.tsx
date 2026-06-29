@@ -1,19 +1,14 @@
 import {
   Children,
   ReactElement,
-  ReactNode,
   Ref,
   cloneElement,
   isValidElement,
 } from 'react';
 import styles from './style.module.scss';
-import { PopoverContent, PopoverContentProps } from './PopoverContent';
+import { PopoverContent } from './PopoverContent';
 import { usePopover } from './helpers/usePopover';
-
-type PopoverProps = {
-  children: ReactNode;
-  onClose?: () => void;
-};
+import { PopoverProps, PopoverContentProps } from './types';
 
 const Popover = (props: PopoverProps) => {
   const { children, onClose } = props;
@@ -73,4 +68,3 @@ const Popover = (props: PopoverProps) => {
 };
 
 export { Popover };
-export type { PopoverProps };

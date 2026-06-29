@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-
-type SummaryCardContentProps = {
-  children: ReactNode;
-};
+import { SummaryCardContentProps } from './types';
 
 const SummaryCardContent = (props: SummaryCardContentProps) => {
   const { children } = props;
@@ -12,4 +8,3 @@ const SummaryCardContent = (props: SummaryCardContentProps) => {
 };
 
 export { SummaryCardContent };
-export type { SummaryCardContentProps };

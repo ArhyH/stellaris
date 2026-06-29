@@ -14,6 +14,6 @@ const boxTags = {
 const boxProps = {
   grow: boxGrows,
   tags: boxTags,
-};
+} as const;
 
 export { boxProps };

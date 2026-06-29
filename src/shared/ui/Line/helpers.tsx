@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { LineProps } from './Line';
+import { LineProps } from './types';
 
 const getColor = ({ color }: Pick<LineProps, 'color'>) => {
   if (color) {

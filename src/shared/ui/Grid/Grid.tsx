@@ -1,17 +1,6 @@
-import { ReactNode } from 'react';
-import { ValueOf } from 'type-fest';
-
 import styles from './style.module.scss';
-import { gridProps } from './consts';
-import { sizes } from '@/shared/styles';
 import { getStyles } from './helpers';
-
-type GridProps = {
-  children: ReactNode;
-  gap?: ValueOf<typeof sizes.sizes>;
-  width?: ValueOf<typeof sizes.sizes>;
-  templateColumns?: ValueOf<typeof gridProps.columns>;
-};
+import { GridProps } from './types';
 
 const Grid = (props: GridProps) => {
   const { children, templateColumns, gap, width } = props;
@@ -27,4 +16,3 @@ const Grid = (props: GridProps) => {
 };
 
 export { Grid };
-export type { GridProps };

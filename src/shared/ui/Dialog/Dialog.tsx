@@ -1,7 +1,6 @@
 import {
   Children,
   ReactElement,
-  ReactNode,
   Ref,
   cloneElement,
   isValidElement,
@@ -13,13 +12,7 @@ import { DialogContent } from './DialogContent';
 import { createPortal } from 'react-dom';
 import { Overlay } from '../Overlay';
 import { DialogContext } from './helpers/context';
-
-type DialogProps = {
-  children: ReactNode;
-  onClose?: () => void;
-  open?: boolean;
-  onOpen?: (open: boolean) => void;
-};
+import { DialogProps } from './types';
 
 const Dialog = (props: DialogProps) => {
   const { children, onClose, open, onOpen } = props;
@@ -84,4 +77,3 @@ const Dialog = (props: DialogProps) => {
 };
 
 export { Dialog };
-export type { DialogProps };

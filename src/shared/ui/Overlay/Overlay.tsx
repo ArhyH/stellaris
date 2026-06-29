@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-
-type OverlayProps = {
-  children: ReactNode;
-};
+import { OverlayProps } from './types';
 
 const Overlay = (props: OverlayProps) => {
   const { children } = props;
@@ -17,4 +13,3 @@ const Overlay = (props: OverlayProps) => {
 };
 
 export { Overlay };
-export type { OverlayProps };

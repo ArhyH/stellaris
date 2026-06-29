@@ -1,1 +1,1 @@
-export { FieldPopover as DatePicker } from './FieldPopover';
+export { DatePicker } from './DatePicker';

@@ -1,11 +1,6 @@
 import classnames from 'classnames';
-import { ValueOf } from 'type-fest';
 import styles from './style.module.scss';
-import { separatorProps } from './consts';
-
-type SeparatorProps = {
-  type: ValueOf<typeof separatorProps.types>;
-};
+import { SeparatorProps } from './types';
 
 const Separator = (props: SeparatorProps) => {
   const { type } = props;
@@ -18,4 +13,3 @@ const Separator = (props: SeparatorProps) => {
 };
 
 export { Separator };
-export type { SeparatorProps };

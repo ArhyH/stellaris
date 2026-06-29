@@ -1,6 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { BoxHeaderProps, BoxProps } from './types';
-import { BoxScrollWrapperProps } from './BoxScrollWrapper';
+import { BoxHeaderProps, BoxProps, BoxScrollWrapperProps } from './types';
 
 const getBGColor = ({ bgColor }: Pick<BoxProps, 'bgColor'>) => {
   if (bgColor) {

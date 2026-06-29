@@ -1,13 +1,6 @@
-import { ReactNode } from 'react';
 import classnames from 'classnames';
 import styles from './style.module.scss';
-
-type SegmentedButtonProps = {
-  isSelected?: boolean;
-  isDisabled?: boolean;
-  children: ReactNode;
-  onChange: () => void;
-};
+import { SegmentedButtonProps } from './types';
 
 const SegmentedButton = (props: SegmentedButtonProps) => {
   const { isSelected, isDisabled, onChange, children } = props;
@@ -32,4 +25,3 @@ const SegmentedButton = (props: SegmentedButtonProps) => {
 };
 
 export { SegmentedButton };
-export type { SegmentedButtonProps };

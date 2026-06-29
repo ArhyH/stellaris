@@ -1,15 +1,6 @@
-import { ReactNode } from 'react';
-
 import styles from './style.module.scss';
-import { ValueOf } from 'type-fest';
-import { sizes } from '@/shared/styles';
 import { getStyles } from './helpers';
-
-type SummaryCardProps = {
-  children: ReactNode;
-  padding?: ValueOf<typeof sizes.sizes>;
-  gap?: ValueOf<typeof sizes.sizes>;
-};
+import { SummaryCardProps } from './types';
 
 const SummaryCard = (props: SummaryCardProps) => {
   const { children, padding, gap } = props;
@@ -25,4 +16,3 @@ const SummaryCard = (props: SummaryCardProps) => {
 };
 
 export { SummaryCard };
-export type { SummaryCardProps };

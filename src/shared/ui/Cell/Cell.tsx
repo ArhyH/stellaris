@@ -1,17 +1,6 @@
-import { ReactNode } from 'react';
-import { ValueOf } from 'type-fest';
-
-import { sizes } from '@/shared/styles';
+import { CellProps } from './types';
 import { getStyles } from './helpers';
 import styles from './style.module.scss';
-import { cellProps } from './consts';
-
-type CellProps = {
-  children: ReactNode;
-  gap?: ValueOf<typeof sizes.sizes>;
-  grow?: ValueOf<typeof cellProps.grow>;
-  width?: ValueOf<typeof sizes.sizes>;
-};
 
 const Cell = (props: CellProps) => {
   const { children, gap, grow, width } = props;
@@ -24,4 +13,3 @@ const Cell = (props: CellProps) => {
 };
 
 export { Cell };
-export type { CellProps };

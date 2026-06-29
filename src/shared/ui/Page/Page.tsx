@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-
-type PageProps = {
-  children: ReactNode;
-};
+import { PageProps } from './types';
 
 const Page = (props: PageProps) => {
   const { children } = props;
@@ -12,4 +8,3 @@ const Page = (props: PageProps) => {
 };
 
 export { Page };
-export type { PageProps };

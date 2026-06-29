@@ -1,14 +1,6 @@
-import { ColorToken } from '@/shared/styles';
 import styles from './style.module.scss';
 import { getStyles } from './helpers';
-
-type ProgressProps = {
-  value?: number;
-  percent?: number;
-  min: number;
-  max: number;
-  color: ColorToken;
-};
+import { ProgressProps } from './types';
 
 const Progress = (props: ProgressProps) => {
   const { color, value, min = 0, max = 100, percent } = props;
@@ -28,4 +20,3 @@ const Progress = (props: ProgressProps) => {
 };
 
 export { Progress };
-export type { ProgressProps };

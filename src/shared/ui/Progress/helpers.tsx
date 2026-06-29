@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { ProgressProps } from './Progress';
+import { ProgressProps } from './types';
 
 const getFillColor = ({ color }: Pick<ProgressProps, 'color'>) => {
   if (color) {

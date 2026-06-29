@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { CellProps } from './Cell';
+import { CellProps } from './types';
 
 const getGap = ({ gap }: Pick<CellProps, 'gap'>) => {
   if (gap) {
