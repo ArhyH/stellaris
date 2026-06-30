@@ -11,7 +11,7 @@ import { colors, sizes } from '@/shared/styles';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { createTransaction, isPositiveAmount } from '../model/helpers';
+import { createTransaction } from '../model/helpers';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { getModalCallbacks } from '../model/getModalCallbacks';
 import { AddTransactionProps, FormTransaction } from '../model/types';
@@ -24,6 +24,7 @@ import {
   TypeSelect,
 } from './parts';
 import { useCurrentCategories } from '../model/useCurrentCategories';
+import { isPositiveAmount } from '@/shared/helpers';
 
 const AddTransaction = (props: AddTransactionProps) => {
   const { categories, onSubmit } = props;

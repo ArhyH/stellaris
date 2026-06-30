@@ -70,7 +70,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
             {formatAmount(spent)}
           </Typography>
           <Typography
-            type={typographyProps.types.text14}
+            type={typographyProps.types.title14}
             color={colors.lightgray[3]}
           >
             &#160;/ {formatAmount(limit)}

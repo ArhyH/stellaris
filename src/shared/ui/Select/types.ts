@@ -8,12 +8,15 @@ type OptionProps = {
 };
 
 type SelectProps = {
-  options: { value: string; description: string }[];
+  options: SelectOption[];
   onChange: (value: string) => void;
   theme?: ValueOf<typeof selectProps.themes>;
   value: ID;
   hasAllOption?: boolean;
+  isDisabled?: boolean;
   name: string;
 };
 
-export type { OptionProps, SelectProps };
+type SelectOption = OptionProps;
+
+export type { OptionProps, SelectProps, SelectOption };

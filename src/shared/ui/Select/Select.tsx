@@ -4,7 +4,8 @@ import { Option } from './Option';
 import { SelectProps } from './types';
 
 const Select = (props: SelectProps) => {
-  const { options, onChange, value, theme, hasAllOption, name } = props;
+  const { options, onChange, value, theme, hasAllOption, name, isDisabled } =
+    props;
 
   const componentClassNames = classnames(styles.select, {
     [styles[`select--theme--${theme}`]]: theme,
@@ -16,6 +17,7 @@ const Select = (props: SelectProps) => {
       onChange={(evt) => onChange(evt.target.value)}
       value={value}
       name={name}
+      disabled={isDisabled}
     >
       {hasAllOption && <Option value="all" description="All Categories" />}
 

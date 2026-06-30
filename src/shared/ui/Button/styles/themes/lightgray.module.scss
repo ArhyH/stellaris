@@ -1,7 +1,7 @@
 .button {
   &--theme {
     &--lightgray {
-      border-radius: var(--size-10);
+      --button-radius: var(--size-10);
       color: var(--lightgray-3);
       --button-background-color: var(--button-bg-1);
 

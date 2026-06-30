@@ -2,7 +2,7 @@
   &--theme {
     &--transparent-category {
       --button-background-color: var(--button-bg-1);
-      border-radius: var(--size-14);
+      --button-radius: var(--size-14);
       color: var(--lightgray-3);
 
       @media (hover: hover) {

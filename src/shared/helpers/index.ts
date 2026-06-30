@@ -11,3 +11,4 @@ export {
   getMonthDayFromDate,
   getMonthYearFromDate,
 } from './date';
+export { isValidInputAmount, isPositiveAmount } from './amount';

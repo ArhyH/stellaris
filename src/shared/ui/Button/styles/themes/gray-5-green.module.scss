@@ -2,7 +2,7 @@
   &--theme {
     &--gray-5-green {
       --button-background-color: var(--gray-5);
-      border-radius: var(--size-10);
+      --button-radius: var(--size-10);
       color: var(--white);
 
       @media (hover: hover) {
@@ -13,7 +13,7 @@
 
       &.is-active {
         color: var(--black);
-        background-color: var(--green-1);
+        --button-background-color: : var(--green-1);
       }
     }
   }
