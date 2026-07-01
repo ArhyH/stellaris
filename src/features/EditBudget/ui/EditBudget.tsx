@@ -25,8 +25,6 @@ const EditBudget = (props: EditBudgetProps) => {
     limit: String(currentBudget.limit),
   };
 
-  console.log(currentOption);
-
   return (
     <BudgetForm
       title="Edit Budget"

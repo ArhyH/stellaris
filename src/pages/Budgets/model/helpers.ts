@@ -1,5 +1,6 @@
 import { Budget } from '@/entity/budget';
 import { Category } from '@/entity/category';
+import { icons } from '@/shared/assets';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { SelectOption } from '@/shared/ui/Select';
 
@@ -8,6 +9,8 @@ const mapCategoryToSelectItems = (categories: Category[]): SelectOption[] => {
     return {
       value: category.id,
       description: category.name,
+      icon: icons[category.icon],
+      color: category.color,
     };
   });
 };

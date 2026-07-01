@@ -60,8 +60,8 @@ const BudgetForm = (props: BudgetFormProps) => {
             options={selectOptions}
             value={isEditMode ? currentBudget.categoryId : budget.categoryId}
             onChange={onCategoryChange}
-            hasAllOption
-            name="budget-category"
+            placeholderOption={{ value: '', description: 'Select Category...' }}
+            width={sizes.sizes.parent}
             isDisabled={isEditMode}
           />
         </Box>

@@ -43,8 +43,17 @@ const Popover = (props: PopoverProps) => {
         trigger as ReactElement<{
           onClick: () => void;
           ref?: Ref<HTMLElement>;
+          isActive: boolean;
+          isRotated: boolean;
+          'aria-expanded': boolean;
         }>,
-        { onClick: handleIsOpen, ref: triggerRef },
+        {
+          onClick: handleIsOpen,
+          ref: triggerRef,
+          isActive: isOpen,
+          isRotated: isOpen,
+          'aria-expanded': isOpen,
+        },
       )
     : null;
 

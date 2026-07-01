@@ -1,22 +1,30 @@
-import { ValueOf } from 'type-fest';
-import { selectProps } from '.';
+import { CategoryColor, sizes } from '@/shared/styles';
 import { ID } from '@/shared/types';
+import { ValueOf } from 'type-fest';
 
 type OptionProps = {
-  value: string;
   description: string;
+  onClick: () => void;
+  icon?: UtilityTypes.SvgContent;
+  isSelected?: boolean;
+  color?: CategoryColor;
 };
 
 type SelectProps = {
   options: SelectOption[];
+  placeholderOption: SelectOption;
   onChange: (value: string) => void;
-  theme?: ValueOf<typeof selectProps.themes>;
   value: ID;
-  hasAllOption?: boolean;
   isDisabled?: boolean;
-  name: string;
+  isPlaceholderSelectable?: boolean;
+  width?: ValueOf<typeof sizes.sizes>;
 };
 
-type SelectOption = OptionProps;
+type SelectOption = {
+  value: string;
+  description: string;
+  icon?: UtilityTypes.SvgContent;
+  color?: CategoryColor;
+};
 
 export type { OptionProps, SelectProps, SelectOption };

@@ -1,5 +1,9 @@
 .button {
   &--justify {
+    &--space-between {
+      justify-content: space-between;
+    }
+
     &--left {
       justify-content: flex-start;
     }

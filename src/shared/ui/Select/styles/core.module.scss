@@ -1,11 +1,52 @@
+@use '../../../styles/helpers.scss' as *;
+
 .select {
-  color: var(--white);
-  font-size: var(--size-14);
-  cursor: pointer;
-  padding: var(--size-8) var(--size-12);
-  background-color: var(--gray-1);
-  border: none;
-  border-radius: var(--size-14);
-  height: var(--parent);
-  outline: none;
+  @include initializeCssVar(--option-active-bg, unset);
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+  }
+
+  &__option {
+    cursor: pointer;
+    display: flex;
+    width: var(--parent);
+    color: var(--white);
+    padding: var(--size-8);
+    border-radius: var(--size-4);
+    height: var(--size-32);
+    gap: var(--size-8);
+    justify-content: space-between;
+    align-items: center;
+    min-width: var(--size-140);
+    border: none;
+    background-color: var(--transparent);
+
+    &:not(.is-selected) {
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--button-bg-2);
+          color: var(--white);
+        }
+      }
+    }
+
+    &.is-selected {
+      color: var(--white);
+      background-color: var(--button-bg-1);
+      cursor: default;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: var(--size-8);
+  }
+
+  &__value {
+    display: flex;
+    gap: var(--size-8);
+  }
 }

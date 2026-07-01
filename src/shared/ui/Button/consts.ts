@@ -1,4 +1,5 @@
 const buttonThemes = {
+  gray1: 'gray-1',
   gray5green: 'gray-5-green',
   green: 'green',
   lightgray: 'lightgray',
@@ -11,6 +12,7 @@ const buttonThemes = {
 const buttonJustifies = {
   left: 'left',
   right: 'right',
+  spaceBetween: 'space-between',
 } as const;
 
 const buttonProps = {

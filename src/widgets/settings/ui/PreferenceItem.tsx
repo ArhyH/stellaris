@@ -65,13 +65,12 @@ const PreferenceItem = (props: PreferenceItemProps) => {
         </Cell>
       </Row>
 
-      <Select
-        theme={selectProps.themes.gray6}
+      {/* <Select
         options={mapSettingsToSelectOptions(settings)}
         value={selectedSetting}
         onChange={onChange}
         name={name}
-      />
+      /> */}
     </Row>
   );
 };

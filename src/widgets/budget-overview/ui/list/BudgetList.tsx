@@ -25,7 +25,6 @@ const BudgetList = (props: BudgetListProps) => {
     onDelete,
   } = props;
 
-  console.log(selectOptions);
   return (
     <ul className={styles['budget-overview']}>
       {budgets.map((budget) => {
