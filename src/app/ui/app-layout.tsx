@@ -7,12 +7,12 @@ import { useTransactions } from '@/entity/transaction';
 import styles from './style.module.scss';
 
 const AppLayout = () => {
-  const { categoriesList } = useCategories();
+  const { activeCategories } = useCategories();
   const { addTransaction } = useTransactions();
 
   return (
     <div className={styles.app}>
-      <Sidebar onSubmit={addTransaction} categories={categoriesList} />
+      <Sidebar onSubmit={addTransaction} categories={activeCategories} />
 
       <div className={styles.app__wrapper}>
         <Header />

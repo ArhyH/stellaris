@@ -10,7 +10,7 @@ import { useBudgets } from '@/entity/budget';
 const useBudgetsData = () => {
   const { currentMonth } = useCurrentDate();
   const { transactionsList } = useTransactions();
-  const { categoriesList } = useCategories();
+  const { activeCategories } = useCategories();
   const { budgets, budgetsList } = useBudgets();
 
   const currentTransactions = useMemo(
@@ -23,9 +23,9 @@ const useBudgetsData = () => {
       mapBudgetsToOverviewItems(
         budgetsList,
         currentTransactions,
-        categoriesList,
+        activeCategories,
       ),
-    [budgetsList, currentTransactions, categoriesList],
+    [budgetsList, currentTransactions, activeCategories],
   );
 
   const budgetSummaries = useMemo(
@@ -35,7 +35,7 @@ const useBudgetsData = () => {
 
   return {
     budgets,
-    categoriesList,
+    activeCategories,
     budgetsList,
     budgetData,
     budgetSummaries,

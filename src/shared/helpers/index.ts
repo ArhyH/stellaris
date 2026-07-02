@@ -12,3 +12,4 @@ export {
   getMonthYearFromDate,
 } from './date';
 export { isValidInputAmount, isPositiveAmount } from './amount';
+export { filterByArchived } from './filterByArchived';

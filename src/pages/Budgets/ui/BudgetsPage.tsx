@@ -14,8 +14,13 @@ import { getPageCallbacks } from '../model/getPageCallbacks';
 import { getSelectOptions } from '../model/helpers';
 
 const BudgetsPage = () => {
-  const { budgets, budgetsList, categoriesList, budgetData, budgetSummaries } =
-    useBudgetsData();
+  const {
+    budgets,
+    budgetsList,
+    activeCategories,
+    budgetData,
+    budgetSummaries,
+  } = useBudgetsData();
 
   const {
     isOpen,
@@ -72,7 +77,7 @@ const BudgetsPage = () => {
 
       {isOpen && (
         <AddBudget
-          selectOptions={getSelectOptions(categoriesList, budgetsList)}
+          selectOptions={getSelectOptions(activeCategories, budgetsList)}
           onSubmit={onSubmit}
           onClose={onClose}
         />
@@ -81,7 +86,7 @@ const BudgetsPage = () => {
       <BudgetList
         budgets={budgetData}
         selectOptions={getSelectOptions(
-          categoriesList,
+          activeCategories,
           budgetsList,
           editingBudget,
         )}

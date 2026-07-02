@@ -43,7 +43,7 @@ const useCategoryStore = create<CategoryStore>((set) => ({
   deleteCategory: (id) =>
     set((state) => {
       const copy = { ...state.categories };
-      delete copy[id];
+      copy[id] = { ...copy[id], isArchived: true };
 
       return {
         categories: copy,

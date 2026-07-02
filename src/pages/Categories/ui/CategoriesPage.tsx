@@ -13,26 +13,43 @@ import {
   useEditCategory,
 } from '../model';
 import { useCategories } from '@/entity/category';
+import { useBudgets } from '@/entity/budget';
+import { ID } from '@/shared/types';
 
 const CategoriesPage = () => {
   const {
     categories,
-    categoriesList,
+    activeCategories,
     addCategory,
     editCategory,
     deleteCategory,
   } = useCategories();
 
+  const { budgetsList, deleteBudget } = useBudgets();
+
   const { setCurrentFilter, currentCategories } =
-    useCategoriesFilter(categoriesList);
+    useCategoriesFilter(activeCategories);
 
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
     useEditCategory(categories);
 
   const { categoriesSummary, categoryItems } = useCategoriesData(
-    categoriesList,
+    activeCategories,
     currentCategories,
   );
+
+  const handleCategoryDelete = (id: ID) => {
+    const [connectedBudget] = budgetsList.filter(
+      (budget) => budget.categoryId === id,
+    );
+
+    if (connectedBudget) {
+      console.log(connectedBudget);
+      deleteBudget(connectedBudget.id);
+    }
+
+    deleteCategory(id);
+  };
 
   return (
     <Page>
@@ -67,7 +84,7 @@ const CategoriesPage = () => {
       <Categories
         categories={categoryItems}
         onEdit={handleEditCategory}
-        onDelete={deleteCategory}
+        onDelete={handleCategoryDelete}
       />
 
       <EditCategory

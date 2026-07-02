@@ -11,7 +11,7 @@ import { useTransactionsData } from '../model/useTransactionsData';
 
 const TransactionsPage = () => {
   const { transactionsList, deleteTransaction } = useTransactions();
-  const { categoriesList } = useCategories();
+  const { activeCategories, categoriesList } = useCategories();
 
   const {
     setFilters,
@@ -19,7 +19,7 @@ const TransactionsPage = () => {
     currentQuery,
     currentCategories,
     currerntCatefory,
-  } = useTransactionsFilter(categoriesList, transactionsList);
+  } = useTransactionsFilter(activeCategories, transactionsList);
 
   const {
     onCategoryFilterChange,
