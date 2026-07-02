@@ -23,6 +23,9 @@ const AnalyticsPage = () => {
     month,
   } = useAnalyticsData();
 
+  const isAdditionalVisible = topCategory && !!barChartData.length;
+  const isChartsVisible = !!expencePieData.length || !!incomePieData.length;
+
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -44,28 +47,36 @@ const AnalyticsPage = () => {
 
       <AnalyticsSummary summaries={currentSummary} deltas={summaryDeltas} />
 
-      <Row>
-        <PieChartUi
-          data={expencePieData}
-          date={monthYear}
-          type={FinanceTransferTypes.expense}
-        />
+      {isChartsVisible && (
+        <Row>
+          <PieChartUi
+            data={expencePieData}
+            date={monthYear}
+            type={FinanceTransferTypes.expense}
+          />
 
-        <PieChartUi
-          data={incomePieData}
-          date={monthYear}
-          type={FinanceTransferTypes.income}
-        />
-      </Row>
+          <PieChartUi
+            data={incomePieData}
+            date={monthYear}
+            type={FinanceTransferTypes.income}
+          />
+        </Row>
+      )}
 
-      <Grid templateColumns={gridProps.columns['2-1']}>
+      <Grid
+        {...(isAdditionalVisible && {
+          templateColumns: gridProps.columns['2-1'],
+        })}
+      >
         <LineChartUI data={lineChartData} />
 
-        <PageCell gap={sizes.sizes[20]}>
-          <TopSpending data={topCategory} />
+        {isAdditionalVisible && (
+          <PageCell gap={sizes.sizes[20]}>
+            <TopSpending data={topCategory} />
 
-          <BarChartUI data={barChartData} month={month} />
-        </PageCell>
+            <BarChartUI data={barChartData} month={month} />
+          </PageCell>
+        )}
       </Grid>
     </Page>
   );

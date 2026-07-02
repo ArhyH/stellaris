@@ -2,7 +2,7 @@ interface AnalyticsSummary {
   income: number;
   expense: number;
   saving: number | null;
-  daily: number;
+  daily: number | null;
 }
 
 interface SummaryDeltas {

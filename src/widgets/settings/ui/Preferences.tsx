@@ -48,7 +48,7 @@ const Preferences = (props: PreferencesProps) => {
               icon={item.icon}
               name={item.name}
               description={item.description}
-              settings={item.settingVariants}
+              options={item.options}
               selectedSetting={item.selectedSetting}
               onChange={item.onChange}
             />

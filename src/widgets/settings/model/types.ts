@@ -1,3 +1,4 @@
+import { SelectOption } from '@/shared/ui/Select';
 import { SETTINGS_CONFIG } from './consts';
 
 interface User {
@@ -15,17 +16,21 @@ type Settings = {
   weekStart: string;
 };
 
+type SettingKey = keyof Settings;
+
 type SettingsCallbacks = {
-  [K in keyof Settings]: (value: string) => void;
+  [K in SettingKey]: (value: string) => void;
 };
 
 type SettingConfig = {
-  key: keyof Settings;
+  key: SettingKey;
   name: string;
   icon: UtilityTypes.SvgContent;
   description: string;
-  settingVariants: Setting[];
+  options: SelectOption[];
 };
+
+type SettinsOptions = Record<SettingKey, SelectOption[]>;
 
 type ConfigItem = (typeof SETTINGS_CONFIG)[number];
 
@@ -36,4 +41,5 @@ export type {
   SettingsCallbacks,
   ConfigItem,
   SettingConfig,
+  SettinsOptions,
 };

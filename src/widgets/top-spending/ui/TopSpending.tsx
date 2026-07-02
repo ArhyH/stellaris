@@ -14,17 +14,7 @@ const TopSpending = (props: TopSpendingProps) => {
   const { data } = props;
 
   if (!data) {
-    return (
-      <ContentCard>
-        <Typography
-          type={typographyProps.types.title16}
-          color={colors.base.white}
-          tag={typographyProps.tags.h3}
-        >
-          Top Spending Category undefined
-        </Typography>
-      </ContentCard>
-    );
+    return;
   }
 
   const { categoryName, categoryColor, categoryIconColor, amount, percent } =

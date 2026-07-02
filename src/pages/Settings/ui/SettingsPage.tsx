@@ -13,11 +13,13 @@ const user = {
 
 const SettingsPage = () => {
   const [settings, setSettings] = useState({
-    currency: '$ USD — US Dollar',
-    language: 'English',
-    dateFormat: 'Apr 09, 2026',
-    weekStart: 'Monday',
+    currency: 'usd',
+    language: 'eng',
+    dateFormat: 'mdy',
+    weekStart: 'mon',
   });
+
+  console.log(settings);
 
   // const [user, setUser] = useState({
   //   name: 'John Doe',

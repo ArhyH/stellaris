@@ -59,7 +59,9 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
           {summary !== null && budgetKey !== 'saving'
             ? formatAmount(summary)
             : budgetKey === 'saving'
-              ? `${summary?.toFixed(1)}%`
+              ? summary !== null
+                ? `${summary?.toFixed(1)}%`
+                : 0
               : 0}
         </Typography>
 

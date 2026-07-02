@@ -47,13 +47,12 @@ const useDashboardData = () => {
       };
     }, [transactionsList]);
 
-  const { recentTransactions, pieChartData, budgetData } = useMemo(() => {
-    const recentTransactions = mapTransactionsToRecentItems(
-      currentTransactions,
-      categoriesList,
-      true,
-    );
+  const recentTransactions = useMemo(
+    () => mapTransactionsToRecentItems(transactionsList, categoriesList, true),
+    [transactionsList, categoriesList],
+  );
 
+  const { pieChartData, budgetData } = useMemo(() => {
     const pieChartData = mapTransactionsToPieChartData(
       currentTransactions,
       categoriesList,
@@ -70,7 +69,7 @@ const useDashboardData = () => {
       },
     );
 
-    return { recentTransactions, pieChartData, budgetData };
+    return { pieChartData, budgetData };
   }, [currentTransactions, categoriesList, budgetsMock]);
 
   return {

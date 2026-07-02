@@ -19,6 +19,8 @@ const DashboardPage = () => {
     monthYear,
   } = useDashboardData();
 
+  const isPieChartVisible = !!pieChartData.length;
+
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -39,12 +41,15 @@ const DashboardPage = () => {
       </PageCell>
 
       <DashboardSummary summaries={currentSummary} deltas={deltas} />
+
       <Row>
-        <PieChartUi
-          data={pieChartData}
-          date={monthYear}
-          type={FinanceTransferTypes.expense}
-        />
+        {isPieChartVisible && (
+          <PieChartUi
+            data={pieChartData}
+            date={monthYear}
+            type={FinanceTransferTypes.expense}
+          />
+        )}
         <BudgetOverview budgets={budgetData} />
       </Row>
       <RecentTransactions recentTransactions={recentTransactions} />

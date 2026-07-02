@@ -11,6 +11,10 @@ const getSavingRate = (income: number, expense: number) => {
 };
 
 const getDailySpent = (transactions: Transaction[]) => {
+  if (transactions.length === 0) {
+    return null;
+  }
+
   const dailyTotals = getDailyTotal(transactions);
   const sorted = Array.from(dailyTotals.values()).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
