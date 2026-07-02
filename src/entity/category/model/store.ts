@@ -11,6 +11,7 @@ type CategoryStore = {
   addCategory: (category: Category) => void;
   editCategory: (category: Category) => void;
   deleteCategory: (id: ID) => void;
+  archiveCategory: (id: ID) => void;
 };
 
 const useCategoryStore = create<CategoryStore>((set) => ({
@@ -43,11 +44,17 @@ const useCategoryStore = create<CategoryStore>((set) => ({
   deleteCategory: (id) =>
     set((state) => {
       const copy = { ...state.categories };
+      delete copy[id];
+
+      return { categories: copy };
+    }),
+
+  archiveCategory: (id) =>
+    set((state) => {
+      const copy = { ...state.categories };
       copy[id] = { ...copy[id], isArchived: true };
 
-      return {
-        categories: copy,
-      };
+      return { categories: copy };
     }),
 }));
 

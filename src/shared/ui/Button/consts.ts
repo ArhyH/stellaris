@@ -4,6 +4,7 @@ const buttonThemes = {
   green: 'green',
   lightgray: 'lightgray',
   red: 'red',
+  transparentRed: 'transparent-red',
   transparent: 'transparent',
   transparentCategory: 'transparent-category',
   transparentGray: 'transparent-gray',

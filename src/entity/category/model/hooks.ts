@@ -13,6 +13,7 @@ const useCategories = () => {
   const addCategory = useCategoryStore((state) => state.addCategory);
   const editCategory = useCategoryStore((state) => state.editCategory);
   const deleteCategory = useCategoryStore((state) => state.deleteCategory);
+  const archiveCategory = useCategoryStore((state) => state.archiveCategory);
 
   return {
     categories,
@@ -21,6 +22,7 @@ const useCategories = () => {
     addCategory,
     editCategory,
     deleteCategory,
+    archiveCategory,
   };
 };
 

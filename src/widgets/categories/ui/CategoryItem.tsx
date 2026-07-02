@@ -94,7 +94,7 @@ const CategoryItem = (props: CategoryItemProps) => {
           <Icon icon={icons.pen24} size={sizes.sizes[12]} />
         </Button>
         <Button
-          theme={buttonProps.themes.red}
+          theme={buttonProps.themes.transparentRed}
           size={sizes.sizes['32']}
           onClick={() => onDelete(categoryId)}
         >
