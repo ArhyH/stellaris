@@ -34,11 +34,7 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
         </Typography>
         <RouterLink to={'/budgets'}>
           <Typography type={typographyProps.types.text12}>View All</Typography>
-          <Icon
-            icon={icons.arrowRight12}
-            width={sizes.sizes[12]}
-            height={sizes.sizes[12]}
-          />
+          <Icon icon={icons.arrowRight12} size={sizes.sizes[12]} />
         </RouterLink>
       </ContentCardHeader>
       <ul className={styles['budget-overview']}>

@@ -1,13 +1,6 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-import { ValueOf } from 'type-fest';
-import { sizes } from '@/shared/styles';
 import { getBoxWrapperStyles } from './helpers';
-
-type BoxScrollWrapperProps = {
-  children: ReactNode;
-  maxHeight?: ValueOf<typeof sizes.sizes>;
-};
+import { BoxScrollWrapperProps } from './types';
 
 const BoxScrollWrapper = (props: BoxScrollWrapperProps) => {
   const { children, maxHeight } = props;
@@ -23,4 +16,3 @@ const BoxScrollWrapper = (props: BoxScrollWrapperProps) => {
 };
 
 export { BoxScrollWrapper };
-export type { BoxScrollWrapperProps };

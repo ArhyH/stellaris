@@ -49,8 +49,7 @@ const TopSpending = (props: TopSpendingProps) => {
       >
         <Icon
           icon={icons.wallet18}
-          width={sizes.sizes[36]}
-          height={sizes.sizes[36]}
+          size={sizes.sizes[36]}
           color={categoryIconColor}
         />
 

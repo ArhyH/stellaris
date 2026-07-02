@@ -1,0 +1,23 @@
+.button {
+  &--theme {
+    &--gray-1 {
+      --button-background-color: var(--gray-1);
+      --button-radius: var(--size-14);
+      color: var(--white);
+      border: 1px solid var(--button-bg-1);
+
+      &:not(.is-disabled) {
+        @media (hover: hover) {
+          &:hover {
+            --button-background-color: var(--gray-2);
+            border-color: var(--button-bg-2);
+          }
+        }
+      }
+
+      &.is-active {
+        border-color: var(--button-bg-3);
+      }
+    }
+  }
+}

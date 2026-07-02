@@ -2,7 +2,7 @@ import { ID } from '@/shared/types';
 import styles from './style.module.scss';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { FinanceTransferTypes } from '@/shared/consts';
@@ -46,15 +46,14 @@ const Transaction = (props: TransactionProps) => {
       <div className={styles['transactions-list__cell']}>
         <Box
           bgColor={colors.categoryOp[categoryColor]}
-          size={boxProps.sizes[32]}
+          size={sizes.sizes[32]}
           radius={sizes.radiuses[14]}
         >
           <BoxWrapper hasAlign>
             <Icon
               icon={icons[categoryIcon]}
               color={categoryIconColor}
-              width={sizes.sizes[20]}
-              height={sizes.sizes[20]}
+              size={sizes.sizes[20]}
             />
           </BoxWrapper>
         </Box>
@@ -100,15 +99,11 @@ const Transaction = (props: TransactionProps) => {
 
       <div className={styles['transactions-list__button']}>
         <Button
-          size={buttonProps.sizes['28x28']}
+          size={sizes.sizes['28']}
           theme={buttonProps.themes.red}
           onClick={() => onDelete(id)}
         >
-          <Icon
-            icon={icons.trash24}
-            width={sizes.sizes[14]}
-            height={sizes.sizes[14]}
-          />
+          <Icon icon={icons.trash24} size={sizes.sizes[14]} />
         </Button>
       </div>
     </li>

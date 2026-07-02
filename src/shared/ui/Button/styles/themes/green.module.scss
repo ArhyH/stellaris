@@ -3,7 +3,7 @@
     &--green {
       --button-background-color: var(--green-1);
       color: var(--black);
-      border-radius: var(--size-14);
+      --button-radius: var(--size-14);
       fill: currentColor;
       padding: var(--size-12) var(--size-16);
 

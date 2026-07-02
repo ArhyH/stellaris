@@ -1,5 +1,5 @@
-import { useCategoryStore } from '@/entity/category';
 import { useMemo } from 'react';
+import { useCategoryStore } from './store';
 
 const useCategories = () => {
   const categories = useCategoryStore((state) => state.categories);

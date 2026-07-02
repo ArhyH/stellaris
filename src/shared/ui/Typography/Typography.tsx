@@ -1,19 +1,8 @@
 import classnames from 'classnames';
 import styles from './style.module.scss';
-import { typographyProps } from './consts';
-import { ColorToken } from '@/shared/styles';
 import { getStyles } from './helpers';
-import { ElementType, ReactNode } from 'react';
-import { ValueOf } from 'type-fest';
-
-type TypographyProps = {
-  children: ReactNode | string;
-  type: ValueOf<typeof typographyProps.types>;
-  color?: ColorToken;
-  tag?: keyof typeof typographyProps.tags;
-  textAlign?: ValueOf<typeof typographyProps.aligns>;
-  textTransform?: ValueOf<typeof typographyProps.transforms>;
-};
+import { ElementType } from 'react';
+import { TypographyProps } from './types';
 
 const Typography = (props: TypographyProps) => {
   const { children, type, tag, color, textAlign, textTransform } = props;
@@ -35,4 +24,3 @@ const Typography = (props: TypographyProps) => {
 };
 
 export { Typography };
-export type { TypographyProps };

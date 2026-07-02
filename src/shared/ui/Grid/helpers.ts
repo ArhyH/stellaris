@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers';
-import { GridProps } from './Grid';
+import { GridProps } from './types';
 
 const getGap = ({ gap }: Pick<GridProps, 'gap'>) => {
   if (gap) {

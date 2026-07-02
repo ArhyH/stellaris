@@ -1,12 +1,13 @@
 import { ValueOf } from 'type-fest';
-import { ICON, ID, LABEL } from '@/shared/types';
+import { AMOUNT, ICON, ID, LABEL } from '@/shared/types';
+import { budgetStatus } from './consts';
 import { CategoryColor } from '@/shared/styles';
 
-const budgetStatus = {
-  normal: 'normal',
-  warning: 'warning',
-  over: 'over',
-} as const;
+interface Budget {
+  categoryId: ID;
+  id: ID;
+  limit: AMOUNT;
+}
 
 interface BudgetProgress {
   progressPercent: number;
@@ -22,6 +23,7 @@ interface BudgetOverviewItem extends BudgetProgress {
   categoryName: LABEL;
   categoryColor: CategoryColor | undefined;
   categoryIconColor: CategoryColor | undefined;
+  categoryId: ID | undefined;
   spent: number;
   limit: number;
 }
@@ -31,5 +33,6 @@ interface Options {
   sortByProgress?: boolean;
 }
 
-export type { BudgetProgress, BudgetOverviewItem, Options };
-export { budgetStatus };
+type BudgetItem = Record<string, Budget>;
+
+export type { BudgetProgress, BudgetOverviewItem, Options, Budget, BudgetItem };

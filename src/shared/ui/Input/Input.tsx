@@ -1,27 +1,9 @@
-import { ReactNode, Ref } from 'react';
 import classnames from 'classnames';
 import styles from './style.module.scss';
 import { Icon } from '../Icon';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '../Typography';
-import { ValueOf } from 'type-fest';
-import { inputProps } from '.';
-
-type InputProps = {
-  placeholder: string;
-  name: string;
-  theme: ValueOf<typeof inputProps.themes>;
-  type: ValueOf<typeof inputProps.types>;
-  value?: string | number;
-  leftIcon?: UtilityTypes.SvgContent;
-  rightElement?: ReactNode;
-  readOnly?: boolean;
-  ref?: Ref<HTMLLabelElement>;
-  label?: string;
-  sign?: ReactNode;
-  onChange?: (value: string) => void;
-  onClick?: () => void;
-};
+import { InputProps } from './types';
 
 const Input = (props: InputProps) => {
   const {
@@ -60,13 +42,7 @@ const Input = (props: InputProps) => {
       <span className={styles.input__body}>
         {sign && sign}
 
-        {leftIcon && (
-          <Icon
-            icon={leftIcon}
-            width={sizes.sizes[16]}
-            height={sizes.sizes[16]}
-          />
-        )}
+        {leftIcon && <Icon icon={leftIcon} size={sizes.sizes[16]} />}
 
         <input
           className={styles.input__field}
@@ -85,4 +61,3 @@ const Input = (props: InputProps) => {
 };
 
 export { Input };
-export type { InputProps };

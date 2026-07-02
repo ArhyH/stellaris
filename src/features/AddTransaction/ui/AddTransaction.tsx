@@ -11,7 +11,7 @@ import { colors, sizes } from '@/shared/styles';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { createTransaction, isPositiveAmount } from '../model/helpers';
+import { createTransaction } from '../model/helpers';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { getModalCallbacks } from '../model/getModalCallbacks';
 import { AddTransactionProps, FormTransaction } from '../model/types';
@@ -24,6 +24,7 @@ import {
   TypeSelect,
 } from './parts';
 import { useCurrentCategories } from '../model/useCurrentCategories';
+import { isPositiveAmount } from '@/shared/helpers';
 
 const AddTransaction = (props: AddTransactionProps) => {
   const { categories, onSubmit } = props;
@@ -47,13 +48,10 @@ const AddTransaction = (props: AddTransactionProps) => {
     <Dialog onClose={() => setTransaction(createTransaction())}>
       <Button
         theme={buttonProps.themes.green}
-        size={buttonProps.sizes['44-stretched']}
+        height={sizes.sizes[44]}
+        width={sizes.sizes.parent}
       >
-        <Icon
-          icon={icons.plus24}
-          width={sizes.sizes[18]}
-          height={sizes.sizes[18]}
-        />
+        <Icon icon={icons.plus24} size={sizes.sizes[18]} />
         <Typography
           tag={typographyProps.tags.h3}
           type={typographyProps.types.title14}
@@ -75,14 +73,10 @@ const AddTransaction = (props: AddTransactionProps) => {
           <DialogClose>
             <Button
               theme={buttonProps.themes.lightgray}
-              size={buttonProps.sizes['32x32']}
-              radius={buttonProps.radiuses[14]}
+              size={sizes.sizes[32]}
+              radius={sizes.radiuses[14]}
             >
-              <Icon
-                icon={icons.cross14}
-                width={sizes.sizes[14]}
-                height={sizes.sizes[14]}
-              />
+              <Icon icon={icons.cross14} size={sizes.sizes[14]} />
             </Button>
           </DialogClose>
         </DialogHeader>
@@ -117,7 +111,8 @@ const AddTransaction = (props: AddTransactionProps) => {
           <DialogClose>
             <Button
               theme={buttonProps.themes.green}
-              size={buttonProps.sizes['44-stretched']}
+              height={sizes.sizes[44]}
+              width={sizes.sizes.parent}
               isDisabled={
                 !isPositiveAmount(transaction.amount) || !transaction.categoryId
               }

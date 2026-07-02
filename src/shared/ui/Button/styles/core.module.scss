@@ -1,6 +1,12 @@
 @use '../../../styles/helpers.scss' as *;
 
 .button {
+  @include initializeCssVar(--button-width, var(--button-size));
+  @include initializeCssVar(--button-height, var(--button-size));
+  @include initializeCssVar(--button-size, unset);
+  @include initializeCssVar(--button-padding-vertical, var(--size-0));
+  @include initializeCssVar(--button-padding-horizontal, var(--size-0));
+  @include initializeCssVar(--button-radius, unset);
   @include initializeCssVar(--button-background-color, var(--transparent));
   @include initializeCssVar(
     --button-active-background-color,
@@ -13,9 +19,15 @@
   gap: var(--size-8);
   background-color: var(--button-background-color);
   border: none;
-  padding: var(--size-0);
   border-image-width: var(--size-0);
   color: var(--white);
+  width: var(--button-width);
+  height: var(--button-height);
+  border-radius: var(--button-radius);
+  padding-top: var(--button-padding-vertical);
+  padding-bottom: var(--button-padding-vertical);
+  padding-left: var(--button-padding-horizontal);
+  padding-right: var(--button-padding-horizontal);
   cursor: pointer;
   transition:
     background-color 0.5s ease,
@@ -35,7 +47,7 @@
   }
 
   &.is-active {
-    background-color: var(--button-active-background-color);
+    --button-background-color: var(--button-active-background-color);
   }
 
   &.is-disabled {

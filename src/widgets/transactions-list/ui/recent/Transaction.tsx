@@ -1,5 +1,5 @@
 import { AMOUNT, DATE, FinanceTransferType, ICON, LABEL } from '@/shared/types';
-import { Box, boxProps, BoxWrapper } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { FinanceTransferTypes } from '@/shared/consts';
 import styles from './style.module.scss';
 import { colors, sizes, CategoryColor } from '@/shared/styles';
@@ -35,7 +35,7 @@ const Transaction = (props: TransactionProps) => {
     <li className={styles['recent-transaction']}>
       <div className={styles['recent-transaction__cell']}>
         <Box
-          size={boxProps.sizes[40]}
+          size={sizes.sizes[40]}
           radius={sizes.radiuses[12]}
           {...(categoryColor && { bgColor: colors.categoryOp[categoryColor] })}
         >
@@ -43,8 +43,7 @@ const Transaction = (props: TransactionProps) => {
             <Icon
               icon={icons[categoryIcon]}
               color={categoryIconColor}
-              width={sizes.sizes[24]}
-              height={sizes.sizes[24]}
+              size={sizes.sizes[24]}
             />
           </BoxWrapper>
         </Box>

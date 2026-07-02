@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './style.module.scss';
-
-type ButtonIconProps = {
-  children: ReactNode;
-};
+import { ButtonIconProps } from './types';
 
 const ButtonIcon = (props: ButtonIconProps) => {
   const { children } = props;
@@ -12,4 +8,3 @@ const ButtonIcon = (props: ButtonIconProps) => {
 };
 
 export { ButtonIcon };
-export type { ButtonIconProps };

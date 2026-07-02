@@ -33,10 +33,13 @@ const useAnalyticsData = () => {
         prevMonth,
       );
 
-      const lineChartData = mapTransactionsToLineCharData(transactionsList);
+      const lineChartData = mapTransactionsToLineCharData(
+        transactionsList,
+        currentMonth,
+      );
 
       return { currentTransactions, prevTransactions, lineChartData };
-    }, [transactionsList]);
+    }, [transactionsList, currentMonth, prevMonth]);
 
   const { currentSummary, summaryDeltas } = useMemo(() => {
     const currentSummary = getAnalyticsSummary(currentTransactions);

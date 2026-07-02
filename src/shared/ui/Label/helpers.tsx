@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers';
-import { LabelProps } from './Label';
+import { LabelProps } from './types';
 import { labelColorByBgColor } from './consts';
 
 const getBgColor = ({ bgColor }: Pick<LabelProps, 'bgColor'>) => {

@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { RowProps } from './Row';
+import { RowProps } from './types';
 
 const getGap = ({ gap }: Pick<RowProps, 'gap'>) => {
   if (gap) {

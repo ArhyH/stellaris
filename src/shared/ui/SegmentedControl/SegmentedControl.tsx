@@ -53,4 +53,3 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 };
 
 export { SegmentedControl };
-export type { SegmentedControlProps };

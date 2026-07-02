@@ -16,7 +16,7 @@ const IconPicker = (props: IconPickerProps) => {
     <FormCell title="Icon" hasScroll maxHeight={sizes.sizes[150]}>
       {Object.entries(categoriesIcons).map(([key, value]) => (
         <Button
-          size={buttonProps.sizes['36x36']}
+          size={sizes.sizes['36']}
           theme={buttonProps.themes.transparentGray}
           isActive={icon === key}
           onClick={() => onIconChange(key as IconName)}

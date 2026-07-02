@@ -1,5 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { PageCellProps } from './PageCell';
+import { PageCellProps } from './types';
 
 const getGap = ({ gap }: Pick<PageCellProps, 'gap'>) => {
   if (gap) {

@@ -1,12 +1,6 @@
 import styles from './style.module.scss';
-import { ValueOf } from 'type-fest';
-import { ColorToken } from '@/shared/styles';
 import { getStyles } from './helpers';
-import { dotProps } from './consts';
-
-type DotProps = {
-  color: ColorToken | ValueOf<typeof dotProps.colors> | string;
-};
+import { DotProps } from './types';
 
 const Dot = (props: DotProps) => {
   const { color } = props;
@@ -15,4 +9,3 @@ const Dot = (props: DotProps) => {
 };
 
 export { Dot };
-export type { DotProps };

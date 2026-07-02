@@ -1,6 +1,5 @@
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { BoxHeaderProps, BoxProps } from './types';
-import { BoxScrollWrapperProps } from './BoxScrollWrapper';
+import { BoxHeaderProps, BoxProps, BoxScrollWrapperProps } from './types';
 
 const getBGColor = ({ bgColor }: Pick<BoxProps, 'bgColor'>) => {
   if (bgColor) {
@@ -34,6 +33,24 @@ const getBoxPadding = ({ padding }: Pick<BoxProps, 'padding'>) => {
   }
 };
 
+const getBoxSize = ({ size }: Pick<BoxProps, 'size'>) => {
+  if (size) {
+    return getCssVarOrNothing('--box-size', size);
+  }
+};
+
+const getBoxWidth = ({ size, width }: Pick<BoxProps, 'size' | 'width'>) => {
+  if (!size && width) {
+    return getCssVarOrNothing('--box-width', width);
+  }
+};
+
+const getBoxHeight = ({ size, height }: Pick<BoxProps, 'size' | 'height'>) => {
+  if (!size && height) {
+    return getCssVarOrNothing('--box-height', height);
+  }
+};
+
 const getHeaderPadding = ({
   paddingBottom,
 }: Pick<BoxHeaderProps, 'paddingBottom'>) => {
@@ -56,13 +73,29 @@ const getStyles = ({
   grow,
   padding,
   gap,
-}: Pick<BoxProps, 'bgColor' | 'radius' | 'grow' | 'padding' | 'gap'>) => {
+  size,
+  width,
+  height,
+}: Pick<
+  BoxProps,
+  | 'bgColor'
+  | 'radius'
+  | 'grow'
+  | 'padding'
+  | 'gap'
+  | 'size'
+  | 'width'
+  | 'height'
+>) => {
   return {
     ...getBGColor({ bgColor }),
     ...getRadius({ radius }),
     ...getGrow({ grow }),
     ...getGap({ gap }),
     ...getBoxPadding({ padding }),
+    ...getBoxSize({ size }),
+    ...getBoxWidth({ size, width }),
+    ...getBoxHeight({ size, height }),
   };
 };
 

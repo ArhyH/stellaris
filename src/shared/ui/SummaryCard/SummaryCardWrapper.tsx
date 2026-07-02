@@ -1,14 +1,6 @@
-import { ReactNode } from 'react';
-import { ValueOf } from 'type-fest';
 import classnames from 'classnames';
-
 import styles from './style.module.scss';
-import { summaryCardWrapperProps } from '.';
-
-type SummaryCardWrapperProps = {
-  children: ReactNode;
-  columns: ValueOf<typeof summaryCardWrapperProps.columns>;
-};
+import { SummaryCardWrapperProps } from './types';
 
 const SummaryCardWrapper = (props: SummaryCardWrapperProps) => {
   const { children, columns } = props;
@@ -21,4 +13,3 @@ const SummaryCardWrapper = (props: SummaryCardWrapperProps) => {
 };
 
 export { SummaryCardWrapper };
-export type { SummaryCardWrapperProps };

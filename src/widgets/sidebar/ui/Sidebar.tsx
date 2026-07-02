@@ -1,7 +1,7 @@
 import { NavigationItem, navigationItems } from '@/shared/configs/navigation';
 import { SidebarLink } from './SidebarLink';
 import styles from './style.module.scss';
-import { Box, boxProps, BoxWrapper } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
@@ -22,15 +22,11 @@ const Sidebar = (props: SidebarProps) => {
       <div className={styles.sidebar__title}>
         <Box
           bgColor={colors.box['green-1']}
-          size={boxProps.sizes[32]}
+          size={sizes.sizes[32]}
           radius={sizes.sizes[14]}
         >
           <BoxWrapper hasAlign>
-            <Icon
-              icon={icons.wallet18}
-              width={sizes.sizes[16]}
-              height={sizes.sizes[16]}
-            />
+            <Icon icon={icons.wallet18} size={sizes.sizes[16]} />
           </BoxWrapper>
         </Box>
         Fintrack

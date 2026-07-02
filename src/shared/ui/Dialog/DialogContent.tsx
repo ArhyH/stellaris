@@ -1,8 +1,4 @@
-import { ReactNode } from 'react';
-
-type DialogContentProps = {
-  children: ReactNode;
-};
+import { DialogContentProps } from './types';
 
 const DialogContent = (props: DialogContentProps) => {
   const { children } = props;
@@ -13,4 +9,3 @@ const DialogContent = (props: DialogContentProps) => {
 DialogContent.displayName = 'DialogContent';
 
 export { DialogContent };
-export type { DialogContentProps };

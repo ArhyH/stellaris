@@ -11,15 +11,15 @@ type FilterByCategoryProps = {
 
 const FilterByCategory = (props: FilterByCategoryProps) => {
   const { onChange, categories, currentCategory } = props;
-  const data = mapCategoryToSelectItems(categories);
+  const options = mapCategoryToSelectItems(categories);
 
   return (
     <Select
-      options={data}
+      options={options}
+      placeholderOption={{ value: 'all', description: 'All Categories' }}
       value={currentCategory}
       onChange={onChange}
-      hasAllOption
-      name="category-filter"
+      isPlaceholderSelectable
     />
   );
 };

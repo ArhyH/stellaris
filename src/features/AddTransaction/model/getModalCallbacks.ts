@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import { FinanceTransferType, ID } from '@/shared/types';
-import { isPositiveAmount, isValidInputAmount } from './helpers';
 import { Transaction } from '@/entity/transaction';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { FormTransaction } from './types';
+import { isPositiveAmount, isValidInputAmount } from '@/shared/helpers';
 
 const getModalCallbacks = (
   transaction: FormTransaction,
@@ -67,7 +67,7 @@ const getModalCallbacks = (
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): Transaction | undefined => {
     const amount = transaction.amount;
     const date = transaction.date;
 

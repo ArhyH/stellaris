@@ -1,7 +1,7 @@
 .button {
   &--theme {
     &--transparent-gray {
-      border-radius: var(--size-14);
+      --button-radius: var(--size-14);
       --button-background-color: var(--transparent);
 
       @media (hover: hover) {

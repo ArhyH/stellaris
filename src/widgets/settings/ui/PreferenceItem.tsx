@@ -1,6 +1,6 @@
 import { Row, rowProps } from '@/shared/ui/Row';
 import { colors, sizes } from '@/shared/styles';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Icon } from '@/shared/ui/Icon';
 import { Cell } from '@/shared/ui/Cell';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
@@ -37,15 +37,14 @@ const PreferenceItem = (props: PreferenceItemProps) => {
       <Row gap={sizes.sizes[12]}>
         <Box
           bgColor={colors.box['button-1']}
-          size={boxProps.sizes[36]}
+          size={sizes.sizes[36]}
           radius={sizes.radiuses[14]}
         >
           <BoxWrapper hasAlign>
             <Icon
               icon={icon}
               color={colors.lightgray[3]}
-              width={sizes.sizes[18]}
-              height={sizes.sizes[18]}
+              size={sizes.sizes[18]}
             />
           </BoxWrapper>
         </Box>
@@ -66,13 +65,12 @@ const PreferenceItem = (props: PreferenceItemProps) => {
         </Cell>
       </Row>
 
-      <Select
-        theme={selectProps.themes.gray6}
+      {/* <Select
         options={mapSettingsToSelectOptions(settings)}
         value={selectedSetting}
         onChange={onChange}
         name={name}
-      />
+      /> */}
     </Row>
   );
 };

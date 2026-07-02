@@ -9,9 +9,25 @@ import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { useBudgetsData } from '../model/useBudgetsData';
+import { AddBudget } from '@/features/AddBudget';
+import { getPageCallbacks } from '../model/getPageCallbacks';
+import { getSelectOptions } from '../model/helpers';
 
 const BudgetsPage = () => {
-  const { budgetData, budgetSummaries } = useBudgetsData();
+  const { budgets, budgetsList, categoriesList, budgetData, budgetSummaries } =
+    useBudgetsData();
+
+  const {
+    isOpen,
+    editingBudget,
+    onSubmit,
+    onOpen,
+    onClose,
+    onEdit,
+    onEditSubmit,
+    onEditClose,
+    deleteBudget,
+  } = getPageCallbacks(budgets);
 
   return (
     <Page>
@@ -34,12 +50,14 @@ const BudgetsPage = () => {
         </PageCell>
 
         <PageCell>
-          <Button theme={buttonProps.themes.green} size={buttonProps.sizes[40]}>
-            <Icon
-              icon={icons.plus24}
-              width={sizes.sizes[16]}
-              height={sizes.sizes[16]}
-            />
+          <Button
+            theme={buttonProps.themes.green}
+            height={sizes.sizes[40]}
+            paddingVertical={sizes.sizes[10]}
+            paddingHorizontal={sizes.sizes[16]}
+            onClick={onOpen}
+          >
+            <Icon icon={icons.plus24} size={sizes.sizes[16]} />
             <Typography
               tag={typographyProps.tags.h3}
               type={typographyProps.types.title14}
@@ -51,7 +69,28 @@ const BudgetsPage = () => {
       </Row>
 
       <BudgetSummary summaries={budgetSummaries} />
-      <BudgetList budgets={budgetData} />
+
+      {isOpen && (
+        <AddBudget
+          selectOptions={getSelectOptions(categoriesList, budgetsList)}
+          onSubmit={onSubmit}
+          onClose={onClose}
+        />
+      )}
+
+      <BudgetList
+        budgets={budgetData}
+        selectOptions={getSelectOptions(
+          categoriesList,
+          budgetsList,
+          editingBudget,
+        )}
+        editingBudget={editingBudget}
+        onClose={onEditClose}
+        onSubmit={onEditSubmit}
+        onEdit={onEdit}
+        onDelete={deleteBudget}
+      />
     </Page>
   );
 };

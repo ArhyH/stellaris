@@ -1,4 +1,4 @@
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { CategoryItem as CategoryItemType } from '../model/types';
 import styles from './style.module.scss';
 import { colors, sizes } from '@/shared/styles';
@@ -37,7 +37,7 @@ const CategoryItem = (props: CategoryItemProps) => {
             ? colors.categoryOp[categoryColor]
             : colors.categoryOp['category-blue-1']
         }
-        size={boxProps.sizes[40]}
+        size={sizes.sizes[40]}
         radius={sizes.radiuses[12]}
       >
         <BoxWrapper hasAlign>
@@ -88,25 +88,17 @@ const CategoryItem = (props: CategoryItemProps) => {
       <div className={styles.categories__buttons}>
         <Button
           theme={buttonProps.themes.lightgray}
-          size={buttonProps.sizes['32x32']}
+          size={sizes.sizes['32']}
           onClick={() => onEdit(categoryId)}
         >
-          <Icon
-            icon={icons.pen24}
-            width={sizes.sizes[12]}
-            height={sizes.sizes[12]}
-          />
+          <Icon icon={icons.pen24} size={sizes.sizes[12]} />
         </Button>
         <Button
           theme={buttonProps.themes.red}
-          size={buttonProps.sizes['32x32']}
+          size={sizes.sizes['32']}
           onClick={() => onDelete(categoryId)}
         >
-          <Icon
-            icon={icons.trash24}
-            width={sizes.sizes[12]}
-            height={sizes.sizes[12]}
-          />
+          <Icon icon={icons.trash24} size={sizes.sizes[12]} />
         </Button>
       </div>
     </li>

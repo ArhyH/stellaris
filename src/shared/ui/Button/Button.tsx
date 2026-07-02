@@ -8,8 +8,13 @@ const Button = (props: ButtonProps) => {
     children,
     theme,
     size,
+    width,
+    height,
     justify,
     radius,
+    padding,
+    paddingHorizontal,
+    paddingVertical,
     isActive,
     isRotated,
     isDisabled,
@@ -22,8 +27,6 @@ const Button = (props: ButtonProps) => {
 
   const componentClassNames = classnames(styles.button, {
     [styles[`button--theme--${theme}`]]: theme,
-    [styles[`button--size--${size}`]]: size,
-    [styles[`button--radius--${radius}`]]: radius,
     [styles[`button--justify--${justify}`]]: justify,
     [styles['is-active']]: isActive,
     [styles['is-disabled']]: isDisabled,
@@ -38,7 +41,19 @@ const Button = (props: ButtonProps) => {
       onClick={onClick}
       ref={ref}
       disabled={isDisabled}
-      style={{ ...getStyles({ bgColor, activeBgColor }) }}
+      style={{
+        ...getStyles({
+          size,
+          height,
+          width,
+          radius,
+          padding,
+          paddingHorizontal,
+          paddingVertical,
+          bgColor,
+          activeBgColor,
+        }),
+      }}
     >
       {children}
     </button>

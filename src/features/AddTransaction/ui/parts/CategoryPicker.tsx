@@ -25,15 +25,16 @@ const CategoryPicker = (props: CategoryPickerProps) => {
           <Button
             key={category.id}
             theme={buttonProps.themes.transparentCategory}
-            size={buttonProps.sizes[34]}
+            height={sizes.sizes[30]}
+            paddingVertical={sizes.sizes[6]}
+            paddingHorizontal={sizes.sizes[12]}
             activeBgColor={category.color}
             isActive={isActiveCategory}
             onClick={() => onCategoryButtonClick(category.id)}
           >
             <Icon
               icon={icons[category.icon]}
-              width={sizes.sizes[14]}
-              height={sizes.sizes[14]}
+              size={sizes.sizes[14]}
               color={isActiveCategory ? colors.base.black : category.color}
             />
             <Typography type={typographyProps.types.text14}>

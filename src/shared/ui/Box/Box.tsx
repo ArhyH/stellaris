@@ -13,6 +13,8 @@ const Box = (props: BoxProps) => {
     bgColor,
     radius,
     size,
+    width,
+    height,
     grow,
     padding,
     tag,
@@ -20,7 +22,6 @@ const Box = (props: BoxProps) => {
   } = props;
 
   const componentClassNames = classnames(styles.box, {
-    [styles[`box--size--${size}`]]: size,
     [styles['has-shadow']]: hasShadow,
     [styles['has-align']]: hasAlign,
     [styles['is-stretch']]: isStretch,
@@ -31,7 +32,18 @@ const Box = (props: BoxProps) => {
   return (
     <ComponentTag
       className={componentClassNames}
-      style={{ ...getStyles({ bgColor, radius, grow, padding, gap }) }}
+      style={{
+        ...getStyles({
+          bgColor,
+          radius,
+          grow,
+          padding,
+          gap,
+          size,
+          width,
+          height,
+        }),
+      }}
     >
       {children}
     </ComponentTag>

@@ -18,8 +18,7 @@ const FilterByDate = (props: FilterByDateProps) => {
     <Row gap={sizes.sizes[8]}>
       <Icon
         icon={icons.dateTrigger14}
-        width={sizes.sizes[14]}
-        height={sizes.sizes[14]}
+        size={sizes.sizes[14]}
         color={colors.lightgray[1]}
       />
 

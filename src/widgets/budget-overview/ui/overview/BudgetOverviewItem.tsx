@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
 import { statusColors } from '../../model/consts';
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 
 type BudgetOverviewItemProps = {
   budget: BudgetOverviewItemType;
@@ -39,7 +39,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
           )}
         >
           <Box
-            size={boxProps.sizes[24]}
+            size={sizes.sizes[24]}
             radius={sizes.radiuses[8]}
             bgColor={
               categoryColor
@@ -51,8 +51,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
               <Icon
                 icon={categoryIcon ? icons[categoryIcon] : icons.wallet18}
                 color={categoryIconColor}
-                width={sizes.sizes[16]}
-                height={sizes.sizes[16]}
+                size={sizes.sizes[16]}
               />
             </BoxWrapper>
           </Box>
@@ -71,7 +70,7 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
             {formatAmount(spent)}
           </Typography>
           <Typography
-            type={typographyProps.types.text14}
+            type={typographyProps.types.title14}
             color={colors.lightgray[3]}
           >
             &#160;/ {formatAmount(limit)}

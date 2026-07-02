@@ -4,6 +4,6 @@ const cellAlign = {
 
 const pageCellProps = {
   align: cellAlign,
-};
+} as const;
 
 export { pageCellProps };

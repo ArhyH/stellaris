@@ -1,31 +1,19 @@
 import styles from './style.module.scss';
 import { getCssVarOrNothing } from '@/shared/helpers/styles';
-import { ColorToken, sizes } from '@/shared/styles';
-import { ValueOf } from 'type-fest';
-
-type IconProps = {
-  icon: UtilityTypes.SvgContent;
-  width?: ValueOf<typeof sizes.sizes>;
-  height?: ValueOf<typeof sizes.sizes>;
-  color?: ColorToken;
-  onClick?: () => void;
-};
+import { IconProps } from './types';
 
 const Icon = (props: IconProps) => {
-  const { icon, color, width, height, onClick } = props;
+  const { icon, color, size, onClick } = props;
 
-  let defaultWidth;
-  let defaultHeight;
+  let defaultSize;
 
   if (icon.viewBox) {
     const viewBoxValues = icon.viewBox.split(' ');
-    defaultWidth = `${viewBoxValues[2]}px`;
-    defaultHeight = `${viewBoxValues[3]}px`;
+    defaultSize = `${viewBoxValues[2]}px`;
   }
 
   const defalutSizes = {
-    '--default-width': defaultWidth,
-    '--default-height': defaultHeight,
+    '--default-size': defaultSize,
   };
 
   return (
@@ -33,8 +21,7 @@ const Icon = (props: IconProps) => {
       className={styles.icon}
       style={{
         ...defalutSizes,
-        ...(width && { ...getCssVarOrNothing('--default-width', width) }),
-        ...(height && { ...getCssVarOrNothing('--default-height', height) }),
+        ...(size && { ...getCssVarOrNothing('--default-size', size) }),
         ...(color && { ...getCssVarOrNothing('color', color) }),
       }}
       onClick={onClick}
@@ -45,4 +32,3 @@ const Icon = (props: IconProps) => {
 };
 
 export { Icon };
-export type { IconProps };

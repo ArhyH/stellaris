@@ -5,7 +5,9 @@ import { colors, sizes } from '@/shared/styles';
 
 type BoxProps = {
   children: ReactNode;
-  size?: ValueOf<typeof boxProps.sizes>;
+  size?: ValueOf<typeof sizes.sizes>;
+  width?: ValueOf<typeof sizes.sizes>;
+  height?: ValueOf<typeof sizes.sizes>;
   bgColor?:
     | ValueOf<typeof colors.box>
     | ValueOf<typeof colors.category>
@@ -31,4 +33,14 @@ type BoxWrapperProps = {
   hasAlign?: boolean;
 };
 
-export type { BoxProps, BoxHeaderProps, BoxWrapperProps };
+type BoxScrollWrapperProps = {
+  children: ReactNode;
+  maxHeight?: ValueOf<typeof sizes.sizes>;
+};
+
+export type {
+  BoxProps,
+  BoxHeaderProps,
+  BoxWrapperProps,
+  BoxScrollWrapperProps,
+};

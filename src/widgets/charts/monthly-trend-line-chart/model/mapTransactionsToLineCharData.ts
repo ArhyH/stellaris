@@ -6,14 +6,13 @@ import {
   getMonthFromDate,
   getSummary,
 } from '@/shared/helpers';
-import { useCurrentDate } from '@/shared/hooks';
 
 const MONTHS_COUNT = 4;
 
 const mapTransactionsToLineCharData = (
   transactions: Transaction[],
+  currentMonth: Date,
 ): TrendChartItem[] => {
-  const { currentMonth } = useCurrentDate();
   const months = getLastNMonth(currentMonth, MONTHS_COUNT).reverse();
 
   return months.map((month) => {

@@ -1,9 +1,5 @@
-import { ReactNode } from 'react';
 import { Row, rowProps } from '../Row';
-
-type DialogHeaderProps = {
-  children: ReactNode;
-};
+import { DialogHeaderProps } from './types';
 
 const DialogHeader = (props: DialogHeaderProps) => {
   const { children } = props;
@@ -12,4 +8,3 @@ const DialogHeader = (props: DialogHeaderProps) => {
 };
 
 export { DialogHeader };
-export type { DialogHeaderProps };

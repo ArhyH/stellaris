@@ -1,4 +1,4 @@
-import { Box, BoxWrapper, boxProps } from '@/shared/ui/Box';
+import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { ContentCard } from '@/features/ContentCard';
 import { Row } from '@/shared/ui/Row/Row';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
@@ -19,7 +19,7 @@ const Profile = (props: ProfileProps) => {
   return (
     <ContentCard>
       <Row gap={sizes.sizes[16]}>
-        <Box bgColor={colors.green[1]} size={boxProps.sizes[56]}>
+        <Box bgColor={colors.green[1]} size={sizes.sizes[56]}>
           <BoxWrapper hasAlign>
             <Typography
               type={typographyProps.types.title20}
@@ -45,7 +45,9 @@ const Profile = (props: ProfileProps) => {
         </Cell>
 
         <Button
-          size={buttonProps.sizes[36]}
+          height={sizes.sizes[36]}
+          paddingVertical={sizes.sizes[8]}
+          paddingHorizontal={sizes.sizes[16]}
           theme={buttonProps.themes.lightgray}
           onClick={onClick}
         >
