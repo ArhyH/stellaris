@@ -95,6 +95,30 @@ const transactionsMock = [
     note: 'snacks',
     date: '2026-06-09',
   },
+  {
+    id: 't-13',
+    amount: 5000,
+    type: 'income',
+    categoryId: 'salary-old',
+    note: 'yohooo',
+    date: '2026-06-07',
+  },
+  {
+    id: 't-14',
+    amount: 800,
+    type: 'income',
+    categoryId: 'other-old',
+    note: 'yohooo',
+    date: '2026-06-07',
+  },
+  {
+    id: 't-15',
+    amount: 20,
+    type: 'income',
+    categoryId: 'other-old',
+    note: 'yohooo',
+    date: '2026-06-07',
+  },
 ];
 
 export { transactionsMock };

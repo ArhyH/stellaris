@@ -27,6 +27,7 @@ const CategoryItem = (props: CategoryItemProps) => {
     transactionsCount,
     type,
     categoryId,
+    isArchived,
   } = data;
 
   return (
@@ -85,22 +86,42 @@ const CategoryItem = (props: CategoryItemProps) => {
         </div>
       </div>
 
-      <div className={styles.categories__buttons}>
-        <Button
-          theme={buttonProps.themes.lightgray}
-          size={sizes.sizes['32']}
-          onClick={() => onEdit(categoryId)}
+      {!isArchived && (
+        <div className={styles.categories__buttons}>
+          <Button
+            theme={buttonProps.themes.lightgray}
+            size={sizes.sizes['32']}
+            onClick={() => onEdit(categoryId)}
+          >
+            <Icon icon={icons.pen24} size={sizes.sizes[12]} />
+          </Button>
+          <Button
+            theme={buttonProps.themes.transparentRed}
+            size={sizes.sizes['32']}
+            onClick={() => onDelete(categoryId)}
+          >
+            <Icon icon={icons.trash24} size={sizes.sizes[12]} />
+          </Button>
+        </div>
+      )}
+
+      {isArchived && (
+        <Box
+          bgColor={colors.yellow[1]}
+          height={sizes.sizes[24]}
+          padding={sizes.sizes[8]}
+          radius={sizes.radiuses[8]}
         >
-          <Icon icon={icons.pen24} size={sizes.sizes[12]} />
-        </Button>
-        <Button
-          theme={buttonProps.themes.transparentRed}
-          size={sizes.sizes['32']}
-          onClick={() => onDelete(categoryId)}
-        >
-          <Icon icon={icons.trash24} size={sizes.sizes[12]} />
-        </Button>
-      </div>
+          <BoxWrapper hasAlign>
+            <Typography
+              type={typographyProps.types.text14}
+              color={colors.base.black}
+            >
+              Archived
+            </Typography>
+          </BoxWrapper>
+        </Box>
+      )}
     </li>
   );
 };

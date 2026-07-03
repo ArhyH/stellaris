@@ -3,7 +3,7 @@ import { ContentCard } from '@/features/ContentCard';
 import { sizes } from '@/shared/styles';
 import {
   FilterByType,
-  FilterType,
+  FilterByTypeValue,
   filterModes,
 } from '@/features/FilterByFinanceTransferType';
 import { FilterByCategory } from '@/features/FilterByCategory';
@@ -13,7 +13,7 @@ import { FilterByQuery } from '@/features/FilterByQuery';
 import { FilterByDate } from '@/features/FilterByDate';
 
 type TransactionsFilterProps = {
-  onTypeFilterChange: (filter: FilterType) => void;
+  onTypeFilterChange: (filter: FilterByTypeValue) => void;
   onCategoryFilterChange: (categoryId: ID) => void;
   onQueryFilterChange: (value: string) => void;
   onStartDateChange: (value: string) => void;

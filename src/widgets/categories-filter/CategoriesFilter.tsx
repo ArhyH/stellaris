@@ -1,21 +1,30 @@
+import { FilterByArchived } from '@/features/FilterByArchived';
+import { FilterByArchivedValue } from '@/features/FilterByArchived/model/types';
 import {
   FilterByType,
-  FilterType,
+  FilterByTypeValue,
   filterModes,
 } from '@/features/FilterByFinanceTransferType';
+import { sizes } from '@/shared/styles';
+import { Row, rowProps } from '@/shared/ui/Row';
 
 type CategoriesFilterProps = {
-  onFilterChange: (filter: FilterType) => void;
+  onFilterStateChange: (filter: FilterByArchivedValue) => void;
+  onFilterTypeChange: (filter: FilterByTypeValue) => void;
 };
 
 const CategoriesFilter = (props: CategoriesFilterProps) => {
-  const { onFilterChange } = props;
+  const { onFilterTypeChange, onFilterStateChange } = props;
 
   return (
-    <FilterByType
-      onChange={onFilterChange}
-      filterMode={filterModes.categories}
-    />
+    <Row gap={sizes.sizes[20]} justify={rowProps.justifies.spaceBetween}>
+      <FilterByType
+        onChange={onFilterTypeChange}
+        filterMode={filterModes.categories}
+      />
+
+      <FilterByArchived onChange={onFilterStateChange} />
+    </Row>
   );
 };
 

@@ -1,4 +1,4 @@
-import { FilterType } from './types';
+import { FilterByTypeValue } from './types';
 
 const filterTypes = {
   all: 'all',
@@ -6,7 +6,7 @@ const filterTypes = {
   expense: 'expense',
 } as const;
 
-const DEFAULT_FILTER: FilterType = filterTypes.all;
+const DEFAULT_FILTER: FilterByTypeValue = filterTypes.all;
 
 const FILTERS = [
   { label: 'All', value: filterTypes.all },

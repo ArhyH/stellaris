@@ -61,7 +61,8 @@ const mapBudgetsToOverviewItems = (
           : acc,
       0,
     );
-    const progress = getBudgetProgress(spent, budget.limit);
+    const limit = budget.limit;
+    const progress = getBudgetProgress(spent, limit);
 
     return {
       id: budget.id,
@@ -71,7 +72,7 @@ const mapBudgetsToOverviewItems = (
       categoryIconColor: category?.iconColor,
       categoryId: category?.id,
       spent,
-      limit: budget.limit,
+      limit,
       progressPercent: progress.progressPercent,
       clampedProgressPercent: progress.clampedProgressPercent,
       remaining: progress.remaining,

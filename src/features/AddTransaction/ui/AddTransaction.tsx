@@ -82,7 +82,7 @@ const AddTransaction = (props: AddTransactionProps) => {
         </DialogHeader>
 
         <DialogBody>
-          <TypeSelect onTypeChange={onTypeChange} />
+          <TypeSelect onTypeChange={onTypeChange} type={transaction.type} />
 
           <AmountField
             type={transaction.type}

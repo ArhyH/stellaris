@@ -31,6 +31,7 @@ const mapCategoriesToCategoryItems = (
       categoryIconColor: category.iconColor,
       transactionsCount: transactionsCount || 0,
       type: category.type,
+      isArchived: category.isArchived,
     };
   });
 };

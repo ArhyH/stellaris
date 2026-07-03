@@ -8,6 +8,7 @@ const createInitialCategory = (): Category => ({
   color: 'category-blue-1',
   type: FinanceTransferTypes.expense,
   id: Date.now().toString(),
+  isArchived: false,
 });
 
 export { createInitialCategory };

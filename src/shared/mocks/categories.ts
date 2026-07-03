@@ -8,6 +8,7 @@ const categoriesMock: Category[] = [
     icon: 'burger24',
     color: 'category-yellow-2',
     iconColor: 'category-yellow-2',
+    isArchived: false,
   },
   {
     id: 'shopping',
@@ -16,6 +17,7 @@ const categoriesMock: Category[] = [
     icon: 'shoppingBag24',
     color: 'category-blue-1',
     iconColor: 'category-blue-1',
+    isArchived: false,
   },
   {
     id: 'other',
@@ -24,6 +26,7 @@ const categoriesMock: Category[] = [
     icon: 'lightbulb24',
     color: 'category-red-1',
     iconColor: 'category-red-1',
+    isArchived: false,
   },
   {
     id: 'housing',
@@ -32,6 +35,7 @@ const categoriesMock: Category[] = [
     icon: 'house24',
     color: 'category-lightblue-1',
     iconColor: 'category-lightblue-1',
+    isArchived: false,
   },
   {
     id: 'transport',
@@ -40,6 +44,7 @@ const categoriesMock: Category[] = [
     icon: 'car24',
     color: 'category-violet-1',
     iconColor: 'category-violet-1',
+    isArchived: false,
   },
   {
     id: 'salary',
@@ -48,6 +53,7 @@ const categoriesMock: Category[] = [
     icon: 'briefcase24',
     color: 'category-blue-3',
     iconColor: 'category-blue-3',
+    isArchived: false,
   },
   {
     id: 'freelance',
@@ -56,6 +62,25 @@ const categoriesMock: Category[] = [
     icon: 'laptop24',
     color: 'category-pink-2',
     iconColor: 'category-pink-2',
+    isArchived: false,
+  },
+  {
+    id: 'other-old',
+    name: 'other',
+    type: 'expense',
+    icon: 'lightbulb24',
+    color: 'category-red-1',
+    iconColor: 'category-red-1',
+    isArchived: true,
+  },
+  {
+    id: 'salary-old',
+    name: 'salary',
+    type: 'income',
+    icon: 'briefcase24',
+    color: 'category-blue-3',
+    iconColor: 'category-blue-3',
+    isArchived: true,
   },
 ];
 

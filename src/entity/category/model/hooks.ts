@@ -7,7 +7,7 @@ const useCategories = () => {
 
   const categoriesList = useMemo(() => Object.values(categories), [categories]);
   const activeCategories = useMemo(
-    () => filterByArchived(Object.values(categories)),
+    () => filterByArchived(Object.values(categories), false),
     [categories],
   );
   const addCategory = useCategoryStore((state) => state.addCategory);

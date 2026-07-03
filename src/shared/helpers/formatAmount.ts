@@ -1,5 +1,5 @@
 import { FinanceTransferTypes } from '../consts';
-import { AMOUNT, FinanceTransferType } from '../types';
+import { FinanceTransferType } from '../types';
 
 const formatTypes = {
   full: 'full',
@@ -10,7 +10,7 @@ const formatTypes = {
 type FormatTypes = keyof typeof formatTypes;
 
 const formatAmount = (
-  amount: AMOUNT,
+  amount: number,
   format: FormatTypes = formatTypes.full,
   type?: FinanceTransferType,
 ) => {

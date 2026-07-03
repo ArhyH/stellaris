@@ -5,6 +5,7 @@
 
   &__item {
     display: flex;
+    align-items: center;
     background-color: var(--gray-4);
     padding: var(--size-16);
     border-radius: var(--size-16);

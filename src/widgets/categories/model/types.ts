@@ -9,6 +9,7 @@ interface CategoryItem {
   categoryName: LABEL | undefined;
   categoryColor: CategoryColor | undefined;
   categoryIconColor: CategoryColor | undefined;
+  isArchived: boolean;
 }
 
 export { CategoryItem };

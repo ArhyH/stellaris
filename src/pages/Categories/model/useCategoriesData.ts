@@ -1,16 +1,10 @@
 import { Category } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
-import { filterTransactionsByMonth } from '@/shared/helpers';
-import { useCurrentDate } from '@/shared/hooks';
 import { mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { getCategoriesSummary } from '@/widgets/summary';
 import { useMemo } from 'react';
 
-const useCategoriesData = (
-  categoriesList: Category[],
-  currentCategories: Category[],
-) => {
-  const { currentMonth } = useCurrentDate();
+const useCategoriesData = (categoriesList: Category[]) => {
   const { transactionsList } = useTransactions();
 
   const categoriesSummary = useMemo(
@@ -18,14 +12,9 @@ const useCategoriesData = (
     [categoriesList],
   );
 
-  const currentTransactions = useMemo(
-    () => filterTransactionsByMonth(transactionsList, currentMonth),
-    [transactionsList, currentMonth],
-  );
-
   const categoryItems = useMemo(
-    () => mapCategoriesToCategoryItems(currentCategories, currentTransactions),
-    [currentCategories, currentTransactions],
+    () => mapCategoriesToCategoryItems(categoriesList, transactionsList),
+    [categoriesList, transactionsList],
   );
 
   return {

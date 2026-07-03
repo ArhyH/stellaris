@@ -7,10 +7,11 @@ import { FinanceTransferType } from '@/shared/types';
 
 type TypeSelectProps = {
   onTypeChange: (value: string) => void;
+  type: string;
 };
 
 const TypeSelect = (props: TypeSelectProps) => {
-  const { onTypeChange } = props;
+  const { onTypeChange, type } = props;
 
   return (
     <SegmentedControl
@@ -18,7 +19,7 @@ const TypeSelect = (props: TypeSelectProps) => {
       theme={segmentedControlProps.themes.switch}
       type={segmentedControlProps.types.stretched}
       options={SELECT_TYPES_DATA}
-      defaultValue={SELECT_TYPES_DATA[0].value}
+      defaultValue={type}
       onChange={(value) => {
         onTypeChange(value as FinanceTransferType);
       }}

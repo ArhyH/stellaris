@@ -1,8 +1,8 @@
-import { FilterType } from '@/features/FilterByFinanceTransferType';
+import { FilterByTypeValue } from '@/features/FilterByFinanceTransferType';
 
 interface Filters {
   category: string;
-  financeType: FilterType;
+  financeType: FilterByTypeValue;
   searchQuery: string;
   date: { start: string; end: string };
 }

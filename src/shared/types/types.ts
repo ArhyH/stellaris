@@ -5,7 +5,7 @@ import { IconName } from '../assets';
 type FinanceTransferType = ValueOf<typeof FinanceTransferTypes>;
 type ID = string;
 type DATE = string;
-type AMOUNT = number | string;
+type AMOUNT = number;
 type LABEL = string;
 type ICON = IconName;
 type COLOR = string;

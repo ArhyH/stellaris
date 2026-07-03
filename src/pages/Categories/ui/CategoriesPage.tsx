@@ -17,11 +17,11 @@ import { useCategories } from '@/entity/category';
 import { DeleteCategory } from '@/features/DeleteCategory';
 
 const CategoriesPage = () => {
-  const { categories, activeCategories, addCategory, editCategory } =
+  const { categories, categoriesList, addCategory, editCategory } =
     useCategories();
 
-  const { setCurrentFilter, currentCategories } =
-    useCategoriesFilter(activeCategories);
+  const { currentCategories, onFilterTypeChange, onFilterStateChange } =
+    useCategoriesFilter(categoriesList);
 
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
     useEditCategory(categories);
@@ -35,10 +35,8 @@ const CategoriesPage = () => {
     onDeleteCancel,
   } = useDeleteCategory();
 
-  const { categoriesSummary, categoryItems } = useCategoriesData(
-    activeCategories,
-    currentCategories,
-  );
+  const { categoriesSummary, categoryItems } =
+    useCategoriesData(currentCategories);
 
   return (
     <Page>
@@ -68,7 +66,10 @@ const CategoriesPage = () => {
 
       <CategoriesSummary summaries={categoriesSummary} />
 
-      <CategoriesFilter onFilterChange={setCurrentFilter} />
+      <CategoriesFilter
+        onFilterTypeChange={onFilterTypeChange}
+        onFilterStateChange={onFilterStateChange}
+      />
 
       <Categories
         categories={categoryItems}
