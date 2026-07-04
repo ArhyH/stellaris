@@ -9,14 +9,15 @@ import { getDashboardDeltas, getDashboardSummary } from '@/widgets/summary';
 import { mapTransactionsToRecentItems } from '@/widgets/transactions-list';
 import { mapTransactionsToPieChartData } from '@/widgets/charts';
 import { FinanceTransferTypes } from '@/shared/consts';
-import { budgetsMock } from '@/shared/mocks/budgets';
 import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview';
 import { useCurrentDate } from '@/shared/hooks';
+import { useBudgets } from '@/entity/budget';
 
 const useDashboardData = () => {
   const { transactionsList } = useTransactions();
   const { categoriesList } = useCategories();
   const { currentMonth, prevMonth } = useCurrentDate();
+  const { budgetsList } = useBudgets();
 
   const { currentTransactions, currentSummary, deltas, monthYear } =
     useMemo(() => {
@@ -60,7 +61,7 @@ const useDashboardData = () => {
     );
 
     const budgetData = mapBudgetsToOverviewItems(
-      budgetsMock,
+      budgetsList,
       currentTransactions,
       categoriesList,
       {
@@ -70,7 +71,7 @@ const useDashboardData = () => {
     );
 
     return { pieChartData, budgetData };
-  }, [currentTransactions, categoriesList, budgetsMock]);
+  }, [currentTransactions, categoriesList, budgetsList]);
 
   return {
     currentSummary,

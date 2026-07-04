@@ -1,4 +1,4 @@
-import { transactionsMock } from '..';
+import { transactionsMock } from '../model/mocks';
 import { TransactionItem } from './types';
 
 const STORAGE_KEY = 'transactions';

@@ -63,7 +63,7 @@ const useTransactionsFilter = (
       return categories;
     }
 
-    return [...categories].filter(
+    return categories.filter(
       (category) => category.type === filters.financeType,
     );
   }, [filters.financeType, transactions, categories]);

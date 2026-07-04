@@ -8,10 +8,13 @@ import { getTransactionsPageCallbacks, useTransactionsFilter } from '../model';
 import { useTransactions } from '@/entity/transaction';
 import { useCategories } from '@/entity/category';
 import { useTransactionsData } from '../model/useTransactionsData';
+import { ID } from '@/shared/types';
 
 const TransactionsPage = () => {
-  const { transactionsList, deleteTransaction } = useTransactions();
-  const { activeCategories, categoriesList } = useCategories();
+  const { transactionsList, transactions, deleteTransaction } =
+    useTransactions();
+  const { activeCategories, categories, categoriesList, deleteCategory } =
+    useCategories();
 
   const {
     setFilters,
@@ -33,6 +36,28 @@ const TransactionsPage = () => {
     currentTransactions,
     categoriesList,
   );
+
+  const onDelete = (id: ID) => {
+    const currentTransaction = transactions[id];
+
+    const currentCategory = categories[currentTransaction.categoryId];
+
+    const categoryTransactions = transactionsList.filter(
+      (transaction) =>
+        transaction.categoryId === currentTransaction?.categoryId,
+    );
+
+    const isLastTransaction = categoryTransactions.length === 1;
+    const isArchivedCategory = currentCategory?.isArchived;
+
+    if (isLastTransaction && isArchivedCategory) {
+      deleteTransaction(id);
+      deleteCategory(currentCategory.id);
+      return;
+    }
+
+    deleteTransaction(id);
+  };
 
   return (
     <Page>
@@ -68,7 +93,7 @@ const TransactionsPage = () => {
 
       <FullTransactionsList
         transactions={recentTransactions}
-        onDelete={deleteTransaction}
+        onDelete={onDelete}
       />
     </Page>
   );

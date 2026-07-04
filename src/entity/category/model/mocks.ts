@@ -1,7 +1,9 @@
-import { Category } from '@/entity/category';
+import { CategoryItem } from './types';
 
-const categoriesMock: Category[] = [
-  {
+// prettier-ignore
+
+const categoriesMock = {
+  'food': {
     id: 'food',
     name: 'food',
     type: 'expense',
@@ -10,7 +12,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-yellow-2',
     isArchived: false,
   },
-  {
+  'shopping': {
     id: 'shopping',
     name: 'shopping',
     type: 'expense',
@@ -19,7 +21,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-blue-1',
     isArchived: false,
   },
-  {
+  'other': {
     id: 'other',
     name: 'other',
     type: 'expense',
@@ -28,7 +30,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-red-1',
     isArchived: false,
   },
-  {
+  'housing': {
     id: 'housing',
     name: 'housing',
     type: 'expense',
@@ -37,7 +39,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-lightblue-1',
     isArchived: false,
   },
-  {
+  'transport': {
     id: 'transport',
     name: 'transport',
     type: 'expense',
@@ -46,7 +48,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-violet-1',
     isArchived: false,
   },
-  {
+  'salary': {
     id: 'salary',
     name: 'salary',
     type: 'income',
@@ -55,7 +57,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-blue-3',
     isArchived: false,
   },
-  {
+  'freelance': {
     id: 'freelance',
     name: 'freelance',
     type: 'income',
@@ -64,7 +66,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-pink-2',
     isArchived: false,
   },
-  {
+  'other-old': {
     id: 'other-old',
     name: 'other',
     type: 'expense',
@@ -73,7 +75,7 @@ const categoriesMock: Category[] = [
     iconColor: 'category-red-1',
     isArchived: true,
   },
-  {
+  'salary-old': {
     id: 'salary-old',
     name: 'salary',
     type: 'income',
@@ -82,6 +84,6 @@ const categoriesMock: Category[] = [
     iconColor: 'category-blue-3',
     isArchived: true,
   },
-];
+} satisfies CategoryItem;
 
 export { categoriesMock };
