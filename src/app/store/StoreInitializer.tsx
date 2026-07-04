@@ -4,7 +4,6 @@ import { useCategoryStore } from '@/entity/category';
 import { useTransactionStore } from '@/entity/transaction';
 import { budgetsMock } from '@/shared/mocks/budgets';
 import { categoriesMock } from '@/shared/mocks/categories';
-import { transactionsMock } from '@/shared/mocks/transactions';
 
 const StoreInitializer = () => {
   const initCategories = useCategoryStore((state) => state.initCategories);
@@ -15,7 +14,7 @@ const StoreInitializer = () => {
 
   useEffect(() => {
     initCategories(categoriesMock);
-    initTransactions(transactionsMock);
+    initTransactions();
     initBudgets(budgetsMock);
   }, [initCategories, initTransactions, initBudgets]);
 

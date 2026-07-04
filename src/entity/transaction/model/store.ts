@@ -1,11 +1,12 @@
 import { ID } from '@/shared/types';
 import { Transaction, TransactionItem } from './types';
 import { create } from 'zustand';
+import { loadTransactions, saveTransactions } from './storage';
 
 type TransactionStore = {
   transactions: TransactionItem;
 
-  initTransactions: (transactions: Transaction[]) => void;
+  initTransactions: () => void;
 
   addTransaction: (transaction: Transaction) => void;
   deleteTransaction: (id: ID) => void;
@@ -14,26 +15,30 @@ type TransactionStore = {
 const useTransactionStore = create<TransactionStore>((set) => ({
   transactions: {},
 
-  initTransactions: (transactions) =>
+  initTransactions: () =>
     set(() => ({
-      transactions: transactions.reduce<TransactionItem>((acc, transaction) => {
-        acc[transaction.id] = transaction;
-        return acc;
-      }, {}),
+      transactions: loadTransactions(),
     })),
 
   addTransaction: (transaction) =>
-    set((state) => ({
-      transactions: {
+    set((state) => {
+      const transactions = {
         ...state.transactions,
         [transaction.id]: transaction,
-      },
-    })),
+      };
+
+      saveTransactions(transactions);
+
+      return { transactions };
+    }),
 
   deleteTransaction: (id) =>
     set((state) => {
       const copy = { ...state.transactions };
       delete copy[id];
+
+      saveTransactions(copy);
+
       return {
         transactions: copy,
       };
