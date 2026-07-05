@@ -10,6 +10,7 @@ interface CategoryItem {
   categoryColor: CategoryColor | undefined;
   categoryIconColor: CategoryColor | undefined;
   isArchived: boolean;
+  hasBudget: boolean;
 }
 
 export { CategoryItem };

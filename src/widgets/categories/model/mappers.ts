@@ -2,36 +2,36 @@ import { Category } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
 import { CategoryItem } from './types';
 import { ID } from '@/shared/types';
+import { getGroupByKey } from '@/shared/helpers';
+import { Budget } from '@/entity/budget';
 
 const mapCategoriesToCategoryItems = (
   categories: Category[],
-  transactions: Transaction[],
+  transactionsByCategory: Record<ID, Transaction[]>,
+  budgetsByCategory: Record<ID, Budget[]>,
 ): CategoryItem[] => {
-  const categoriesMap = new Map(
-    [...categories].map((category) => [category.id, category]),
-  );
+  return categories.map((category) => {
+    const transactionsCount = getGroupByKey(
+      transactionsByCategory,
+      category.id,
+    ).length;
 
-  const totalTransactionsByCategory = transactions.reduce<Map<ID, number>>(
-    (acc, transaction) => {
-      const current = acc.get(transaction.categoryId) ?? 0;
-      acc.set(transaction.categoryId, current + 1);
-      return acc;
-    },
-    new Map(),
-  );
+    const [budget] = getGroupByKey(budgetsByCategory, category.id);
 
-  return Array.from(categoriesMap.entries()).map(([categoryId, category]) => {
-    const transactionsCount = totalTransactionsByCategory.get(categoryId);
+    const hasBudget = budget !== undefined;
+
+    console.log(budget);
 
     return {
-      categoryId,
+      categoryId: category.id,
       categoryIcon: category.icon,
       categoryName: category.name,
       categoryColor: category.color,
       categoryIconColor: category.iconColor,
-      transactionsCount: transactionsCount || 0,
+      transactionsCount: transactionsCount,
       type: category.type,
       isArchived: category.isArchived,
+      hasBudget,
     };
   });
 };

@@ -10,6 +10,7 @@ import { Button, buttonProps } from '@/shared/ui/Button';
 import { Label, labelProps } from '@/shared/ui/Label';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { ID } from '@/shared/types';
+import { Separator, separatorProps } from '@/shared/ui/Separator';
 
 type CategoryItemProps = {
   data: CategoryItemType;
@@ -28,6 +29,7 @@ const CategoryItem = (props: CategoryItemProps) => {
     type,
     categoryId,
     isArchived,
+    hasBudget,
   } = data;
 
   return (
@@ -76,6 +78,7 @@ const CategoryItem = (props: CategoryItemProps) => {
           >
             <Typography type={typographyProps.types.text12}>{type}</Typography>
           </Label>
+
           <Typography
             type={typographyProps.types.text12}
             color={colors.lightgray[3]}
@@ -83,6 +86,21 @@ const CategoryItem = (props: CategoryItemProps) => {
             {transactionsCount}
             {transactionsCount === 1 ? ' transaction' : ' transactions'}
           </Typography>
+
+          {hasBudget && (
+            <>
+              <Separator
+                type={separatorProps.types.vertical}
+                height={sizes.sizes[18]}
+              />
+              <Typography
+                type={typographyProps.types.text12}
+                color={colors.lightgray[3]}
+              >
+                budget created
+              </Typography>
+            </>
+          )}
         </div>
       </div>
 

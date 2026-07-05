@@ -7,7 +7,7 @@ const useBudgets = () => {
 
   const budgetsList = useMemo(() => Object.values(budgets), [budgets]);
 
-  const budgetByCategory = useMemo(
+  const budgetsByCategory = useMemo(
     () => groupBy(budgetsList, (b) => b.categoryId),
     [budgetsList],
   );
@@ -22,7 +22,7 @@ const useBudgets = () => {
     budgets,
 
     budgetsList,
-    budgetByCategory,
+    budgetsByCategory,
 
     addBudget,
     editBudget,

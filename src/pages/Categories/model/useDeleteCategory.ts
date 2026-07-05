@@ -7,7 +7,7 @@ import { ID } from '@/shared/types';
 import { useState } from 'react';
 
 const useDeleteCategory = () => {
-  const { budgetByCategory, deleteBudget } = useBudgets();
+  const { budgetsByCategory, deleteBudget } = useBudgets();
   const { transactionsByCategory } = useTransactions();
   const { deleteCategory, archiveCategory } = useCategories();
 
@@ -15,7 +15,7 @@ const useDeleteCategory = () => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const handleCategoryDelete = (id: ID) => {
-    const [categoryBudget] = getGroupByKey(budgetByCategory, id);
+    const [categoryBudget] = getGroupByKey(budgetsByCategory, id);
     const categoryTransactions = getGroupByKey(transactionsByCategory, id);
 
     const hasTransaction = categoryTransactions.length > 0;

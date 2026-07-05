@@ -1,3 +1,4 @@
+import { useBudgets } from '@/entity/budget';
 import { Category } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
 import { mapCategoriesToCategoryItems } from '@/widgets/categories';
@@ -5,7 +6,8 @@ import { getCategoriesSummary } from '@/widgets/summary';
 import { useMemo } from 'react';
 
 const useCategoriesData = (categories: Category[]) => {
-  const { transactionsList } = useTransactions();
+  const { transactionsList, transactionsByCategory } = useTransactions();
+  const { budgetsByCategory } = useBudgets();
 
   const categoriesSummary = useMemo(
     () => getCategoriesSummary(categories),
@@ -13,7 +15,12 @@ const useCategoriesData = (categories: Category[]) => {
   );
 
   const categoryItems = useMemo(
-    () => mapCategoriesToCategoryItems(categories, transactionsList),
+    () =>
+      mapCategoriesToCategoryItems(
+        categories,
+        transactionsByCategory,
+        budgetsByCategory,
+      ),
     [categories, transactionsList],
   );
 
