@@ -1,7 +1,7 @@
 import { ID } from '@/shared/types';
 import { Transaction, TransactionItem } from './types';
 import { create } from 'zustand';
-import { loadTransactions, saveTransactions } from './storage';
+import { storage } from '@/entity/persistence';
 
 type TransactionStore = {
   transactions: TransactionItem;
@@ -17,7 +17,7 @@ const useTransactionStore = create<TransactionStore>((set) => ({
 
   initTransactions: () =>
     set(() => ({
-      transactions: loadTransactions(),
+      transactions: storage.transaction.load(),
     })),
 
   addTransaction: (transaction) =>
@@ -27,7 +27,7 @@ const useTransactionStore = create<TransactionStore>((set) => ({
         [transaction.id]: transaction,
       };
 
-      saveTransactions(transactions);
+      storage.transaction.save(transactions);
 
       return { transactions };
     }),
@@ -37,7 +37,7 @@ const useTransactionStore = create<TransactionStore>((set) => ({
       const copy = { ...state.transactions };
       delete copy[id];
 
-      saveTransactions(copy);
+      storage.transaction.save(copy);
 
       return {
         transactions: copy,

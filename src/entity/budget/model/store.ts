@@ -1,7 +1,7 @@
-import { ID } from '@/shared/types';
-import { Budget, BudgetItem } from './types';
 import { create } from 'zustand';
-import { loadBudgets, saveBudgets } from './storage';
+import { ID } from '@/shared/types';
+import { storage } from '@/entity/persistence';
+import { Budget, BudgetItem } from './types';
 
 type BudgetStore = {
   budgets: BudgetItem;
@@ -18,7 +18,7 @@ const useBudgetStore = create<BudgetStore>((set) => ({
 
   initBudgets: () =>
     set(() => ({
-      budgets: loadBudgets(),
+      budgets: storage.budget.load(),
     })),
 
   addBudget: (budget) =>
@@ -28,7 +28,8 @@ const useBudgetStore = create<BudgetStore>((set) => ({
         [budget.id]: budget,
       };
 
-      saveBudgets(budgets);
+      storage.budget.save(budgets);
+
       return { budgets };
     }),
 
@@ -39,7 +40,8 @@ const useBudgetStore = create<BudgetStore>((set) => ({
         [budget.id]: budget,
       };
 
-      saveBudgets(budgets);
+      storage.budget.save(budgets);
+
       return { budgets };
     }),
 
@@ -48,7 +50,7 @@ const useBudgetStore = create<BudgetStore>((set) => ({
       const copy = { ...state.budgets };
       delete copy[id];
 
-      saveBudgets(copy);
+      storage.budget.save(copy);
 
       return {
         budgets: copy,

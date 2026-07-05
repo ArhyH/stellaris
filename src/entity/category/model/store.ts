@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { Category } from '..';
+import { storage } from '@/entity/persistence';
 import { ID } from '@/shared/types';
+import { Category } from '..';
 import { CategoryItem } from './types';
-import { loadCategories, saveCategories } from './storage';
 
 type CategoryStore = {
   categories: CategoryItem;
@@ -20,7 +20,7 @@ const useCategoryStore = create<CategoryStore>((set) => ({
 
   initCategories: () =>
     set(() => ({
-      categories: loadCategories(),
+      categories: storage.category.load(),
     })),
 
   addCategory: (category) =>
@@ -30,7 +30,7 @@ const useCategoryStore = create<CategoryStore>((set) => ({
         [category.id]: category,
       };
 
-      saveCategories(categories);
+      storage.category.save(categories);
 
       return { categories };
     }),
@@ -42,7 +42,7 @@ const useCategoryStore = create<CategoryStore>((set) => ({
         [category.id]: category,
       };
 
-      saveCategories(categories);
+      storage.category.save(categories);
 
       return { categories };
     }),
@@ -51,7 +51,8 @@ const useCategoryStore = create<CategoryStore>((set) => ({
     set((state) => {
       const copy = { ...state.categories };
       delete copy[id];
-      saveCategories(copy);
+
+      storage.category.save(copy);
 
       return { categories: copy };
     }),
@@ -60,7 +61,8 @@ const useCategoryStore = create<CategoryStore>((set) => ({
     set((state) => {
       const copy = { ...state.categories };
       copy[id] = { ...copy[id], isArchived: true };
-      saveCategories(copy);
+
+      storage.category.save(copy);
 
       return { categories: copy };
     }),
