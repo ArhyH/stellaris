@@ -17,14 +17,13 @@ import { useCategories } from '@/entity/category';
 import { DeleteCategory } from '@/features/DeleteCategory';
 
 const CategoriesPage = () => {
-  const { categories, categoriesList, addCategory, editCategory } =
-    useCategories();
+  const { addCategory, editCategory } = useCategories();
 
   const { currentCategories, onFilterTypeChange, onFilterStateChange } =
-    useCategoriesFilter(categoriesList);
+    useCategoriesFilter();
 
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
-    useEditCategory(categories);
+    useEditCategory();
 
   const {
     isDeleteOpen,

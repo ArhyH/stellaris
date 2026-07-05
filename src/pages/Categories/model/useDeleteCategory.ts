@@ -2,34 +2,31 @@ import { useBudgets } from '@/entity/budget';
 import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
 import { DeleteState } from '@/features/DeleteCategory';
+import { getGroupByKey } from '@/shared/helpers';
 import { ID } from '@/shared/types';
 import { useState } from 'react';
 
 const useDeleteCategory = () => {
-  const { budgetsList, deleteBudget } = useBudgets();
-  const { transactionsList } = useTransactions();
+  const { budgetByCategory, deleteBudget } = useBudgets();
+  const { transactionsByCategory } = useTransactions();
   const { deleteCategory, archiveCategory } = useCategories();
 
   const [deleteState, setDeleteState] = useState<DeleteState | null>(null);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-  const transactionSet = new Set(
-    transactionsList.map((transaction) => transaction.categoryId),
-  );
-
   const handleCategoryDelete = (id: ID) => {
-    const connectedBudget = budgetsList.find(
-      (budget) => budget.categoryId === id,
-    );
+    const [categoryBudget] = getGroupByKey(budgetByCategory, id);
+    const categoryTransactions = getGroupByKey(transactionsByCategory, id);
 
-    const hasTransaction = transactionSet.has(id);
+    const hasTransaction = categoryTransactions.length > 0;
+    const hasBudget = categoryBudget !== undefined;
 
-    if (hasTransaction || connectedBudget) {
+    if (hasTransaction || hasBudget) {
       setIsDeleteOpen(true);
       setDeleteState({
         categoryId: id,
         hasTransaction,
-        dependentBudget: connectedBudget ?? null,
+        dependentBudget: categoryBudget ?? null,
       });
 
       return;

@@ -2,7 +2,7 @@ import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
 import { FinanceTransferTypes } from '@/shared/consts';
 import {
-  filterTransactionsByMonth,
+  getGroupByKey,
   getMonthFromDate,
   getMonthYearFromDate,
 } from '@/shared/helpers';
@@ -18,28 +18,30 @@ import { useMemo } from 'react';
 
 const useAnalyticsData = () => {
   const { currentMonth, prevMonth } = useCurrentDate();
-  const { transactionsList } = useTransactions();
+  const { transactionsList, transactionsByMonth } = useTransactions();
   const { categoriesList } = useCategories();
 
-  const { currentTransactions, prevTransactions, lineChartData } =
-    useMemo(() => {
-      const currentTransactions = filterTransactionsByMonth(
-        transactionsList,
-        currentMonth,
-      );
+  const month = useMemo(() => {
+    const current = currentMonth.toISOString().slice(0, 7);
+    const prev = prevMonth.toISOString().slice(0, 7);
+    return { current, prev };
+  }, [currentMonth, prevMonth]);
 
-      const prevTransactions = filterTransactionsByMonth(
-        transactionsList,
-        prevMonth,
-      );
+  const { currentTransactions, prevTransactions } = useMemo(() => {
+    const currentTransactions = getGroupByKey(
+      transactionsByMonth,
+      month.current,
+    );
 
-      const lineChartData = mapTransactionsToLineCharData(
-        transactionsList,
-        currentMonth,
-      );
+    const prevTransactions = getGroupByKey(transactionsByMonth, month.current);
 
-      return { currentTransactions, prevTransactions, lineChartData };
-    }, [transactionsList, currentMonth, prevMonth]);
+    return { currentTransactions, prevTransactions, lineChartData };
+  }, [transactionsByMonth, month.current, month.prev]);
+
+  const lineChartData = useMemo(
+    () => mapTransactionsToLineCharData(transactionsList, currentMonth),
+    [transactionsList, currentMonth],
+  );
 
   const { currentSummary, summaryDeltas } = useMemo(() => {
     const currentSummary = getAnalyticsSummary(currentTransactions);
@@ -73,7 +75,7 @@ const useAnalyticsData = () => {
     return { incomePieData, expencePieData, topCategory };
   }, [currentTransactions, categoriesList]);
 
-  const { barChartData, monthYear, month } = useMemo(() => {
+  const { barChartData, monthYear, monthDate } = useMemo(() => {
     const barChartData = mapTransactionsToBarCtartData(currentTransactions);
 
     const monthYear =
@@ -81,12 +83,12 @@ const useAnalyticsData = () => {
         ? getMonthYearFromDate(currentTransactions[0].date)
         : getMonthYearFromDate(new Date().toISOString());
 
-    const month =
+    const monthDate =
       currentTransactions.length > 0
         ? getMonthFromDate(currentTransactions[0].date)
         : getMonthFromDate(new Date().toISOString());
 
-    return { barChartData, monthYear, month };
+    return { barChartData, monthYear, monthDate };
   }, [currentTransactions]);
 
   return {
@@ -98,7 +100,7 @@ const useAnalyticsData = () => {
     lineChartData,
     topCategory,
     monthYear,
-    month,
+    month: monthDate,
   };
 };
 

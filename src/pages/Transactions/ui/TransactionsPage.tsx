@@ -4,25 +4,21 @@ import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary } from '@/widgets/summary';
 import { FullTransactionsList } from '@/widgets/transactions-list';
 import { TransactionsFilter } from '@/widgets/transactions-filter';
-import { getTransactionsPageCallbacks, useTransactionsFilter } from '../model';
-import { useTransactions } from '@/entity/transaction';
-import { useCategories } from '@/entity/category';
+import {
+  getTransactionsPageCallbacks,
+  useDeleteTransactions,
+  useTransactionsFilter,
+} from '../model';
 import { useTransactionsData } from '../model/useTransactionsData';
-import { ID } from '@/shared/types';
 
 const TransactionsPage = () => {
-  const { transactionsList, transactions, deleteTransaction } =
-    useTransactions();
-  const { activeCategories, categories, categoriesList, deleteCategory } =
-    useCategories();
-
   const {
     setFilters,
     currentTransactions,
     currentQuery,
     currentCategories,
     currerntCatefory,
-  } = useTransactionsFilter(activeCategories, transactionsList);
+  } = useTransactionsFilter();
 
   const {
     onCategoryFilterChange,
@@ -32,32 +28,10 @@ const TransactionsPage = () => {
     onEndDateChange,
   } = getTransactionsPageCallbacks(setFilters);
 
-  const { recentTransactions, summaries } = useTransactionsData(
-    currentTransactions,
-    categoriesList,
-  );
+  const { recentTransactions, summaries } =
+    useTransactionsData(currentTransactions);
 
-  const onDelete = (id: ID) => {
-    const currentTransaction = transactions[id];
-
-    const currentCategory = categories[currentTransaction.categoryId];
-
-    const categoryTransactions = transactionsList.filter(
-      (transaction) =>
-        transaction.categoryId === currentTransaction?.categoryId,
-    );
-
-    const isLastTransaction = categoryTransactions.length === 1;
-    const isArchivedCategory = currentCategory?.isArchived;
-
-    if (isLastTransaction && isArchivedCategory) {
-      deleteTransaction(id);
-      deleteCategory(currentCategory.id);
-      return;
-    }
-
-    deleteTransaction(id);
-  };
+  const { onDelete } = useDeleteTransactions();
 
   return (
     <Page>

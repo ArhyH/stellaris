@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Category } from '@/entity/category';
+import { Category, useCategories } from '@/entity/category';
 import { ID } from '@/shared/types';
-import { CategoryItem } from '@/entity/category/model/types';
 
-const useEditCategory = (categories: CategoryItem) => {
+const useEditCategory = () => {
+  const { categories } = useCategories();
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
 

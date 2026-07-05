@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Category } from '@/entity/category';
+import { Category, useCategories } from '@/entity/category';
 import {
   DEFAULT_FILTER as DEFAULT_FILTER_TYPE,
   FilterByTypeValue,
@@ -16,15 +16,17 @@ type Filter = {
   type: FilterByTypeValue;
 };
 
-const useCategoriesFilter = (categories: Category[]) => {
+const useCategoriesFilter = () => {
+  const { categoriesList } = useCategories();
+
   const [currentFilter, setCurrentFilter] = useState<Filter>({
     state: DEFAULT_FILTER_STATE,
     type: DEFAULT_FILTER_TYPE,
   });
 
   const filteredCategories = useMemo(
-    () => filterCategoriesByArchived(categories, currentFilter.state),
-    [categories, currentFilter.state],
+    () => filterCategoriesByArchived(categoriesList, currentFilter.state),
+    [categoriesList, currentFilter.state],
   );
 
   const currentCategories: Category[] = useMemo(() => {

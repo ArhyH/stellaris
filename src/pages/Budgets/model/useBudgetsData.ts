@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
-import { filterTransactionsByMonth } from '@/shared/helpers';
+import { getGroupByKey } from '@/shared/helpers';
 import { useCurrentDate } from '@/shared/hooks';
 import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview';
 import { getBudgetsSummary } from '@/widgets/summary';
@@ -9,13 +9,18 @@ import { useBudgets } from '@/entity/budget';
 
 const useBudgetsData = () => {
   const { currentMonth } = useCurrentDate();
-  const { transactionsList } = useTransactions();
+  const { transactionsByMonth } = useTransactions();
   const { activeCategories } = useCategories();
   const { budgets, budgetsList } = useBudgets();
 
+  const month = useMemo(() => {
+    const current = currentMonth.toISOString().slice(0, 7);
+    return { current };
+  }, [currentMonth]);
+
   const currentTransactions = useMemo(
-    () => filterTransactionsByMonth(transactionsList, currentMonth),
-    [transactionsList, currentMonth],
+    () => getGroupByKey(transactionsByMonth, month.current),
+    [transactionsByMonth, month.current],
   );
 
   const budgetData = useMemo(

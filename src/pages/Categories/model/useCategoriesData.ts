@@ -4,17 +4,17 @@ import { mapCategoriesToCategoryItems } from '@/widgets/categories';
 import { getCategoriesSummary } from '@/widgets/summary';
 import { useMemo } from 'react';
 
-const useCategoriesData = (categoriesList: Category[]) => {
+const useCategoriesData = (categories: Category[]) => {
   const { transactionsList } = useTransactions();
 
   const categoriesSummary = useMemo(
-    () => getCategoriesSummary(categoriesList),
-    [categoriesList],
+    () => getCategoriesSummary(categories),
+    [categories],
   );
 
   const categoryItems = useMemo(
-    () => mapCategoriesToCategoryItems(categoriesList, transactionsList),
-    [categoriesList, transactionsList],
+    () => mapCategoriesToCategoryItems(categories, transactionsList),
+    [categories, transactionsList],
   );
 
   return {
