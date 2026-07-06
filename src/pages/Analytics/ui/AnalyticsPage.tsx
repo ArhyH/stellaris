@@ -10,9 +10,9 @@ import { TopSpending } from '@/widgets/top-spending';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { rowProps } from '@/shared/ui/Row';
 import { AnalyticsDateSelect } from '@/features/AnalyticsDateSelect';
-import { getMonthYearFromDate } from '@/shared/helpers';
 import { useTransactions } from '@/entity/transaction';
 import { useAnalyticsData } from '../model/useAnalyticsData';
+import { useCurrentAnalytics } from '../model/useCurrentAnalytics';
 
 const AnalyticsPage = () => {
   const { transactionsDateKeys } = useTransactions();
@@ -33,6 +33,8 @@ const AnalyticsPage = () => {
     date,
   } = useAnalyticsData(transactionsKey);
 
+  const { isAnalyticsAvailable, displayDate } = useCurrentAnalytics();
+
   const onChange = (current: string) => {
     setSelectedKey(current);
   };
@@ -49,16 +51,32 @@ const AnalyticsPage = () => {
             color={colors.base.white}
             tag={typographyProps.tags.h1}
           >
-            Analytics —&nbsp;
-            {transactionsKey && getMonthYearFromDate(transactionsKey)}
+            Analytics
+            {transactionsKey && <> — {date}</>}
           </Typography>
 
-          <Typography
-            type={typographyProps.types.text14}
-            color={colors.lightgray[2]}
-          >
-            Deeper insights into your financial patterns
-          </Typography>
+          {isAnalyticsAvailable ? (
+            <Typography
+              type={typographyProps.types.text14}
+              color={colors.lightgray[2]}
+            >
+              Deeper insights into your financial patterns
+            </Typography>
+          ) : (
+            <Typography
+              type={typographyProps.types.text14}
+              color={colors.lightgray[2]}
+            >
+              No transactions for
+              <Typography
+                type={typographyProps.types.title14}
+                color={colors.base.white}
+              >
+                &nbsp;{displayDate}&nbsp;
+              </Typography>
+              yet. Add transactions to view analytics for this month.
+            </Typography>
+          )}
         </PageCell>
 
         <AnalyticsDateSelect

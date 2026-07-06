@@ -19,7 +19,6 @@ const AnalyticsDateSelect = (props: AnalyticsDateSelectProps) => {
   const { transactionsKey, onChange } = props;
 
   const {
-    hasTransactions,
     index,
     isPrevDisabled,
     isNextDisabled,
@@ -72,7 +71,6 @@ const AnalyticsDateSelect = (props: AnalyticsDateSelectProps) => {
           placeholderOption={placeholder}
           options={setectOptions}
           onChange={onDateChange}
-          {...(!hasTransactions && { isPlaceholderSelectable: true })}
         />
         <Button
           theme={buttonProps.themes.gray1}

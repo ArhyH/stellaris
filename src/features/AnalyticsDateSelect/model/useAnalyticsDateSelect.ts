@@ -29,7 +29,6 @@ const useAnalyticsDateSelect = (transactionsKey: string | undefined) => {
   );
 
   return {
-    hasTransactions,
     index,
     isPrevDisabled,
     isNextDisabled,

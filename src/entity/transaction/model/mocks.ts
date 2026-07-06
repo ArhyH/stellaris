@@ -119,6 +119,38 @@ const transactionsMock = {
     note: 'yohooo',
     date: '2026-06-07',
   },
+  't-16': {
+    id: 't-16',
+    amount: 800,
+    type: 'expense',
+    categoryId: 'housing',
+    note: 'Rent',
+    date: '2026-04-01',
+  },
+  't-17': {
+    id: 't-17',
+    amount: 800,
+    type: 'income',
+    categoryId: 'freelance',
+    note: 'Rent',
+    date: '2026-04-01',
+  },
+  't-18': {
+    id: 't-18',
+    amount: 200,
+    type: 'income',
+    categoryId: 'freelance',
+    note: 'Rent',
+    date: '2026-04-01',
+  },
+  't-19': {
+    id: 't-19',
+    amount: 50,
+    type: 'expense',
+    categoryId: 'food',
+    note: 'Rent',
+    date: '2026-04-01',
+  },
 };
 
 export { transactionsMock };
