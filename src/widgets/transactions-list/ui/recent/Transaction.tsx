@@ -61,7 +61,7 @@ const Transaction = (props: TransactionProps) => {
           type={typographyProps.types.text12}
           color={colors.lightgray[2]}
         >
-          {categoryName} &middot; ${date}
+          {categoryName} &middot; {date}
         </Typography>
       </div>
       <div className={styles['recent-transaction__cell']}>

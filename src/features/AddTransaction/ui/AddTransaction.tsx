@@ -27,7 +27,7 @@ import { useCurrentCategories } from '../model/useCurrentCategories';
 import { isPositiveAmount } from '@/shared/helpers';
 
 const AddTransaction = (props: AddTransactionProps) => {
-  const { categories, onSubmit } = props;
+  const { onSubmit } = props;
 
   const [transaction, setTransaction] =
     useState<FormTransaction>(createTransaction());
@@ -42,7 +42,7 @@ const AddTransaction = (props: AddTransactionProps) => {
     handleSubmit,
   } = getModalCallbacks(transaction, setTransaction, onSubmit);
 
-  const currentCategories = useCurrentCategories(categories, transaction.type);
+  const { currentCategories } = useCurrentCategories(transaction.type);
 
   return (
     <Dialog onClose={() => setTransaction(createTransaction())}>

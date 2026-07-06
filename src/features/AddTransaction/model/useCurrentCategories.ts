@@ -1,13 +1,15 @@
-import { Category } from '@/entity/category';
-import { FinanceTransferType } from '@/shared/types';
 import { useMemo } from 'react';
+import { useCategories } from '@/entity/category';
+import { getGroupByKey } from '@/shared/helpers';
+import { FinanceTransferType } from '@/shared/types';
 
-const useCurrentCategories = (
-  categories: Category[],
-  type: FinanceTransferType,
-) =>
-  useMemo(
-    () => [...categories].filter((category) => category.type === type),
-    [categories, type],
+const useCurrentCategories = (type: FinanceTransferType) => {
+  const { activeCategoriesByType } = useCategories();
+
+  const currentCategories = useMemo(
+    () => getGroupByKey(activeCategoriesByType, type),
+    [activeCategoriesByType, type],
   );
+  return { currentCategories };
+};
 export { useCurrentCategories };

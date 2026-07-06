@@ -11,7 +11,7 @@ type BudgetItemProps = {
 
   isEditing: boolean;
   editingBudget: Budget | null;
-  selectOptions: SelectOption[];
+  selectOptions: SelectOption[] | undefined;
   onSubmit: (budget: Budget) => void;
   onClose: () => void;
 };
@@ -28,7 +28,7 @@ const BudgetItem = (props: BudgetItemProps) => {
     onClose,
   } = props;
 
-  if (isEditing && editingBudget) {
+  if (isEditing && editingBudget && selectOptions) {
     return (
       <EditBudget
         selectOptions={selectOptions}

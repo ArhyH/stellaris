@@ -7,7 +7,7 @@ import { SelectOption } from '@/shared/ui/Select';
 type BudgetListProps = {
   budgets: BudgetOverviewItem[];
   editingBudget: Budget | null;
-  selectOptions: SelectOption[];
+  selectOptions: SelectOption[] | undefined;
   onClose: () => void;
   onSubmit: (budget: Budget) => void;
   onEdit: (id: ID) => void;

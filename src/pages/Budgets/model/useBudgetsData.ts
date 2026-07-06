@@ -40,8 +40,6 @@ const useBudgetsData = () => {
 
   return {
     budgets,
-    activeCategories,
-    budgetsList,
     budgetData,
     budgetSummaries,
   };

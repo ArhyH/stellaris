@@ -9,18 +9,12 @@ import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { useBudgetsData } from '../model/useBudgetsData';
-import { AddBudget } from '@/features/AddBudget';
+import { AddBudget, useAddBudget } from '@/features/AddBudget';
 import { getPageCallbacks } from '../model/getPageCallbacks';
-import { getSelectOptions } from '../model/helpers';
+import { useEditBudget } from '@/features/EditBudget';
 
 const BudgetsPage = () => {
-  const {
-    budgets,
-    budgetsList,
-    activeCategories,
-    budgetData,
-    budgetSummaries,
-  } = useBudgetsData();
+  const { budgets, budgetData, budgetSummaries } = useBudgetsData();
 
   const {
     isOpen,
@@ -33,6 +27,9 @@ const BudgetsPage = () => {
     onEditClose,
     deleteBudget,
   } = getPageCallbacks(budgets);
+
+  const addBudgetSelectItems = useAddBudget();
+  const editBudgetSelectItems = useEditBudget(editingBudget);
 
   return (
     <Page>
@@ -77,7 +74,7 @@ const BudgetsPage = () => {
 
       {isOpen && (
         <AddBudget
-          selectOptions={getSelectOptions(activeCategories, budgetsList)}
+          selectOptions={addBudgetSelectItems}
           onSubmit={onSubmit}
           onClose={onClose}
         />
@@ -85,11 +82,7 @@ const BudgetsPage = () => {
 
       <BudgetList
         budgets={budgetData}
-        selectOptions={getSelectOptions(
-          activeCategories,
-          budgetsList,
-          editingBudget,
-        )}
+        selectOptions={editBudgetSelectItems}
         editingBudget={editingBudget}
         onClose={onEditClose}
         onSubmit={onEditSubmit}

@@ -17,6 +17,13 @@ const useCategories = () => {
     [categoriesList],
   );
 
+  const activeCategoriesByType = useMemo(
+    () => groupBy(activeCategories, (c) => c.type),
+    [activeCategories],
+  );
+
+  console.log(activeCategoriesByType);
+
   const addCategory = useCategoryStore((state) => state.addCategory);
 
   const editCategory = useCategoryStore((state) => state.editCategory);
@@ -31,6 +38,7 @@ const useCategories = () => {
     categoriesList,
     activeCategories,
     categoriesByType,
+    activeCategoriesByType,
 
     addCategory,
     editCategory,

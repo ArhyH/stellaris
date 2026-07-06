@@ -1,8 +1,6 @@
-import { Category } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
 
 type AddTransactionProps = {
-  categories: Category[];
   onSubmit: (transaction: Transaction) => void;
 };
 
