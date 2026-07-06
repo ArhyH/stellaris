@@ -1,106 +1,62 @@
-import { useCategories } from '@/entity/category';
-import { useTransactions } from '@/entity/transaction';
-import { FinanceTransferTypes } from '@/shared/consts';
-import {
-  getGroupByKey,
-  getMonthFromDate,
-  getMonthYearFromDate,
-} from '@/shared/helpers';
-import { useCurrentDate } from '@/shared/hooks';
-import {
-  mapTransactionsToBarCtartData,
-  mapTransactionsToLineCharData,
-  mapTransactionsToPieChartData,
-} from '@/widgets/charts';
-import { getAnalyticsDeltas, getAnalyticsSummary } from '@/widgets/summary';
-import { getTopSpendingCategory } from '@/widgets/top-spending';
 import { useMemo } from 'react';
+import { useTransactions } from '@/entity/transaction';
+import { useLineChart } from '@/widgets/charts/monthly-trend-line-chart';
+import { useAnalyticsSummary } from '@/widgets/summary';
+import { useBarChart, usePieChart } from '@/widgets/charts';
+import { FinanceTransferTypes } from '@/shared/consts';
+import { useTopStendingCategory } from '@/widgets/top-spending';
+import { useTargetTransactions } from './useTargetTransactions';
+import { getMonthYearFromDate } from '@/shared/helpers';
 
-const useAnalyticsData = () => {
-  const { currentMonth, prevMonth } = useCurrentDate();
-  const { transactionsList, transactionsByMonth } = useTransactions();
-  const { categoriesList } = useCategories();
+const useAnalyticsData = (transactionsKey: string) => {
+  const { transactionsDateKeys } = useTransactions();
 
-  const month = useMemo(() => {
-    const current = currentMonth.toISOString().slice(0, 7);
-    const prev = prevMonth.toISOString().slice(0, 7);
-    return { current, prev };
-  }, [currentMonth, prevMonth]);
+  const prevKey = useMemo(() => {
+    const index = transactionsDateKeys.indexOf(transactionsKey);
+    const prevKey = index > 0 ? transactionsDateKeys[index - 1] : undefined;
 
-  const { currentTransactions, prevTransactions } = useMemo(() => {
-    const currentTransactions = getGroupByKey(
-      transactionsByMonth,
-      month.current,
-    );
+    return prevKey;
+  }, [transactionsDateKeys, transactionsKey]);
 
-    const prevTransactions = getGroupByKey(transactionsByMonth, month.current);
-
-    return { currentTransactions, prevTransactions, lineChartData };
-  }, [transactionsByMonth, month.current, month.prev]);
-
-  const lineChartData = useMemo(
-    () => mapTransactionsToLineCharData(transactionsList, currentMonth),
-    [transactionsList, currentMonth],
+  const { currentTransactions, prevTransactions } = useTargetTransactions(
+    transactionsKey,
+    prevKey,
   );
 
-  const { currentSummary, summaryDeltas } = useMemo(() => {
-    const currentSummary = getAnalyticsSummary(currentTransactions);
-    const prevSummary = getAnalyticsSummary(prevTransactions);
-    const summaryDeltas = getAnalyticsDeltas(currentSummary, prevSummary);
+  const lineChartData = useLineChart(transactionsKey);
 
-    return {
-      currentSummary,
-      summaryDeltas,
-    };
-  }, [currentTransactions, prevTransactions]);
+  const { currentSummary, summaryDeltas } = useAnalyticsSummary(
+    currentTransactions,
+    prevTransactions,
+  );
 
-  const { incomePieData, expencePieData, topCategory } = useMemo(() => {
-    const incomePieData = mapTransactionsToPieChartData(
-      currentTransactions,
-      categoriesList,
-      FinanceTransferTypes.income,
-    );
+  const incomePieData = usePieChart(
+    currentTransactions,
+    FinanceTransferTypes.income,
+  );
 
-    const expencePieData = mapTransactionsToPieChartData(
-      currentTransactions,
-      categoriesList,
-      FinanceTransferTypes.expense,
-    );
+  const expencePieData = usePieChart(
+    currentTransactions,
+    FinanceTransferTypes.expense,
+  );
 
-    const topCategory = getTopSpendingCategory(
-      currentTransactions,
-      categoriesList,
-    );
+  const topCategory = useTopStendingCategory(currentTransactions);
 
-    return { incomePieData, expencePieData, topCategory };
-  }, [currentTransactions, categoriesList]);
+  const barChart = useBarChart(currentTransactions);
 
-  const { barChartData, monthYear, monthDate } = useMemo(() => {
-    const barChartData = mapTransactionsToBarCtartData(currentTransactions);
-
-    const monthYear =
-      currentTransactions.length > 0
-        ? getMonthYearFromDate(currentTransactions[0].date)
-        : getMonthYearFromDate(new Date().toISOString());
-
-    const monthDate =
-      currentTransactions.length > 0
-        ? getMonthFromDate(currentTransactions[0].date)
-        : getMonthFromDate(new Date().toISOString());
-
-    return { barChartData, monthYear, monthDate };
-  }, [currentTransactions]);
+  const date = transactionsKey
+    ? getMonthYearFromDate(transactionsKey)
+    : new Date().toISOString().slice(0, 7);
 
   return {
+    lineChartData,
     currentSummary,
     summaryDeltas,
     incomePieData,
     expencePieData,
-    barChartData,
-    lineChartData,
     topCategory,
-    monthYear,
-    month: monthDate,
+    barChart,
+    date,
   };
 };
 

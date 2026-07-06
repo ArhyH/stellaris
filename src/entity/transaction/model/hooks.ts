@@ -25,6 +25,14 @@ const useTransactions = () => {
     [transactionsList],
   );
 
+  const transactionsDateKeys = useMemo(
+    () =>
+      Object.keys(transactionsByMonth).sort(
+        (a, b) => new Date(a).getTime() - new Date(b).getTime(),
+      ),
+    [transactionsByMonth],
+  );
+
   const addTransaction = useTransactionStore((state) => state.addTransaction);
 
   const deleteTransaction = useTransactionStore(
@@ -38,6 +46,7 @@ const useTransactions = () => {
     transactionsByCategory,
     transactionByType,
     transactionsByMonth,
+    transactionsDateKeys,
 
     addTransaction,
     deleteTransaction,

@@ -3,6 +3,8 @@ import arrowUp18 from './arrow-up-18.svg';
 import arrowDown14 from './arrow-down-14.svg';
 import arrowDown18 from './arrow-down-18.svg';
 import arrowRight12 from './arrow-right-12.svg';
+import arrowRight24 from './arrow-right-24.svg';
+import arrowLeft24 from './arrow-left-24.svg';
 import pen24 from './pen-24.svg';
 import trash24 from './trash-24.svg';
 import plus24 from './plus-24.svg';
@@ -87,6 +89,8 @@ const icons = {
   arrowDown14,
   arrowDown18,
   arrowRight12,
+  arrowRight24,
+  arrowLeft24,
   pen24,
   trash24,
   plus24,

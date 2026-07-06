@@ -1,9 +1,7 @@
 import { Category } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
-import { FinanceTransferType } from '@/shared/types';
 import { PieChartItem } from './types';
 import { colors } from '@/shared/styles';
-import { filterTransactionsByType } from '@/shared/helpers/filterTransactions';
 import {
   getTotalByCategory,
   getTotalFromAllCategories,
@@ -12,38 +10,31 @@ import {
 const mapTransactionsToPieChartData = (
   transactions: Transaction[],
   categories: Category[],
-  type: FinanceTransferType,
 ): PieChartItem[] => {
-  const categoriesMap = new Map(
-    [...categories]
-      .filter((category) => category.type === type)
-      .map((category) => [category.id, category]),
-  );
-
-  const targetTransactions = filterTransactionsByType(transactions, type);
-  const totalByCategories = getTotalByCategory(targetTransactions);
+  const totalByCategories = getTotalByCategory(transactions);
   const total = getTotalFromAllCategories(totalByCategories);
 
   if (total === 0) {
     return [];
   }
 
-  const chartItems = Array.from(totalByCategories.entries()).map(
-    ([categoryId, value]) => {
-      const category = categoriesMap.get(categoryId);
-      return {
-        categoryId,
-        categoryColor: category?.color,
-        categoryIcon: category?.icon,
-        categoryName: category?.name || '',
-        value,
-        percent: Math.round((value / total) * 100),
-        fill: `var(--${category?.color ? colors.category[category.color] : 'lightgray-4'})`,
-      };
-    },
-  );
+  const chartItems = categories.map((category) => {
+    const value = totalByCategories.get(category.id) ?? 0;
 
-  return chartItems.sort((a, b) => b.value - a.value);
+    return {
+      categoryId: category.id,
+      categoryColor: category.color,
+      categoryIcon: category.icon,
+      categoryName: category.name,
+      value,
+      percent: Math.round((value / total) * 100),
+      fill: `var(--${category.color ? colors.category[category.color] : 'lightgray-4'})`,
+    };
+  });
+
+  const filteredItems = chartItems.filter((item) => item.value !== 0);
+
+  return filteredItems.sort((a, b) => b.value - a.value);
 };
 
 export { mapTransactionsToPieChartData };

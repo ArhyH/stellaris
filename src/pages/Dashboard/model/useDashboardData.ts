@@ -4,7 +4,7 @@ import { useTransactions } from '@/entity/transaction';
 import { getGroupByKey, getMonthYearFromDate } from '@/shared/helpers';
 import { getDashboardDeltas, getDashboardSummary } from '@/widgets/summary';
 import { mapTransactionsToRecentItems } from '@/widgets/transactions-list';
-import { mapTransactionsToPieChartData } from '@/widgets/charts';
+import { usePieChart } from '@/widgets/charts';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { mapBudgetsToOverviewItems } from '@/widgets/budget-overview';
 import { useCurrentDate } from '@/shared/hooks';
@@ -58,9 +58,8 @@ const useDashboardData = () => {
   );
 
   const { pieChartData, budgetData } = useMemo(() => {
-    const pieChartData = mapTransactionsToPieChartData(
+    const pieChartData = usePieChart(
       currentTransactions,
-      categoriesList,
       FinanceTransferTypes.expense,
     );
 

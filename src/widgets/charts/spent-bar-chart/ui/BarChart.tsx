@@ -18,12 +18,12 @@ import { BarChartItem } from '../model/types';
 import { BarChartTooltip } from './BarChartTooltip';
 
 type BarChartProps = {
-  month: string;
+  date: string;
   data: BarChartItem[];
 };
 
 const BarChartUI = (props: BarChartProps) => {
-  const { month, data } = props;
+  const { data, date } = props;
 
   return (
     <ContentCard grow={contentCardProps.grow[1]}>
@@ -33,7 +33,13 @@ const BarChartUI = (props: BarChartProps) => {
           color={colors.base.white}
           tag={typographyProps.tags.h3}
         >
-          Daily Spending {`(${month})`}
+          Daily Spending
+        </Typography>
+        <Typography
+          type={typographyProps.types.text12}
+          color={colors.lightgray[2]}
+        >
+          {date}
         </Typography>
       </ContentCardHeader>
       <ResponsiveContainer width="100%" height={140}>

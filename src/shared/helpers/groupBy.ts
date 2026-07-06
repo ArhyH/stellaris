@@ -9,7 +9,12 @@ const groupBy = <T>(items: T[], getKey: (item: T) => string): Grouped<T> => {
   }, {});
 };
 
-const getGroupByKey = <T>(items: Grouped<T>, key: string): T[] =>
-  items[key] ?? [];
+const getGroupByKey = <T>(items: Grouped<T>, key: string | undefined): T[] => {
+  if (!key) {
+    return [];
+  }
+
+  return items[key] ?? [];
+};
 
 export { groupBy, getGroupByKey };

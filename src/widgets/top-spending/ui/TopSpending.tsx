@@ -8,10 +8,11 @@ import { icons } from '@/shared/assets';
 
 type TopSpendingProps = {
   data: TopSpendingCategory | undefined;
+  date: string;
 };
 
 const TopSpending = (props: TopSpendingProps) => {
-  const { data } = props;
+  const { data, date } = props;
 
   if (!data) {
     return;
@@ -29,6 +30,12 @@ const TopSpending = (props: TopSpendingProps) => {
           tag={typographyProps.tags.h3}
         >
           Top Spending
+        </Typography>
+        <Typography
+          type={typographyProps.types.text12}
+          color={colors.lightgray[2]}
+        >
+          {date}
         </Typography>
       </ContentCardHeader>
       <Box

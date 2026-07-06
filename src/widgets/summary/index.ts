@@ -6,11 +6,7 @@ export {
 
 export { BudgetSummary, getBudgetsSummary } from './budget';
 
-export {
-  AnalyticsSummary,
-  getAnalyticsSummary,
-  getAnalyticsDeltas,
-} from './analytics';
+export { AnalyticsSummary, useAnalyticsSummary } from './analytics';
 
 export { getCategoriesSummary, CategoriesSummary } from './categories';
 
