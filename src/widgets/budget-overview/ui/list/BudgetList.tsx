@@ -3,6 +3,7 @@ import { BudgetItem } from './BudgetItem';
 import styles from './style.module.scss';
 import { ID } from '@/shared/types';
 import { SelectOption } from '@/shared/ui/Select';
+import { BudgetsPlaceholder } from './BudgetsPlaceholder';
 
 type BudgetListProps = {
   budgets: BudgetOverviewItem[];
@@ -25,24 +26,32 @@ const BudgetList = (props: BudgetListProps) => {
     onDelete,
   } = props;
 
+  const hasBudgets = budgets.length > 0;
+
   return (
-    <ul className={styles['budget-overview']}>
-      {budgets.map((budget) => {
-        return (
-          <BudgetItem
-            budget={budget}
-            key={budget.id}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            selectOptions={selectOptions}
-            editingBudget={editingBudget}
-            onClose={onClose}
-            onSubmit={onSubmit}
-            isEditing={editingBudget?.categoryId === budget.categoryId}
-          />
-        );
-      })}
-    </ul>
+    <>
+      {hasBudgets ? (
+        <ul className={styles['budget-overview']}>
+          {budgets.map((budget) => {
+            return (
+              <BudgetItem
+                budget={budget}
+                key={budget.id}
+                onEdit={onEdit}
+                onDelete={onDelete}
+                selectOptions={selectOptions}
+                editingBudget={editingBudget}
+                onClose={onClose}
+                onSubmit={onSubmit}
+                isEditing={editingBudget?.categoryId === budget.categoryId}
+              />
+            );
+          })}
+        </ul>
+      ) : (
+        <BudgetsPlaceholder />
+      )}
+    </>
   );
 };
 

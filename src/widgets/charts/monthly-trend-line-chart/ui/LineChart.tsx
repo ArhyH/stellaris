@@ -24,6 +24,8 @@ type LineChartProps = {
 const LineChartUI = (props: LineChartProps) => {
   const { data } = props;
 
+  const hasData = data.length > 0;
+
   return (
     <ContentCard>
       <ContentCardHeader paddingBottom={sizes.sizes[20]}>
@@ -58,53 +60,65 @@ const LineChartUI = (props: LineChartProps) => {
           </Row>
         </Row>
       </ContentCardHeader>
-      <ResponsiveContainer width="100%" height="100%" minHeight={240}>
-        <LineChart data={data}>
-          <XAxis
-            dataKey="date"
-            tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
-            tickLine={false}
-            axisLine={false}
-          />
+      {hasData ? (
+        <ResponsiveContainer width="100%" height="100%" minHeight={240}>
+          <LineChart data={data}>
+            <XAxis
+              dataKey="date"
+              tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
+              tickLine={false}
+              axisLine={false}
+            />
 
-          <YAxis
-            tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
-            tickFormatter={(value) => formatAmount(value, formatTypes.compact)}
-            tickLine={false}
-            axisLine={false}
-            width="auto"
-          />
-          <Tooltip content={LineChartTooltip} />
+            <YAxis
+              tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
+              tickFormatter={(value) =>
+                formatAmount(value, formatTypes.compact)
+              }
+              tickLine={false}
+              axisLine={false}
+              width="auto"
+            />
+            <Tooltip content={LineChartTooltip} />
 
-          <Line
-            dataKey="expense"
-            fill={`var(--${colors.red[1]})`}
-            stroke={`var(--${colors.red[1]})`}
-            strokeWidth={2}
-            dot={{ r: 5, fill: `var(--${colors.red[1]})`, strokeWidth: 0 }}
-            activeDot={{ r: 5 }}
-            type="monotone"
-          />
+            <Line
+              dataKey="expense"
+              fill={`var(--${colors.red[1]})`}
+              stroke={`var(--${colors.red[1]})`}
+              strokeWidth={2}
+              dot={{ r: 5, fill: `var(--${colors.red[1]})`, strokeWidth: 0 }}
+              activeDot={{ r: 5 }}
+              type="monotone"
+            />
 
-          <Line
-            dataKey="income"
-            fill={`var(--${colors.green[1]})`}
-            stroke={`var(--${colors.green[1]})`}
-            strokeWidth={2}
-            dot={{ r: 5, fill: `var(--${colors.green[1]})`, strokeWidth: 0 }}
-            activeDot={{ r: 5 }}
-            type="monotone"
-          />
+            <Line
+              dataKey="income"
+              fill={`var(--${colors.green[1]})`}
+              stroke={`var(--${colors.green[1]})`}
+              strokeWidth={2}
+              dot={{ r: 5, fill: `var(--${colors.green[1]})`, strokeWidth: 0 }}
+              activeDot={{ r: 5 }}
+              type="monotone"
+            />
 
-          <CartesianGrid
-            horizontal={true}
-            vertical={false}
-            stroke={`var(--${colors.lightgray[3]})`}
-            strokeDasharray="4 4"
-            opacity="0.2"
-          />
-        </LineChart>
-      </ResponsiveContainer>
+            <CartesianGrid
+              horizontal={true}
+              vertical={false}
+              stroke={`var(--${colors.lightgray[3]})`}
+              strokeDasharray="4 4"
+              opacity="0.2"
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      ) : (
+        <Typography
+          type={typographyProps.types.text16}
+          color={colors.lightgray[3]}
+        >
+          No transaction history yet. Add transactions to see your monthly
+          income and expenses over time.
+        </Typography>
+      )}
     </ContentCard>
   );
 };

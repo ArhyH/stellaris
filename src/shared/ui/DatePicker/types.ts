@@ -8,6 +8,7 @@ type DatePickerProps = {
   name: string;
   label?: string;
   todayPlaceholder?: boolean;
+  isDisabled?: boolean;
 };
 
 export type { DayPickerProps, DatePickerProps };

@@ -22,8 +22,6 @@ const useCategories = () => {
     [activeCategories],
   );
 
-  console.log(activeCategoriesByType);
-
   const addCategory = useCategoryStore((state) => state.addCategory);
 
   const editCategory = useCategoryStore((state) => state.editCategory);

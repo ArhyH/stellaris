@@ -61,4 +61,11 @@
     flex-direction: column;
     gap: var(--size-20);
   }
+
+  &__placeholder {
+    height: var(--size-68);
+    width: var(--parent);
+    background-color: var(--lightgray-1);
+    border-radius: var(--size-16);
+  }
 }

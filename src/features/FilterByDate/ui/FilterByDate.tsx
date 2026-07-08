@@ -9,10 +9,11 @@ import { DatePicker } from '@/shared/ui/DatePicker';
 type FilterByDateProps = {
   onStartDateChange: (value: string) => void;
   onEndDateChange: (value: string) => void;
+  isDisabled?: boolean;
 };
 
 const FilterByDate = (props: FilterByDateProps) => {
-  const { onStartDateChange, onEndDateChange } = props;
+  const { onStartDateChange, onEndDateChange, isDisabled } = props;
 
   return (
     <Row gap={sizes.sizes[8]}>
@@ -22,7 +23,11 @@ const FilterByDate = (props: FilterByDateProps) => {
         color={colors.lightgray[1]}
       />
 
-      <DatePicker onChange={onStartDateChange} name="filter-start-date" />
+      <DatePicker
+        onChange={onStartDateChange}
+        isDisabled={isDisabled}
+        name="filter-start-date"
+      />
 
       <Typography
         type={typographyProps.types.text12}
@@ -31,7 +36,11 @@ const FilterByDate = (props: FilterByDateProps) => {
         to
       </Typography>
 
-      <DatePicker onChange={onEndDateChange} name="filter-end-date" />
+      <DatePicker
+        onChange={onEndDateChange}
+        isDisabled={isDisabled}
+        name="filter-end-date"
+      />
     </Row>
   );
 };

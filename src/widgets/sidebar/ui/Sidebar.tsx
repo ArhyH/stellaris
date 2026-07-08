@@ -7,13 +7,17 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { AddTransaction } from '@/features/AddTransaction';
 import { Transaction } from '@/entity/transaction';
+import { AddCategory } from '@/features/AddCategory';
+import { Category } from '@/entity/category';
 
 type SidebarProps = {
-  onSubmit: (transaction: Transaction) => void;
+  onTransactionCreate: (transaction: Transaction) => void;
+  onCategoryCreate: (category: Category) => void;
+  hasCategories: boolean;
 };
 
 const Sidebar = (props: SidebarProps) => {
-  const { onSubmit } = props;
+  const { onTransactionCreate, onCategoryCreate, hasCategories } = props;
 
   return (
     <aside className={styles.sidebar}>
@@ -30,7 +34,14 @@ const Sidebar = (props: SidebarProps) => {
         Fintrack
       </div>
 
-      <AddTransaction onSubmit={onSubmit} />
+      {hasCategories ? (
+        <AddTransaction
+          onSubmit={onTransactionCreate}
+          isDisabled={!hasCategories}
+        />
+      ) : (
+        <AddCategory onSubmit={onCategoryCreate} />
+      )}
 
       <nav className={styles.sidebar__nav}>
         {navigationItems.map((item: NavigationItem) => {

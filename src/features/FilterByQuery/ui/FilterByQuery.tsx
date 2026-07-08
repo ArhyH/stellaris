@@ -4,10 +4,11 @@ import { Input, inputProps } from '@/shared/ui/Input';
 type FilterByQueryProps = {
   onChange: (value: string) => void;
   currentQuery: string;
+  isDisabled?: boolean;
 };
 
 const FilterByQuery = (props: FilterByQueryProps) => {
-  const { onChange, currentQuery } = props;
+  const { onChange, currentQuery, isDisabled } = props;
 
   return (
     <Input
@@ -18,6 +19,7 @@ const FilterByQuery = (props: FilterByQueryProps) => {
       name="search"
       leftIcon={icons.search24}
       value={currentQuery}
+      isDisabled={isDisabled}
     />
   );
 };

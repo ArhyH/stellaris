@@ -17,7 +17,12 @@ type Filter = {
 };
 
 const useCategoriesFilter = () => {
-  const { categoriesList } = useCategories();
+  const { categoriesList, activeCategories } = useCategories();
+
+  const hasArchivedCategories =
+    activeCategories.length !== categoriesList.length;
+
+  const isFilterDisabled = categoriesList.length === 0;
 
   const [currentFilter, setCurrentFilter] = useState<Filter>({
     state: DEFAULT_FILTER_STATE,
@@ -50,7 +55,11 @@ const useCategoriesFilter = () => {
     }));
   };
 
+  console.log(hasArchivedCategories);
+
   return {
+    hasArchivedCategories,
+    isFilterDisabled,
     currentCategories,
     onFilterTypeChange,
     onFilterStateChange,

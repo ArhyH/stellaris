@@ -1,6 +1,5 @@
 import { FinanceTransferTypes } from '@/shared/consts';
 import { RecentTransactions } from '@/widgets/transactions-list';
-import { Row } from '@/shared/ui/Row/Row';
 import { PieChartUi } from '@/widgets/charts';
 import { BudgetOverview } from '@/widgets/budget-overview';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
@@ -8,18 +7,17 @@ import { colors, sizes } from '@/shared/styles';
 import { DashboardSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { useDashboardData } from '../model/useDashboardData';
+import { Grid, gridProps } from '@/shared/ui/Grid';
 
 const DashboardPage = () => {
   const {
     currentSummary,
-    deltas,
+    summaryDeltas,
     recentTransactions,
     pieChartData,
     budgetData,
     monthYear,
   } = useDashboardData();
-
-  const isPieChartVisible = !!pieChartData.length;
 
   return (
     <Page>
@@ -40,18 +38,16 @@ const DashboardPage = () => {
         </Typography>
       </PageCell>
 
-      <DashboardSummary summaries={currentSummary} deltas={deltas} />
+      <DashboardSummary summaries={currentSummary} deltas={summaryDeltas} />
 
-      <Row>
-        {isPieChartVisible && (
-          <PieChartUi
-            data={pieChartData}
-            date={monthYear}
-            type={FinanceTransferTypes.expense}
-          />
-        )}
+      <Grid templateColumns={gridProps.columns['5-7']}>
+        <PieChartUi
+          data={pieChartData}
+          date={monthYear}
+          type={FinanceTransferTypes.expense}
+        />
         <BudgetOverview budgets={budgetData} />
-      </Row>
+      </Grid>
       <RecentTransactions recentTransactions={recentTransactions} />
     </Page>
   );

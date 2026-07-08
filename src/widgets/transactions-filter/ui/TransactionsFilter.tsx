@@ -21,6 +21,7 @@ type TransactionsFilterProps = {
   categories: Category[];
   currentCategory: ID;
   currentQuery: string;
+  isDisabled: boolean;
 };
 
 const TransactionsFilter = (props: TransactionsFilterProps) => {
@@ -28,6 +29,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
     categories,
     currentCategory,
     currentQuery,
+    isDisabled,
     onTypeFilterChange,
     onCategoryFilterChange,
     onQueryFilterChange,
@@ -42,6 +44,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
           <FilterByQuery
             onChange={onQueryFilterChange}
             currentQuery={currentQuery}
+            isDisabled={isDisabled}
           />
         </div>
 
@@ -49,6 +52,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
           <FilterByType
             filterMode={filterModes.transactions}
             onChange={onTypeFilterChange}
+            isDisabled={isDisabled}
           />
         </div>
 
@@ -57,6 +61,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
             categories={categories}
             currentCategory={currentCategory}
             onChange={onCategoryFilterChange}
+            isDisabled={isDisabled}
           />
         </div>
 
@@ -64,6 +69,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
           <FilterByDate
             onStartDateChange={onStartDateChange}
             onEndDateChange={onEndDateChange}
+            isDisabled={isDisabled}
           />
         </div>
       </div>

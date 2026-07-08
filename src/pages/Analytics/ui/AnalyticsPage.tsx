@@ -31,6 +31,7 @@ const AnalyticsPage = () => {
     topCategory,
     barChart,
     date,
+    isSelectEnabled,
   } = useAnalyticsData(transactionsKey);
 
   const { isAnalyticsAvailable, displayDate } = useCurrentAnalytics();
@@ -38,9 +39,6 @@ const AnalyticsPage = () => {
   const onChange = (current: string) => {
     setSelectedKey(current);
   };
-
-  const isAdditionalVisible = topCategory && !!barChart.length;
-  const isChartsVisible = !!expencePieData.length || !!incomePieData.length;
 
   return (
     <Page>
@@ -79,44 +77,38 @@ const AnalyticsPage = () => {
           )}
         </PageCell>
 
-        <AnalyticsDateSelect
-          transactionsKey={transactionsKey}
-          onChange={onChange}
-        />
+        {isSelectEnabled && (
+          <AnalyticsDateSelect
+            transactionsKey={transactionsKey}
+            onChange={onChange}
+          />
+        )}
       </Row>
 
       <AnalyticsSummary summaries={currentSummary} deltas={summaryDeltas} />
 
-      {isChartsVisible && (
-        <Row>
-          <PieChartUi
-            data={expencePieData}
-            date={date}
-            type={FinanceTransferTypes.expense}
-          />
+      <Grid templateColumns={gridProps.columns['1-1']}>
+        <PieChartUi
+          data={expencePieData}
+          date={date}
+          type={FinanceTransferTypes.expense}
+        />
 
-          <PieChartUi
-            data={incomePieData}
-            date={date}
-            type={FinanceTransferTypes.income}
-          />
-        </Row>
-      )}
+        <PieChartUi
+          data={incomePieData}
+          date={date}
+          type={FinanceTransferTypes.income}
+        />
+      </Grid>
 
-      <Grid
-        {...(isAdditionalVisible && {
-          templateColumns: gridProps.columns['2-1'],
-        })}
-      >
+      <Grid templateColumns={gridProps.columns['2-1']}>
         <LineChartUI data={lineChartData} />
 
-        {isAdditionalVisible && (
-          <PageCell gap={sizes.sizes[20]}>
-            <TopSpending data={topCategory} date={date} />
+        <PageCell gap={sizes.sizes[20]}>
+          <TopSpending data={topCategory} date={date} />
 
-            <BarChartUI data={barChart} date={date} />
-          </PageCell>
-        )}
+          <BarChartUI data={barChart} date={date} />
+        </PageCell>
       </Grid>
     </Page>
   );

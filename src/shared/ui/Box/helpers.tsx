@@ -33,6 +33,14 @@ const getBoxPadding = ({ padding }: Pick<BoxProps, 'padding'>) => {
   }
 };
 
+const getBoxPaddingHorizontal = ({
+  paddingHorizontal,
+}: Pick<BoxProps, 'paddingHorizontal'>) => {
+  if (paddingHorizontal) {
+    return getCssVarOrNothing('--box-padding-horizontal', paddingHorizontal);
+  }
+};
+
 const getBoxSize = ({ size }: Pick<BoxProps, 'size'>) => {
   if (size) {
     return getCssVarOrNothing('--box-size', size);
@@ -72,6 +80,7 @@ const getStyles = ({
   radius,
   grow,
   padding,
+  paddingHorizontal,
   gap,
   size,
   width,
@@ -82,6 +91,7 @@ const getStyles = ({
   | 'radius'
   | 'grow'
   | 'padding'
+  | 'paddingHorizontal'
   | 'gap'
   | 'size'
   | 'width'
@@ -93,6 +103,7 @@ const getStyles = ({
     ...getGrow({ grow }),
     ...getGap({ gap }),
     ...getBoxPadding({ padding }),
+    ...getBoxPaddingHorizontal({ paddingHorizontal }),
     ...getBoxSize({ size }),
     ...getBoxWidth({ size, width }),
     ...getBoxHeight({ size, height }),

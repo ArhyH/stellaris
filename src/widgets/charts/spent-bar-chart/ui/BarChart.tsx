@@ -25,6 +25,8 @@ type BarChartProps = {
 const BarChartUI = (props: BarChartProps) => {
   const { data, date } = props;
 
+  const hasData = data.length > 0;
+
   return (
     <ContentCard grow={contentCardProps.grow[1]}>
       <ContentCardHeader paddingBottom={sizes.sizes[16]}>
@@ -42,54 +44,64 @@ const BarChartUI = (props: BarChartProps) => {
           {date}
         </Typography>
       </ContentCardHeader>
-      <ResponsiveContainer width="100%" height={140}>
-        <BarChart
-          barCategoryGap="10%"
-          barSize={undefined}
-          data={data}
-          layout="horizontal"
-          stackOffset="none"
-          syncMethod="index"
-          throttleDelay="raf"
-          throttledEvents={[
-            'mousemove',
-            'touchmove',
-            'pointermove',
-            'scroll',
-            'wheel',
-          ]}
+      {hasData ? (
+        <ResponsiveContainer width="100%" height={140}>
+          <BarChart
+            barCategoryGap="10%"
+            barSize={undefined}
+            data={data}
+            layout="horizontal"
+            stackOffset="none"
+            syncMethod="index"
+            throttleDelay="raf"
+            throttledEvents={[
+              'mousemove',
+              'touchmove',
+              'pointermove',
+              'scroll',
+              'wheel',
+            ]}
+          >
+            <XAxis
+              dataKey="date"
+              tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
+              tickLine={false}
+              axisLine={false}
+            />
+
+            <YAxis
+              tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
+              tickLine={false}
+              axisLine={false}
+              width="auto"
+            />
+
+            <Bar
+              dataKey="spent"
+              fill={`var(--${colors.red[1]})`}
+              radius={[4, 4, 0, 0]}
+            />
+
+            <Tooltip content={BarChartTooltip} />
+
+            <CartesianGrid
+              horizontal={true}
+              vertical={false}
+              stroke={`var(--${colors.lightgray[3]})`}
+              strokeDasharray="4 4"
+              opacity="0.2"
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      ) : (
+        <Typography
+          type={typographyProps.types.text16}
+          color={colors.lightgray[3]}
         >
-          <XAxis
-            dataKey="date"
-            tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
-            tickLine={false}
-            axisLine={false}
-          />
-
-          <YAxis
-            tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
-            tickLine={false}
-            axisLine={false}
-            width="auto"
-          />
-
-          <Bar
-            dataKey="spent"
-            fill={`var(--${colors.red[1]})`}
-            radius={[4, 4, 0, 0]}
-          />
-
-          <Tooltip content={BarChartTooltip} />
-
-          <CartesianGrid
-            horizontal={true}
-            vertical={false}
-            stroke={`var(--${colors.lightgray[3]})`}
-            strokeDasharray="4 4"
-            opacity="0.2"
-          />
-        </BarChart>
-      </ResponsiveContainer>
+          No expense transactions yet. Add expenses to see your daily spending
+          throughout the month.
+        </Typography>
+      )}
     </ContentCard>
   );
 };

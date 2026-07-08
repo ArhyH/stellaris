@@ -9,6 +9,7 @@ type FilterMode = ValueOf<typeof filterModes>;
 type FilterByTypeProps = {
   onChange: (filter: FilterByTypeValue) => void;
   filterMode: FilterMode;
+  isDisabled?: boolean;
 };
 
 export type { FilterByTypeValue, FilterMode, FilterByTypeProps };

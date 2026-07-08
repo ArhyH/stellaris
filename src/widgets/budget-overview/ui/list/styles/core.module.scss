@@ -67,4 +67,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  &__placeholder {
+    height: var(--size-68);
+    background-color: var(--lightgray-1);
+    border-radius: var(--size-16);
+  }
 }

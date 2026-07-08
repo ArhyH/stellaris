@@ -11,6 +11,7 @@ import styles from './style.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
+import { BudgetsPlaceholder } from './BudgetsPlaceholder';
 
 type BudgetOverviewProps = {
   budgets: BudgetOverviewItemType[];
@@ -22,6 +23,8 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
   if (!budgets) {
     return;
   }
+
+  const hasBudgets = budgets.length > 0;
 
   return (
     <ContentCard grow={contentCardProps.grow[3]}>
@@ -37,11 +40,15 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
           <Icon icon={icons.arrowRight12} size={sizes.sizes[12]} />
         </RouterLink>
       </ContentCardHeader>
-      <ul className={styles['budget-overview']}>
-        {budgets.map((budget) => {
-          return <BudgetOverviewItem key={budget.id} budget={budget} />;
-        })}
-      </ul>
+      {hasBudgets ? (
+        <ul className={styles['budget-overview']}>
+          {budgets.map((budget) => {
+            return <BudgetOverviewItem key={budget.id} budget={budget} />;
+          })}
+        </ul>
+      ) : (
+        <BudgetsPlaceholder />
+      )}
     </ContentCard>
   );
 };

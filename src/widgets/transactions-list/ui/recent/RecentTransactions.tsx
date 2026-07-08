@@ -7,6 +7,7 @@ import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
+import { TransactionsPlaceholder } from './TransactionsPlaceholder';
 
 type RecentTransactionsProps = {
   recentTransactions: RecentTransaction[];
@@ -18,6 +19,8 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
   if (!recentTransactions) {
     return;
   }
+
+  const hasTransactions = recentTransactions.length > 0;
 
   return (
     <div className={styles['recent-transaction__wrapper']}>
@@ -37,23 +40,27 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
           </RouterLink>
         </ContentCardHeader>
 
-        <ul className={styles['recent-transaction__list']}>
-          {recentTransactions.map((transaction) => {
-            return (
-              <Transaction
-                key={transaction.id}
-                categoryIcon={transaction.categoryIcon ?? 'wallet18'}
-                categoryName={transaction.categoryName}
-                categoryColor={transaction.categoryColor}
-                categoryIconColor={transaction.categoryIconColor}
-                date={transaction.date}
-                amount={transaction.amount}
-                note={transaction.note}
-                type={transaction.type}
-              />
-            );
-          })}
-        </ul>
+        {hasTransactions ? (
+          <ul className={styles['recent-transaction__list']}>
+            {recentTransactions.map((transaction) => {
+              return (
+                <Transaction
+                  key={transaction.id}
+                  categoryIcon={transaction.categoryIcon ?? 'wallet18'}
+                  categoryName={transaction.categoryName}
+                  categoryColor={transaction.categoryColor}
+                  categoryIconColor={transaction.categoryIconColor}
+                  date={transaction.date}
+                  amount={transaction.amount}
+                  note={transaction.note}
+                  type={transaction.type}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <TransactionsPlaceholder />
+        )}
       </ContentCard>
     </div>
   );

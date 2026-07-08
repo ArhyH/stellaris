@@ -19,8 +19,13 @@ import { DeleteCategory } from '@/features/DeleteCategory';
 const CategoriesPage = () => {
   const { addCategory, editCategory } = useCategories();
 
-  const { currentCategories, onFilterTypeChange, onFilterStateChange } =
-    useCategoriesFilter();
+  const {
+    currentCategories,
+    hasArchivedCategories,
+    isFilterDisabled,
+    onFilterTypeChange,
+    onFilterStateChange,
+  } = useCategoriesFilter();
 
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
     useEditCategory();
@@ -68,6 +73,8 @@ const CategoriesPage = () => {
       <CategoriesFilter
         onFilterTypeChange={onFilterTypeChange}
         onFilterStateChange={onFilterStateChange}
+        hasArchivedCategories={hasArchivedCategories}
+        isDisabled={isFilterDisabled}
       />
 
       <Categories

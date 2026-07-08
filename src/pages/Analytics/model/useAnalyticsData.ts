@@ -11,6 +11,8 @@ import { getMonthYearFromDate } from '@/shared/helpers';
 const useAnalyticsData = (transactionsKey: string) => {
   const { transactionsDateKeys } = useTransactions();
 
+  const isSelectEnabled = transactionsDateKeys.length > 1;
+
   const prevKey = useMemo(() => {
     const index = transactionsDateKeys.indexOf(transactionsKey);
     const prevKey = index > 0 ? transactionsDateKeys[index - 1] : undefined;
@@ -49,6 +51,7 @@ const useAnalyticsData = (transactionsKey: string) => {
     : new Date().toISOString().slice(0, 7);
 
   return {
+    isSelectEnabled,
     lineChartData,
     currentSummary,
     summaryDeltas,

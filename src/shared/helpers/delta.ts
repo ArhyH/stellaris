@@ -9,7 +9,7 @@ const getDelta = (
   current: number | null,
   prev: number | null,
 ): number | null => {
-  if (current == null || prev === null) {
+  if (current == null || prev === null || prev === 0) {
     return null;
   }
 

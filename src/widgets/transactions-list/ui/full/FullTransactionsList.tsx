@@ -15,6 +15,7 @@ import { useMemo, useState } from 'react';
 import { sortDirections, sortFields } from '../../model/consts';
 import { SORT_CONFID } from '../../model/sort';
 import { ID } from '@/shared/types';
+import { TransactionsPlaceholder } from './TransactionsPlaceholder';
 
 type FullTransactionsListProps = {
   transactions: RecentTransactionType[];
@@ -59,6 +60,8 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
     isRotated: sortConfig.field === field && sortConfig.direction === 'asc',
   });
 
+  const hasTransactions = transactions.length > 0;
+
   return (
     <ContentCard padding={sizes.sizes[0]}>
       <div className={styles['transactions-list__wrapper']}>
@@ -69,6 +72,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             width={sizes.sizes.parent}
             justify={buttonProps.justifies.left}
             onClick={() => handleSort(sortFields.date)}
+            isDisabled={!hasTransactions}
             {...getButtonState(sortFields.date)}
           >
             <Typography type={typographyProps.types.text16}>Date</Typography>
@@ -83,6 +87,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             width={sizes.sizes.parent}
             justify={buttonProps.justifies.left}
             onClick={() => handleSort(sortFields.category)}
+            isDisabled={!hasTransactions}
             {...getButtonState(sortFields.category)}
           >
             <Typography type={typographyProps.types.text16}>
@@ -106,6 +111,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             width={sizes.sizes.parent}
             justify={buttonProps.justifies.right}
             onClick={() => handleSort(sortFields.amount)}
+            isDisabled={!hasTransactions}
             {...getButtonState(sortFields.amount)}
           >
             <Typography type={typographyProps.types.text16}>Amount</Typography>
@@ -114,17 +120,21 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             </ButtonIcon>
           </Button>
         </div>
-        <ul className={styles['transactions-list']}>
-          {sortedTransactions.map((transaction) => {
-            return (
-              <Transaction
-                key={transaction.id}
-                data={transaction}
-                onDelete={onDelete}
-              />
-            );
-          })}
-        </ul>
+        {hasTransactions ? (
+          <ul className={styles['transactions-list']}>
+            {sortedTransactions.map((transaction) => {
+              return (
+                <Transaction
+                  key={transaction.id}
+                  data={transaction}
+                  onDelete={onDelete}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <TransactionsPlaceholder />
+        )}
         <div className={styles['transactions-list__footer']}>
           <Typography
             type={typographyProps.types.text12}

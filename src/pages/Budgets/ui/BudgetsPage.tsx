@@ -8,13 +8,15 @@ import { icons } from '@/shared/assets';
 import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
-import { useBudgetsData } from '../model/useBudgetsData';
+import { useBudgetsPageData } from '../model/useBudgetsPageData';
 import { AddBudget, useAddBudget } from '@/features/AddBudget';
 import { getPageCallbacks } from '../model/getPageCallbacks';
 import { useEditBudget } from '@/features/EditBudget';
+import { Box } from '@/shared/ui/Box';
 
 const BudgetsPage = () => {
-  const { budgets, budgetData, budgetSummaries } = useBudgetsData();
+  const { budgets, budgetData, budgetSummaries, hasCategories } =
+    useBudgetsPageData();
 
   const {
     isOpen,
@@ -52,21 +54,35 @@ const BudgetsPage = () => {
         </PageCell>
 
         <PageCell>
-          <Button
-            theme={buttonProps.themes.green}
-            height={sizes.sizes[40]}
-            paddingVertical={sizes.sizes[10]}
-            paddingHorizontal={sizes.sizes[16]}
-            onClick={onOpen}
-          >
-            <Icon icon={icons.plus24} size={sizes.sizes[16]} />
-            <Typography
-              tag={typographyProps.tags.h3}
-              type={typographyProps.types.title14}
+          <Row gap={sizes.sizes[8]}>
+            {!hasCategories && (
+              <Box width={sizes.sizes[180]} bgColor={colors.base.transparent}>
+                <Typography
+                  type={typographyProps.types.text16}
+                  color={colors.lightgray[3]}
+                >
+                  Create a category first to start budgeting.
+                </Typography>
+              </Box>
+            )}
+
+            <Button
+              theme={buttonProps.themes.green}
+              height={sizes.sizes[40]}
+              paddingVertical={sizes.sizes[10]}
+              paddingHorizontal={sizes.sizes[16]}
+              onClick={onOpen}
+              isDisabled={!hasCategories}
             >
-              Add Budget
-            </Typography>
-          </Button>
+              <Icon icon={icons.plus24} size={sizes.sizes[16]} />
+              <Typography
+                tag={typographyProps.tags.h3}
+                type={typographyProps.types.title14}
+              >
+                Add Budget
+              </Typography>
+            </Button>
+          </Row>
         </PageCell>
       </Row>
 

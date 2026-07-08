@@ -1,6 +1,6 @@
-interface AnalyticsSummary {
-  income: number;
-  expense: number;
+import { Summary } from '@/shared/types';
+
+interface AnalyticsSummary extends Summary {
   saving: number | null;
   daily: number | null;
 }

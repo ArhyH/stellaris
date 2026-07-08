@@ -1,8 +1,4 @@
-export {
-  getDashboardDeltas,
-  getDashboardSummary,
-  DashboardSummary,
-} from './dashboard';
+export { useDashboardSummary, DashboardSummary } from './dashboard';
 
 export { BudgetSummary, getBudgetsSummary } from './budget';
 

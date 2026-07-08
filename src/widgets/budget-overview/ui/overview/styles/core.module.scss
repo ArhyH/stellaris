@@ -27,4 +27,10 @@
       gap: var(--size-8);
     }
   }
+
+  &__placeholder {
+    height: var(--size-24);
+    background-color: var(--lightgray-1);
+    border-radius: var(--size-8);
+  }
 }

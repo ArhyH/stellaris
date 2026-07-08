@@ -12,6 +12,7 @@ import {
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { FinanceTransferType } from '@/shared/types';
 import { FinanceTransferTypes } from '@/shared/consts';
+import { PieChartPlaceholder } from './PieChartPlaceholder';
 
 type PieChartProps = {
   type: FinanceTransferType;
@@ -22,9 +23,11 @@ type PieChartProps = {
 const PieChartUi = (props: PieChartProps) => {
   const { data, date, type } = props;
 
-  if (!data || !date || !type) {
+  if (!date || !type) {
     return;
   }
+
+  const enoughtChartData = data.length !== 0;
 
   return (
     <ContentCard grow={contentCardProps.grow[2]} isStretch>
@@ -45,29 +48,33 @@ const PieChartUi = (props: PieChartProps) => {
           {date}
         </Typography>
       </ContentCardHeader>
-      <ResponsiveContainer width="100%" height="100%" minHeight={200}>
-        <PieChart>
-          <Pie
-            cx={90}
-            cy={90}
-            data={data}
-            dataKey="value"
-            innerRadius={55}
-            outerRadius={90}
-            paddingAngle={3}
-            isAnimationActive
-            fill={`var(--${colors.gray[4]})`}
-          />
-          <Tooltip content={PieChartTooltip} />
-          <Legend
-            layout="vertical"
-            verticalAlign="top"
-            align="right"
-            content={PieChartLegend}
-            wrapperStyle={{ left: 210, right: 5 }}
-          />
-        </PieChart>
-      </ResponsiveContainer>
+      {enoughtChartData ? (
+        <ResponsiveContainer width="100%" height="100%" minHeight={200}>
+          <PieChart>
+            <Pie
+              cx={90}
+              cy={90}
+              data={data}
+              dataKey="value"
+              innerRadius={55}
+              outerRadius={90}
+              paddingAngle={3}
+              isAnimationActive
+              fill={`var(--${colors.gray[4]})`}
+            />
+            <Tooltip content={PieChartTooltip} />
+            <Legend
+              layout="vertical"
+              verticalAlign="top"
+              align="right"
+              content={PieChartLegend}
+              wrapperStyle={{ left: 210, right: 5 }}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      ) : (
+        <PieChartPlaceholder date={date} type={type} />
+      )}
     </ContentCard>
   );
 };

@@ -13,15 +13,11 @@ const mapTransactionsToRecentItems = (
     categories.map((category) => [category.id, category]),
   );
 
-  let sorted = [...transactions].sort(
-    (a, b) => Date.parse(b.date) - Date.parse(a.date),
-  );
+  const targetTransactions = limit
+    ? transactions.slice(0, RECENT_TRANSACTIONS_LIMIT)
+    : transactions;
 
-  if (limit) {
-    sorted = sorted.slice(0, RECENT_TRANSACTIONS_LIMIT);
-  }
-
-  return sorted.map((transaction) => {
+  return targetTransactions.map((transaction) => {
     const category = categoriesMap.get(transaction.categoryId);
 
     return {

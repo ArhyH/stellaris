@@ -1,10 +1,6 @@
 import { Transaction } from '@/entity/transaction';
 import { FinanceTransferTypes } from '../consts';
-
-interface Summary {
-  income: number;
-  expense: number;
-}
+import { Summary } from '../types';
 
 const getSummary = (transactions: Transaction[]): Summary => {
   const { income, expense } = transactions.reduce(

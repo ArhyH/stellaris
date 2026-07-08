@@ -2,14 +2,15 @@ import { useMemo } from 'react';
 import { useCategories } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
 import { getTransactionsSummary } from '@/widgets/summary';
-import { mapTransactionsToRecentItems } from '@/widgets/transactions-list';
+import { useRecentTransactions } from '@/widgets/transactions-list';
+import { ViewModes } from '@/shared/consts';
 
 const useTransactionsData = (transactions: Transaction[]) => {
   const { categoriesList } = useCategories();
 
-  const recentTransactions = useMemo(
-    () => mapTransactionsToRecentItems(transactions, categoriesList),
-    [transactions, categoriesList],
+  const recentTransactions = useRecentTransactions(
+    categoriesList,
+    ViewModes.long,
   );
 
   const summaries = useMemo(

@@ -27,6 +27,7 @@ const useTransactionsFilter = () => {
 
   const currerntCatefory = filters.category;
   const currentQuery = filters.searchQuery;
+  const isFiltersDisabled = transactionsList.length === 0;
 
   const currentTransactions = useMemo(() => {
     const transactionsByType = filterDataByFinanceTransferType(
@@ -74,6 +75,7 @@ const useTransactionsFilter = () => {
     currentQuery,
     currentTransactions,
     currentCategories,
+    isFiltersDisabled,
   };
 };
 

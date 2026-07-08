@@ -27,7 +27,7 @@ import { useCurrentCategories } from '../model/useCurrentCategories';
 import { isPositiveAmount } from '@/shared/helpers';
 
 const AddTransaction = (props: AddTransactionProps) => {
-  const { onSubmit } = props;
+  const { onSubmit, isDisabled } = props;
 
   const [transaction, setTransaction] =
     useState<FormTransaction>(createTransaction());
@@ -50,6 +50,7 @@ const AddTransaction = (props: AddTransactionProps) => {
         theme={buttonProps.themes.green}
         height={sizes.sizes[44]}
         width={sizes.sizes.parent}
+        isDisabled={isDisabled}
       >
         <Icon icon={icons.plus24} size={sizes.sizes[18]} />
         <Typography

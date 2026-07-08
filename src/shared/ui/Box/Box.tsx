@@ -17,6 +17,7 @@ const Box = (props: BoxProps) => {
     height,
     grow,
     padding,
+    paddingHorizontal,
     tag,
     gap,
   } = props;
@@ -38,6 +39,7 @@ const Box = (props: BoxProps) => {
           radius,
           grow,
           padding,
+          paddingHorizontal,
           gap,
           size,
           width,

@@ -25,6 +25,14 @@ const useTransactions = () => {
     [transactionsList],
   );
 
+  const transactionsByDate = useMemo(
+    () =>
+      [...transactionsList].sort(
+        (a, b) => Date.parse(b.date) - Date.parse(a.date),
+      ),
+    [transactionsList],
+  );
+
   const transactionsDateKeys = useMemo(
     () =>
       Object.keys(transactionsByMonth).sort(
@@ -45,6 +53,7 @@ const useTransactions = () => {
     transactionsList,
     transactionsByCategory,
     transactionByType,
+    transactionsByDate,
     transactionsByMonth,
     transactionsDateKeys,
 

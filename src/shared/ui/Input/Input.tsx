@@ -20,11 +20,13 @@ const Input = (props: InputProps) => {
     readOnly,
     ref,
     sign,
+    isDisabled,
   } = props;
 
   const componentClassNames = classnames(styles.input, {
     [styles[`input--theme--${theme}`]]: theme,
     [styles[`input--type--${type}`]]: type,
+    [styles['is-disabled']]: isDisabled,
   });
 
   return (
@@ -51,6 +53,7 @@ const Input = (props: InputProps) => {
           name={name}
           readOnly={readOnly}
           value={value ?? ''}
+          disabled={isDisabled}
           onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         />
 

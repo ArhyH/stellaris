@@ -18,6 +18,7 @@ const TransactionsPage = () => {
     currentQuery,
     currentCategories,
     currerntCatefory,
+    isFiltersDisabled,
   } = useTransactionsFilter();
 
   const {
@@ -63,6 +64,7 @@ const TransactionsPage = () => {
         onQueryFilterChange={onQueryFilterChange}
         onStartDateChange={onStartDateChange}
         onEndDateChange={onEndDateChange}
+        isDisabled={isFiltersDisabled}
       />
 
       <FullTransactionsList

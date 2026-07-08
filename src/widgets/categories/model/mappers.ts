@@ -20,8 +20,6 @@ const mapCategoriesToCategoryItems = (
 
     const hasBudget = budget !== undefined;
 
-    console.log(budget);
-
     return {
       categoryId: category.id,
       categoryIcon: category.icon,

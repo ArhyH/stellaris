@@ -1,7 +1,14 @@
 .pie-chart {
+  &__legend {
+    display: grid;
+    gap: var(--size-2);
+  }
+
   &__legend-item {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--size-4);
     width: 100%;
   }
 
@@ -19,5 +26,14 @@
     background-color: var(--gray-5);
     border-radius: var(--size-16);
     padding: var(--size-12) var(--size-16);
+  }
+
+  &__placeholder {
+    width: var(--size-180);
+    height: var(--size-180);
+    border: var(--size-36) solid var(--lightgray-1);
+    border-radius: var(--half);
+    box-sizing: border-box;
+    flex-shrink: 0;
   }
 }

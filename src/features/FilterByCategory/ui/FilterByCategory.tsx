@@ -7,10 +7,11 @@ type FilterByCategoryProps = {
   onChange: (value: string) => void;
   categories: Category[];
   currentCategory: ID;
+  isDisabled?: boolean;
 };
 
 const FilterByCategory = (props: FilterByCategoryProps) => {
-  const { onChange, categories, currentCategory } = props;
+  const { onChange, categories, currentCategory, isDisabled } = props;
   const options = mapCategoryToSelectItems(categories);
 
   return (
@@ -19,6 +20,7 @@ const FilterByCategory = (props: FilterByCategoryProps) => {
       placeholderOption={{ value: 'all', description: 'All Categories' }}
       value={currentCategory}
       onChange={onChange}
+      isDisabled={isDisabled}
       isPlaceholderSelectable
     />
   );

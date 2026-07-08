@@ -33,6 +33,9 @@ const getTextColor = (key: keyof AnalyticsSummary): ColorToken => {
 
 const AnalyticsCard = (props: AnalyticsCardProps) => {
   const { title, summary, budgetKey, delta, icon } = props;
+
+  const hasDelta = delta !== null && delta !== undefined;
+
   return (
     <SummaryCard padding={sizes.sizes[20]} gap={sizes.sizes[12]}>
       <SummaryCardHeader>
@@ -65,7 +68,7 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
               : 0}
         </Typography>
 
-        {!!delta && (
+        {hasDelta && (
           <Typography
             type={
               delta < 0 && budgetKey !== 'daily' && budgetKey !== 'expense'

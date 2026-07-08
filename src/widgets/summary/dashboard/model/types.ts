@@ -1,6 +1,6 @@
-interface DashboardSummary {
-  income: number;
-  expense: number;
+import { Summary } from '@/shared/types';
+
+interface DashboardSummary extends Summary {
   total: number;
 }
 

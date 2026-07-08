@@ -19,13 +19,19 @@
     font-size: var(--size-14);
     font-weight: 500;
 
-    @media (hover: hover) {
-      &:hover {
+    &:not(.is-disabled) {
+      @media (hover: hover) {
+        &:hover {
+          color: var(--white);
+        }
+      }
+
+      &:active {
         color: var(--white);
+        background-color: var(--button-bg-2);
       }
     }
 
-    &:active,
     &.is-selected {
       color: var(--white);
       background-color: var(--button-bg-2);
