@@ -15,7 +15,7 @@ const useDeleteCategory = () => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const handleCategoryDelete = (id: ID) => {
-    const [categoryBudget] = getGroupByKey(budgetsByCategory, id);
+    const categoryBudget = budgetsByCategory.get(id);
     const categoryTransactions = getGroupByKey(transactionsByCategory, id);
 
     const hasTransaction = categoryTransactions.length > 0;

@@ -8,7 +8,7 @@ import { Budget } from '@/entity/budget';
 const mapCategoriesToCategoryItems = (
   categories: Category[],
   transactionsByCategory: Record<ID, Transaction[]>,
-  budgetsByCategory: Record<ID, Budget[]>,
+  budgetsByCategory: Map<ID, Budget>,
 ): CategoryItem[] => {
   return categories.map((category) => {
     const transactionsCount = getGroupByKey(
@@ -16,7 +16,7 @@ const mapCategoriesToCategoryItems = (
       category.id,
     ).length;
 
-    const [budget] = getGroupByKey(budgetsByCategory, category.id);
+    const budget = budgetsByCategory.get(category.id);
 
     const hasBudget = budget !== undefined;
 

@@ -60,7 +60,11 @@ const useCategoryStore = create<CategoryStore>((set) => ({
   archiveCategory: (id) =>
     set((state) => {
       const copy = { ...state.categories };
-      copy[id] = { ...copy[id], isArchived: true };
+      copy[id] = {
+        ...copy[id],
+        isArchived: true,
+        name: `${copy[id].name} (Archived)`,
+      };
 
       storage.category.save(copy);
 

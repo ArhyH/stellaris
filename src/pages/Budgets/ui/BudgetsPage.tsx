@@ -15,8 +15,14 @@ import { useEditBudget } from '@/features/EditBudget';
 import { Box } from '@/shared/ui/Box';
 
 const BudgetsPage = () => {
-  const { budgets, budgetData, budgetSummaries, hasCategories } =
-    useBudgetsPageData();
+  const {
+    budgets,
+    budgetsData,
+    budgetSummaries,
+    isCreateBudgetEnabled,
+    hasCategories,
+    allActiveCategoriesWithBudget,
+  } = useBudgetsPageData();
 
   const {
     isOpen,
@@ -56,12 +62,43 @@ const BudgetsPage = () => {
         <PageCell>
           <Row gap={sizes.sizes[8]}>
             {!hasCategories && (
-              <Box width={sizes.sizes[180]} bgColor={colors.base.transparent}>
+              <Box
+                width={sizes.sizes[200]}
+                bgColor={colors.base.transparent}
+                gap={sizes.sizes[4]}
+              >
                 <Typography
                   type={typographyProps.types.text16}
                   color={colors.lightgray[3]}
                 >
-                  Create a category first to start budgeting.
+                  You don't have any expense categories yet.
+                </Typography>
+                <Typography
+                  type={typographyProps.types.text16}
+                  color={colors.lightgray[3]}
+                >
+                  Create your first category to start budgeting.
+                </Typography>
+              </Box>
+            )}
+
+            {allActiveCategoriesWithBudget && hasCategories && (
+              <Box
+                width={sizes.sizes[216]}
+                bgColor={colors.base.transparent}
+                gap={sizes.sizes[4]}
+              >
+                <Typography
+                  type={typographyProps.types.text16}
+                  color={colors.lightgray[3]}
+                >
+                  Every active expense category already has a budget.
+                </Typography>
+                <Typography
+                  type={typographyProps.types.text16}
+                  color={colors.lightgray[3]}
+                >
+                  Create another expense category to add a new budget.
                 </Typography>
               </Box>
             )}
@@ -72,7 +109,7 @@ const BudgetsPage = () => {
               paddingVertical={sizes.sizes[10]}
               paddingHorizontal={sizes.sizes[16]}
               onClick={onOpen}
-              isDisabled={!hasCategories}
+              isDisabled={!isCreateBudgetEnabled}
             >
               <Icon icon={icons.plus24} size={sizes.sizes[16]} />
               <Typography
@@ -97,7 +134,7 @@ const BudgetsPage = () => {
       )}
 
       <BudgetList
-        budgets={budgetData}
+        budgets={budgetsData}
         selectOptions={editBudgetSelectItems}
         editingBudget={editingBudget}
         onClose={onEditClose}

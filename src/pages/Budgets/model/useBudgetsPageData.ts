@@ -4,44 +4,48 @@ import { useTransactions } from '@/entity/transaction';
 import { getGroupByKey } from '@/shared/helpers';
 import { useCurrentDate } from '@/shared/hooks';
 import { useBudgetsData } from '@/widgets/budget-overview';
-import { getBudgetsSummary } from '@/widgets/summary';
+import { useBudgetsSummary } from '@/widgets/summary';
 import { useBudgets } from '@/entity/budget';
 import { ViewModes } from '@/shared/consts';
 
 const useBudgetsPageData = () => {
   const { currentMonth } = useCurrentDate();
   const { transactionsByMonth } = useTransactions();
-  const { activeCategories } = useCategories();
-  const { budgets } = useBudgets();
+  const { activeCategoriesByType } = useCategories();
+  const { budgets, budgetsByCategory } = useBudgets();
 
-  const month = useMemo(() => {
-    const current = currentMonth.toISOString().slice(0, 7);
-    return { current };
-  }, [currentMonth]);
+  const month = currentMonth.toISOString().slice(0, 7);
 
   const currentTransactions = useMemo(
-    () => getGroupByKey(transactionsByMonth, month.current),
-    [transactionsByMonth, month.current],
+    () => getGroupByKey(transactionsByMonth, month),
+    [transactionsByMonth, month],
   );
 
-  const budgetData = useBudgetsData(
+  const currentCategories = getGroupByKey(activeCategoriesByType, 'expense');
+
+  const budgetsData = useBudgetsData(
     currentTransactions,
-    activeCategories,
+    currentCategories,
     ViewModes.long,
   );
 
-  const budgetSummaries = useMemo(
-    () => getBudgetsSummary(budgetData),
-    [budgetData],
+  const budgetSummaries = useBudgetsSummary(budgetsData);
+
+  const hasCategories = currentCategories.length > 0;
+
+  const allActiveCategoriesWithBudget = currentCategories.every((category) =>
+    budgetsByCategory.has(category.id),
   );
 
-  const hasCategories = activeCategories.length > 0;
+  const isCreateBudgetEnabled = hasCategories && !allActiveCategoriesWithBudget;
 
   return {
     budgets,
-    budgetData,
+    budgetsData,
     budgetSummaries,
+    isCreateBudgetEnabled,
     hasCategories,
+    allActiveCategoriesWithBudget,
   };
 };
 

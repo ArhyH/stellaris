@@ -14,3 +14,4 @@ export {
 export { isValidInputAmount, isPositiveAmount } from './amount';
 export { filterByArchived } from './filterByArchived';
 export { groupBy, getGroupByKey } from './groupBy';
+export { capitalizeFirstLetter } from './capitalizeFirstLetter';

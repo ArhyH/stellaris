@@ -4,7 +4,11 @@ import { FinanceTransferType, ID } from '@/shared/types';
 import { Transaction } from '@/entity/transaction';
 import { formatDate } from '@/shared/helpers/formatDate';
 import { FormTransaction } from './types';
-import { isPositiveAmount, isValidInputAmount } from '@/shared/helpers';
+import {
+  capitalizeFirstLetter,
+  isPositiveAmount,
+  isValidInputAmount,
+} from '@/shared/helpers';
 
 const getModalCallbacks = (
   transaction: FormTransaction,
@@ -12,8 +16,8 @@ const getModalCallbacks = (
   onSubmit: (transaction: Transaction) => void,
 ) => {
   const onTypeChange = (type: FinanceTransferType) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
+    setTransaction((prev) => ({
+      ...prev,
       type,
       categoryId: '',
     }));
@@ -21,49 +25,47 @@ const getModalCallbacks = (
 
   const onValueChange = (amount: string) => {
     if (isValidInputAmount(amount)) {
-      setTransaction((prevTransaction) => ({
-        ...prevTransaction,
+      setTransaction((prev) => ({
+        ...prev,
         amount,
       }));
     }
   };
 
   const onValueButtonClick = (value: string) => {
-    setTransaction((prevTransaction) => {
+    setTransaction((prev) => {
       const amount =
-        value === 'delete'
-          ? prevTransaction.amount.slice(0, -1)
-          : prevTransaction.amount + value;
+        value === 'delete' ? prev.amount.slice(0, -1) : prev.amount + value;
 
       if (!isValidInputAmount(amount)) {
-        return prevTransaction;
+        return prev;
       }
 
       return {
-        ...prevTransaction,
+        ...prev,
         amount,
       };
     });
   };
 
   const onCategoryButtonClick = (categoryId: ID) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
+    setTransaction((prev) => ({
+      ...prev,
       categoryId,
     }));
   };
 
   const onDateChange = (date: string) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
+    setTransaction((prev) => ({
+      ...prev,
       date,
     }));
   };
 
   const onNoteChange = (note: string) => {
-    setTransaction((prevTransaction) => ({
-      ...prevTransaction,
-      note,
+    setTransaction((prev) => ({
+      ...prev,
+      note: capitalizeFirstLetter(note),
     }));
   };
 

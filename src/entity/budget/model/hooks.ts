@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useBudgetStore } from './store';
-import { groupBy } from '@/shared/helpers';
+import { ID } from '@/shared/types';
+import { Budget } from '..';
 
 const useBudgets = () => {
   const budgets = useBudgetStore((state) => state.budgets);
@@ -8,7 +9,10 @@ const useBudgets = () => {
   const budgetsList = useMemo(() => Object.values(budgets), [budgets]);
 
   const budgetsByCategory = useMemo(
-    () => groupBy(budgetsList, (b) => b.categoryId),
+    () =>
+      new Map<ID, Budget>(
+        budgetsList.map((budget) => [budget.categoryId, budget]),
+      ),
     [budgetsList],
   );
 

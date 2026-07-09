@@ -3,6 +3,7 @@ import { Category } from '@/entity/category';
 import { IconName } from '@/shared/assets';
 import { CategoryColor } from '@/shared/styles';
 import { FinanceTransferType } from '@/shared/types';
+import { capitalizeFirstLetter } from '@/shared/helpers';
 
 const getModalCallbacks = (
   setCategory: Dispatch<SetStateAction<Category>>,
@@ -15,7 +16,7 @@ const getModalCallbacks = (
   const onNameChange = (name: string) => {
     setCategory((prevCategory) => ({
       ...prevCategory,
-      name,
+      name: capitalizeFirstLetter(name),
     }));
   };
 

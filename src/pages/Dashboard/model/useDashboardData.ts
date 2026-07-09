@@ -10,15 +10,14 @@ import { useBudgetsData } from '@/widgets/budget-overview';
 import { useCurrentDate } from '@/shared/hooks';
 
 const useDashboardData = () => {
-  const { transactionsByMonth } = useTransactions();
+  const { transactionsByMonth, transactionsByDate } = useTransactions();
   const { categoriesList } = useCategories();
   const { currentMonth, prevMonth } = useCurrentDate();
 
-  const month = useMemo(() => {
-    const current = currentMonth.toISOString().slice(0, 7);
-    const prev = prevMonth.toISOString().slice(0, 7);
-    return { current, prev };
-  }, [currentMonth, prevMonth]);
+  const month = {
+    current: currentMonth.toISOString().slice(0, 7),
+    prev: prevMonth.toISOString().slice(0, 7),
+  };
 
   const { currentTransactions, prevTransactions } = useMemo(() => {
     const currentTransactions = getGroupByKey(
@@ -44,6 +43,7 @@ const useDashboardData = () => {
       : getMonthYearFromDate(new Date().toISOString());
 
   const recentTransactions = useRecentTransactions(
+    transactionsByDate,
     categoriesList,
     ViewModes.short,
   );

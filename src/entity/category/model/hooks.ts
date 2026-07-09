@@ -34,8 +34,8 @@ const useCategories = () => {
     categories,
 
     categoriesList,
-    activeCategories,
     categoriesByType,
+    activeCategories,
     activeCategoriesByType,
 
     addCategory,

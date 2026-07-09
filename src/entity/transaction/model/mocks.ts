@@ -36,7 +36,7 @@ const transactionsMock = {
     amount: 1900,
     type: 'income',
     categoryId: 'freelance',
-    note: 'design',
+    note: 'Design',
     date: '2026-05-04',
   },
   't-6': {
@@ -44,7 +44,7 @@ const transactionsMock = {
     amount: 1100,
     type: 'expense',
     categoryId: 'food',
-    note: 'food for month',
+    note: 'Food for month',
     date: '2026-05-09',
   },
   't-7': {
@@ -60,7 +60,7 @@ const transactionsMock = {
     amount: 100,
     type: 'expense',
     categoryId: 'food',
-    note: 'coffee',
+    note: 'Coffee',
     date: '2026-06-04',
   },
   't-9': {
@@ -68,7 +68,7 @@ const transactionsMock = {
     amount: 1800,
     type: 'expense',
     categoryId: 'shopping',
-    note: 'new bag',
+    note: 'New bag',
     date: '2026-06-05',
   },
   't-10': {
@@ -76,7 +76,7 @@ const transactionsMock = {
     amount: 5000,
     type: 'income',
     categoryId: 'salary',
-    note: 'yohooo',
+    note: 'Yohooo',
     date: '2026-06-07',
   },
   't-11': {
@@ -84,7 +84,7 @@ const transactionsMock = {
     amount: 1800,
     type: 'income',
     categoryId: 'freelance',
-    note: 'code review',
+    note: 'Code review',
     date: '2026-06-04',
   },
   't-12': {
@@ -92,7 +92,7 @@ const transactionsMock = {
     amount: 100,
     type: 'expense',
     categoryId: 'food',
-    note: 'snacks',
+    note: 'Snacks',
     date: '2026-06-09',
   },
   't-13': {
@@ -100,7 +100,7 @@ const transactionsMock = {
     amount: 5000,
     type: 'income',
     categoryId: 'salary-old',
-    note: 'yohooo',
+    note: 'Yohooo',
     date: '2026-06-07',
   },
   't-14': {
@@ -108,7 +108,7 @@ const transactionsMock = {
     amount: 800,
     type: 'income',
     categoryId: 'other-old',
-    note: 'yohooo',
+    note: 'Yohooo',
     date: '2026-06-07',
   },
   't-15': {
@@ -116,7 +116,7 @@ const transactionsMock = {
     amount: 20,
     type: 'income',
     categoryId: 'other-old',
-    note: 'yohooo',
+    note: 'Yohooo',
     date: '2026-06-07',
   },
   't-16': {

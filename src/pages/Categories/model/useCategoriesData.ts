@@ -2,17 +2,14 @@ import { useBudgets } from '@/entity/budget';
 import { Category } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
 import { mapCategoriesToCategoryItems } from '@/widgets/categories';
-import { getCategoriesSummary } from '@/widgets/summary';
+import { useCategoriesSummary } from '@/widgets/summary';
 import { useMemo } from 'react';
 
 const useCategoriesData = (categories: Category[]) => {
   const { transactionsList, transactionsByCategory } = useTransactions();
   const { budgetsByCategory } = useBudgets();
 
-  const categoriesSummary = useMemo(
-    () => getCategoriesSummary(categories),
-    [categories],
-  );
+  const categoriesSummary = useCategoriesSummary(categories);
 
   const categoryItems = useMemo(
     () =>
@@ -21,7 +18,7 @@ const useCategoriesData = (categories: Category[]) => {
         transactionsByCategory,
         budgetsByCategory,
       ),
-    [categories, transactionsList],
+    [categories, transactionsList, budgetsByCategory],
   );
 
   return {

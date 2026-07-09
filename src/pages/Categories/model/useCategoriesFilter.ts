@@ -55,8 +55,6 @@ const useCategoriesFilter = () => {
     }));
   };
 
-  console.log(hasArchivedCategories);
-
   return {
     hasArchivedCategories,
     isFilterDisabled,
