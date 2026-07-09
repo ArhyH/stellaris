@@ -1,1 +1,1 @@
-export { AnalyticsDateSelect } from './AnalyticsDateSelect';
+export { DateSelect, useDateSelect } from './date-select';

@@ -5,7 +5,7 @@ import { sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Category } from '@/entity/category';
 import { createInitialCategory } from '../model/heplers';
-import { CategoryForm } from '../../CategoryForm';
+import { CategoryForm } from '../../category-form';
 
 type AddCategoryProps = {
   onSubmit: (category: Category) => void;

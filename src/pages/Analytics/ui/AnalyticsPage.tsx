@@ -14,7 +14,7 @@ import { Grid, gridProps } from '@/shared/ui/Grid';
 import { TopSpending } from '@/widgets/top-spending';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { rowProps } from '@/shared/ui/Row';
-import { AnalyticsDateSelect } from '@/features/analytics';
+import { DateSelect } from '@/features/analytics';
 import { useTransactions } from '@/entity/transaction';
 import { useAnalyticsData } from '../model/useAnalyticsData';
 import { useCurrentAnalytics } from '../model/useCurrentAnalytics';
@@ -83,10 +83,7 @@ const AnalyticsPage = () => {
         </PageCell>
 
         {isSelectEnabled && (
-          <AnalyticsDateSelect
-            transactionsKey={transactionsKey}
-            onChange={onChange}
-          />
+          <DateSelect transactionsKey={transactionsKey} onChange={onChange} />
         )}
       </Row>
 

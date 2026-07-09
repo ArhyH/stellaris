@@ -1,2 +1,2 @@
-export { AddBudget, useAddBudget } from './AddBudget';
-export { EditBudget, useEditBudget } from './EditBudget';
+export { AddBudget, useAddBudget } from './add-budget';
+export { EditBudget, useEditBudget } from './edit-budget';

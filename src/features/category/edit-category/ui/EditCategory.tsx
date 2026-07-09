@@ -1,5 +1,5 @@
 import { Category } from '@/entity/category';
-import { CategoryForm } from '../../CategoryForm';
+import { CategoryForm } from '../../category-form';
 
 type EditCategoryProps = {
   category: Category | null;

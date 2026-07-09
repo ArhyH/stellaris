@@ -1,6 +1,6 @@
 import { Budget } from '@/entity/budget';
 import { SelectOption } from '@/shared/ui/Select';
-import { BudgetForm } from '../../BudgetForm';
+import { BudgetForm } from '../../budget-form';
 
 type EditBudgetProps = {
   currentBudget: Budget;

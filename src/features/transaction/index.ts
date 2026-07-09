@@ -1,1 +1,1 @@
-export { AddTransaction } from './AddTransaction';
+export { AddTransaction } from './add-transaction';

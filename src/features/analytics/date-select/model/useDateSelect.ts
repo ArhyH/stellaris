@@ -2,7 +2,7 @@ import { useTransactions } from '@/entity/transaction';
 import { getPlaceholderOption, getSelectOptions } from './helpers';
 import { useMemo } from 'react';
 
-const useAnalyticsDateSelect = (transactionsKey: string | undefined) => {
+const useDateSelect = (transactionsKey: string | undefined) => {
   const { transactionsDateKeys } = useTransactions();
 
   const currentDate = new Date().toISOString().slice(0, 7);
@@ -38,4 +38,4 @@ const useAnalyticsDateSelect = (transactionsKey: string | undefined) => {
   };
 };
 
-export { useAnalyticsDateSelect };
+export { useDateSelect };

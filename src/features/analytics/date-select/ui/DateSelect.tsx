@@ -4,18 +4,18 @@ import { colors, sizes } from '@/shared/styles';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Select } from '@/shared/ui/Select';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { useAnalyticsDateSelect } from '../model/useAnalyticsDateSelect';
+import { useDateSelect } from '../model/useDateSelect';
 import { getCallbacks } from '../model/getCallbacks';
 import { buttonModes } from '../model/consts';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 
-type AnalyticsDateSelectProps = {
+type DateSelectProps = {
   transactionsKey: string | undefined;
   onChange: (value: string) => void;
 };
 
-const AnalyticsDateSelect = (props: AnalyticsDateSelectProps) => {
+const DateSelect = (props: DateSelectProps) => {
   const { transactionsKey, onChange } = props;
 
   const {
@@ -25,7 +25,7 @@ const AnalyticsDateSelect = (props: AnalyticsDateSelectProps) => {
     setectOptions,
     placeholder,
     transactionsDateKeys,
-  } = useAnalyticsDateSelect(transactionsKey);
+  } = useDateSelect(transactionsKey);
 
   if (!transactionsKey) {
     return;
@@ -93,5 +93,5 @@ const AnalyticsDateSelect = (props: AnalyticsDateSelectProps) => {
   );
 };
 
-export { AnalyticsDateSelect };
-export type { AnalyticsDateSelectProps };
+export { DateSelect };
+export type { DateSelectProps };

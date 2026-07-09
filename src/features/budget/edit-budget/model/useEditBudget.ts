@@ -1,6 +1,6 @@
 import { Budget } from '@/entity/budget';
 import { SelectOption } from '@/shared/ui/Select';
-import { useBudgetsCategories } from '../../BudgetForm';
+import { useBudgetsCategories } from '../../budget-form';
 
 const useEditBudget = (editingBudget: Budget | null): SelectOption[] | [] => {
   return useBudgetsCategories(

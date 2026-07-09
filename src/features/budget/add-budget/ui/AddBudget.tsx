@@ -1,7 +1,7 @@
 import { Budget } from '@/entity/budget';
 import { SelectOption } from '@/shared/ui/Select';
 import { createBudget } from '../model/helpers';
-import { BudgetForm } from '../../BudgetForm';
+import { BudgetForm } from '../../budget-form';
 
 type AddBudgetProps = {
   selectOptions: SelectOption[];

@@ -1,6 +1,6 @@
-export { AddCategory } from './AddCategory';
+export { AddCategory } from './add-category';
 
-export { DeleteCategory } from './DeleteCategory';
-export type { DeleteState } from './DeleteCategory';
+export { DeleteCategory } from './delete-category';
+export type { DeleteState } from './delete-category';
 
-export { EditCategory } from './EditCategory';
+export { EditCategory } from './edit-category';
