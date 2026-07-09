@@ -3,7 +3,7 @@ import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
 import { getGroupByKey } from '@/shared/helpers';
 import { useCurrentDate } from '@/shared/hooks';
-import { useBudgetsData } from '@/widgets/budget-overview';
+import { useBudgetsData } from '@/widgets/budget';
 import { useBudgetsSummary } from '@/widgets/summary';
 import { useBudgets } from '@/entity/budget';
 import { ViewModes } from '@/shared/consts';

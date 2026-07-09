@@ -7,7 +7,7 @@ import { Progress } from '@/shared/ui/Progress';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
-import { statusColors } from '../../model/consts';
+import { statusColors } from '../../data';
 import { Box, BoxWrapper } from '@/shared/ui/Box';
 
 type BudgetOverviewItemProps = {

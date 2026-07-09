@@ -1,8 +1,7 @@
 import { useMemo } from 'react';
 import { useTransactions } from '@/entity/transaction';
-import { useLineChart } from '@/widgets/charts/monthly-trend-line-chart';
 import { useAnalyticsSummary } from '@/widgets/summary';
-import { useBarChart, usePieChart } from '@/widgets/charts';
+import { useBarChart, usePieChart, useLineChart } from '@/widgets/charts';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { useTopStendingCategory } from '@/widgets/top-spending';
 import { useTargetTransactions } from './useTargetTransactions';

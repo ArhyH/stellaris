@@ -1,7 +1,7 @@
 import { FinanceTransferTypes } from '@/shared/consts';
-import { RecentTransactions } from '@/widgets/transactions-list';
+import { RecentTransactions } from '@/widgets/transaction';
 import { PieChartUi, pieChartProps } from '@/widgets/charts';
-import { BudgetOverview } from '@/widgets/budget-overview';
+import { BudgetOverview } from '@/widgets/budget';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { DashboardSummary } from '@/widgets/summary';

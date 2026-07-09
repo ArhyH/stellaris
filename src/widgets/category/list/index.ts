@@ -1,2 +1,2 @@
 export { mapCategoriesToCategoryItems } from './model/mappers';
-export { Categories } from './ui/Categories';
+export { CategoriesList } from './ui/CategoriesList';

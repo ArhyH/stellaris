@@ -2,8 +2,10 @@ import { Page, PageCell } from '@/shared/ui/Page';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary } from '@/widgets/summary';
-import { FullTransactionsList } from '@/widgets/transactions-list';
-import { TransactionsFilter } from '@/widgets/transactions-filter';
+import {
+  FullTransactionsList,
+  TransactionsFilter,
+} from '@/widgets/transaction';
 import {
   getTransactionsPageCallbacks,
   useDeleteTransactions,

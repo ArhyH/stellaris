@@ -1,7 +1,7 @@
 import { useBudgets } from '@/entity/budget';
 import { Category } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
-import { mapCategoriesToCategoryItems } from '@/widgets/categories';
+import { mapCategoriesToCategoryItems } from '@/widgets/category';
 import { useCategoriesSummary } from '@/widgets/summary';
 import { useMemo } from 'react';
 

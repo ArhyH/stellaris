@@ -3,8 +3,7 @@ import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Row, rowProps } from '@/shared/ui/Row';
 import { Page, PageCell } from '../../../shared/ui/Page';
-import { Categories } from '@/widgets/categories';
-import { CategoriesFilter } from '@/widgets/categories-filter';
+import { CategoriesList, CategoriesFilter } from '@/widgets/category';
 import { AddCategory, EditCategory, DeleteCategory } from '@/features/category';
 import {
   useCategoriesData,
@@ -75,7 +74,7 @@ const CategoriesPage = () => {
         isDisabled={isFilterDisabled}
       />
 
-      <Categories
+      <CategoriesList
         categories={categoryItems}
         onEdit={handleEditCategory}
         onDelete={handleCategoryDelete}

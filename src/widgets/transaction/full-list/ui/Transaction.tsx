@@ -9,7 +9,7 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { formatAmount } from '@/shared/helpers';
 import { formatTypes } from '@/shared/helpers/formatAmount';
 import { Button, buttonProps } from '@/shared/ui/Button';
-import { RecentTransaction } from '../../model/types';
+import { RecentTransaction } from '../../data';
 
 type TransactionProps = {
   data: RecentTransaction;

@@ -1,6 +1,6 @@
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
-import { BudgetList } from '@/widgets/budget-overview';
+import { BudgetList } from '@/widgets/budget';
 import { Row } from '@/shared/ui/Row/Row';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';

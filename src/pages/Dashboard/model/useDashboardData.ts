@@ -3,10 +3,10 @@ import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
 import { getGroupByKey, getMonthYearFromDate } from '@/shared/helpers';
 import { useDashboardSummary } from '@/widgets/summary';
-import { useRecentTransactions } from '@/widgets/transactions-list';
+import { useRecentTransactions } from '@/widgets/transaction';
 import { usePieChart } from '@/widgets/charts';
 import { FinanceTransferTypes, ViewModes } from '@/shared/consts';
-import { useBudgetsData } from '@/widgets/budget-overview';
+import { useBudgetsData } from '@/widgets/budget';
 import { useCurrentDate } from '@/shared/hooks';
 
 const useDashboardData = () => {

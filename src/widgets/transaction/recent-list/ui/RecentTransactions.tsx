@@ -1,5 +1,5 @@
 import styles from './style.module.scss';
-import { RecentTransaction } from '../../model/types';
+import { RecentTransaction } from '../../data';
 import { Transaction } from './Transaction';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
 import { Typography, typographyProps } from '@/shared/ui/Typography';

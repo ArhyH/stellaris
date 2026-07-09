@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { BudgetOverviewItem } from '@/entity/budget';
 import { Progress } from '@/shared/ui/Progress';
-import { statusColors } from '../../model/consts';
+import { statusColors } from '../../data';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { formatAmount } from '@/shared/helpers/formatAmount';
 import { colors, sizes } from '@/shared/styles';

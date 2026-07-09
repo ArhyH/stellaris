@@ -4,13 +4,13 @@ import { CategoryItem } from './CategoryItem';
 import { ID } from '@/shared/types';
 import { CategoryPlaceholder } from './CategoryPlaceholder';
 
-type CategoriesProps = {
+type CategoriesListProps = {
   categories: CategoryItemType[];
   onEdit: (id: ID) => void;
   onDelete: (id: ID) => void;
 };
 
-const Categories = (props: CategoriesProps) => {
+const CategoriesList = (props: CategoriesListProps) => {
   const { categories, onEdit, onDelete } = props;
 
   const hasCategories = categories.length > 0;
@@ -37,5 +37,5 @@ const Categories = (props: CategoriesProps) => {
   );
 };
 
-export { Categories };
-export type { CategoriesProps };
+export { CategoriesList };
+export type { CategoriesListProps };
