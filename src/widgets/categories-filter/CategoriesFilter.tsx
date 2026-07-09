@@ -1,10 +1,10 @@
-import { FilterByArchived } from '@/features/FilterByArchived';
-import { FilterByArchivedValue } from '@/features/FilterByArchived/model/types';
 import {
+  FilterByArchived,
+  FilterByArchivedValue,
   FilterByType,
   FilterByTypeValue,
   filterModes,
-} from '@/features/FilterByFinanceTransferType';
+} from '@/features/filters';
 import { sizes } from '@/shared/styles';
 import { Row, rowProps } from '@/shared/ui/Row';
 

@@ -1,6 +1,6 @@
 import { Budget, BudgetOverviewItem } from '@/entity/budget';
 import { ID } from '@/shared/types';
-import { EditBudget } from '@/features/EditBudget';
+import { EditBudget } from '@/features/budget';
 import { BudgetElement } from './BudgetElement';
 import { SelectOption } from '@/shared/ui/Select';
 

@@ -1,4 +1,4 @@
-import { FilterByTypeValue } from '@/features/FilterByFinanceTransferType';
+import { FilterByTypeValue } from '@/features/filters';
 
 interface Filters {
   category: string;

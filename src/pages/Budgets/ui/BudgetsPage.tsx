@@ -9,9 +9,8 @@ import { rowProps } from '@/shared/ui/Row/consts';
 import { BudgetSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { useBudgetsPageData } from '../model/useBudgetsPageData';
-import { AddBudget, useAddBudget } from '@/features/AddBudget';
+import { AddBudget, useAddBudget, useEditBudget } from '@/features/budget';
 import { getPageCallbacks } from '../model/getPageCallbacks';
-import { useEditBudget } from '@/features/EditBudget';
 import { Box } from '@/shared/ui/Box';
 
 const BudgetsPage = () => {

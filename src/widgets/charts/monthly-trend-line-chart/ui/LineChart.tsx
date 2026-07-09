@@ -1,5 +1,4 @@
 import { TrendChartItem } from '../model/types';
-import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Row } from '@/shared/ui/Row/Row';
@@ -16,6 +15,7 @@ import { LineChartTooltip } from './LineChartUITooltip';
 import { formatAmount } from '@/shared/helpers';
 import { formatTypes } from '@/shared/helpers/formatAmount';
 import { Line as LineUI, lineProps } from '@/shared/ui/Line';
+import { Box, BoxHeader } from '@/shared/ui/Box';
 
 type LineChartProps = {
   data: TrendChartItem[];
@@ -27,8 +27,8 @@ const LineChartUI = (props: LineChartProps) => {
   const hasData = data.length > 0;
 
   return (
-    <ContentCard>
-      <ContentCardHeader paddingBottom={sizes.sizes[20]}>
+    <Box padding={sizes.sizes[24]}>
+      <BoxHeader paddingBottom={sizes.sizes[20]}>
         <Typography
           type={typographyProps.types.title16}
           color={colors.base.white}
@@ -59,7 +59,7 @@ const LineChartUI = (props: LineChartProps) => {
             </Typography>
           </Row>
         </Row>
-      </ContentCardHeader>
+      </BoxHeader>
       {hasData ? (
         <ResponsiveContainer width="100%" height="100%" minHeight={240}>
           <LineChart data={data}>
@@ -119,7 +119,7 @@ const LineChartUI = (props: LineChartProps) => {
           income and expenses over time.
         </Typography>
       )}
-    </ContentCard>
+    </Box>
   );
 };
 

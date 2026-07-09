@@ -7,15 +7,11 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import {
-  ContentCard,
-  ContentCardHeader,
-  contentCardProps,
-} from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { BarChartItem } from '../model/types';
 import { BarChartTooltip } from './BarChartTooltip';
+import { Box, BoxHeader } from '@/shared/ui/Box';
 
 type BarChartProps = {
   date: string;
@@ -28,8 +24,8 @@ const BarChartUI = (props: BarChartProps) => {
   const hasData = data.length > 0;
 
   return (
-    <ContentCard grow={contentCardProps.grow[1]}>
-      <ContentCardHeader paddingBottom={sizes.sizes[16]}>
+    <Box padding={sizes.sizes[24]}>
+      <BoxHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.title14}
           color={colors.base.white}
@@ -43,7 +39,7 @@ const BarChartUI = (props: BarChartProps) => {
         >
           {date}
         </Typography>
-      </ContentCardHeader>
+      </BoxHeader>
       {hasData ? (
         <ResponsiveContainer width="100%" height={140}>
           <BarChart
@@ -102,7 +98,7 @@ const BarChartUI = (props: BarChartProps) => {
           throughout the month.
         </Typography>
       )}
-    </ContentCard>
+    </Box>
   );
 };
 

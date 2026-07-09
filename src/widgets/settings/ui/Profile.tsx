@@ -1,5 +1,4 @@
 import { Box, BoxWrapper } from '@/shared/ui/Box';
-import { ContentCard } from '@/features/ContentCard';
 import { Row } from '@/shared/ui/Row/Row';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
@@ -17,7 +16,7 @@ const Profile = (props: ProfileProps) => {
   const { initials, name, email } = user;
 
   return (
-    <ContentCard>
+    <Box padding={sizes.sizes[24]}>
       <Row gap={sizes.sizes[16]}>
         <Box bgColor={colors.green[1]} size={sizes.sizes[56]}>
           <BoxWrapper hasAlign>
@@ -56,7 +55,7 @@ const Profile = (props: ProfileProps) => {
           </Typography>
         </Button>
       </Row>
-    </ContentCard>
+    </Box>
   );
 };
 

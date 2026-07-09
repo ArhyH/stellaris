@@ -1,4 +1,8 @@
-export { PieChartUi, usePieChart } from './transaction-pie-chart';
+export {
+  PieChartUi,
+  pieChartProps,
+  usePieChart,
+} from './transaction-pie-chart';
 
 export { BarChartUI, useBarChart } from './spent-bar-chart';
 

@@ -1,7 +1,7 @@
 import { useBudgets } from '@/entity/budget';
 import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
-import { DeleteState } from '@/features/DeleteCategory';
+import { DeleteState } from '@/features/category';
 import { getGroupByKey } from '@/shared/helpers';
 import { ID } from '@/shared/types';
 import { useState } from 'react';

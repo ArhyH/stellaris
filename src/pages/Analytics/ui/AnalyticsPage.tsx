@@ -4,12 +4,17 @@ import { colors, sizes } from '@/shared/styles';
 import { AnalyticsSummary } from '@/widgets/summary';
 import { Row } from '@/shared/ui/Row/Row';
 import { FinanceTransferTypes } from '@/shared/consts';
-import { BarChartUI, PieChartUi, LineChartUI } from '@/widgets/charts';
+import {
+  BarChartUI,
+  PieChartUi,
+  LineChartUI,
+  pieChartProps,
+} from '@/widgets/charts';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { TopSpending } from '@/widgets/top-spending';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { rowProps } from '@/shared/ui/Row';
-import { AnalyticsDateSelect } from '@/features/AnalyticsDateSelect';
+import { AnalyticsDateSelect } from '@/features/analytics';
 import { useTransactions } from '@/entity/transaction';
 import { useAnalyticsData } from '../model/useAnalyticsData';
 import { useCurrentAnalytics } from '../model/useCurrentAnalytics';
@@ -92,12 +97,14 @@ const AnalyticsPage = () => {
           data={expencePieData}
           date={date}
           type={FinanceTransferTypes.expense}
+          mode={pieChartProps.modes.analytics}
         />
 
         <PieChartUi
           data={incomePieData}
           date={date}
           type={FinanceTransferTypes.income}
+          mode={pieChartProps.modes.analytics}
         />
       </Grid>
 

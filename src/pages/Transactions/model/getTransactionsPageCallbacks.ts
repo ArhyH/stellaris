@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { FilterByTypeValue } from '@/features/FilterByFinanceTransferType';
+import { FilterByTypeValue } from '@/features/filters';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { ID } from '@/shared/types';
 import { Filters } from './types';

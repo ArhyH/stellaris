@@ -5,8 +5,7 @@ import { Row, rowProps } from '@/shared/ui/Row';
 import { Page, PageCell } from '../../../shared/ui/Page';
 import { Categories } from '@/widgets/categories';
 import { CategoriesFilter } from '@/widgets/categories-filter';
-import { AddCategory } from '@/features/AddCategory';
-import { EditCategory } from '@/features/EditCategory';
+import { AddCategory, EditCategory, DeleteCategory } from '@/features/category';
 import {
   useCategoriesData,
   useCategoriesFilter,
@@ -14,7 +13,6 @@ import {
   useEditCategory,
 } from '../model';
 import { useCategories } from '@/entity/category';
-import { DeleteCategory } from '@/features/DeleteCategory';
 
 const CategoriesPage = () => {
   const { addCategory, editCategory } = useCategories();

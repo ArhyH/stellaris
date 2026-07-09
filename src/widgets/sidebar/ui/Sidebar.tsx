@@ -5,9 +5,9 @@ import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { AddTransaction } from '@/features/AddTransaction';
+import { AddTransaction } from '@/features/transaction';
 import { Transaction } from '@/entity/transaction';
-import { AddCategory } from '@/features/AddCategory';
+import { AddCategory } from '@/features/category';
 import { Category } from '@/entity/category';
 
 type SidebarProps = {

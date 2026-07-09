@@ -2,13 +2,8 @@ import styles from './style.module.scss';
 import { Box } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { FinanceTransferType } from '@/shared/types';
 import { Row, rowProps } from '@/shared/ui/Row';
-
-type PieChartPlaceholderProps = {
-  date: string;
-  type: FinanceTransferType;
-};
+import { PieChartPlaceholderProps } from './types';
 
 const PieChartPlaceholder = (props: PieChartPlaceholderProps) => {
   const { date, type } = props;

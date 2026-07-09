@@ -1,14 +1,15 @@
 import { useMemo, useState } from 'react';
 import { useCategories } from '@/entity/category';
 import { useTransactions } from '@/entity/transaction';
-import { filterByCategory } from '@/features/FilterByCategory';
-import { filterByDateRange } from '@/features/FilterByDate/model/filterByDateRange';
 import {
-  DEFAULT_FILTER,
+  filterByCategory,
+  filterByDateRange,
+  DEFAULT_TYPE_FILTER,
   filterDataByFinanceTransferType,
   filterTypes,
-} from '@/features/FilterByFinanceTransferType';
-import { filterBySearchQuery } from '@/features/FilterByQuery';
+  filterBySearchQuery,
+} from '@/features/filters';
+
 import { FinanceTransferTypes } from '@/shared/consts';
 
 const useTransactionsFilter = () => {
@@ -17,7 +18,7 @@ const useTransactionsFilter = () => {
 
   const [filters, setFilters] = useState({
     category: FinanceTransferTypes.all,
-    financeType: DEFAULT_FILTER,
+    financeType: DEFAULT_TYPE_FILTER,
     searchQuery: '',
     date: {
       start: '',

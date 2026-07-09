@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
-import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { colors, sizes } from '@/shared/styles';
 import { Separator, separatorProps } from '@/shared/ui/Separator';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { PreferenceItem } from './PreferenceItem';
 import { SETTINGS_CONFIG } from '../model/consts';
 import { ConfigItem, Settings, SettingsCallbacks } from '../model/types';
+import { Box, BoxHeader } from '@/shared/ui/Box';
 
 type PreferencesProps = {
   callbacks: SettingsCallbacks;
@@ -30,15 +30,15 @@ const Preferences = (props: PreferencesProps) => {
   const items = mapDataToPreferenceItem(callbacks, settings, SETTINGS_CONFIG);
 
   return (
-    <ContentCard>
-      <ContentCardHeader paddingBottom={sizes.sizes[16]}>
+    <Box padding={sizes.sizes[24]}>
+      <BoxHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.subtitle16}
           color={colors.lightgray[2]}
         >
           Preferences
         </Typography>
-      </ContentCardHeader>
+      </BoxHeader>
       <Separator type={separatorProps.types.horizontal} />
 
       <>
@@ -59,7 +59,7 @@ const Preferences = (props: PreferencesProps) => {
           </Fragment>
         ))}
       </>
-    </ContentCard>
+    </Box>
   );
 };
 

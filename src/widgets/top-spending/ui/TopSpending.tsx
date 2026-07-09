@@ -1,7 +1,6 @@
-import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
-import { Box } from '@/shared/ui/Box';
+import { Box, BoxHeader } from '@/shared/ui/Box';
 import { TopSpendingCategory } from '../model/types';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
@@ -22,8 +21,8 @@ const TopSpending = (props: TopSpendingProps) => {
     data;
 
   return (
-    <ContentCard>
-      <ContentCardHeader paddingBottom={sizes.sizes[16]}>
+    <Box padding={sizes.sizes[24]}>
+      <BoxHeader paddingBottom={sizes.sizes[16]}>
         <Typography
           type={typographyProps.types.title14}
           color={colors.base.white}
@@ -37,7 +36,7 @@ const TopSpending = (props: TopSpendingProps) => {
         >
           {date}
         </Typography>
-      </ContentCardHeader>
+      </BoxHeader>
       <Box
         bgColor={colors.categoryOp[categoryColor]}
         gap={sizes.sizes[4]}
@@ -73,7 +72,7 @@ const TopSpending = (props: TopSpendingProps) => {
           {percent}% of total expenses
         </Typography>
       </Box>
-    </ContentCard>
+    </Box>
   );
 };
 

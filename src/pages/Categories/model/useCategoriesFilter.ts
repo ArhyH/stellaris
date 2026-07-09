@@ -1,15 +1,13 @@
 import { useMemo, useState } from 'react';
 import { Category, useCategories } from '@/entity/category';
 import {
-  DEFAULT_FILTER as DEFAULT_FILTER_TYPE,
+  DEFAULT_TYPE_FILTER,
   FilterByTypeValue,
   filterDataByFinanceTransferType,
-} from '@/features/FilterByFinanceTransferType';
-import {
-  DEFAULT_FILTER as DEFAULT_FILTER_STATE,
+  DEFAULT_STATE_FILTER,
   FilterByArchivedValue,
   filterCategoriesByArchived,
-} from '@/features/FilterByArchived';
+} from '@/features/filters';
 
 type Filter = {
   state: FilterByArchivedValue;
@@ -25,8 +23,8 @@ const useCategoriesFilter = () => {
   const isFilterDisabled = categoriesList.length === 0;
 
   const [currentFilter, setCurrentFilter] = useState<Filter>({
-    state: DEFAULT_FILTER_STATE,
-    type: DEFAULT_FILTER_TYPE,
+    state: DEFAULT_STATE_FILTER,
+    type: DEFAULT_TYPE_FILTER,
   });
 
   const filteredCategories = useMemo(

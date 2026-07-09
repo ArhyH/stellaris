@@ -16,12 +16,17 @@ const usePieChart = (
     [categoriesByType, type],
   );
 
-  const barChartData = useMemo(
-    () => mapTransactionsToPieChartData(transactions, currentCategories),
-    [transactions, currentCategories],
+  const currentTransactions = useMemo(
+    () => [...transactions].filter((transaction) => transaction.type === type),
+    [transactions],
   );
 
-  return barChartData;
+  const pieChartData = useMemo(
+    () => mapTransactionsToPieChartData(currentTransactions, currentCategories),
+    [currentTransactions, currentCategories],
+  );
+
+  return pieChartData;
 };
 
 export { usePieChart };

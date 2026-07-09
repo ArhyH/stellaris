@@ -2,12 +2,12 @@ import styles from './style.module.scss';
 import { RecentTransaction } from '../../model/types';
 import { Transaction } from './Transaction';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
-import { ContentCard, ContentCardHeader } from '@/features/ContentCard';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { TransactionsPlaceholder } from './TransactionsPlaceholder';
+import { Box, BoxHeader } from '@/shared/ui/Box';
 
 type RecentTransactionsProps = {
   recentTransactions: RecentTransaction[];
@@ -24,8 +24,8 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
 
   return (
     <div className={styles['recent-transaction__wrapper']}>
-      <ContentCard>
-        <ContentCardHeader paddingBottom={sizes.sizes[20]}>
+      <Box padding={sizes.sizes[24]}>
+        <BoxHeader paddingBottom={sizes.sizes[20]}>
           <Typography
             type={typographyProps.types.title16}
             color={colors.base.white}
@@ -38,7 +38,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
             </Typography>
             <Icon icon={icons.arrowRight12} size={sizes.sizes[12]} />
           </RouterLink>
-        </ContentCardHeader>
+        </BoxHeader>
 
         {hasTransactions ? (
           <ul className={styles['recent-transaction__list']}>
@@ -61,7 +61,7 @@ const RecentTransactions = (props: RecentTransactionsProps) => {
         ) : (
           <TransactionsPlaceholder />
         )}
-      </ContentCard>
+      </Box>
     </div>
   );
 };

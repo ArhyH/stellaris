@@ -1,8 +1,3 @@
-import {
-  ContentCard,
-  ContentCardHeader,
-  contentCardProps,
-} from '@/features/ContentCard';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { RouterLink } from '@/shared/ui/RouterLink/RouterLink';
@@ -12,6 +7,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 import { BudgetOverviewItem as BudgetOverviewItemType } from '@/entity/budget';
 import { BudgetsPlaceholder } from './BudgetsPlaceholder';
+import { Box, BoxHeader } from '@/shared/ui/Box';
 
 type BudgetOverviewProps = {
   budgets: BudgetOverviewItemType[];
@@ -27,8 +23,8 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
   const hasBudgets = budgets.length > 0;
 
   return (
-    <ContentCard grow={contentCardProps.grow[3]}>
-      <ContentCardHeader paddingBottom={sizes.sizes[20]}>
+    <Box padding={sizes.sizes[24]}>
+      <BoxHeader paddingBottom={sizes.sizes[20]}>
         <Typography
           type={typographyProps.types.title16}
           color={colors.base.white}
@@ -39,7 +35,7 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
           <Typography type={typographyProps.types.text12}>View All</Typography>
           <Icon icon={icons.arrowRight12} size={sizes.sizes[12]} />
         </RouterLink>
-      </ContentCardHeader>
+      </BoxHeader>
       {hasBudgets ? (
         <ul className={styles['budget-overview']}>
           {budgets.map((budget) => {
@@ -49,7 +45,7 @@ const BudgetOverview = (props: BudgetOverviewProps) => {
       ) : (
         <BudgetsPlaceholder />
       )}
-    </ContentCard>
+    </Box>
   );
 };
 

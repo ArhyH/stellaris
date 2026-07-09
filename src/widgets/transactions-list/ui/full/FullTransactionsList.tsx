@@ -1,4 +1,4 @@
-import { ContentCard } from '@/features/ContentCard';
+import { useMemo, useState } from 'react';
 import {
   RecentTransaction as RecentTransactionType,
   SortConfig,
@@ -11,11 +11,11 @@ import { colors, sizes } from '@/shared/styles';
 import { Button, ButtonIcon, buttonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { useMemo, useState } from 'react';
 import { sortDirections, sortFields } from '../../model/consts';
 import { SORT_CONFID } from '../../model/sort';
 import { ID } from '@/shared/types';
 import { TransactionsPlaceholder } from './TransactionsPlaceholder';
+import { Box } from '@/shared/ui/Box';
 
 type FullTransactionsListProps = {
   transactions: RecentTransactionType[];
@@ -63,7 +63,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
   const hasTransactions = transactions.length > 0;
 
   return (
-    <ContentCard padding={sizes.sizes[0]}>
+    <Box>
       <div className={styles['transactions-list__wrapper']}>
         <div className={styles['transactions-list__header']}>
           <Button
@@ -144,7 +144,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
           </Typography>
         </div>
       </div>
-    </ContentCard>
+    </Box>
   );
 };
 

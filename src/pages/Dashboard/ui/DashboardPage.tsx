@@ -1,6 +1,6 @@
 import { FinanceTransferTypes } from '@/shared/consts';
 import { RecentTransactions } from '@/widgets/transactions-list';
-import { PieChartUi } from '@/widgets/charts';
+import { PieChartUi, pieChartProps } from '@/widgets/charts';
 import { BudgetOverview } from '@/widgets/budget-overview';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
@@ -34,7 +34,13 @@ const DashboardPage = () => {
           type={typographyProps.types.text14}
           color={colors.lightgray[2]}
         >
-          Here's your financial overview for {monthYear}
+          Here's your financial overview for
+          <Typography
+            type={typographyProps.types.title14}
+            color={colors.base.white}
+          >
+            &nbsp; {monthYear}
+          </Typography>
         </Typography>
       </PageCell>
 
@@ -45,6 +51,7 @@ const DashboardPage = () => {
           data={pieChartData}
           date={monthYear}
           type={FinanceTransferTypes.expense}
+          mode={pieChartProps.modes.dashboard}
         />
         <BudgetOverview budgets={budgetData} />
       </Grid>

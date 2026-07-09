@@ -1,13 +1,14 @@
 import styles from './style.module.scss';
-import { DefaultLegendContentProps } from 'recharts';
 import { PieChartItem } from '../model/types';
 import { formatAmount } from '@/shared/helpers/formatAmount';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors } from '@/shared/styles';
 import { Dot } from '@/shared/ui/Dot';
+import { CustomLegendProps } from './types';
+import { pieChartProps } from './consts';
 
-const PieChartLegend = (props: DefaultLegendContentProps) => {
-  const { payload } = props;
+const PieChartLegend = (props: CustomLegendProps) => {
+  const { payload, mode } = props;
 
   if (payload) {
     return (
@@ -34,6 +35,15 @@ const PieChartLegend = (props: DefaultLegendContentProps) => {
               </span>
 
               <span className={styles['pie-chart__item-cell']}>
+                {mode === pieChartProps.modes.analytics && (
+                  <Typography
+                    type={typographyProps.types.text12}
+                    color={colors.lightgray[3]}
+                  >
+                    {item.percent}%
+                  </Typography>
+                )}
+
                 <Typography
                   type={typographyProps.types.subtitle16}
                   color={colors.base.white}

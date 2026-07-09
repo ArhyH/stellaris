@@ -1,16 +1,16 @@
 import styles from './style.module.scss';
-import { ContentCard } from '@/features/ContentCard';
 import { sizes } from '@/shared/styles';
 import {
   FilterByType,
   FilterByTypeValue,
   filterModes,
-} from '@/features/FilterByFinanceTransferType';
-import { FilterByCategory } from '@/features/FilterByCategory';
+  FilterByCategory,
+  FilterByQuery,
+  FilterByDate,
+} from '@/features/filters';
 import { ID } from '@/shared/types';
 import { Category } from '@/entity/category';
-import { FilterByQuery } from '@/features/FilterByQuery';
-import { FilterByDate } from '@/features/FilterByDate';
+import { Box } from '@/shared/ui/Box';
 
 type TransactionsFilterProps = {
   onTypeFilterChange: (filter: FilterByTypeValue) => void;
@@ -38,7 +38,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
   } = props;
 
   return (
-    <ContentCard padding={sizes.sizes[16]}>
+    <Box padding={sizes.sizes[16]}>
       <div className={styles['transactions-filter']}>
         <div className={styles['transactions-filter__cell']}>
           <FilterByQuery
@@ -73,7 +73,7 @@ const TransactionsFilter = (props: TransactionsFilterProps) => {
           />
         </div>
       </div>
-    </ContentCard>
+    </Box>
   );
 };
 
