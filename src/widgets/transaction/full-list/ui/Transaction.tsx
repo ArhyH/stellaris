@@ -94,7 +94,7 @@ const Transaction = (props: TransactionProps) => {
             : colors.green[1]
         }
       >
-        {formatAmount(amount, formatTypes.full, type)}
+        {formatAmount({ amount: amount, format: formatTypes.full, type: type })}
       </Typography>
 
       <div className={styles['transactions-list__button']}>

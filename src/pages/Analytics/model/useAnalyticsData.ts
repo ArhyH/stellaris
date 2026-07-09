@@ -6,6 +6,11 @@ import { FinanceTransferTypes } from '@/shared/consts';
 import { useTopStendingCategory } from '@/widgets/top-spending';
 import { useTargetTransactions } from './useTargetTransactions';
 import { getMonthYearFromDate } from '@/shared/helpers';
+import { useTotalSavings } from '@/widgets/summary/analytics/model/useTotalSavings';
+import {
+  AnalyticsSummaryType,
+  SummaryDeltas,
+} from '@/widgets/summary/analytics';
 
 const useAnalyticsData = (transactionsKey: string) => {
   const { transactionsDateKeys } = useTransactions();
@@ -31,6 +36,18 @@ const useAnalyticsData = (transactionsKey: string) => {
     prevTransactions,
   );
 
+  const totalSavings = useTotalSavings(transactionsKey);
+
+  const summaries: AnalyticsSummaryType = {
+    ...currentSummary,
+    totalSavings: totalSavings.current,
+  };
+
+  const deltas: SummaryDeltas = {
+    ...summaryDeltas,
+    totalSavings: totalSavings.delta,
+  };
+
   const incomePieData = usePieChart(
     currentTransactions,
     FinanceTransferTypes.income,
@@ -52,8 +69,8 @@ const useAnalyticsData = (transactionsKey: string) => {
   return {
     isSelectEnabled,
     lineChartData,
-    currentSummary,
-    summaryDeltas,
+    summaries,
+    deltas,
     incomePieData,
     expencePieData,
     topCategory,

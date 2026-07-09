@@ -9,6 +9,7 @@ import {
   SummaryCardHeader,
 } from '@/shared/ui/SummaryCard';
 import { deltaFormatTypes } from '@/shared/helpers/delta';
+import { formatTypes } from '@/shared/helpers/formatAmount';
 
 type AnalyticsCardProps = {
   title: string;
@@ -26,7 +27,9 @@ const getTextColor = (key: keyof AnalyticsSummary): ColorToken => {
         ? colors.red[1]
         : key === 'saving'
           ? colors.violet[1]
-          : colors.yellow[1];
+          : key === 'totalSavings'
+            ? colors.blue[1]
+            : colors.yellow[1];
 
   return color;
 };
@@ -50,7 +53,7 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
         <Icon
           icon={icon}
           color={getTextColor(budgetKey)}
-          size={sizes.sizes[14]}
+          size={sizes.sizes[20]}
         />
       </SummaryCardHeader>
 
@@ -60,7 +63,7 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
           color={getTextColor(budgetKey)}
         >
           {summary !== null && budgetKey !== 'saving'
-            ? formatAmount(summary)
+            ? formatAmount({ amount: summary, format: formatTypes.full })
             : budgetKey === 'saving'
               ? summary !== null
                 ? `${summary?.toFixed(1)}%`
@@ -76,7 +79,9 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
                 : typographyProps.types.deltaPositive
             }
           >
-            {`${formatDelta(delta, deltaFormatTypes.icon)} vs last month`}
+            {budgetKey === 'totalSavings'
+              ? `${formatAmount({ amount: delta, format: formatTypes.full, showSign: true })} vs last month`
+              : `${formatDelta(delta, deltaFormatTypes.icon)} vs last month`}
           </Typography>
         )}
       </SummaryCardContent>

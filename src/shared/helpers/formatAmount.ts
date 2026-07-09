@@ -9,17 +9,23 @@ const formatTypes = {
 
 type FormatTypes = keyof typeof formatTypes;
 
-const formatAmount = (
-  amount: number,
-  format: FormatTypes = formatTypes.full,
-  type?: FinanceTransferType,
-) => {
+type AmountProps = {
+  amount: number;
+  format: FormatTypes;
+  type?: FinanceTransferType;
+  showSign?: boolean;
+};
+
+const formatAmount = (props: AmountProps) => {
+  const { amount, format = formatTypes.full, type, showSign } = props;
+
   let formatted = '';
 
   if (format === formatTypes.full) {
     formatted = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
+      ...(showSign ? { signDisplay: 'exceptZero' } : {}),
     }).format(amount);
   }
 

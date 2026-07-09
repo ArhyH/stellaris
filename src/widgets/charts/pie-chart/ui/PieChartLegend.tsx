@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import { PieChartItem } from '../model/types';
-import { formatAmount } from '@/shared/helpers/formatAmount';
+import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors } from '@/shared/styles';
 import { Dot } from '@/shared/ui/Dot';
@@ -48,7 +48,10 @@ const PieChartLegend = (props: CustomLegendProps) => {
                   type={typographyProps.types.subtitle16}
                   color={colors.base.white}
                 >
-                  {formatAmount(item.value)}
+                  {formatAmount({
+                    amount: item.value,
+                    format: formatTypes.full,
+                  })}
                 </Typography>
               </span>
             </li>

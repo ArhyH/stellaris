@@ -1,6 +1,6 @@
 import { ColorToken, colors } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { formatAmount } from '@/shared/helpers/formatAmount';
+import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
 import { BudgetsSummary, SummaryKey } from '../model/types';
 import { SummaryCard } from '@/shared/ui/SummaryCard';
 
@@ -38,7 +38,7 @@ const BudgetCard = (props: BudgetCardProps) => {
         color={getTextColor(budgetKey)}
       >
         {budgetKey !== 'over'
-          ? formatAmount(summary)
+          ? formatAmount({ amount: summary, format: formatTypes.full })
           : summary > 1
             ? `${summary} categories`
             : `${summary} category`}

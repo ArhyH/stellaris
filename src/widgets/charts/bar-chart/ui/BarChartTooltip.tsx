@@ -40,7 +40,7 @@ const BarChartTooltip = ({ active, payload }: CustomTooltipProps) => {
           type={typographyProps.types.title14}
           color={colors.base.white}
         >
-          {formatAmount(item.spent, formatTypes.short)}
+          {formatAmount({ amount: item.spent, format: formatTypes.short })}
         </Typography>
       </Row>
     </div>

@@ -25,7 +25,7 @@ const PieChartTooltip = (props: CustomTooltipProps) => {
           item.categoryColor ? colors.category[item.categoryColor] : undefined
         }
       >
-        {formatAmount(item.value, formatTypes.short)}
+        {formatAmount({ amount: item.value, format: formatTypes.short })}
       </Typography>
 
       {mode === pieChartProps.modes.analytics && (

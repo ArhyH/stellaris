@@ -42,7 +42,7 @@ const LineChartTooltip = ({ active, payload }: CustomTooltipProps) => {
             type={typographyProps.types.title14}
             color={colors.base.white}
           >
-            {formatAmount(item.income, formatTypes.short)}
+            {formatAmount({ amount: item.income, format: formatTypes.short })}
           </Typography>
         </Row>
 
@@ -58,7 +58,7 @@ const LineChartTooltip = ({ active, payload }: CustomTooltipProps) => {
             type={typographyProps.types.title14}
             color={colors.base.white}
           >
-            {formatAmount(item.expense, formatTypes.short)}
+            {formatAmount({ amount: item.expense, format: formatTypes.short })}
           </Typography>
         </Row>
       </div>

@@ -29,8 +29,8 @@ const AnalyticsPage = () => {
 
   const {
     lineChartData,
-    currentSummary,
-    summaryDeltas,
+    summaries,
+    deltas,
     incomePieData,
     expencePieData,
     topCategory,
@@ -87,7 +87,7 @@ const AnalyticsPage = () => {
         )}
       </Row>
 
-      <AnalyticsSummary summaries={currentSummary} deltas={summaryDeltas} />
+      <AnalyticsSummary summaries={summaries} deltas={deltas} />
 
       <Grid templateColumns={gridProps.columns['1-1']}>
         <PieChartUi

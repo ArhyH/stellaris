@@ -24,7 +24,9 @@ const getDailySpent = (transactions: Transaction[]) => {
     : (sorted[mid - 1] + sorted[mid]) / 2;
 };
 
-const getAnalyticsSummary = (transactions: Transaction[]): AnalyticsSummary => {
+const getAnalyticsSummary = (
+  transactions: Transaction[],
+): Omit<AnalyticsSummary, 'totalSavings'> => {
   const { income, expense } = getSummary(transactions);
   const saving = getSavingRate(income, expense);
   const daily = getDailySpent(transactions);
@@ -38,9 +40,9 @@ const getAnalyticsSummary = (transactions: Transaction[]): AnalyticsSummary => {
 };
 
 const getAnalyticsDeltas = (
-  current: AnalyticsSummary,
-  prev: AnalyticsSummary,
-): SummaryDeltas => {
+  current: Omit<AnalyticsSummary, 'totalSavings'>,
+  prev: Omit<AnalyticsSummary, 'totalSavings'>,
+): Omit<SummaryDeltas, 'totalSavings'> => {
   return {
     income: getDelta(current.income, prev.income),
     expense: getDelta(current.expense, prev.expense),

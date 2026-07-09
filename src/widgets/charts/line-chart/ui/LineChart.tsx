@@ -73,7 +73,7 @@ const LineChartUI = (props: LineChartProps) => {
             <YAxis
               tick={{ fontSize: 10, fill: `var(--${colors.lightgray[3]})` }}
               tickFormatter={(value) =>
-                formatAmount(value, formatTypes.compact)
+                formatAmount({ amount: value, format: formatTypes.compact })
               }
               tickLine={false}
               axisLine={false}

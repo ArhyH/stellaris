@@ -18,6 +18,8 @@ import clock24 from './clock-24.svg';
 import cross14 from './cross-14.svg';
 import check12 from './check-12.svg';
 import delete24 from './delete-24.svg';
+import coins24 from './coins-24.svg';
+import shield24 from './shield-24.svg';
 
 import house24 from './house-24.svg';
 import car24 from './car-24.svg';
@@ -104,6 +106,8 @@ const icons = {
   cross14,
   check12,
   delete24,
+  coins24,
+  shield24,
   ...categoriesIcons,
 } as const satisfies Record<string, UtilityTypes.SvgContent>;
 

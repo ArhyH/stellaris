@@ -27,20 +27,27 @@ const lightgrayColors = {
 const greenColors = {
   1: 'green-1',
   2: 'green-2',
+  3: 'green-3',
 } as const;
 
 const redColors = {
   1: 'red-1',
   2: 'red-2',
+  3: 'red-3',
+  4: 'red-4',
 } as const;
 
 const pinkColors = {
   1: 'pink-1',
+  2: 'pink-2',
+  3: 'pink-3',
 } as const;
 
 const yellowColors = {
   1: 'yellow-1',
   2: 'yellow-2',
+  3: 'yellow-3',
+  4: 'yellow-4',
 } as const;
 
 const lightblueColors = {
@@ -51,11 +58,15 @@ const lightblueColors = {
 
 const blueColos = {
   1: 'blue-1',
+  2: 'blue-2',
+  3: 'blue-3',
+  4: 'blue-4',
 } as const;
 
 const violetColors = {
   1: 'violet-1',
   2: 'violet-2',
+  3: 'violet-3',
 } as const;
 
 const labelColors = {

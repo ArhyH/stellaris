@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import styles from './style.module.scss';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
-import { formatAmount } from '@/shared/helpers/formatAmount';
+import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
 import { Progress } from '@/shared/ui/Progress';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
@@ -67,13 +67,13 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
             type={typographyProps.types.title14}
             color={statusColors[status]}
           >
-            {formatAmount(spent)}
+            {formatAmount({ amount: spent, format: formatTypes.full })}
           </Typography>
           <Typography
             type={typographyProps.types.title14}
             color={colors.lightgray[3]}
           >
-            &#160;/ {formatAmount(limit)}
+            &#160;/ {formatAmount({ amount: limit, format: formatTypes.full })}
           </Typography>
         </div>
       </div>
@@ -97,14 +97,19 @@ const BudgetOverviewItem = (props: BudgetOverviewItemProps) => {
               type={typographyProps.types.text12}
               color={colors.lightgray[2]}
             >
-              {formatAmount(remaining)} remaining
+              {formatAmount({ amount: remaining, format: formatTypes.full })}{' '}
+              remaining
             </Typography>
           ) : (
             <Typography
               type={typographyProps.types.text12}
               color={colors.red[1]}
             >
-              {formatAmount(overflowAmount)} over
+              {formatAmount({
+                amount: overflowAmount,
+                format: formatTypes.full,
+              })}{' '}
+              over
             </Typography>
           )}
         </div>

@@ -8,6 +8,7 @@ import { icons } from '@/shared/assets';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { formatAmount } from '@/shared/helpers';
 import { Row } from '@/shared/ui/Row/Row';
+import { formatTypes } from '@/shared/helpers/formatAmount';
 
 type TransactionCardProps = {
   title: string;
@@ -63,7 +64,7 @@ const TransactionCard = (props: TransactionCardProps) => {
             type={typographyProps.types.title18}
             color={getTextColor(budgetKey, summary)}
           >
-            {formatAmount(summary)}
+            {formatAmount({ amount: summary, format: formatTypes.full })}
           </Typography>
         </SummaryCardContent>
       </Row>

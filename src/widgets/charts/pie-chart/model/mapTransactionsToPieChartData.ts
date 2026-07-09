@@ -18,23 +18,22 @@ const mapTransactionsToPieChartData = (
     return [];
   }
 
-  const chartItems = categories.map((category) => {
-    const value = totalByCategories.get(category.id) ?? 0;
+  return categories
+    .map((category) => {
+      const value = totalByCategories.get(category.id) ?? 0;
 
-    return {
-      categoryId: category.id,
-      categoryColor: category.color,
-      categoryIcon: category.icon,
-      categoryName: category.name,
-      value,
-      percent: Math.round((value / total) * 100),
-      fill: `var(--${category.color ? colors.category[category.color] : 'lightgray-4'})`,
-    };
-  });
-
-  const filteredItems = chartItems.filter((item) => item.value !== 0);
-
-  return filteredItems.sort((a, b) => b.value - a.value);
+      return {
+        categoryId: category.id,
+        categoryColor: category.color,
+        categoryIcon: category.icon,
+        categoryName: category.name,
+        value,
+        percent: Math.round((value / total) * 100),
+        fill: `var(--${category.color ? colors.category[category.color] : 'lightgray-4'})`,
+      };
+    })
+    .filter((item) => item.value !== 0)
+    .sort((a, b) => b.value - a.value);
 };
 
 export { mapTransactionsToPieChartData };
