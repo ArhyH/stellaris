@@ -3,36 +3,41 @@ import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { Row, rowProps } from '@/shared/ui/Row';
 import { Page, PageCell } from '../../../shared/ui/Page';
-import { Categories } from '@/widgets/categories';
-import { CategoriesFilter } from '@/widgets/categories-filter';
-import { AddCategory } from '@/features/AddCategory';
-import { EditCategory } from '@/features/EditCategory';
+import { CategoriesList, CategoriesFilter } from '@/widgets/category';
+import { AddCategory, EditCategory, DeleteCategory } from '@/features/category';
 import {
   useCategoriesData,
   useCategoriesFilter,
+  useDeleteCategory,
   useEditCategory,
 } from '../model';
 import { useCategories } from '@/entity/category';
 
 const CategoriesPage = () => {
-  const {
-    categories,
-    categoriesList,
-    addCategory,
-    editCategory,
-    deleteCategory,
-  } = useCategories();
+  const { addCategory, editCategory } = useCategories();
 
-  const { setCurrentFilter, currentCategories } =
-    useCategoriesFilter(categoriesList);
+  const {
+    currentCategories,
+    hasArchivedCategories,
+    isFilterDisabled,
+    onFilterTypeChange,
+    onFilterStateChange,
+  } = useCategoriesFilter();
 
   const { editingCategory, isEditOpen, handleEditCategory, setIsEditOpen } =
-    useEditCategory(categories);
+    useEditCategory();
 
-  const { categoriesSummary, categoryItems } = useCategoriesData(
-    categoriesList,
-    currentCategories,
-  );
+  const {
+    isDeleteOpen,
+    deleteState,
+    setIsDeleteOpen,
+    handleCategoryDelete,
+    onDeleteSubmit,
+    onDeleteCancel,
+  } = useDeleteCategory();
+
+  const { categoriesSummary, categoryItems } =
+    useCategoriesData(currentCategories);
 
   return (
     <Page>
@@ -62,12 +67,17 @@ const CategoriesPage = () => {
 
       <CategoriesSummary summaries={categoriesSummary} />
 
-      <CategoriesFilter onFilterChange={setCurrentFilter} />
+      <CategoriesFilter
+        onFilterTypeChange={onFilterTypeChange}
+        onFilterStateChange={onFilterStateChange}
+        hasArchivedCategories={hasArchivedCategories}
+        isDisabled={isFilterDisabled}
+      />
 
-      <Categories
+      <CategoriesList
         categories={categoryItems}
         onEdit={handleEditCategory}
-        onDelete={deleteCategory}
+        onDelete={handleCategoryDelete}
       />
 
       <EditCategory
@@ -75,6 +85,14 @@ const CategoriesPage = () => {
         open={isEditOpen}
         onOpen={setIsEditOpen}
         onSubmit={editCategory}
+      />
+
+      <DeleteCategory
+        open={isDeleteOpen}
+        onOpen={setIsDeleteOpen}
+        onSubmit={onDeleteSubmit}
+        onClose={onDeleteCancel}
+        deleteState={deleteState}
       />
     </Page>
   );

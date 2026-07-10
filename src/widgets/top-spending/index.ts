@@ -1,2 +1,2 @@
-export { getTopSpendingCategory } from './model/getTopSpendingCategory';
+export { useTopStendingCategory } from './model/useTopStendingCategory';
 export { TopSpending } from './ui/TopSpending';

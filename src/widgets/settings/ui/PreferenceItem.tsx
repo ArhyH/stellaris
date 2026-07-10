@@ -4,30 +4,23 @@ import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { Icon } from '@/shared/ui/Icon';
 import { Cell } from '@/shared/ui/Cell';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
-import { Select, selectProps } from '@/shared/ui/Select';
-import { Setting } from '../model/types';
+import { Select, SelectOption } from '@/shared/ui/Select';
 
 type PreferenceItemProps = {
   name: string;
   icon: UtilityTypes.SvgContent;
   description: string;
-  settings: Setting[];
+  options: SelectOption[];
   selectedSetting: string;
   onChange: (value: string) => void;
 };
 
-const mapSettingsToSelectOptions = (settings: Setting[]) => {
-  return settings.map((item) => {
-    return {
-      value: item,
-      description: item,
-    };
-  });
-};
-
 const PreferenceItem = (props: PreferenceItemProps) => {
-  const { name, icon, description, settings, selectedSetting, onChange } =
-    props;
+  const { name, icon, description, options, selectedSetting, onChange } = props;
+
+  const [placeholderValue] = [...options].filter(
+    (option) => option.value === selectedSetting,
+  );
 
   return (
     <Row
@@ -65,12 +58,13 @@ const PreferenceItem = (props: PreferenceItemProps) => {
         </Cell>
       </Row>
 
-      {/* <Select
-        options={mapSettingsToSelectOptions(settings)}
+      <Select
+        options={options}
         value={selectedSetting}
+        placeholderOption={placeholderValue}
         onChange={onChange}
-        name={name}
-      /> */}
+        {...(name === 'Currency' && { width: sizes.sizes[216] })}
+      />
     </Row>
   );
 };

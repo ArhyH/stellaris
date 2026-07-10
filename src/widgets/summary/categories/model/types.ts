@@ -1,7 +1,7 @@
-interface CategoriesSummary {
+import { Summary } from '@/shared/types';
+
+interface CategoriesSummary extends Summary {
   total: number;
-  income: number;
-  expense: number;
 }
 
 type SummaryKey = keyof CategoriesSummary;

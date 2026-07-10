@@ -1,11 +1,5 @@
-export {
-  PieChartUi,
-  mapTransactionsToPieChartData,
-} from './transaction-pie-chart';
+export { PieChartUi, pieChartProps, usePieChart } from './pie-chart';
 
-export { BarChartUI, mapTransactionsToBarCtartData } from './spent-bar-chart';
+export { BarChartUI, useBarChart } from './bar-chart';
 
-export {
-  LineChartUI,
-  mapTransactionsToLineCharData,
-} from './monthly-trend-line-chart';
+export { LineChartUI, useLineChart } from './line-chart';

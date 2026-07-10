@@ -6,6 +6,7 @@ import { rowProps } from '.';
 type RowProps = {
   children: ReactNode;
   justify?: ValueOf<typeof rowProps.justifies>;
+  align?: ValueOf<typeof rowProps.aligns>;
   gap?: ValueOf<typeof sizes.sizes>;
   paddingVertical?: ValueOf<typeof sizes.sizes>;
   width?: ValueOf<typeof sizes.sizes>;

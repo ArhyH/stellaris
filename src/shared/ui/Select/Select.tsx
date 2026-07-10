@@ -67,6 +67,7 @@ const Select = (props: SelectProps) => {
                   onChange(placeholderOption.value);
                   onClose?.();
                 }}
+                minWidth={width}
                 isSelected={placeholderOption.value === currentValue?.value}
               />
             )}
@@ -80,6 +81,7 @@ const Select = (props: SelectProps) => {
                     onChange(option.value);
                     onClose?.();
                   }}
+                  minWidth={width}
                   isSelected={option.value === currentValue?.value}
                 />
               );

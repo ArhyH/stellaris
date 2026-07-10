@@ -1,3 +1,10 @@
+@use '../../../styles/helpers.scss' as *;
+
 .separator {
+  @include initializeCssVar(--separator-height, var(--parent));
+  @include initializeCssVar(--separator-width, var(--parent));
+
   background-color: var(--button-bg-2);
+  height: var(--separator-height);
+  width: var(--separator-width);
 }

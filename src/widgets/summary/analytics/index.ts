@@ -1,2 +1,6 @@
 export { AnalyticsSummary } from './ui/AnalyticsSummary';
-export { getAnalyticsSummary, getAnalyticsDeltas } from './model/summary';
+export { useAnalyticsSummary } from './model/useAnalyticsSummary';
+export type {
+  AnalyticsSummary as AnalyticsSummaryType,
+  SummaryDeltas,
+} from './model/types';

@@ -5,8 +5,13 @@ const FinanceTransferTypes = {
 };
 
 const SELECT_TYPES_DATA = [
-  { label: 'Expense', value: FinanceTransferTypes.expense },
   { label: 'Income', value: FinanceTransferTypes.income },
+  { label: 'Expense', value: FinanceTransferTypes.expense },
 ];
 
-export { FinanceTransferTypes, SELECT_TYPES_DATA };
+const ViewModes = {
+  short: 'short',
+  long: 'long',
+};
+
+export { FinanceTransferTypes, ViewModes, SELECT_TYPES_DATA };

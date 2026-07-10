@@ -2,24 +2,26 @@ import { Page, PageCell } from '@/shared/ui/Page';
 import { colors, sizes } from '@/shared/styles';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { TransactionsSummary } from '@/widgets/summary';
-import { FullTransactionsList } from '@/widgets/transactions-list';
-import { TransactionsFilter } from '@/widgets/transactions-filter';
-import { getTransactionsPageCallbacks, useTransactionsFilter } from '../model';
-import { useTransactions } from '@/entity/transaction';
-import { useCategories } from '@/entity/category';
+import {
+  FullTransactionsList,
+  TransactionsFilter,
+} from '@/widgets/transaction';
+import {
+  getTransactionsPageCallbacks,
+  useDeleteTransactions,
+  useTransactionsFilter,
+} from '../model';
 import { useTransactionsData } from '../model/useTransactionsData';
 
 const TransactionsPage = () => {
-  const { transactionsList, deleteTransaction } = useTransactions();
-  const { categoriesList } = useCategories();
-
   const {
     setFilters,
     currentTransactions,
     currentQuery,
     currentCategories,
     currerntCatefory,
-  } = useTransactionsFilter(categoriesList, transactionsList);
+    isFiltersDisabled,
+  } = useTransactionsFilter();
 
   const {
     onCategoryFilterChange,
@@ -29,10 +31,10 @@ const TransactionsPage = () => {
     onEndDateChange,
   } = getTransactionsPageCallbacks(setFilters);
 
-  const { recentTransactions, summaries } = useTransactionsData(
-    currentTransactions,
-    categoriesList,
-  );
+  const { recentTransactions, summaries } =
+    useTransactionsData(currentTransactions);
+
+  const { onDelete } = useDeleteTransactions();
 
   return (
     <Page>
@@ -64,11 +66,12 @@ const TransactionsPage = () => {
         onQueryFilterChange={onQueryFilterChange}
         onStartDateChange={onStartDateChange}
         onEndDateChange={onEndDateChange}
+        isDisabled={isFiltersDisabled}
       />
 
       <FullTransactionsList
         transactions={recentTransactions}
-        onDelete={deleteTransaction}
+        onDelete={onDelete}
       />
     </Page>
   );

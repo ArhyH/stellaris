@@ -1,2 +1,2 @@
-export { getTransactionsSummary } from './model/summary';
+export { useTransactionsSummary } from './model/useTransactionsSummary';
 export { TransactionsSummary } from './ui/TransactionsSummary';

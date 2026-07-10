@@ -8,6 +8,7 @@ interface Category {
   color: CategoryColor;
   iconColor: CategoryColor;
   type: FinanceTransferType;
+  isArchived: boolean;
 }
 
 type CategoryItem = Record<string, Category>;

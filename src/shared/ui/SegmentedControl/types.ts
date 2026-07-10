@@ -16,6 +16,7 @@ type SegmentedControlProps = {
   theme: ValueOf<typeof segmentedControlProps.themes>;
   size: ValueOf<typeof segmentedControlProps.sizes>;
   type?: ValueOf<typeof segmentedControlProps.types>;
+  isDisabled?: boolean;
 };
 
 type SegmentedButtonProps = {

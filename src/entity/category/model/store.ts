@@ -1,53 +1,74 @@
 import { create } from 'zustand';
-import { Category } from '..';
+import { storage } from '@/entity/persistence';
 import { ID } from '@/shared/types';
+import { Category } from '..';
 import { CategoryItem } from './types';
 
 type CategoryStore = {
   categories: CategoryItem;
 
-  initCategories: (categories: Category[]) => void;
+  initCategories: () => void;
 
   addCategory: (category: Category) => void;
   editCategory: (category: Category) => void;
   deleteCategory: (id: ID) => void;
+  archiveCategory: (id: ID) => void;
 };
 
 const useCategoryStore = create<CategoryStore>((set) => ({
   categories: {},
 
-  initCategories: (categories) =>
+  initCategories: () =>
     set(() => ({
-      categories: categories.reduce<CategoryItem>((acc, category) => {
-        acc[category.id] = category;
-        return acc;
-      }, {}),
+      categories: storage.category.load(),
     })),
 
   addCategory: (category) =>
-    set((state) => ({
-      categories: {
+    set((state) => {
+      const categories = {
         ...state.categories,
         [category.id]: category,
-      },
-    })),
+      };
+
+      storage.category.save(categories);
+
+      return { categories };
+    }),
 
   editCategory: (category) =>
-    set((state) => ({
-      categories: {
+    set((state) => {
+      const categories = {
         ...state.categories,
         [category.id]: category,
-      },
-    })),
+      };
+
+      storage.category.save(categories);
+
+      return { categories };
+    }),
 
   deleteCategory: (id) =>
     set((state) => {
       const copy = { ...state.categories };
       delete copy[id];
 
-      return {
-        categories: copy,
+      storage.category.save(copy);
+
+      return { categories: copy };
+    }),
+
+  archiveCategory: (id) =>
+    set((state) => {
+      const copy = { ...state.categories };
+      copy[id] = {
+        ...copy[id],
+        isArchived: true,
+        name: `${copy[id].name} (Archived)`,
       };
+
+      storage.category.save(copy);
+
+      return { categories: copy };
     }),
 }));
 

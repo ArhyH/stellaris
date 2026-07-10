@@ -1,0 +1,22 @@
+.button {
+  &--theme {
+    &--transparent-red {
+      --button-radius: var(--size-10);
+      color: var(--lightgray-3);
+      --button-background-color: var(--button-bg-1);
+
+      @media (hover: hover) {
+        &:hover {
+          color: var(--red-1);
+          --button-background-color: var(--button-bg-2-red);
+        }
+      }
+
+      &.is-active,
+      &:active {
+        color: var(--red-1);
+        --button-background-color: var(--button-bg-3-red);
+      }
+    }
+  }
+}

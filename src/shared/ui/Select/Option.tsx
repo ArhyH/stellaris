@@ -5,10 +5,10 @@ import { Typography, typographyProps } from '../Typography';
 import styles from './style.module.scss';
 import { OptionProps } from './types';
 import { icons } from '@/shared/assets';
-import { getCssVarOrNothing } from '@/shared/helpers';
+import { getStyles } from './helpers';
 
 const Option = (props: OptionProps) => {
-  const { icon, color, description, isSelected, onClick } = props;
+  const { icon, color, minWidth, description, isSelected, onClick } = props;
 
   const componentClassNames = classnames(styles.select__option, {
     [styles['is-selected']]: isSelected,
@@ -20,7 +20,7 @@ const Option = (props: OptionProps) => {
       role="option"
       onClick={onClick}
       disabled={isSelected}
-      style={color && { ...getCssVarOrNothing('--option-active-bg', color) }}
+      style={{ ...getStyles({ color, minWidth }) }}
     >
       <span className={styles['select__content']}>
         {icon && <Icon icon={icon} size={sizes.sizes[16]} color={color} />}

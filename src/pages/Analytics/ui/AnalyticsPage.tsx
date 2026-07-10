@@ -1,70 +1,117 @@
+import { useState } from 'react';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { AnalyticsSummary } from '@/widgets/summary';
 import { Row } from '@/shared/ui/Row/Row';
 import { FinanceTransferTypes } from '@/shared/consts';
-import { BarChartUI, PieChartUi, LineChartUI } from '@/widgets/charts';
+import {
+  BarChartUI,
+  PieChartUi,
+  LineChartUI,
+  pieChartProps,
+} from '@/widgets/charts';
 import { Grid, gridProps } from '@/shared/ui/Grid';
 import { TopSpending } from '@/widgets/top-spending';
 import { Page, PageCell } from '@/shared/ui/Page';
-
+import { rowProps } from '@/shared/ui/Row';
+import { DateSelect } from '@/features/analytics';
+import { useTransactions } from '@/entity/transaction';
 import { useAnalyticsData } from '../model/useAnalyticsData';
+import { useCurrentAnalytics } from '../model/useCurrentAnalytics';
 
 const AnalyticsPage = () => {
+  const { transactionsDateKeys } = useTransactions();
+
+  const [selectedKey, setSelectedKey] = useState<string | undefined>();
+
+  const transactionsKey =
+    selectedKey ?? transactionsDateKeys[transactionsDateKeys.length - 1];
+
   const {
-    currentSummary,
-    summaryDeltas,
-    expencePieData,
-    incomePieData,
     lineChartData,
-    barChartData,
+    summaries,
+    deltas,
+    incomePieData,
+    expencePieData,
     topCategory,
-    monthYear,
-    month,
-  } = useAnalyticsData();
+    barChart,
+    date,
+    isSelectEnabled,
+  } = useAnalyticsData(transactionsKey);
+
+  const { isAnalyticsAvailable, displayDate } = useCurrentAnalytics();
+
+  const onChange = (current: string) => {
+    setSelectedKey(current);
+  };
 
   return (
     <Page>
-      <PageCell gap={sizes.sizes[4]}>
-        <Typography
-          type={typographyProps.types.title28}
-          color={colors.base.white}
-          tag={typographyProps.tags.h1}
-        >
-          Analytics
-        </Typography>
+      <Row justify={rowProps.justifies.spaceBetween}>
+        <PageCell gap={sizes.sizes[4]}>
+          <Typography
+            type={typographyProps.types.title28}
+            color={colors.base.white}
+            tag={typographyProps.tags.h1}
+          >
+            Analytics
+            {transactionsKey && <> — {date}</>}
+          </Typography>
 
-        <Typography
-          type={typographyProps.types.text14}
-          color={colors.lightgray[2]}
-        >
-          Deeper insights into your financial patterns
-        </Typography>
-      </PageCell>
+          {isAnalyticsAvailable ? (
+            <Typography
+              type={typographyProps.types.text14}
+              color={colors.lightgray[2]}
+            >
+              Deeper insights into your financial patterns
+            </Typography>
+          ) : (
+            <Typography
+              type={typographyProps.types.text14}
+              color={colors.lightgray[2]}
+            >
+              No transactions for
+              <Typography
+                type={typographyProps.types.title14}
+                color={colors.base.white}
+              >
+                &nbsp;{displayDate}&nbsp;
+              </Typography>
+              yet. Add transactions to view analytics for this month.
+            </Typography>
+          )}
+        </PageCell>
 
-      <AnalyticsSummary summaries={currentSummary} deltas={summaryDeltas} />
+        {isSelectEnabled && (
+          <DateSelect transactionsKey={transactionsKey} onChange={onChange} />
+        )}
+      </Row>
 
-      <Row>
+      <AnalyticsSummary summaries={summaries} deltas={deltas} />
+
+      <Grid templateColumns={gridProps.columns['1-1']}>
         <PieChartUi
           data={expencePieData}
-          date={monthYear}
+          date={date}
           type={FinanceTransferTypes.expense}
+          mode={pieChartProps.modes.analytics}
         />
 
         <PieChartUi
           data={incomePieData}
-          date={monthYear}
+          date={date}
           type={FinanceTransferTypes.income}
+          mode={pieChartProps.modes.analytics}
         />
-      </Row>
+      </Grid>
 
       <Grid templateColumns={gridProps.columns['2-1']}>
         <LineChartUI data={lineChartData} />
 
         <PageCell gap={sizes.sizes[20]}>
-          <TopSpending data={topCategory} />
+          <TopSpending data={topCategory} date={date} />
 
-          <BarChartUI data={barChartData} month={month} />
+          <BarChartUI data={barChart} date={date} />
         </PageCell>
       </Grid>
     </Page>

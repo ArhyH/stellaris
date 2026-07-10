@@ -5,7 +5,8 @@
   @include initializeCssVar(--box-radius, var(--size-16));
   @include initializeCssVar(--box-grow, var(--initial));
   @include initializeCssVar(--box-gap, var(--size-0));
-  @include initializeCssVar(--box-padding, var(--unset));
+  @include initializeCssVar(--box-padding, var(--size-0));
+  @include initializeCssVar(--box-padding-horizontal, var(--box-padding));
   @include initializeCssVar(--box-size, unset);
   @include initializeCssVar(--box-width, var(--box-size));
   @include initializeCssVar(--box-height, var(--box-size));
@@ -19,7 +20,7 @@
   background-color: var(--box-background-color);
   color: var(--black);
   flex-grow: var(--box-grow);
-  padding: var(--box-padding);
+  padding: var(--box-padding) var(--box-padding-horizontal);
   gap: var(--box-gap);
   box-sizing: border-box;
   width: var(--box-width);

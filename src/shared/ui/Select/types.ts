@@ -8,6 +8,7 @@ type OptionProps = {
   icon?: UtilityTypes.SvgContent;
   isSelected?: boolean;
   color?: CategoryColor;
+  minWidth?: ValueOf<typeof sizes.sizes>;
 };
 
 type SelectProps = {

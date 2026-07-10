@@ -1,22 +1,19 @@
-import { useMemo } from 'react';
-import { Category } from '@/entity/category';
+import { useCategories } from '@/entity/category';
 import { Transaction } from '@/entity/transaction';
-import { getTransactionsSummary } from '@/widgets/summary';
-import { mapTransactionsToRecentItems } from '@/widgets/transactions-list';
+import { useTransactionsSummary } from '@/widgets/summary';
+import { useRecentTransactions } from '@/widgets/transaction';
+import { ViewModes } from '@/shared/consts';
 
-const useTransactionsData = (
-  transactions: Transaction[],
-  categories: Category[],
-) => {
-  const recentTransactions = useMemo(
-    () => mapTransactionsToRecentItems(transactions, categories),
-    [transactions, categories],
+const useTransactionsData = (transactions: Transaction[]) => {
+  const { categoriesList } = useCategories();
+
+  const recentTransactions = useRecentTransactions(
+    transactions,
+    categoriesList,
+    ViewModes.long,
   );
 
-  const summaries = useMemo(
-    () => getTransactionsSummary(transactions),
-    [transactions],
-  );
+  const summaries = useTransactionsSummary(transactions);
 
   return { recentTransactions, summaries };
 };

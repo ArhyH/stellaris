@@ -1,23 +1,24 @@
 import { useMemo, useState } from 'react';
-import { Category } from '@/entity/category';
-import { Transaction } from '@/entity/transaction';
-import { filterByCategory } from '@/features/FilterByCategory';
-import { filterByDateRange } from '@/features/FilterByDate/model/filterByDateRange';
+import { useCategories } from '@/entity/category';
+import { useTransactions } from '@/entity/transaction';
 import {
-  DEFAULT_FILTER,
+  filterByCategory,
+  filterByDateRange,
+  DEFAULT_TYPE_FILTER,
   filterDataByFinanceTransferType,
   filterTypes,
-} from '@/features/FilterByFinanceTransferType';
-import { filterBySearchQuery } from '@/features/FilterByQuery';
+  filterBySearchQuery,
+} from '@/features/filters';
+
 import { FinanceTransferTypes } from '@/shared/consts';
 
-const useTransactionsFilter = (
-  categories: Category[],
-  transactions: Transaction[],
-) => {
+const useTransactionsFilter = () => {
+  const { transactionsList } = useTransactions();
+  const { activeCategories } = useCategories();
+
   const [filters, setFilters] = useState({
     category: FinanceTransferTypes.all,
-    financeType: DEFAULT_FILTER,
+    financeType: DEFAULT_TYPE_FILTER,
     searchQuery: '',
     date: {
       start: '',
@@ -27,10 +28,11 @@ const useTransactionsFilter = (
 
   const currerntCatefory = filters.category;
   const currentQuery = filters.searchQuery;
+  const isFiltersDisabled = transactionsList.length === 0;
 
   const currentTransactions = useMemo(() => {
     const transactionsByType = filterDataByFinanceTransferType(
-      transactions,
+      transactionsList,
       filters.financeType,
     );
 
@@ -51,7 +53,7 @@ const useTransactionsFilter = (
 
     return transactionsByDate;
   }, [
-    transactions,
+    transactionsList,
     filters.financeType,
     filters.category,
     filters.searchQuery,
@@ -60,13 +62,13 @@ const useTransactionsFilter = (
 
   const currentCategories = useMemo(() => {
     if (filters.financeType === filterTypes.all) {
-      return categories;
+      return activeCategories;
     }
 
-    return [...categories].filter(
+    return activeCategories.filter(
       (category) => category.type === filters.financeType,
     );
-  }, [filters.financeType, transactions, categories]);
+  }, [filters.financeType, activeCategories]);
 
   return {
     setFilters,
@@ -74,6 +76,7 @@ const useTransactionsFilter = (
     currentQuery,
     currentTransactions,
     currentCategories,
+    isFiltersDisabled,
   };
 };
 

@@ -9,6 +9,7 @@ import {
   SummaryCardHeader,
 } from '@/shared/ui/SummaryCard';
 import { deltaFormatTypes } from '@/shared/helpers/delta';
+import { formatTypes } from '@/shared/helpers/formatAmount';
 
 type AnalyticsCardProps = {
   title: string;
@@ -26,13 +27,18 @@ const getTextColor = (key: keyof AnalyticsSummary): ColorToken => {
         ? colors.red[1]
         : key === 'saving'
           ? colors.violet[1]
-          : colors.yellow[1];
+          : key === 'totalSavings'
+            ? colors.blue[1]
+            : colors.yellow[1];
 
   return color;
 };
 
 const AnalyticsCard = (props: AnalyticsCardProps) => {
   const { title, summary, budgetKey, delta, icon } = props;
+
+  const hasDelta = delta !== null && delta !== undefined;
+
   return (
     <SummaryCard padding={sizes.sizes[20]} gap={sizes.sizes[12]}>
       <SummaryCardHeader>
@@ -47,7 +53,7 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
         <Icon
           icon={icon}
           color={getTextColor(budgetKey)}
-          size={sizes.sizes[14]}
+          size={sizes.sizes[20]}
         />
       </SummaryCardHeader>
 
@@ -57,13 +63,15 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
           color={getTextColor(budgetKey)}
         >
           {summary !== null && budgetKey !== 'saving'
-            ? formatAmount(summary)
+            ? formatAmount({ amount: summary, format: formatTypes.full })
             : budgetKey === 'saving'
-              ? `${summary?.toFixed(1)}%`
+              ? summary !== null
+                ? `${summary?.toFixed(1)}%`
+                : 0
               : 0}
         </Typography>
 
-        {!!delta && (
+        {hasDelta && (
           <Typography
             type={
               delta < 0 && budgetKey !== 'daily' && budgetKey !== 'expense'
@@ -71,7 +79,9 @@ const AnalyticsCard = (props: AnalyticsCardProps) => {
                 : typographyProps.types.deltaPositive
             }
           >
-            {`${formatDelta(delta, deltaFormatTypes.icon)} vs last month`}
+            {budgetKey === 'totalSavings'
+              ? `${formatAmount({ amount: delta, format: formatTypes.full, showSign: true })} vs last month`
+              : `${formatDelta(delta, deltaFormatTypes.icon)} vs last month`}
           </Typography>
         )}
       </SummaryCardContent>

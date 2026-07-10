@@ -13,10 +13,10 @@ const user = {
 
 const SettingsPage = () => {
   const [settings, setSettings] = useState({
-    currency: '$ USD — US Dollar',
-    language: 'English',
-    dateFormat: 'Apr 09, 2026',
-    weekStart: 'Monday',
+    currency: 'usd',
+    language: 'eng',
+    dateFormat: 'mdy',
+    weekStart: 'mon',
   });
 
   // const [user, setUser] = useState({

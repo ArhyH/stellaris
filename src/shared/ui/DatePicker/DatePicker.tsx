@@ -12,7 +12,7 @@ import { isSameDay } from '@/shared/helpers/date';
 import { DatePickerProps } from './types';
 
 const DatePicker = (props: DatePickerProps) => {
-  const { onChange, label, name, todayPlaceholder } = props;
+  const { onChange, label, name, todayPlaceholder, isDisabled } = props;
 
   const [value, setValue] = useState<Date>();
   const today = new Date();
@@ -46,10 +46,12 @@ const DatePicker = (props: DatePickerProps) => {
         }
         name={name}
         value={formatted}
+        isDisabled={isDisabled}
         rightElement={
           <Button
             size={sizes.sizes['18']}
             theme={buttonProps.themes.transparent}
+            isDisabled={isDisabled}
           >
             <Icon
               icon={icons.calendar24}

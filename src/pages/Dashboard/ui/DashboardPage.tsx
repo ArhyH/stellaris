@@ -1,18 +1,18 @@
 import { FinanceTransferTypes } from '@/shared/consts';
-import { RecentTransactions } from '@/widgets/transactions-list';
-import { Row } from '@/shared/ui/Row/Row';
-import { PieChartUi } from '@/widgets/charts';
-import { BudgetOverview } from '@/widgets/budget-overview';
+import { RecentTransactions } from '@/widgets/transaction';
+import { PieChartUi, pieChartProps } from '@/widgets/charts';
+import { BudgetOverview } from '@/widgets/budget';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { colors, sizes } from '@/shared/styles';
 import { DashboardSummary } from '@/widgets/summary';
 import { Page, PageCell } from '@/shared/ui/Page';
 import { useDashboardData } from '../model/useDashboardData';
+import { Grid, gridProps } from '@/shared/ui/Grid';
 
 const DashboardPage = () => {
   const {
     currentSummary,
-    deltas,
+    summaryDeltas,
     recentTransactions,
     pieChartData,
     budgetData,
@@ -34,19 +34,27 @@ const DashboardPage = () => {
           type={typographyProps.types.text14}
           color={colors.lightgray[2]}
         >
-          Here's your financial overview for {monthYear}
+          Here's your financial overview for
+          <Typography
+            type={typographyProps.types.title14}
+            color={colors.base.white}
+          >
+            &nbsp; {monthYear}
+          </Typography>
         </Typography>
       </PageCell>
 
-      <DashboardSummary summaries={currentSummary} deltas={deltas} />
-      <Row>
+      <DashboardSummary summaries={currentSummary} deltas={summaryDeltas} />
+
+      <Grid templateColumns={gridProps.columns['5-7']}>
         <PieChartUi
           data={pieChartData}
           date={monthYear}
           type={FinanceTransferTypes.expense}
+          mode={pieChartProps.modes.dashboard}
         />
         <BudgetOverview budgets={budgetData} />
-      </Row>
+      </Grid>
       <RecentTransactions recentTransactions={recentTransactions} />
     </Page>
   );

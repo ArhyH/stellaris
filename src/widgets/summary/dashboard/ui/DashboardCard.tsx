@@ -1,7 +1,7 @@
 import { Box, BoxWrapper } from '@/shared/ui/Box';
 import { colors, sizes } from '@/shared/styles';
 import { DashboardSummary } from '../model/types';
-import { formatAmount } from '@/shared/helpers/formatAmount';
+import { formatAmount, formatTypes } from '@/shared/helpers/formatAmount';
 import { Typography, typographyProps } from '@/shared/ui/Typography';
 import { Icon } from '@/shared/ui/Icon';
 import { formatDelta } from '@/shared/helpers';
@@ -54,7 +54,7 @@ const DashboardCard = (props: DashboardCardProps) => {
           type={typographyProps.types.title30}
           color={colors.base.white}
         >
-          {formatAmount(summary)}
+          {formatAmount({ amount: summary, format: formatTypes.full })}
         </Typography>
         {!!delta && (
           <Typography

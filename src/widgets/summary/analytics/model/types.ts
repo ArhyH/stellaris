@@ -1,8 +1,9 @@
-interface AnalyticsSummary {
-  income: number;
-  expense: number;
+import { Summary } from '@/shared/types';
+
+interface AnalyticsSummary extends Summary {
   saving: number | null;
-  daily: number;
+  daily: number | null;
+  totalSavings: number | null;
 }
 
 interface SummaryDeltas {
@@ -10,6 +11,7 @@ interface SummaryDeltas {
   expense: number | null;
   saving: number | null;
   daily: number | null;
+  totalSavings: number | null;
 }
 
 export type { AnalyticsSummary, SummaryDeltas };

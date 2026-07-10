@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { FilterType } from '@/features/FilterByFinanceTransferType';
+import { FilterByTypeValue } from '@/features/filters';
 import { FinanceTransferTypes } from '@/shared/consts';
 import { ID } from '@/shared/types';
 import { Filters } from './types';
@@ -14,7 +14,7 @@ const getTransactionsPageCallbacks = (
     }));
   };
 
-  const onFinanceTypeFilterChange = (filterType: FilterType) => {
+  const onFinanceTypeFilterChange = (filterType: FilterByTypeValue) => {
     setFilters((prev) => ({
       ...prev,
       category: FinanceTransferTypes.all,

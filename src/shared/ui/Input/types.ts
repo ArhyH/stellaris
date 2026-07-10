@@ -16,6 +16,7 @@ type InputProps = {
   sign?: ReactNode;
   onChange?: (value: string) => void;
   onClick?: () => void;
+  isDisabled?: boolean;
 };
 
 export type { InputProps };

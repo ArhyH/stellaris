@@ -1,2 +1,2 @@
-export { getCategoriesSummary } from './model/summary';
+export { useCategoriesSummary } from './model/useCategoriesSummary';
 export { CategoriesSummary } from './ui/CategoriesSummary';

@@ -2,6 +2,7 @@
 
 .select {
   @include initializeCssVar(--option-active-bg, unset);
+  @include initializeCssVar(--option-min-width, var(--size-140));
 
   &__menu {
     display: flex;
@@ -20,7 +21,7 @@
     gap: var(--size-8);
     justify-content: space-between;
     align-items: center;
-    min-width: var(--size-140);
+    min-width: var(--option-min-width);
     border: none;
     background-color: var(--transparent);
 

@@ -1,6 +1,7 @@
 const segmentedControlThemes = {
   gray1: 'gray-1',
   gray4: 'gray-4',
+  yellow: 'yellow',
   switch: 'switch',
 } as const;
 

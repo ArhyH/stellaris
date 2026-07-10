@@ -3,6 +3,11 @@
 @include meta.load-css('colors/colors.scss');
 @include meta.load-css('sizes/sizes.scss');
 
+html,
+body {
+  background-color: var(--gray-1);
+}
+
 body {
   margin: 0;
 }
