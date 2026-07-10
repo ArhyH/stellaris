@@ -1,11 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import {
   RecentTransaction as RecentTransactionType,
   SortConfig,
-  SortField,
   sortDirections,
   sortFields,
-  SORT_CONFID,
 } from '../../data';
 import styles from './style.module.scss';
 import { Transaction } from './Transaction';
@@ -17,6 +15,9 @@ import { icons } from '@/shared/assets';
 import { ID } from '@/shared/types';
 import { TransactionsPlaceholder } from './TransactionsPlaceholder';
 import { Box } from '@/shared/ui/Box';
+import { getCallbacks } from '../model/getCallbacks';
+import { getButtonState } from '../model/helpers';
+import { useSortedTransactions } from '../model/useSortedTransactions';
 
 type FullTransactionsListProps = {
   transactions: RecentTransactionType[];
@@ -31,35 +32,12 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
     direction: sortDirections.desc,
   });
 
-  const sortedTransactions = useMemo(() => {
-    if (!sortConfig.field) {
-      return transactions;
-    }
+  const { sortedTransactions, transactionsCount } = useSortedTransactions(
+    transactions,
+    sortConfig,
+  );
 
-    const comparator = SORT_CONFID[sortConfig.field];
-    const sorted = [...transactions].sort(comparator);
-
-    return sortConfig.direction === 'asc' ? sorted.reverse() : sorted;
-  }, [sortConfig, transactions]);
-
-  const handleSort = (nextField: SortField) => {
-    if (sortConfig.field !== nextField) {
-      return setSortConfig({
-        field: nextField,
-        direction: sortDirections.desc,
-      });
-    }
-
-    return setSortConfig({
-      field: sortConfig.field,
-      direction: sortConfig.direction === 'desc' ? 'asc' : 'desc',
-    });
-  };
-
-  const getButtonState = (field: SortField) => ({
-    isActive: sortConfig.field === field,
-    isRotated: sortConfig.field === field && sortConfig.direction === 'asc',
-  });
+  const { handleSort } = getCallbacks(setSortConfig, sortConfig);
 
   const hasTransactions = transactions.length > 0;
 
@@ -74,7 +52,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             justify={buttonProps.justifies.left}
             onClick={() => handleSort(sortFields.date)}
             isDisabled={!hasTransactions}
-            {...getButtonState(sortFields.date)}
+            {...getButtonState(sortFields.date, sortConfig)}
           >
             <Typography type={typographyProps.types.text16}>Date</Typography>
             <ButtonIcon>
@@ -89,7 +67,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             justify={buttonProps.justifies.left}
             onClick={() => handleSort(sortFields.category)}
             isDisabled={!hasTransactions}
-            {...getButtonState(sortFields.category)}
+            {...getButtonState(sortFields.category, sortConfig)}
           >
             <Typography type={typographyProps.types.text16}>
               Category
@@ -113,7 +91,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             justify={buttonProps.justifies.right}
             onClick={() => handleSort(sortFields.amount)}
             isDisabled={!hasTransactions}
-            {...getButtonState(sortFields.amount)}
+            {...getButtonState(sortFields.amount, sortConfig)}
           >
             <Typography type={typographyProps.types.text16}>Amount</Typography>
             <ButtonIcon>
@@ -141,7 +119,7 @@ const FullTransactionsList = (props: FullTransactionsListProps) => {
             type={typographyProps.types.text12}
             color={colors.lightgray[1]}
           >
-            {sortedTransactions.length} transactions
+            {transactionsCount} transactions
           </Typography>
         </div>
       </div>

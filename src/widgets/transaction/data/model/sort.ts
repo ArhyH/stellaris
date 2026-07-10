@@ -1,7 +1,7 @@
 import { sortFields } from './consts';
 import { RecentTransaction } from './types';
 
-const SORT_CONFID = {
+const SORT_CONFIG = {
   [sortFields.date]: (a: RecentTransaction, b: RecentTransaction) =>
     new Date(b.date).getTime() - new Date(a.date).getTime(),
   [sortFields.category]: (a: RecentTransaction, b: RecentTransaction) =>
@@ -10,4 +10,4 @@ const SORT_CONFID = {
     b.amount - a.amount,
 };
 
-export { SORT_CONFID };
+export { SORT_CONFIG };

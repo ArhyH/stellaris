@@ -6,4 +6,4 @@ export type {
   SortConfig,
 } from './model/types';
 export { sortFields, sortDirections } from './model/consts';
-export { SORT_CONFID } from './model/sort';
+export { SORT_CONFIG } from './model/sort';
