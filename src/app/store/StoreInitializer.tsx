@@ -1,19 +1,23 @@
 import { useEffect } from 'react';
-import { useBudgetStore } from '@/entity/budget';
-import { useCategoryStore } from '@/entity/category';
-import { useTransactionStore } from '@/entity/transaction';
+import { useBudgets } from '@/entity/budget';
+import { useCategories } from '@/entity/category';
+import { useTransactions } from '@/entity/transaction';
+import { useSavings } from '@/entity/saving/model/hooks';
+import { useSavingOperations } from '@/entity/saving-operation/model/hooks';
 
 const StoreInitializer = () => {
-  const initCategories = useCategoryStore((state) => state.initCategories);
-  const initTransactions = useTransactionStore(
-    (state) => state.initTransactions,
-  );
-  const initBudgets = useBudgetStore((state) => state.initBudgets);
+  const { initCategories } = useCategories();
+  const { initBudgets } = useBudgets();
+  const { initTransactions } = useTransactions();
+  const { initSavings } = useSavings();
+  const { initSavingOperations } = useSavingOperations();
 
   useEffect(() => {
     initCategories();
-    initTransactions();
     initBudgets();
+    initTransactions();
+    initSavings();
+    initSavingOperations();
   }, [initCategories, initTransactions, initBudgets]);
 
   return null;

@@ -22,6 +22,8 @@ const useBudgets = () => {
 
   const deleteBudget = useBudgetStore((state) => state.deleteBudget);
 
+  const initBudgets = useBudgetStore((state) => state.initBudgets);
+
   return {
     budgets,
 
@@ -31,6 +33,7 @@ const useBudgets = () => {
     addBudget,
     editBudget,
     deleteBudget,
+    initBudgets,
   };
 };
 

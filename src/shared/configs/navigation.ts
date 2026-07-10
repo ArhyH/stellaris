@@ -12,6 +12,12 @@ const navigationItems = [
     icon: 'transactions',
   },
   {
+    key: 'savings',
+    label: 'Savings',
+    path: '/savings',
+    icon: 'savings',
+  },
+  {
     key: 'analytics',
     label: 'Analytics',
     path: '/analytics',

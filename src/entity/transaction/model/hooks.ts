@@ -47,6 +47,10 @@ const useTransactions = () => {
     (state) => state.deleteTransaction,
   );
 
+  const initTransactions = useTransactionStore(
+    (state) => state.initTransactions,
+  );
+
   return {
     transactions,
 
@@ -59,6 +63,7 @@ const useTransactions = () => {
 
     addTransaction,
     deleteTransaction,
+    initTransactions,
   };
 };
 

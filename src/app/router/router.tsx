@@ -8,6 +8,7 @@ import {
   SettingsPage,
   TransactionsPage,
 } from '@/pages';
+import { SavingsPage } from '@/pages/savings';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: 'transactions',
         element: <TransactionsPage />,
+      },
+      {
+        path: 'savings',
+        element: <SavingsPage />,
       },
       {
         path: 'analytics',

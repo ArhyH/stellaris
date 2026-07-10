@@ -1,11 +1,15 @@
+import { Saving } from '@/entity/saving';
 import { Budget } from '../../budget';
 import { Category } from '../../category';
 import { Transaction } from '../../transaction';
+import { SavingOperation } from '@/entity/saving-operation';
 
 type StorageMap = {
   category: Category;
   transaction: Transaction;
   budget: Budget;
+  saving: Saving;
+  savingOperation: SavingOperation;
 };
 
 type StorageKey = { [K in keyof StorageMap]: K };

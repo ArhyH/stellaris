@@ -1,10 +1,19 @@
 type Grouped<T> = Record<string, T[]>;
+type Indexed<T> = Record<string, T>;
 
 const groupBy = <T>(items: T[], getKey: (item: T) => string): Grouped<T> => {
   return items.reduce<Grouped<T>>((acc, item) => {
     const key = getKey(item);
     acc[key] ??= [];
     acc[key].push(item);
+    return acc;
+  }, {});
+};
+
+const indexBy = <T>(items: T[], getKey: (item: T) => string): Indexed<T> => {
+  return items.reduce<Indexed<T>>((acc, item) => {
+    const key = getKey(item);
+    acc[key] = item;
     return acc;
   }, {});
 };
@@ -17,4 +26,4 @@ const getGroupByKey = <T>(items: Grouped<T>, key: string | undefined): T[] => {
   return items[key] ?? [];
 };
 
-export { groupBy, getGroupByKey };
+export { groupBy, indexBy, getGroupByKey };

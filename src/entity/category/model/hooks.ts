@@ -30,6 +30,8 @@ const useCategories = () => {
 
   const archiveCategory = useCategoryStore((state) => state.archiveCategory);
 
+  const initCategories = useCategoryStore((state) => state.initCategories);
+
   return {
     categories,
 
@@ -42,6 +44,7 @@ const useCategories = () => {
     editCategory,
     deleteCategory,
     archiveCategory,
+    initCategories,
   };
 };
 

@@ -1,0 +1,27 @@
+.history-list {
+  &__item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.7fr 0.5fr 60px 2fr 0.7fr 60px;
+    gap: var(--size-16);
+    padding: var(--size-14) var(--size-24);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--button-bg-1);
+
+        .history-list__button {
+          opacity: 1;
+          transition: opacity 0.5s ease-out;
+        }
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+  }
+}
