@@ -6,12 +6,15 @@ import { HistoryList, useSavingsHistory } from '@/widgets/savings/history';
 import { useSavingOperations } from '@/entity/saving-operation/model/hooks';
 
 const SavingsPage = () => {
-  const { savingOperationsList } = useSavingOperations();
+  const { savingOperationsList, deleteSavingOperation } = useSavingOperations();
 
   const historyItems = useSavingsHistory(savingOperationsList);
 
-  const { withGoal, withoutGoal } = useSavingsList(savingOperationsList);
+  const { withGoal, withoutGoal } = useSavingsList();
 
+  // localStorage.removeItem('savingOperation');
+
+  console.log(savingOperationsList);
   return (
     <Page>
       <PageCell gap={sizes.sizes[4]}>
@@ -33,7 +36,10 @@ const SavingsPage = () => {
 
       <SavingsList withGoal={withGoal} withoutGoal={withoutGoal} />
 
-      <HistoryList historyItems={historyItems} />
+      <HistoryList
+        historyItems={historyItems}
+        onDelete={deleteSavingOperation}
+      />
     </Page>
   );
 };

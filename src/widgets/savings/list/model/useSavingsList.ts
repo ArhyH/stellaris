@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
-import { SavingOperation } from '@/entity/saving-operation';
 import { useSavings } from '@/entity/saving/model/hooks';
 import { mapSavingsToSavingItems } from './mappers';
 import { Saving } from '@/entity/saving';
 import { SavingsListKey } from './types';
+import { useSavingOperations } from '@/entity/saving-operation/model/hooks';
 
-const useSavingsList = (savingOperations: SavingOperation[]) => {
+const useSavingsList = () => {
   const { savingsList } = useSavings();
+  const { operationsBySaving } = useSavingOperations();
 
   return useMemo(() => {
     const grouped = savingsList.reduce<Record<SavingsListKey, Saving[]>>(
@@ -30,13 +31,13 @@ const useSavingsList = (savingOperations: SavingOperation[]) => {
     );
 
     return {
-      withGoal: mapSavingsToSavingItems(grouped.withGoal, savingOperations),
+      withGoal: mapSavingsToSavingItems(grouped.withGoal, operationsBySaving),
       withoutGoal: mapSavingsToSavingItems(
         grouped.withoutGoal,
-        savingOperations,
+        operationsBySaving,
       ),
     };
-  }, [savingsList, savingOperations]);
+  }, [savingsList, operationsBySaving]);
 };
 
 export { useSavingsList };

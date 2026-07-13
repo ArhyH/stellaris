@@ -1,7 +1,8 @@
 import { Saving, savingStatus } from '@/entity/saving';
 import { SavingOperation } from '@/entity/saving-operation';
-import { getGroupByKey, groupBy } from '@/shared/helpers';
+import { getGroupByKey } from '@/shared/helpers';
 import { SavingItem, SavingProgress } from './types';
+import { ID } from '@/shared/types';
 
 const getGoalProgress = (amount: number, goal: number): SavingProgress => {
   if (goal === 0) {
@@ -30,22 +31,26 @@ const getGoalProgress = (amount: number, goal: number): SavingProgress => {
   };
 };
 
+const getSavingBalance = (operations: SavingOperation[]): number => {
+  return operations.reduce((acc, operation) => (acc += operation.amount), 0);
+};
+
 const mapSavingsToSavingItems = (
   savings: Saving[],
-  savingOperations: SavingOperation[],
-): SavingItem[] => {
-  const operationBySaving = groupBy(savingOperations, (o) => o.savingId);
+  savingOperations: Record<ID, SavingOperation[]>,
+): SavingItem[] =>
+  savings.map((saving) => {
+    const operations = getGroupByKey(savingOperations, saving.id);
 
-  return savings.map((saving) => {
-    const operationsCount = getGroupByKey(operationBySaving, saving.id).length;
-    const goal = saving.goal
-      ? getGoalProgress(saving.amount, saving.goal)
-      : null;
+    const operationsCount = operations.length;
+    const amount = getSavingBalance(operations);
+
+    const goal = saving.goal ? getGoalProgress(amount, saving.goal) : null;
 
     return {
       id: saving.id,
       name: saving.name,
-      amount: saving.amount,
+      amount,
       currency: saving.currency,
       operationsCount: operationsCount,
       icon: saving.icon,
@@ -58,6 +63,5 @@ const mapSavingsToSavingItems = (
       status: goal?.status,
     };
   });
-};
 
 export { mapSavingsToSavingItems };

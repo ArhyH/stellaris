@@ -4,21 +4,19 @@
   background-color: var(--gray-4);
   padding: var(--size-20);
   border-radius: var(--size-16);
-  gap: var(--size-12);
+  gap: var(--size-16);
   transition: transform 0.5s ease;
 
   @media (hover: hover) {
     &:hover {
       transform: scale(1.03);
 
-      .savings__buttons {
-        max-width: var(--size-68);
+      .saving-item__buttons {
         opacity: 1;
-        transition-delay: 0s;
-
+        max-width: 200px;
         transition:
-          opacity 0.5s ease-out,
-          max-width 0.5s ease-out;
+          opacity 0.5s ease-in-out,
+          max-width 0.5s ease-in-out;
       }
     }
   }
@@ -26,11 +24,14 @@
   &__buttons {
     display: flex;
     align-items: center;
-    gap: var(--size-4);
-    max-width: var(--size-0);
+    gap: var(--size-6);
+    width: var(--parent);
+    background-color: var(--gray-4);
+    max-width: 0;
     opacity: 0;
+    max-width: 200px;
     transition:
-      opacity 0.15s ease-in,
-      max-width 0.25s ease-in;
+      opacity 0.5s ease-in-out,
+      max-width 0.5s ease-in-out;
   }
 }

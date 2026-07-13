@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useSavingStore } from './store';
+import { groupBy } from '@/shared/helpers';
 
 const useSavingOperations = () => {
   const savingOperations = useSavingStore((state) => state.savingOperations);
@@ -7,6 +8,11 @@ const useSavingOperations = () => {
   const savingOperationsList = useMemo(
     () => Object.values(savingOperations),
     [savingOperations],
+  );
+
+  const operationsBySaving = useMemo(
+    () => groupBy(savingOperationsList, (o) => o.savingId),
+    [savingOperationsList],
   );
 
   const addSavingOperation = useSavingStore(
@@ -24,6 +30,7 @@ const useSavingOperations = () => {
   return {
     savingOperations,
     savingOperationsList,
+    operationsBySaving,
 
     addSavingOperation,
     deleteSavingOperation,

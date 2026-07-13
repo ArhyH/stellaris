@@ -20,6 +20,7 @@ import check12 from './check-12.svg';
 import delete24 from './delete-24.svg';
 import coins24 from './coins-24.svg';
 import shield24 from './shield-24.svg';
+import piggyBank24 from './piggy-bank-24.svg';
 
 import house24 from './house-24.svg';
 import car24 from './car-24.svg';
@@ -108,6 +109,7 @@ const icons = {
   delete24,
   coins24,
   shield24,
+  piggyBank24,
   ...categoriesIcons,
 } as const satisfies Record<string, UtilityTypes.SvgContent>;
 

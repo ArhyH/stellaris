@@ -17,7 +17,7 @@ type HistoryItemProps = {
 };
 
 const HistoryItem = (props: HistoryItemProps) => {
-  const { item } = props;
+  const { item, onDelete } = props;
 
   const {
     amount,
@@ -103,7 +103,7 @@ const HistoryItem = (props: HistoryItemProps) => {
         <Button
           theme={buttonProps.themes.transparentRed}
           size={sizes.sizes['32']}
-          // onClick={() => onDelete(id)}
+          onClick={() => onDelete(id)}
         >
           <Icon icon={icons.trash24} size={sizes.sizes[12]} />
         </Button>
