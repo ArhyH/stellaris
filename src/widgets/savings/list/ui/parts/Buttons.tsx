@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import styles from '../style.module.scss';
 import { Button, buttonProps } from '@/shared/ui/Button';
 import { sizes } from '@/shared/styles';
@@ -6,11 +5,13 @@ import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
 
 type ButtonsProps = {
-  children: ReactNode;
+  onOperationAdd: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 };
 
 const Buttons = (props: ButtonsProps) => {
-  const { children } = props;
+  const { onOperationAdd, onEdit, onDelete } = props;
 
   return (
     <div className={styles['saving-item__buttons']}>
@@ -19,6 +20,7 @@ const Buttons = (props: ButtonsProps) => {
         height={sizes.sizes[32]}
         paddingHorizontal={sizes.sizes[12]}
         radius={sizes.radiuses[12]}
+        onClick={onOperationAdd}
       >
         Add Operation
       </Button>
@@ -27,6 +29,7 @@ const Buttons = (props: ButtonsProps) => {
         theme={buttonProps.themes.lightgray}
         size={sizes.sizes[32]}
         radius={sizes.radiuses[12]}
+        onClick={onEdit}
       >
         <Icon icon={icons.pen24} size={sizes.sizes[12]} />
       </Button>
@@ -36,6 +39,7 @@ const Buttons = (props: ButtonsProps) => {
         size={sizes.sizes[32]}
         paddingHorizontal={sizes.sizes[12]}
         radius={sizes.radiuses[12]}
+        onClick={onDelete}
       >
         <Icon icon={icons.trash24} size={sizes.sizes[12]} />
       </Button>

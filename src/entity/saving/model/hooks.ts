@@ -16,6 +16,8 @@ const useSavings = () => {
 
   const deleteSaving = useSavingStore((state) => state.deleteSaving);
 
+  const updateSaving = useSavingStore((state) => state.updateSaving);
+
   const initSavings = useSavingStore((state) => state.initSavings);
 
   return {
@@ -25,6 +27,7 @@ const useSavings = () => {
 
     addSaving,
     deleteSaving,
+    updateSaving,
     initSavings,
   };
 };

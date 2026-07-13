@@ -36,7 +36,7 @@ const Name = (props: NameProps) => {
           {name}
         </Typography>
 
-        {saved && (
+        {saved !== undefined && (
           <Typography
             type={typographyProps.types.text12}
             color={colors.lightgray[2]}

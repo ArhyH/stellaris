@@ -4,13 +4,16 @@ import { Progress } from '@/shared/ui/Progress';
 import { statusColors } from '../model/consts';
 import { Buttons, Goal, Info, Name } from './parts';
 import styles from './style.module.scss';
+import { ID } from '@/shared/types';
 
 type GoalItemProps = {
   saving: SavingItemType;
+  onEdit: (id: ID) => void;
+  onDelete: (id: ID) => void;
 };
 
 const GoalItem = (props: GoalItemProps) => {
-  const { saving } = props;
+  const { saving, onEdit, onDelete } = props;
 
   const {
     name,
@@ -23,6 +26,7 @@ const GoalItem = (props: GoalItemProps) => {
     status,
     remaining,
     overflow,
+    id,
   } = saving;
 
   if (goalPercent === undefined || !status) {
@@ -36,7 +40,7 @@ const GoalItem = (props: GoalItemProps) => {
           icon={icon}
           iconColor={iconColor}
           name={name}
-          saved={goalPercent}
+          saved={goalPercent > 0 ? goalPercent : 0}
         />
 
         <Goal goal={goal} amount={amount} />
@@ -54,7 +58,11 @@ const GoalItem = (props: GoalItemProps) => {
       <Row justify={rowProps.justifies.spaceBetween}>
         <Info amount={amount} remaining={remaining} overflow={overflow} />
 
-        <Buttons />
+        <Buttons
+          onOperationAdd={() => null}
+          onEdit={() => onEdit(id)}
+          onDelete={() => onDelete(id)}
+        />
       </Row>
     </li>
   );

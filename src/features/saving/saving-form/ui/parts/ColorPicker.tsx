@@ -3,8 +3,9 @@ import { CategoryColor, colors, sizes } from '@/shared/styles';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { icons } from '@/shared/assets';
-import { isDarkColor } from '../../model/heplers';
+
 import { Picker } from '@/shared/ui/Picker';
+import { isDarkColor } from '../../model/heplers';
 
 type ColorPickerProps = {
   color: CategoryColor;
@@ -15,7 +16,7 @@ const ColorPicker = (props: ColorPickerProps) => {
   const { color, onColorChange } = props;
 
   return (
-    <FormCell title="Category Color" hasScroll>
+    <FormCell title="Color" hasScroll>
       <Picker data={colors.category}>
         {({ key, value }) => (
           <Button

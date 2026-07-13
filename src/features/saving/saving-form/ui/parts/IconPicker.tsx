@@ -14,7 +14,7 @@ const IconPicker = (props: IconPickerProps) => {
   const { icon, onIconChange } = props;
 
   return (
-    <FormCell title="Icon" hasScroll maxHeight={sizes.sizes[150]}>
+    <FormCell title="Icon" hasScroll maxHeight={sizes.sizes[140]}>
       <Picker data={categoriesIcons}>
         {({ key, value }) => (
           <Button
